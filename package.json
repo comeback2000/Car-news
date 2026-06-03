@@ -1,5 +1,6 @@
 {
   "scripts": {
-    "build": "node scripts/build-site.js"
+    "build": "node scripts/build-site.js",
+    "publish:drip": "node scripts/drip-publish.js"
   }
 }
