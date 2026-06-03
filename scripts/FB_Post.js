@@ -116,9 +116,11 @@ function enqueueNewArticles(posts, queue, publishedLog, state, intervalMinutes) 
 function assertConfig(config) {
   const required = {
     graphApiVersion: config.graphApiVersion,
-    pageId: config.pageId,
-    pageAccessToken: config.pageAccessToken
+    pageId: config.pageId
   };
+  if (!config.dryRun) {
+    required.pageAccessToken = config.pageAccessToken;
+  }
   const missing = Object.entries(required)
     .filter(([, value]) => !value)
     .map(([key]) => key);

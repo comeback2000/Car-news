@@ -12,7 +12,7 @@ Add or update articles in `data/posts.json`, then run:
 npm run build
 ```
 
-The build generates SEO metadata, Open Graph/Twitter cards, NewsArticle schema, breadcrumbs, table of contents, automatic internal links, related posts, category pages, tag pages, redirects for old URLs, `sitemap.xml`, and `robots.txt`.
+The build generates SEO metadata, Open Graph/Twitter cards, NewsArticle schema, automatic internal links, related posts, category pages, tag pages, redirects for old URLs, `sitemap.xml`, and `robots.txt`.
 
 Featured trend-driven posts:
 
@@ -21,6 +21,47 @@ Featured trend-driven posts:
 - Maruti e Vitara Just Made EV Charging the Story, Not Just Range
 
 Open `index.html` or publish the repo with GitHub Pages from the `main` branch root.
+
+## Workflow test mode
+
+Use this before enabling or changing automatic scheduling.
+
+Safe dry run:
+
+```powershell
+npm run workflow:test
+```
+
+The dry run creates a temporary sample article, copies a sample thumbnail, rebuilds the site, verifies the generated article, homepage card, image metadata, social queue, duplicate status, link integrity and scheduled task registration, then cleans the temporary files and rebuilds back to the normal site.
+
+It does not commit, push, or post to Facebook.
+
+Expected checks:
+
+- New article generated in `posts/`
+- Thumbnail generated in `assets/`
+- H1, featured image, intro paragraph and article sections render in the correct order
+- Homepage card includes the article URL and thumbnail
+- Canonical article URL is generated
+- Open Graph and Twitter image metadata use the thumbnail
+- Facebook caption and queue item can be generated in dry-run mode
+- Article is not already marked as published/duplicate
+- Windows scheduled tasks are detected
+- Link check passes
+
+Publish a real sample article to GitHub:
+
+```powershell
+npm run workflow:test -- --publish
+```
+
+This creates a sample workflow-test article, commits it, pushes to `main` and `gh-pages`, and prints the public GitHub Pages URL. Use this only when you really want a visible sample post on the site.
+
+Keep temporary dry-run files for inspection:
+
+```powershell
+npm run workflow:test -- --keep
+```
 
 ## Automated drip publishing on Windows
 

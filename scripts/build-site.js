@@ -346,13 +346,19 @@ function write(file, content) {
   fs.writeFileSync(path.join(root, file), content.trimStart(), "utf8");
 }
 
+function cleanHtmlDir(dir) {
+  for (const stale of fs.readdirSync(path.join(root, dir)).filter((file) => file.endsWith(".html"))) {
+    fs.unlinkSync(path.join(root, dir, stale));
+  }
+}
+
 ensureDir("posts");
 ensureDir("category");
 ensureDir("tags");
 
-for (const stale of fs.readdirSync(path.join(root, "posts")).filter((file) => file.endsWith(".html"))) {
-  fs.unlinkSync(path.join(root, "posts", stale));
-}
+cleanHtmlDir("posts");
+cleanHtmlDir("category");
+cleanHtmlDir("tags");
 
 write("index.html", indexPage());
 for (const post of posts) {

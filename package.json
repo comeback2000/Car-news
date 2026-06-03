@@ -2,6 +2,7 @@
   "scripts": {
     "build": "node scripts/build-site.js",
     "publish:drip": "node scripts/drip-publish.js",
-    "fb:post": "node scripts/FB_Post.js"
+    "fb:post": "node scripts/FB_Post.js",
+    "workflow:test": "node scripts/test-publishing-workflow.js"
   }
 }
