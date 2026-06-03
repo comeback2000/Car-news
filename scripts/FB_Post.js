@@ -78,17 +78,20 @@ function captionFor(post) {
   ].join("\n");
 }
 
-function scheduledAtFor(index, state, intervalMinutes) {
+function scheduledAtFor(index, state, intervalMinutes, options = {}) {
+  if (options.forceDue) return new Date().toISOString();
   const base = state.nextScheduledAt ? new Date(state.nextScheduledAt) : new Date();
   return new Date(base.getTime() + index * intervalMinutes * 60 * 1000).toISOString();
 }
 
-function enqueueNewArticles(posts, queue, publishedLog, state, intervalMinutes) {
+function enqueueNewArticles(posts, queue, publishedLog, state, intervalMinutes, options = {}) {
   const queuedUrls = new Set(queue.map((item) => item.url));
   const publishedUrls = new Set(publishedLog.filter((item) => item.status === "published").map((item) => item.url));
   let added = 0;
 
   for (const post of posts) {
+    if (options.onlySlug && post.slug !== options.onlySlug) continue;
+
     const url = articleUrl(post);
     if (queuedUrls.has(url) || publishedUrls.has(url)) continue;
 
@@ -101,7 +104,7 @@ function enqueueNewArticles(posts, queue, publishedLog, state, intervalMinutes) 
       imageUrl: imageUrl(post),
       caption,
       captionHash: hash(caption),
-      scheduledAt: scheduledAtFor(queue.length, state, intervalMinutes),
+      scheduledAt: scheduledAtFor(queue.length, state, intervalMinutes, options),
       status: "pending",
       attempts: 0,
       createdAt: new Date().toISOString()
@@ -174,6 +177,8 @@ async function main() {
   };
   const intervalMinutes = Number(process.env.FB_POST_INTERVAL_MINUTES || 240);
   const maxPerRun = Number(process.env.FB_MAX_POSTS_PER_RUN || 1);
+  const onlySlug = process.env.FB_ONLY_SLUG || "";
+  const forceDue = process.env.FB_FORCE_DUE === "true";
 
   assertConfig(config);
 
@@ -187,11 +192,20 @@ async function main() {
   });
 
   state.intervalMinutes = intervalMinutes;
-  const added = enqueueNewArticles(posts, queue, publishedLog, state, intervalMinutes);
+  const added = enqueueNewArticles(posts, queue, publishedLog, state, intervalMinutes, { onlySlug, forceDue });
   if (added) {
     const pending = queue.filter((item) => item.status === "pending");
     state.nextScheduledAt = pending.length ? pending[pending.length - 1].scheduledAt : state.nextScheduledAt;
     console.log(`Queued ${added} new article(s) for Facebook.`);
+  }
+
+  if (onlySlug && forceDue) {
+    const dueAt = new Date().toISOString();
+    for (const item of queue) {
+      if (item.sourcePostSlug === onlySlug && item.status === "pending") {
+        item.scheduledAt = dueAt;
+      }
+    }
   }
 
   const now = new Date();
@@ -200,6 +214,7 @@ async function main() {
 
   for (const item of queue) {
     if (publishedThisRun >= maxPerRun) break;
+    if (onlySlug && item.sourcePostSlug !== onlySlug) continue;
     if (item.status !== "pending") continue;
     if (new Date(item.scheduledAt) > now) continue;
 

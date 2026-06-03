@@ -221,7 +221,46 @@ function publishToGit(post) {
   run("git", ["push", "origin", "HEAD:gh-pages"]);
 }
 
-function main() {
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+async function waitForPublicUrl(url, label) {
+  for (let attempt = 1; attempt <= 8; attempt += 1) {
+    try {
+      const response = await fetch(`${url}${url.includes("?") ? "&" : "?"}workflowCheck=${Date.now()}`);
+      if (response.ok) {
+        console.log(`${label} is live: ${url}`);
+        return;
+      }
+    } catch {
+      // Retry below.
+    }
+    console.log(`Waiting for ${label} to go live (${attempt}/8)...`);
+    await sleep(15000);
+  }
+  throw new Error(`${label} was not reachable after GitHub Pages refresh: ${url}`);
+}
+
+function publishToFacebook(post) {
+  run("node", ["scripts/FB_Post.js"], {
+    env: {
+      FB_ONLY_SLUG: post.slug,
+      FB_FORCE_DUE: "true",
+      FB_DRY_RUN: "false",
+      FB_MAX_POSTS_PER_RUN: "1",
+      FB_PAGE_ID: process.env.FB_PAGE_ID || "176747645744060"
+    }
+  });
+
+  const log = readJson(paths.facebookLog, []);
+  const articleUrl = `${siteUrl}/posts/${post.slug}.html`;
+  const entry = log.find((item) => item.url === articleUrl && item.status === "published");
+  assert(entry && entry.facebookPostId, "Facebook publish did not produce a published log entry.");
+  return entry.facebookPostId;
+}
+
+async function main() {
   const mode = publishMode ? "PUBLISH" : "DRY RUN";
   console.log(`Workflow test mode: ${mode}`);
   console.log(`Sample slug: ${slug}`);
@@ -258,9 +297,13 @@ function main() {
 
     if (publishMode) {
       publishToGit(post);
+      await waitForPublicUrl(articleUrl, "Article");
+      await waitForPublicUrl(`${siteUrl}/${post.image}`, "Thumbnail");
+      const facebookPostId = publishToFacebook(post);
       console.log("");
-      console.log("Published sample article to GitHub.");
+      console.log("Published sample article to GitHub and Facebook.");
       console.log(`Live URL after Pages refresh: ${articleUrl}`);
+      console.log(`Facebook Post ID: ${facebookPostId}`);
     } else {
       console.log("");
       console.log("Dry run complete. No GitHub commit or push was made.");
@@ -286,7 +329,10 @@ function main() {
 }
 
 try {
-  main();
+  main().catch((error) => {
+    console.error(error.message);
+    process.exit(1);
+  });
 } catch (error) {
   console.error(error.message);
   process.exit(1);

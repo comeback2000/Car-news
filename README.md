@@ -50,12 +50,21 @@ Expected checks:
 - Link check passes
 
 Publish a real sample article to GitHub:
+Publish a real sample article to GitHub and then post the same article to the configured Facebook Page:
 
 ```powershell
 npm run workflow:test -- --publish
 ```
 
-This creates a sample workflow-test article, commits it, pushes to `main` and `gh-pages`, and prints the public GitHub Pages URL. Use this only when you really want a visible sample post on the site.
+This creates a sample workflow-test article, commits it, pushes to `main` and `gh-pages`, waits for the article and thumbnail to become public on GitHub Pages, then runs the Facebook publisher for that exact article slug. It prints the public GitHub Pages URL and Facebook Post ID.
+
+Requirements for the Facebook part:
+
+- `.env` must contain `FB_PAGE_ACCESS_TOKEN`.
+- The token must be a Page Access Token for `FB_PAGE_ID`.
+- `FB_DRY_RUN` must not be set to `true` in `.env`.
+
+Use this only when you really want a visible sample post on the site and Facebook Page.
 
 Keep temporary dry-run files for inspection:
 
