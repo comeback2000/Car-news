@@ -69,7 +69,7 @@ nav a {
   padding: clamp(48px, 8vw, 96px) clamp(18px, 4vw, 48px) 36px;
   background:
     linear-gradient(120deg, rgba(17, 19, 26, 0.9), rgba(17, 19, 26, 0.18)),
-    url("assets/tesla-ev-sales.svg") center/cover no-repeat;
+    url("assets/mahindra-be6.jpg") center/cover no-repeat;
   color: var(--white);
 }
 
@@ -230,6 +230,12 @@ nav a {
 .article-body a {
   color: var(--blue);
   font-weight: 700;
+}
+
+.image-credit {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 0.78rem;
 }
 
 .article-body ul {

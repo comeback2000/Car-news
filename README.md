@@ -6,8 +6,8 @@ Latest update: June 3, 2026
 
 Featured trend-driven posts:
 
-- Tesla's China Rebound Is Back: Model 3 and Model Y Sales Jump 39% in May
-- Ford's Do-Not-Drive Recall Hits Bronco Sport and Maverick
-- 2027 Toyota GR86 Gets Sharper: New Thunder Color, Better Shifts, Same 228-HP Fun
+- Tata's EV Breakout: Nexon, Punch, and Tiago Help Push Sales Past 10,000
+- Mahindra BE 6 and XEV 9e Are Turning India's EV SUV Race Into a Real Fight
+- Maruti e Vitara Just Made EV Charging the Story, Not Just Range
 
 Open `index.html` or publish the repo with GitHub Pages from the `main` branch root.
