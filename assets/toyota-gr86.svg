@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">Toyota GR86 thumbnail</title>
+  <desc id="desc">A low sports coupe silhouette with text saying GR86 gets sharper.</desc>
+  <rect width="1280" height="720" fill="#f7f8fa"/>
+  <path d="M0 0 H1280 V210 C1098 185 981 218 820 194 C600 162 420 78 0 148 Z" fill="#1554ff"/>
+  <path d="M0 540 C236 500 406 612 666 548 C878 496 1068 494 1280 552 L1280 720 L0 720 Z" fill="#11131a"/>
+  <path d="M188 456 L296 342 C332 304 383 284 440 284 H694 C759 284 818 312 858 362 L930 452 L1086 494 L1100 552 L194 552 Z" fill="#11131a"/>
+  <path d="M345 318 H692 C735 318 773 337 802 370 L840 416 H260 L320 336 C328 328 336 322 345 318 Z" fill="#d71920"/>
+  <path d="M252 454 L930 454" stroke="#ffbf1f" stroke-width="12"/>
+  <circle cx="374" cy="552" r="70" fill="#f7f8fa"/>
+  <circle cx="374" cy="552" r="34" fill="#11131a"/>
+  <circle cx="888" cy="552" r="70" fill="#f7f8fa"/>
+  <circle cx="888" cy="552" r="34" fill="#11131a"/>
+  <text x="70" y="130" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="900">2027 TOYOTA</text>
+  <text x="70" y="226" fill="#11131a" font-family="Arial, Helvetica, sans-serif" font-size="106" font-weight="900">GR86 GETS</text>
+  <text x="70" y="322" fill="#d71920" font-family="Arial, Helvetica, sans-serif" font-size="106" font-weight="900">SHARPER</text>
+</svg>

@@ -1,0 +1,264 @@
+:root {
+  color-scheme: light;
+  --ink: #11131a;
+  --muted: #626a75;
+  --line: #dce0e7;
+  --paper: #f7f8fa;
+  --white: #ffffff;
+  --red: #d71920;
+  --blue: #1554ff;
+  --yellow: #ffbf1f;
+  --green: #0e8f68;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 16px clamp(18px, 4vw, 48px);
+  border-bottom: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+}
+
+.brand {
+  font-size: 1.2rem;
+  font-weight: 800;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+nav {
+  display: flex;
+  gap: 18px;
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+nav a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+  gap: clamp(24px, 5vw, 64px);
+  align-items: end;
+  min-height: 68vh;
+  padding: clamp(48px, 8vw, 96px) clamp(18px, 4vw, 48px) 36px;
+  background:
+    linear-gradient(120deg, rgba(17, 19, 26, 0.9), rgba(17, 19, 26, 0.18)),
+    url("assets/tesla-ev-sales.svg") center/cover no-repeat;
+  color: var(--white);
+}
+
+.hero-copy {
+  max-width: 900px;
+}
+
+.eyebrow,
+.tag {
+  margin: 0 0 10px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  margin: 0;
+  max-width: 860px;
+  font-size: clamp(2.3rem, 7vw, 5.8rem);
+  line-height: 0.98;
+}
+
+.lede {
+  max-width: 720px;
+  margin: 22px 0 0;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.trend-panel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-content: end;
+}
+
+.trend-panel span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 7px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.14);
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
+.section-heading,
+.story-grid,
+.article-layout {
+  width: min(1180px, calc(100% - 36px));
+  margin-inline: auto;
+}
+
+.section-heading {
+  padding: 48px 0 16px;
+}
+
+.section-heading h2 {
+  margin: 0;
+  font-size: clamp(1.7rem, 3vw, 2.7rem);
+}
+
+.story-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  padding-bottom: 56px;
+}
+
+.story-card {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--white);
+}
+
+.story-card a {
+  display: grid;
+  height: 100%;
+  text-decoration: none;
+}
+
+.story-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: var(--ink);
+}
+
+.story-body {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  padding: 18px;
+}
+
+.tag {
+  color: var(--red);
+}
+
+.story-body h3 {
+  margin: 0;
+  font-size: 1.22rem;
+  line-height: 1.18;
+}
+
+.story-body p:last-child {
+  margin: 0;
+  color: var(--muted);
+}
+
+.article-hero {
+  padding: 36px clamp(18px, 4vw, 48px) 0;
+}
+
+.article-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(300px, 1.08fr);
+  gap: clamp(24px, 5vw, 58px);
+  align-items: start;
+}
+
+.article-layout img {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--ink);
+}
+
+.article-copy h1 {
+  margin: 0 0 14px;
+  font-size: clamp(2rem, 4.5vw, 4rem);
+  line-height: 1.02;
+}
+
+.article-copy .meta {
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.article-body {
+  width: min(760px, calc(100% - 36px));
+  margin: 34px auto 72px;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--white);
+}
+
+.article-body h2 {
+  margin-top: 0;
+}
+
+.article-body a {
+  color: var(--blue);
+  font-weight: 700;
+}
+
+.article-body ul {
+  padding-left: 20px;
+}
+
+.site-footer {
+  padding: 24px clamp(18px, 4vw, 48px);
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  background: var(--white);
+}
+
+@media (max-width: 860px) {
+  .site-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .hero,
+  .article-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .story-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .article-body {
+    padding: 20px;
+  }
+}

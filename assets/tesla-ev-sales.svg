@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">Tesla EV sales thumbnail</title>
+  <desc id="desc">A red electric car silhouette with bold text saying Tesla surges 39 percent.</desc>
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#0f1118"/>
+      <stop offset="0.55" stop-color="#1b2438"/>
+      <stop offset="1" stop-color="#0e8f68"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#g)"/>
+  <path d="M0 520 C230 445 420 565 640 500 C815 448 1012 410 1280 484 L1280 720 L0 720 Z" fill="#11131a" opacity=".9"/>
+  <path d="M188 435 L280 324 C304 295 344 278 390 278 L700 278 C750 278 795 299 825 335 L902 428 L1062 460 L1080 526 L195 526 Z" fill="#d71920"/>
+  <path d="M331 308 L706 308 C742 308 771 325 794 352 L842 411 L249 411 L311 330 C317 321 324 314 331 308 Z" fill="#f7f8fa"/>
+  <circle cx="356" cy="526" r="72" fill="#0f1118"/>
+  <circle cx="356" cy="526" r="34" fill="#dce0e7"/>
+  <circle cx="895" cy="526" r="72" fill="#0f1118"/>
+  <circle cx="895" cy="526" r="34" fill="#dce0e7"/>
+  <path d="M100 110 H540" stroke="#ffbf1f" stroke-width="14"/>
+  <text x="100" y="185" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="74" font-weight="900">TESLA</text>
+  <text x="100" y="272" fill="#ffbf1f" font-family="Arial, Helvetica, sans-serif" font-size="82" font-weight="900">SURGES 39%</text>
+  <text x="100" y="620" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="800">MODEL 3 + MODEL Y SALES SPIKE</text>
+</svg>
