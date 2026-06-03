@@ -180,6 +180,9 @@ ${headTags({ title: post.metaTitle, description: post.metaDescription, url: post
         <section id="${esc(slugify(section.heading))}">
           <h2>${esc(section.heading)}</h2>
           ${section.paragraphs.map((paragraph) => `<p>${autoLink(paragraph, post)}</p>`).join("")}
+          ${(section.subsections || []).map((subsection) => `
+          <h3>${esc(subsection.heading)}</h3>
+          ${subsection.paragraphs.map((paragraph) => `<p>${autoLink(paragraph, post)}</p>`).join("")}`).join("")}
         </section>`).join("")}
         <section>
           <h2>${esc(post.targetKeyword)}: Related Reading</h2>
