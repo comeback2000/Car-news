@@ -1,51 +1,109 @@
 [
   {
-    "slug": "workflow-test-article-20260603151735",
-    "aliases": [],
-    "targetKeyword": "Workflow Test Car News",
-    "title": "Workflow Test Car News: Sample Article Publish Check",
-    "metaTitle": "Workflow Test Car News | Sample Publish Check",
-    "metaDescription": "A temporary workflow test article used to verify article generation, thumbnail rendering, homepage cards, URLs, and social queue creation.",
-    "excerpt": "Workflow Test Car News verifies that the publishing pipeline can generate a post, render its thumbnail, update homepage cards, and prepare social captions.",
-    "category": "Workflow Tests",
-    "tags": [
-      "Workflow Test Car News",
-      "Car News Test",
-      "Publishing Workflow"
+    "slug": "tata-ev-news-harrier-sierra-punch-2026",
+    "aliases": [
+      "tata-ev-news"
     ],
-    "image": "assets/workflow-test-article-20260603151735-thumbnail.jpg",
-    "imageAlt": "Workflow Test Car News sample thumbnail",
-    "imageCredit": "Image: workflow test thumbnail copied from the current Car News thumbnail set.",
+    "targetKeyword": "Tata EV News",
+    "title": "Tata EV News: Harrier.ev, Sierra EV and Punch EV Put Tata Back in the Spotlight",
+    "metaTitle": "Tata EV News 2026: Harrier.ev, Sierra EV, Punch EV and Record Sales",
+    "metaDescription": "Tata EV News is heating up as record May 2026 EV sales, Harrier.ev momentum, Sierra EV buzz and Punch/Nexon demand reshape India electric car buying.",
+    "excerpt": "Tata EV News has turned sharply positive after record May EV sales, stronger Harrier.ev visibility, and fresh buyer interest around Sierra EV, Punch EV and Nexon EV.",
+    "category": "Tata Motors",
+    "tags": [
+      "Tata EV News",
+      "Tata Harrier EV",
+      "Tata Sierra EV",
+      "Tata Punch EV",
+      "Tata EV sales India"
+    ],
+    "image": "assets/tata-ev-news-harrier-sierra-2026-thumbnail.jpg",
+    "imageAlt": "Tata EV News thumbnail showing Harrier EV with Sierra EV and Punch EV headline",
+    "imageCredit": "Thumbnail: Car News graphic using official TATA.ev Harrier.ev imagery.",
     "author": "Car News Desk",
     "datePublished": "2026-06-03",
     "dateModified": "2026-06-03",
     "sources": [
       {
-        "label": "Car News workflow test",
-        "url": "https://comeback2000.github.io/Car-news/"
+        "label": "Autocar India May 2026 EV sales report",
+        "url": "https://www.autocarindia.com/industry-amp/may-2026-ev-sales-tata-crosses-10000-units-for-the-first-time-439849"
+      },
+      {
+        "label": "Cars24 Tata Motors May 2026 sales report",
+        "url": "https://www.cars24.com/news/auto/tata-motors-pv-sales-jump-42-in-may-2026-evs-cross-10000-units-for-the-first-time/"
+      },
+      {
+        "label": "Tata Motors Harrier.ev QWD pricing release",
+        "url": "https://www.tatamotors.com/press-releases/tata-motors-unveils-prices-of-the-quad-wheel-drive-harrier-ev-starting-at-%E2%82%B928-99-lakh/"
+      },
+      {
+        "label": "Tata Motors Harrier.ev production release",
+        "url": "https://www.tatamotors.com/press-releases/tata-motors-commences-production-of-the-all-new-harrier-ev/"
+      },
+      {
+        "label": "Autopunditz June 2026 launch calendar",
+        "url": "https://www.autopunditz.com/post/new-car-launches-june-2026-india"
       }
     ],
     "sections": [
       {
-        "heading": "Workflow Test Car News: Article Generation",
+        "heading": "Tata EV News: Why the May 2026 Sales Breakout Matters",
         "paragraphs": [
-          "This sample article confirms that a new post can be added to the source data, rendered into the posts directory, and linked from the homepage.",
-          "The test also confirms that the featured image appears directly below the H1 title while staying inside the article container."
+          "Tata EV News is back near the top of India?s electric car conversation because the brand crossed a major psychological marker in May 2026. Recent market reports put Tata?s monthly EV sales above 10,000 units for the first time, with the company?s broader passenger vehicle sales also showing strong year-on-year growth.",
+          "That matters because Tata is no longer relying on one hero model. The conversation now stretches across Tiago EV, Punch EV, Nexon EV, Curvv EV and Harrier.ev, giving the brand coverage from city hatchbacks to premium electric SUVs. For shoppers, this makes Tata?s EV lineup easier to compare by budget and use case instead of treating electric cars as a single niche category."
         ],
         "subsections": [
           {
-            "heading": "What this test validates",
+            "heading": "Search intent: buyers want proof, not hype",
             "paragraphs": [
-              "It checks the generated URL, thumbnail path, homepage card, social metadata, and duplicate protection data before scheduling is enabled."
+              "People searching Tata EV News are usually trying to understand whether Tata?s EV momentum is real, which models are driving demand, and whether the newer launches can hold up against Mahindra, MG, Hyundai and Maruti. The latest sales trend gives Tata a stronger answer, but ownership confidence still depends on charging, warranty, software updates and service quality."
             ]
           }
         ]
       },
       {
-        "heading": "Scheduled Publishing and Social Queue",
+        "heading": "Harrier.ev Is Tata?s Big Premium EV Signal",
         "paragraphs": [
-          "The workflow test can run the Facebook publisher in dry-run mode so captions, hashtags, image URLs, and queue handling are validated without posting to Facebook.",
-          "When run with --publish, the test commits and pushes the sample article to GitHub so the public URL can be checked before enabling background automation."
+          "The Harrier.ev is the clearest sign that Tata wants to move beyond compact EV leadership. Tata?s official material positions the Harrier.ev range from Rs 21.49 lakh, with Quad Wheel Drive variants starting from Rs 28.99 lakh, a 5-star Bharat NCAP safety claim, strong torque figures and a lifetime battery warranty offer under stated terms.",
+          "This gives Tata a product that can be discussed against premium SUVs, not only against value-focused EVs. It also helps explain why Tata EV News is now tied to performance, AWD capability and technology, not just low running cost."
+        ],
+        "subsections": [
+          {
+            "heading": "What buyers should check before booking",
+            "paragraphs": [
+              "Harrier.ev buyers should compare charger cost, variant equipment, real-world range, highway charging access and delivery timelines. The headline numbers are strong, but the right variant will depend on whether the car is being used as a city SUV, a family highway car or an occasional rough-road tourer."
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Sierra EV Buzz Keeps Tata?s Future Product Story Alive",
+        "paragraphs": [
+          "The Sierra EV remains one of the most watched upcoming Tata models because it combines nostalgia with a modern electric SUV brief. Launch-calendar chatter has kept the Sierra name active among buyers who want something more emotional than a conventional compact SUV.",
+          "For Tata, the Sierra EV can become a bridge between mainstream EV acceptance and aspirational design. If it lands with competitive pricing and credible range, it could pull attention from Maruti e Vitara, Hyundai Creta Electric and Mahindra BE 6 shoppers."
+        ],
+        "subsections": [
+          {
+            "heading": "Why Sierra EV matters for SEO and buyers",
+            "paragraphs": [
+              "Sierra EV searches carry high intent because readers are not only looking for specifications. They are asking whether Tata can revive a familiar nameplate and make it feel premium, practical and future-ready."
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Punch EV and Nexon EV Still Do the Volume Work",
+        "paragraphs": [
+          "While Harrier.ev and Sierra EV create buzz, Punch EV and Nexon EV remain critical to Tata?s EV scale. They sit in segments Indian buyers already understand, and that makes the switch from petrol to electric easier for families comparing monthly costs and service support.",
+          "This is also where Tata?s biggest challenge sits. Mahindra?s BE 6 and XEV 9e are pulling attention upward, MG is aggressive on pricing, and Maruti is building an ownership story around charging and service. Tata has the lead, but the next phase will be about defending that lead with consistent product updates and dependable after-sales experience."
+        ],
+        "subsections": [
+          {
+            "heading": "The buyer takeaway",
+            "paragraphs": [
+              "If you are shopping Tata EVs today, start by deciding your body style and usage pattern: Tiago EV for city value, Punch EV for compact SUV practicality, Nexon EV for a stronger all-rounder, Curvv EV for style, and Harrier.ev for premium SUV space and capability."
+            ]
+          }
         ]
       }
     ]
