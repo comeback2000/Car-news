@@ -112,8 +112,6 @@ function breadcrumb(items) {
 
 function articlePage(post) {
   const related = relatedPosts(post);
-  const toc = post.sections.map((section) => ({ id: slugify(section.heading), heading: section.heading }));
-  const heroImage = imageSize(post.image);
   const schema = {
     "@context": "https://schema.org",
     "@type": "NewsArticle",
@@ -149,32 +147,9 @@ ${headTags({ title: post.metaTitle, description: post.metaDescription, url: post
   <body>
     ${header(1)}
     <main>
-      <section class="article-hero">
-        <div class="article-layout">
-          <div>
-            <figure class="article-image-frame">
-              <img src="../${esc(post.image)}" alt="${esc(post.imageAlt)}" width="${heroImage.width}" height="${heroImage.height}" fetchpriority="high">
-            </figure>
-            <p class="image-credit">${esc(post.imageCredit)}</p>
-          </div>
-          <div class="article-copy">
-            ${breadcrumb([
-              { label: "Home", href: "../index.html" },
-              { label: post.category, href: `../category/${slugify(post.category)}.html` },
-              { label: post.title }
-            ])}
-            <p class="eyebrow">${esc(post.category)}</p>
-            <h1>${esc(post.title)}</h1>
-            <p class="meta">By ${esc(post.author)} | ${esc(post.datePublished)}</p>
-            <p class="lede article-lede">${autoLink(post.excerpt, post)}</p>
-          </div>
-        </div>
-      </section>
-
       <article class="article-body">
-        <aside class="toc" aria-label="Article sections">
-          ${toc.map((item) => `<a href="#${esc(item.id)}">${esc(item.heading)}</a>`).join("")}
-        </aside>
+        <h1>${esc(post.title)}</h1>
+        <p class="lede article-lede">${autoLink(post.excerpt, post)}</p>
         ${post.sections.map((section) => `
         <section id="${esc(slugify(section.heading))}">
           <h2>${esc(section.heading)}</h2>
@@ -183,6 +158,10 @@ ${headTags({ title: post.metaTitle, description: post.metaDescription, url: post
           <h3>${esc(subsection.heading)}</h3>
           ${subsection.paragraphs.map((paragraph) => `<p>${autoLink(paragraph, post)}</p>`).join("")}`).join("")}
         </section>`).join("")}
+        <section>
+          <h2>Conclusion</h2>
+          <p>${esc(post.targetKeyword)} remains a story worth watching because buyer interest, pricing, charging confidence and brand support are moving quickly. For readers comparing options, the smartest next step is to match the headline trend with real-world needs before booking.</p>
+        </section>
         <section>
           <h2>${esc(post.targetKeyword)}: Related Reading</h2>
           <p>For more context, compare this story with ${related.map((item) => `<a href="${item.slug}.html">${esc(item.title)}</a>`).join(" and ")}.</p>

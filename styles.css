@@ -386,8 +386,14 @@ nav a {
   background: var(--white);
 }
 
+.article-body h1 {
+  margin: 0 0 18px;
+  font-size: clamp(2.2rem, 4vw, 4rem);
+  line-height: 1.05;
+}
+
 .article-body h2 {
-  margin-top: 0;
+  margin-top: 34px;
   scroll-margin-top: 84px;
   font-size: clamp(1.45rem, 2vw, 2rem);
   line-height: 1.18;
