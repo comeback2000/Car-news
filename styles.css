@@ -392,6 +392,29 @@ nav a {
   line-height: 1.05;
 }
 
+.article-featured-image {
+  display: grid;
+  gap: 8px;
+  margin: 0 0 24px;
+}
+
+.article-featured-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: min(68vh, 720px);
+  object-fit: contain;
+  object-position: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+}
+
+.article-featured-image figcaption {
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
 .article-body h2 {
   margin-top: 34px;
   scroll-margin-top: 84px;

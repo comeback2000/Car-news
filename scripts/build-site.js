@@ -112,6 +112,7 @@ function breadcrumb(items) {
 
 function articlePage(post) {
   const related = relatedPosts(post);
+  const featuredImage = imageSize(post.image);
   const schema = {
     "@context": "https://schema.org",
     "@type": "NewsArticle",
@@ -149,6 +150,10 @@ ${headTags({ title: post.metaTitle, description: post.metaDescription, url: post
     <main>
       <article class="article-body">
         <h1>${esc(post.title)}</h1>
+        <figure class="article-featured-image">
+          <img src="../${esc(post.image)}" alt="${esc(post.imageAlt)}" width="${featuredImage.width}" height="${featuredImage.height}" fetchpriority="high">
+          ${post.imageCredit ? `<figcaption>${esc(post.imageCredit)}</figcaption>` : ""}
+        </figure>
         <p class="lede article-lede">${autoLink(post.excerpt, post)}</p>
         ${post.sections.map((section) => `
         <section id="${esc(slugify(section.heading))}">
