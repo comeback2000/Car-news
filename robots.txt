@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://comeback2000.github.io/Car-news/sitemap.xml
