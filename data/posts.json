@@ -1,5 +1,56 @@
 [
   {
+    "slug": "workflow-test-article-20260603151735",
+    "aliases": [],
+    "targetKeyword": "Workflow Test Car News",
+    "title": "Workflow Test Car News: Sample Article Publish Check",
+    "metaTitle": "Workflow Test Car News | Sample Publish Check",
+    "metaDescription": "A temporary workflow test article used to verify article generation, thumbnail rendering, homepage cards, URLs, and social queue creation.",
+    "excerpt": "Workflow Test Car News verifies that the publishing pipeline can generate a post, render its thumbnail, update homepage cards, and prepare social captions.",
+    "category": "Workflow Tests",
+    "tags": [
+      "Workflow Test Car News",
+      "Car News Test",
+      "Publishing Workflow"
+    ],
+    "image": "assets/workflow-test-article-20260603151735-thumbnail.jpg",
+    "imageAlt": "Workflow Test Car News sample thumbnail",
+    "imageCredit": "Image: workflow test thumbnail copied from the current Car News thumbnail set.",
+    "author": "Car News Desk",
+    "datePublished": "2026-06-03",
+    "dateModified": "2026-06-03",
+    "sources": [
+      {
+        "label": "Car News workflow test",
+        "url": "https://comeback2000.github.io/Car-news/"
+      }
+    ],
+    "sections": [
+      {
+        "heading": "Workflow Test Car News: Article Generation",
+        "paragraphs": [
+          "This sample article confirms that a new post can be added to the source data, rendered into the posts directory, and linked from the homepage.",
+          "The test also confirms that the featured image appears directly below the H1 title while staying inside the article container."
+        ],
+        "subsections": [
+          {
+            "heading": "What this test validates",
+            "paragraphs": [
+              "It checks the generated URL, thumbnail path, homepage card, social metadata, and duplicate protection data before scheduling is enabled."
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Scheduled Publishing and Social Queue",
+        "paragraphs": [
+          "The workflow test can run the Facebook publisher in dry-run mode so captions, hashtags, image URLs, and queue handling are validated without posting to Facebook.",
+          "When run with --publish, the test commits and pushes the sample article to GitHub so the public URL can be checked before enabling background automation."
+        ]
+      }
+    ]
+  },
+  {
     "slug": "upcoming-ev-cars-india-2026-watchlist",
     "aliases": [
       "upcoming-ev-cars-india"
