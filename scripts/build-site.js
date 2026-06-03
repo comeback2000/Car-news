@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const crypto = require("crypto");
 
 const root = path.join(__dirname, "..");
 const siteUrl = "https://comeback2000.github.io/Car-news";
@@ -343,7 +344,7 @@ function ensureDir(dir) {
 }
 
 function write(file, content) {
-  fs.writeFileSync(path.join(root, file), content.trimStart(), "utf8");
+  fs.writeFileSync(path.join(root, file), content.trimStart().replace(/[ \t]+$/gm, ""), "utf8");
 }
 
 function cleanHtmlDir(dir) {
@@ -351,6 +352,46 @@ function cleanHtmlDir(dir) {
     fs.unlinkSync(path.join(root, dir, stale));
   }
 }
+
+function normalize(value) {
+  return String(value || "").trim().toLowerCase();
+}
+
+function failDuplicate(map, key, label, post) {
+  if (!key) return;
+  if (map.has(key)) {
+    throw new Error(`${label} duplicate detected: "${key}" is used by ${map.get(key)} and ${post.slug}`);
+  }
+  map.set(key, post.slug);
+}
+
+function validatePosts() {
+  const slugs = new Map();
+  const keywords = new Map();
+  const imagePaths = new Map();
+  const imageHashes = new Map();
+  const blockedPostPattern = /\b(workflow test|sample article|placeholder|dummy post)\b/i;
+  const blockedSlugPattern = /(^|[-_])(workflow-test|sample|placeholder|dummy)([-_]|$)/i;
+
+  for (const post of posts) {
+    if (blockedSlugPattern.test(post.slug) || blockedPostPattern.test([post.targetKeyword, post.title, post.category, ...(post.tags || [])].join(" "))) {
+      throw new Error(`Non-production article blocked: ${post.slug}. Use a real keyword and production article content only.`);
+    }
+
+    failDuplicate(slugs, normalize(post.slug), "Slug", post);
+    failDuplicate(keywords, normalize(post.targetKeyword), "Target keyword", post);
+    failDuplicate(imagePaths, normalize(post.image), "Thumbnail path", post);
+
+    const imageFile = path.join(root, post.image);
+    if (!fs.existsSync(imageFile)) {
+      throw new Error(`Thumbnail is missing for ${post.slug}: ${post.image}`);
+    }
+    const imageHash = crypto.createHash("sha256").update(fs.readFileSync(imageFile)).digest("hex");
+    failDuplicate(imageHashes, imageHash, "Thumbnail image", post);
+  }
+}
+
+validatePosts();
 
 ensureDir("posts");
 ensureDir("category");

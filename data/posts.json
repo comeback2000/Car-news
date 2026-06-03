@@ -1,51 +1,109 @@
 [
   {
-    "slug": "workflow-test-article-20260603154747",
-    "aliases": [],
-    "targetKeyword": "Workflow Test Car News",
-    "title": "Workflow Test Car News: Sample Article Publish Check",
-    "metaTitle": "Workflow Test Car News | Sample Publish Check",
-    "metaDescription": "A temporary workflow test article used to verify article generation, thumbnail rendering, homepage cards, URLs, and social queue creation.",
-    "excerpt": "Workflow Test Car News verifies that the publishing pipeline can generate a post, render its thumbnail, update homepage cards, and prepare social captions.",
-    "category": "Workflow Tests",
-    "tags": [
-      "Workflow Test Car News",
-      "Car News Test",
-      "Publishing Workflow"
+    "slug": "mahindra-ev-launch-be-6-xev-9e-pack-two",
+    "aliases": [
+      "mahindra-ev-launch"
     ],
-    "image": "assets/workflow-test-article-20260603154747-thumbnail.jpg",
-    "imageAlt": "Workflow Test Car News sample thumbnail",
-    "imageCredit": "Image: workflow test thumbnail copied from the current Car News thumbnail set.",
+    "targetKeyword": "Mahindra EV Launch",
+    "title": "Mahindra EV Launch Watch: BE 6 and XEV 9e Pack Two Put the Real Test Ahead",
+    "metaTitle": "Mahindra EV Launch 2026: BE 6, XEV 9e Pack Two and Sales Momentum",
+    "metaDescription": "Mahindra EV Launch interest is rising as BE 6, XEV 9e and XEV 9S sales grow, Pack Two broadens access, and buyers compare Tata Harrier EV rivals.",
+    "excerpt": "Mahindra EV Launch buzz is shifting from showroom drama to delivery confidence as BE 6, XEV 9e and XEV 9S demand turns Mahindra into a serious EV SUV force.",
+    "category": "Mahindra EVs",
+    "tags": [
+      "Mahindra EV Launch",
+      "Mahindra BE 6",
+      "XEV 9e",
+      "XEV 9S",
+      "Electric SUV India"
+    ],
+    "image": "assets/mahindra-ev-launch-pack-two-2026-thumbnail.jpg",
+    "imageAlt": "Mahindra EV Launch thumbnail showing BE 6 and XEV 9e Pack Two delivery watch graphic",
+    "imageCredit": "Thumbnail: Car News graphic using official Mahindra Electric Origin SUV press imagery.",
     "author": "Car News Desk",
     "datePublished": "2026-06-03",
     "dateModified": "2026-06-03",
     "sources": [
       {
-        "label": "Car News workflow test",
-        "url": "https://comeback2000.github.io/Car-news/"
+        "label": "Mahindra BE 6 and XEV 9e Pack Two delivery update",
+        "url": "https://www.mahindra.com/news-room/press-release/en/mahindra-to-commence-deliveries-of-be-6-and-xev-9e-pack-two-from-end-july"
+      },
+      {
+        "label": "Mahindra XEV 9e Cineluxe Edition press release",
+        "url": "https://www.mahindra.com/print/pdf/node/7645"
+      },
+      {
+        "label": "Mahindra Electric Origin SUV launch press release",
+        "url": "https://booking.mahindra.com/press-releases/be6-and-xev9e-launched.html"
+      },
+      {
+        "label": "Autocar Professional Mahindra EV sales analysis",
+        "url": "https://www.autocarpro.in/analysis-sales/mahindra-be-6-xev-9e-xev-9s-sales-cross-65000-mm-e-pv-retail-share-jumps-to-21-percent-132716"
+      },
+      {
+        "label": "Autocar India May 2026 EV sales report",
+        "url": "https://www.autocarindia.com/industry-amp/may-2026-ev-sales-tata-crosses-10000-units-for-the-first-time-439849"
       }
     ],
     "sections": [
       {
-        "heading": "Workflow Test Car News: Article Generation",
+        "heading": "Mahindra EV Launch: Why Pack Two Is the Buyer Story Now",
         "paragraphs": [
-          "This sample article confirms that a new post can be added to the source data, rendered into the posts directory, and linked from the homepage.",
-          "The test also confirms that the featured image appears directly below the H1 title while staying inside the article container."
+          "Mahindra EV Launch interest is no longer only about the dramatic BE 6 and XEV 9e reveal. The sharper question in June 2026 is whether Mahindra can turn that launch excitement into easier deliveries, clearer variants and a smoother ownership experience for Indian electric SUV buyers.",
+          "Mahindra's Pack Two update is important because it makes the BE 6 and XEV 9e conversation more practical. The official Pack Two delivery plan lists the BE 6 Pack Two from Rs 21.90 lakh and the XEV 9e Pack Two from Rs 24.90 lakh, with both 59 kWh and 79 kWh choices in the mix. That gives shoppers a middle path between entry buzz and fully loaded premium pricing."
         ],
         "subsections": [
           {
-            "heading": "What this test validates",
+            "heading": "Search intent: buyers want timing, range and confidence",
             "paragraphs": [
-              "It checks the generated URL, thumbnail path, homepage card, social metadata, and duplicate protection data before scheduling is enabled."
+              "People searching Mahindra EV Launch are usually trying to answer three questions: when can I get one, which battery pack makes sense, and will Mahindra support the car after delivery. The Pack Two story matters because it connects all three instead of simply adding another variant name."
             ]
           }
         ]
       },
       {
-        "heading": "Scheduled Publishing and Social Queue",
+        "heading": "BE 6, XEV 9e and XEV 9S Are Turning Mahindra Into an EV Volume Player",
         "paragraphs": [
-          "The workflow test can run the Facebook publisher in dry-run mode so captions, hashtags, image URLs, and queue handling are validated without posting to Facebook.",
-          "When run with --publish, the test commits and pushes the sample article to GitHub so the public URL can be checked before enabling background automation."
+          "The latest EV market numbers make Mahindra harder to dismiss. Autocar India's May 2026 EV sales report says Mahindra sold 6,133 EVs in May 2026, up 96 percent year on year, and crossed the 6,000-unit monthly mark for the first time. The report also points to BE 6, XEV 9e and XEV 9S as the core growth drivers.",
+          "Autocar Professional adds useful longer-term context: cumulative wholesales of the BE 6, XEV 9e and XEV 9S had crossed 65,000 units by the end of April 2026. That changes the Mahindra EV Launch story from a viral design moment into a sustained electric SUV business."
+        ],
+        "subsections": [
+          {
+            "heading": "Why XEV 9e is pulling premium attention",
+            "paragraphs": [
+              "The XEV 9e Cineluxe Edition also shows how Mahindra is pushing upward. Mahindra's March 2026 material priced the Cineluxe Edition at Rs 29.35 lakh ex-showroom, with bookings from March 2 and deliveries from March 10. Its 79 kWh battery, claimed real-world range above 500 km, triple HD display and premium cabin treatment give Mahindra a richer story against luxury-leaning electric SUV rivals."
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "What Buyers Should Check Before Booking a Mahindra Electric SUV",
+        "paragraphs": [
+          "The BE 6 and XEV 9e look exciting, but the smart buying checklist is still practical: battery size, delivery timeline, charger installation, public fast-charging access, software updates, service reach and insurance cost. Mahindra's official launch material talks about fast charging from 20 to 80 percent in under 20 minutes with a 175 kW charger on compatible packs, plus a dedicated charging vertical and ownership support team.",
+          "That support story is critical because EV buyers are comparing more than horsepower. They want to know whether the car can handle office runs, weekend highway travel, monsoon charging anxiety and family ownership without becoming a daily compromise."
+        ],
+        "subsections": [
+          {
+            "heading": "BE 6 or XEV 9e: which direction should shoppers take?",
+            "paragraphs": [
+              "Choose the BE 6 if the priority is a sharper, more personal electric SUV with standout styling. Choose the XEV 9e if cabin space, screen-heavy premium appeal and long-distance family comfort matter more. Buyers needing three-row practicality should also track the XEV 9S, because its early sales momentum suggests strong demand for larger electric SUVs."
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Mahindra EV Launch vs Tata Harrier EV and Maruti e Vitara",
+        "paragraphs": [
+          "The Mahindra EV Launch wave is arriving just as the Indian EV SUV fight gets crowded. Tata now has the Harrier.ev in the premium conversation, Maruti e Vitara is using charging support and brand reach as a selling point, and MG continues to push value-led EVs. Mahindra's advantage is that BE 6 and XEV 9e feel purpose-built, bold and different from petrol-SUV conversions.",
+          "The challenge is execution. If deliveries stay consistent and service confidence improves with scale, Mahindra can keep search interest high. If waiting periods or support friction grow, some buyers may move toward Tata, Maruti or MG despite Mahindra's stronger design pull."
+        ],
+        "subsections": [
+          {
+            "heading": "Final buyer takeaway",
+            "paragraphs": [
+              "For anyone shopping an Electric SUV India option in 2026, the best move is to test drive both Mahindra models, ask for a written delivery estimate, confirm charging setup costs and compare the total ownership package with Tata Harrier EV, Hyundai Creta Electric, Maruti e Vitara and MG alternatives before booking."
+            ]
+          }
         ]
       }
     ]

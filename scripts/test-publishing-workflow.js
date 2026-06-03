@@ -5,28 +5,15 @@ const { execFileSync } = require("child_process");
 const root = path.join(__dirname, "..");
 const siteUrl = "https://comeback2000.github.io/Car-news";
 const publishMode = process.argv.includes("--publish");
-const keepMode = process.argv.includes("--keep");
-const now = new Date();
-const stamp = now.toISOString().replace(/[-:T.Z]/g, "").slice(0, 14);
-const slug = `workflow-test-article-${stamp}`;
 
 const paths = {
   posts: path.join(root, "data", "posts.json"),
+  homepage: path.join(root, "index.html"),
+  sitemap: path.join(root, "sitemap.xml"),
   facebookQueue: path.join(root, "data", "facebook-queue.json"),
   facebookLog: path.join(root, "data", "facebook-published-log.json"),
-  facebookState: path.join(root, "data", "facebook-state.json"),
-  thumbnail: path.join(root, "assets", `${slug}-thumbnail.jpg`),
-  sourceThumbnail: path.join(root, "assets", "upcoming-ev-cars-india-thumbnail.jpg"),
-  article: path.join(root, "posts", `${slug}.html`),
-  homepage: path.join(root, "index.html")
+  facebookState: path.join(root, "data", "facebook-state.json")
 };
-
-const touched = [
-  paths.posts,
-  paths.facebookQueue,
-  paths.facebookLog,
-  paths.facebookState
-];
 
 function run(command, args, options = {}) {
   return execFileSync(command, args, {
@@ -41,10 +28,6 @@ function readJson(file, fallback) {
   if (!fs.existsSync(file)) return fallback;
   const raw = fs.readFileSync(file, "utf8").trim();
   return raw ? JSON.parse(raw) : fallback;
-}
-
-function writeJson(file, value) {
-  fs.writeFileSync(file, `${JSON.stringify(value, null, 2)}\n`, "utf8");
 }
 
 function fileSnapshot(files) {
@@ -65,87 +48,13 @@ function restoreSnapshot(snapshot) {
   }
 }
 
-function gitOutput(args) {
-  return run("git", args, { capture: true }).trim();
-}
-
 function assert(condition, message) {
   if (!condition) throw new Error(message);
 }
 
-function makePost() {
-  const today = new Date(now.getTime() + 5.5 * 60 * 60 * 1000).toISOString().slice(0, 10);
-  return {
-    slug,
-    aliases: [],
-    targetKeyword: "Workflow Test Car News",
-    title: "Workflow Test Car News: Sample Article Publish Check",
-    metaTitle: "Workflow Test Car News | Sample Publish Check",
-    metaDescription: "A temporary workflow test article used to verify article generation, thumbnail rendering, homepage cards, URLs, and social queue creation.",
-    excerpt: "Workflow Test Car News verifies that the publishing pipeline can generate a post, render its thumbnail, update homepage cards, and prepare social captions.",
-    category: "Workflow Tests",
-    tags: ["Workflow Test Car News", "Car News Test", "Publishing Workflow"],
-    image: `assets/${slug}-thumbnail.jpg`,
-    imageAlt: "Workflow Test Car News sample thumbnail",
-    imageCredit: "Image: workflow test thumbnail copied from the current Car News thumbnail set.",
-    author: "Car News Desk",
-    datePublished: today,
-    dateModified: today,
-    sources: [
-      { label: "Car News workflow test", url: `${siteUrl}/` }
-    ],
-    sections: [
-      {
-        heading: "Workflow Test Car News: Article Generation",
-        paragraphs: [
-          "This sample article confirms that a new post can be added to the source data, rendered into the posts directory, and linked from the homepage.",
-          "The test also confirms that the featured image appears directly below the H1 title while staying inside the article container."
-        ],
-        subsections: [
-          {
-            heading: "What this test validates",
-            paragraphs: [
-              "It checks the generated URL, thumbnail path, homepage card, social metadata, and duplicate protection data before scheduling is enabled."
-            ]
-          }
-        ]
-      },
-      {
-        heading: "Scheduled Publishing and Social Queue",
-        paragraphs: [
-          "The workflow test can run the Facebook publisher in dry-run mode so captions, hashtags, image URLs, and queue handling are validated without posting to Facebook.",
-          "When run with --publish, the test commits and pushes the sample article to GitHub so the public URL can be checked before enabling background automation."
-        ]
-      }
-    ]
-  };
-}
-
-function addSamplePost(post) {
-  const posts = readJson(paths.posts, []);
-  assert(!posts.some((item) => item.slug === post.slug), `Sample slug already exists: ${post.slug}`);
-  fs.copyFileSync(paths.sourceThumbnail, paths.thumbnail);
-  posts.unshift(post);
-  writeJson(paths.posts, posts);
-}
-
-function verifyGeneratedPost(post) {
-  assert(fs.existsSync(paths.article), `Article was not generated: ${paths.article}`);
-  assert(fs.existsSync(paths.thumbnail), `Thumbnail was not created: ${paths.thumbnail}`);
-
-  const article = fs.readFileSync(paths.article, "utf8");
-  const homepage = fs.readFileSync(paths.homepage, "utf8");
-  const articleUrl = `${siteUrl}/posts/${post.slug}.html`;
-
-  assert(article.includes(`<h1>${post.title}</h1>`), "Article H1 title is missing.");
-  assert(article.includes(`<img src="../${post.image}"`), "Featured thumbnail is missing from the article.");
-  assert(article.includes(`property="og:image" content="${siteUrl}/${post.image}"`), "Open Graph image metadata is missing.");
-  assert(article.includes(`name="twitter:image" content="${siteUrl}/${post.image}"`), "Twitter image metadata is missing.");
-  assert(homepage.includes(`posts/${post.slug}.html`), "Homepage card/link was not generated.");
-  assert(homepage.includes(post.image), "Homepage thumbnail was not generated.");
-  assert(article.includes(articleUrl), "Canonical/generated article URL is missing.");
-
-  return articleUrl;
+function assertProductionPost(post) {
+  const text = [post.slug, post.targetKeyword, post.title, post.category, ...(post.tags || [])].join(" ");
+  assert(!/(workflow[-\s]?test|sample article|placeholder|dummy post)/i.test(text), `Non-production post detected: ${post.slug}`);
 }
 
 function checkLinks() {
@@ -169,24 +78,51 @@ raise SystemExit(0 if not errors else 1)
   return run("python", ["-c", script], { capture: true }).trim();
 }
 
-function verifySocialQueue(post) {
-  run("node", ["scripts/FB_Post.js"], {
-    env: {
-      FB_DRY_RUN: "true",
-      FB_PAGE_ID: process.env.FB_PAGE_ID || "176747645744060",
-      FB_POST_INTERVAL_MINUTES: "240",
-      FB_MAX_POSTS_PER_RUN: "1"
-    }
-  });
+function verifyGeneratedPost(post) {
+  const articleFile = path.join(root, "posts", `${post.slug}.html`);
+  const imageFile = path.join(root, post.image);
+  const article = fs.readFileSync(articleFile, "utf8");
+  const homepage = fs.readFileSync(paths.homepage, "utf8");
+  const sitemap = fs.readFileSync(paths.sitemap, "utf8");
+  const articleUrl = `${siteUrl}/posts/${post.slug}.html`;
 
-  const queue = readJson(paths.facebookQueue, []);
-  const log = readJson(paths.facebookLog, []);
-  const matching = queue.find((item) => item.sourcePostSlug === post.slug);
-  assert(matching, "Facebook social queue item was not generated.");
-  assert(matching.caption.includes(post.title), "Facebook caption does not include the article title.");
-  assert(matching.caption.includes(`${siteUrl}/posts/${post.slug}.html`), "Facebook caption does not include the article URL.");
-  assert(!log.some((item) => item.url === `${siteUrl}/posts/${post.slug}.html` && item.status === "published"), "Sample article is already marked as published.");
-  return matching;
+  assert(fs.existsSync(articleFile), `Article was not generated: posts/${post.slug}.html`);
+  assert(fs.existsSync(imageFile), `Thumbnail is missing: ${post.image}`);
+  assert(article.includes(`<h1>${post.title}</h1>`), "Article H1 title is missing.");
+  assert(article.includes(`<img src="../${post.image}"`), "Featured thumbnail is missing from the article.");
+  assert(article.includes(`property="og:image" content="${siteUrl}/${post.image}"`), "Open Graph image metadata is missing.");
+  assert(article.includes(`name="twitter:image" content="${siteUrl}/${post.image}"`), "Twitter image metadata is missing.");
+  assert(homepage.includes(`posts/${post.slug}.html`), "Homepage card/link was not generated.");
+  assert(homepage.includes(post.image), "Homepage thumbnail was not generated.");
+  assert(sitemap.includes(articleUrl), "Sitemap does not include the latest article URL.");
+  assert(!homepage.includes("workflow-test-article"), "Homepage still contains workflow test content.");
+  assert(!sitemap.includes("workflow-test-article"), "Sitemap still contains workflow test content.");
+
+  return articleUrl;
+}
+
+function verifySocialCaption(post) {
+  const snapshot = fileSnapshot([paths.facebookQueue, paths.facebookLog, paths.facebookState]);
+  try {
+    run("node", ["scripts/FB_Post.js"], {
+      env: {
+        FB_DRY_RUN: "true",
+        FB_ONLY_SLUG: post.slug,
+        FB_FORCE_DUE: "true",
+        FB_PAGE_ID: process.env.FB_PAGE_ID || "176747645744060",
+        FB_POST_INTERVAL_MINUTES: "240",
+        FB_MAX_POSTS_PER_RUN: "1"
+      }
+    });
+    const queue = readJson(paths.facebookQueue, []);
+    const matching = queue.find((item) => item.sourcePostSlug === post.slug);
+    assert(matching, "Facebook dry-run did not prepare a social post queue item.");
+    assert(matching.caption.includes(post.title), "Facebook caption does not include the article title.");
+    assert(matching.caption.includes(`${siteUrl}/posts/${post.slug}.html`), "Facebook caption does not include the article URL.");
+    return matching.captionHash || "generated";
+  } finally {
+    restoreSnapshot(snapshot);
+  }
 }
 
 function checkScheduledTasks() {
@@ -208,131 +144,40 @@ function checkScheduledTasks() {
   return results;
 }
 
-function buildSite() {
-  run("node", ["scripts/build-site.js"]);
-}
-
-function publishToGit(post) {
-  run("git", ["add", "data/posts.json", "index.html", "posts", "category", "tags", "sitemap.xml", "robots.txt", post.image]);
-  const staged = gitOutput(["diff", "--cached", "--name-only"]);
-  assert(staged, "Nothing was staged for commit.");
-  run("git", ["commit", "-m", `Workflow test publish: ${post.slug}`]);
-  run("git", ["push", "origin", "HEAD:main"]);
-  run("git", ["push", "origin", "HEAD:gh-pages"]);
-}
-
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-async function waitForPublicUrl(url, label) {
-  for (let attempt = 1; attempt <= 8; attempt += 1) {
-    try {
-      const response = await fetch(`${url}${url.includes("?") ? "&" : "?"}workflowCheck=${Date.now()}`);
-      if (response.ok) {
-        console.log(`${label} is live: ${url}`);
-        return;
-      }
-    } catch {
-      // Retry below.
-    }
-    console.log(`Waiting for ${label} to go live (${attempt}/8)...`);
-    await sleep(15000);
+function main() {
+  if (publishMode) {
+    throw new Error("workflow:test -- --publish is disabled. The workflow test now verifies the latest real article only; publish real keyword articles through the production article workflow.");
   }
-  throw new Error(`${label} was not reachable after GitHub Pages refresh: ${url}`);
-}
 
-function publishToFacebook(post) {
-  run("node", ["scripts/FB_Post.js"], {
-    env: {
-      FB_ONLY_SLUG: post.slug,
-      FB_FORCE_DUE: "true",
-      FB_DRY_RUN: "false",
-      FB_MAX_POSTS_PER_RUN: "1",
-      FB_PAGE_ID: process.env.FB_PAGE_ID || "176747645744060"
-    }
-  });
+  const posts = readJson(paths.posts, []);
+  assert(posts.length, "No posts found in data/posts.json.");
+  const latestPost = posts[0];
+  assertProductionPost(latestPost);
 
-  const log = readJson(paths.facebookLog, []);
-  const articleUrl = `${siteUrl}/posts/${post.slug}.html`;
-  const entry = log.find((item) => item.url === articleUrl && item.status === "published");
-  assert(entry && entry.facebookPostId, "Facebook publish did not produce a published log entry.");
-  return entry.facebookPostId;
-}
+  run("node", ["scripts/build-site.js"]);
+  const articleUrl = verifyGeneratedPost(latestPost);
+  const linkStatus = checkLinks();
+  const socialCaption = verifySocialCaption(latestPost);
+  const taskStatus = checkScheduledTasks();
 
-async function main() {
-  const mode = publishMode ? "PUBLISH" : "DRY RUN";
-  console.log(`Workflow test mode: ${mode}`);
-  console.log(`Sample slug: ${slug}`);
-
-  const restoreFiles = [
-    ...touched,
-    paths.thumbnail,
-    paths.article,
-    path.join(root, "posts", `${slug.replace(/^workflow-test-article-/, "workflow-test-article-")}.html`)
-  ];
-  const snapshot = fileSnapshot(restoreFiles);
-  const post = makePost();
-
-  try {
-    addSamplePost(post);
-    buildSite();
-    const articleUrl = verifyGeneratedPost(post);
-    const linkStatus = checkLinks();
-    const socialItem = verifySocialQueue(post);
-    const taskStatus = checkScheduledTasks();
-
-    console.log("");
-    console.log("Verification summary:");
-    console.log(`- Article generated: ${path.relative(root, paths.article)}`);
-    console.log(`- Thumbnail generated: ${post.image}`);
-    console.log(`- Homepage card: OK`);
-    console.log(`- Article URL: ${articleUrl}`);
-    console.log(`- Link check: ${linkStatus}`);
-    console.log(`- Social caption generated: ${socialItem.captionHash}`);
-    console.log(`- Duplicate status: not published`);
-    for (const item of taskStatus) {
-      console.log(`- Scheduled task ${item.task}: ${item.installed ? "installed" : "not installed"}`);
-    }
-
-    if (publishMode) {
-      publishToGit(post);
-      await waitForPublicUrl(articleUrl, "Article");
-      await waitForPublicUrl(`${siteUrl}/${post.image}`, "Thumbnail");
-      const facebookPostId = publishToFacebook(post);
-      console.log("");
-      console.log("Published sample article to GitHub and Facebook.");
-      console.log(`Live URL after Pages refresh: ${articleUrl}`);
-      console.log(`Facebook Post ID: ${facebookPostId}`);
-    } else {
-      console.log("");
-      console.log("Dry run complete. No GitHub commit or push was made.");
-      if (!keepMode) {
-        restoreSnapshot(snapshot);
-        fs.rmSync(paths.thumbnail, { force: true });
-        fs.rmSync(paths.article, { force: true });
-        buildSite();
-        console.log("Temporary test files were cleaned up.");
-      } else {
-        console.log("Temporary test files were kept because --keep was provided.");
-      }
-    }
-  } catch (error) {
-    if (!publishMode) {
-      restoreSnapshot(snapshot);
-      fs.rmSync(paths.thumbnail, { force: true });
-      fs.rmSync(paths.article, { force: true });
-      try { buildSite(); } catch {}
-    }
-    throw error;
+  console.log("");
+  console.log("Production workflow verification:");
+  console.log(`- Latest real article: ${latestPost.title}`);
+  console.log(`- Article URL: ${articleUrl}`);
+  console.log(`- Article file: posts/${latestPost.slug}.html`);
+  console.log(`- Thumbnail: ${latestPost.image}`);
+  console.log(`- Homepage card: OK`);
+  console.log(`- Sitemap entry: OK`);
+  console.log(`- Link check: ${linkStatus}`);
+  console.log(`- Facebook caption dry-run: ${socialCaption}`);
+  console.log("- Duplicate protection: enforced by scripts/build-site.js");
+  for (const item of taskStatus) {
+    console.log(`- Scheduled task ${item.task}: ${item.installed ? "installed" : "not installed"}`);
   }
 }
 
 try {
-  main().catch((error) => {
-    console.error(error.message);
-    process.exit(1);
-  });
+  main();
 } catch (error) {
   console.error(error.message);
   process.exit(1);

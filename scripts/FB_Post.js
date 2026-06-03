@@ -78,6 +78,11 @@ function captionFor(post) {
   ].join("\n");
 }
 
+function isProductionPost(post) {
+  const text = [post.slug, post.targetKeyword, post.title, post.category, ...(post.tags || [])].join(" ");
+  return !/(workflow[-\s]?test|sample article|placeholder|dummy post)/i.test(text);
+}
+
 function scheduledAtFor(index, state, intervalMinutes, options = {}) {
   if (options.forceDue) return new Date().toISOString();
   const base = state.nextScheduledAt ? new Date(state.nextScheduledAt) : new Date();
@@ -91,6 +96,7 @@ function enqueueNewArticles(posts, queue, publishedLog, state, intervalMinutes, 
 
   for (const post of posts) {
     if (options.onlySlug && post.slug !== options.onlySlug) continue;
+    if (!isProductionPost(post)) continue;
 
     const url = articleUrl(post);
     if (queuedUrls.has(url) || publishedUrls.has(url)) continue;
@@ -183,7 +189,8 @@ async function main() {
   assertConfig(config);
 
   const posts = readJson(postsPath, []);
-  const queue = readJson(queuePath, []);
+  const productionSlugs = new Set(posts.filter(isProductionPost).map((post) => post.slug));
+  const queue = readJson(queuePath, []).filter((item) => productionSlugs.has(item.sourcePostSlug));
   const publishedLog = readJson(logPath, []);
   const state = readJson(statePath, {
     lastRunAt: null,
