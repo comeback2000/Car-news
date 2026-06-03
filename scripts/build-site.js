@@ -4,6 +4,7 @@ const path = require("path");
 const root = path.join(__dirname, "..");
 const siteUrl = "https://comeback2000.github.io/Car-news";
 const posts = JSON.parse(fs.readFileSync(path.join(root, "data", "posts.json"), "utf8"));
+const imageSizeCache = new Map();
 
 const esc = (value) => String(value).replace(/[&<>"']/g, (char) => ({
   "&": "&amp;",
@@ -17,6 +18,27 @@ const slugify = (value) => value.toLowerCase().replace(/&/g, "and").replace(/[^a
 const postUrl = (post) => `${siteUrl}/posts/${post.slug}.html`;
 const rootHref = (href, depth = 0) => `${"../".repeat(depth)}${href}`;
 const fmtDate = (date) => `${date}T00:00:00+05:30`;
+
+function imageSize(imagePath) {
+  if (imageSizeCache.has(imagePath)) return imageSizeCache.get(imagePath);
+  const file = fs.readFileSync(path.join(root, imagePath));
+  let size = { width: 1600, height: 900 };
+  if (file[0] === 0xff && file[1] === 0xd8) {
+    let offset = 2;
+    while (offset < file.length) {
+      while (file[offset] === 0xff) offset++;
+      const marker = file[offset++];
+      const length = file.readUInt16BE(offset);
+      if (marker >= 0xc0 && marker <= 0xc3) {
+        size = { height: file.readUInt16BE(offset + 3), width: file.readUInt16BE(offset + 5) };
+        break;
+      }
+      offset += length;
+    }
+  }
+  imageSizeCache.set(imagePath, size);
+  return size;
+}
 
 function headTags({ title, description, url, image, type = "website", schema }) {
   return `
@@ -91,6 +113,7 @@ function breadcrumb(items) {
 function articlePage(post) {
   const related = relatedPosts(post);
   const toc = post.sections.map((section) => ({ id: slugify(section.heading), heading: section.heading }));
+  const heroImage = imageSize(post.image);
   const schema = {
     "@context": "https://schema.org",
     "@type": "NewsArticle",
@@ -129,7 +152,9 @@ ${headTags({ title: post.metaTitle, description: post.metaDescription, url: post
       <section class="article-hero">
         <div class="article-layout">
           <div>
-            <img src="../${esc(post.image)}" alt="${esc(post.imageAlt)}" width="1600" height="900" fetchpriority="high">
+            <figure class="article-image-frame">
+              <img src="../${esc(post.image)}" alt="${esc(post.imageAlt)}" width="${heroImage.width}" height="${heroImage.height}" fetchpriority="high">
+            </figure>
             <p class="image-credit">${esc(post.imageCredit)}</p>
           </div>
           <div class="article-copy">
@@ -188,9 +213,12 @@ function storyCard(post, options = {}) {
   const { depth = 0, context = "root" } = options;
   const href = context === "post" ? `${post.slug}.html` : rootHref(`posts/${post.slug}.html`, depth);
   const image = rootHref(post.image, depth);
+  const size = imageSize(post.image);
   return `<article class="story-card">
           <a href="${href}">
-            <img src="${image}" alt="${esc(post.imageAlt)}" width="1600" height="900" loading="lazy">
+            <figure class="thumb-frame">
+              <img src="${image}" alt="${esc(post.imageAlt)}" width="${size.width}" height="${size.height}" loading="lazy">
+            </figure>
             <div class="story-body">
               <p class="tag">${esc(post.category)}</p>
               <h3>${esc(post.title)}</h3>
