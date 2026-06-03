@@ -87,3 +87,133 @@ To publish more than one due post per run, set `PUBLISH_MAX_PER_RUN`, but keep i
 ```powershell
 & "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe" -ExecutionPolicy Bypass -File .\scripts\uninstall-drip-publisher.ps1
 ```
+
+## AutoTech Daily Facebook posting
+
+The repo includes `scripts/FB_Post.js` for publishing blog articles to the AutoTech Daily Facebook Page through the official Meta Graph API.
+
+Default Page:
+
+```env
+FB_PAGE_ID=176747645744060
+```
+
+The script:
+
+- Reads articles from `data/posts.json`.
+- Builds an engaging caption with the article URL and hashtags.
+- Uses the article featured image from GitHub Pages as the Facebook photo URL.
+- Adds new articles to `data/facebook-queue.json`.
+- Publishes due queue items to `/{page-id}/photos`.
+- Prevents duplicate posts by checking `data/facebook-published-log.json`.
+- Records title, URL, Facebook post/photo ID, publish date, image URL, caption hash and status.
+- Saves schedule state in `data/facebook-state.json` so it resumes after restart.
+
+### Required Meta setup
+
+Create or use a Meta app in the Meta Developer platform and request/configure these Page permissions:
+
+```text
+pages_show_list
+pages_read_engagement
+pages_manage_posts
+```
+
+Your Facebook user must have management access to the AutoTech Daily Page. The token must be a Page Access Token for:
+
+```text
+AutoTech Daily
+Page ID: 176747645744060
+```
+
+### Generate a long-lived Page Access Token
+
+1. Open Meta Graph API Explorer.
+2. Select your Meta app.
+3. Generate a User Access Token with:
+
+```text
+pages_show_list
+pages_read_engagement
+pages_manage_posts
+```
+
+4. Exchange the short-lived user token for a long-lived user token:
+
+```text
+GET https://graph.facebook.com/v23.0/oauth/access_token
+  ?grant_type=fb_exchange_token
+  &client_id=META_APP_ID
+  &client_secret=META_APP_SECRET
+  &fb_exchange_token=SHORT_LIVED_USER_TOKEN
+```
+
+5. Use the long-lived user token to get Page tokens:
+
+```text
+GET https://graph.facebook.com/v23.0/me/accounts
+  ?fields=id,name,tasks,access_token
+  &access_token=LONG_LIVED_USER_TOKEN
+```
+
+6. Copy the `access_token` for Page ID `176747645744060`.
+
+For production, prefer a Meta Business system user Page token where available. Tokens can still be invalidated by password changes, permission changes, app changes or Meta policy events, so check token status periodically in Meta's Access Token Debugger and rotate safely.
+
+### Store credentials securely
+
+Copy `.env.example` to `.env`:
+
+```powershell
+Copy-Item .env.example .env
+```
+
+Edit `.env`:
+
+```env
+GRAPH_API_VERSION=v23.0
+FB_PAGE_ID=176747645744060
+FB_PAGE_ACCESS_TOKEN=your_long_lived_page_access_token
+FB_POST_INTERVAL_MINUTES=240
+FB_MAX_POSTS_PER_RUN=1
+FB_DRY_RUN=false
+```
+
+`.env` is ignored by git. Never commit Page tokens to GitHub.
+
+### Test manually
+
+Dry run without posting:
+
+```powershell
+$env:FB_DRY_RUN = "true"
+npm run fb:post
+Remove-Item Env:\FB_DRY_RUN
+```
+
+Live publish due queue items:
+
+```powershell
+npm run fb:post
+```
+
+### Install background schedule
+
+```powershell
+& "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe" -ExecutionPolicy Bypass -File .\scripts\install-fb-post.ps1
+```
+
+This installs:
+
+- `AutoTechDailyFBPost-Startup`
+- `AutoTechDailyFBPost-Check`
+
+The check task runs every 30 minutes. `data/facebook-state.json` and `FB_POST_INTERVAL_MINUTES` control drip timing, so pending posts continue after restart instead of all posting at once.
+
+Logs are written to `logs/fb-post-*.log`.
+
+### Remove Facebook posting tasks
+
+```powershell
+& "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe" -ExecutionPolicy Bypass -File .\scripts\uninstall-fb-post.ps1
+```
