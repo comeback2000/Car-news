@@ -17,20 +17,33 @@
     </header>
 
     <main>
-      <section class="hero">
-        <div class="hero-copy">
-          <p class="eyebrow">India auto trend scan | X, Google search, and May sales chatter | June 3, 2026</p>
-          <h1>Tata, Mahindra, and Maruti are driving India's car conversation.</h1>
-          <p class="lede">Public X chatter and fresh market reports point to Tata EV momentum, Mahindra's BE 6 and XEV 9e buzz, and Maruti's e Vitara charging push as the biggest India-focused car stories to watch.</p>
+      <section class="hero" id="trends" aria-label="Viral car news headlines">
+        <div class="hero-graphics" aria-hidden="true">
+          <span class="signal signal-one"></span>
+          <span class="signal signal-two"></span>
+          <span class="signal signal-three"></span>
+          <span class="sweep-line"></span>
         </div>
-        <div class="trend-panel" id="trends" aria-label="Trending automotive keywords">
-          <span>Tata Nexon</span>
-          <span>Tata Punch</span>
-          <span>Tata EV sales</span>
-          <span>Mahindra BE 6</span>
-          <span>XEV 9e</span>
-          <span>Maruti e Vitara</span>
-          <span>India EV sales</span>
+        <div class="hero-copy">
+          <p class="eyebrow">Latest viral India auto posts | June 3, 2026</p>
+          <div class="hero-title-wrap">
+            <p class="hero-kicker">Trending now</p>
+            <h1 id="viralHeroTitle">Tata's EV Breakout: Nexon, Punch, and Tiago Help Push Sales Past 10,000</h1>
+          </div>
+        </div>
+        <div class="viral-stack" aria-label="Most viral story links">
+          <a class="viral-card is-active" href="posts/tata-ev-sales-breakout.html" data-title="Tata's EV Breakout: Nexon, Punch, and Tiago Help Push Sales Past 10,000">
+            <span class="rank">01</span>
+            <span class="viral-title">Tata's EV Breakout: Nexon, Punch, and Tiago Help Push Sales Past 10,000</span>
+          </a>
+          <a class="viral-card" href="posts/mahindra-be6-xev9e-ev-suv-buzz.html" data-title="Mahindra BE 6 and XEV 9e Are Turning India's EV SUV Race Into a Real Fight">
+            <span class="rank">02</span>
+            <span class="viral-title">Mahindra BE 6 and XEV 9e Are Turning India's EV SUV Race Into a Real Fight</span>
+          </a>
+          <a class="viral-card" href="posts/maruti-e-vitara-charging-network.html" data-title="Maruti e Vitara Just Made EV Charging the Story, Not Just Range">
+            <span class="rank">03</span>
+            <span class="viral-title">Maruti e Vitara Just Made EV Charging the Story, Not Just Range</span>
+          </a>
         </div>
       </section>
 
@@ -77,5 +90,27 @@
     <footer class="site-footer">
       <p>Updated June 3, 2026. Trend cues from public X search, Google search, and current India auto reports; sources are linked in each post.</p>
     </footer>
+    <script>
+      const viralCards = Array.from(document.querySelectorAll(".viral-card"));
+      const heroTitle = document.getElementById("viralHeroTitle");
+      let activeStory = 0;
+
+      function setActiveStory(index) {
+        activeStory = index % viralCards.length;
+        viralCards.forEach((card, cardIndex) => {
+          card.classList.toggle("is-active", cardIndex === activeStory);
+        });
+        heroTitle.classList.remove("title-pop");
+        heroTitle.textContent = viralCards[activeStory].dataset.title;
+        requestAnimationFrame(() => heroTitle.classList.add("title-pop"));
+      }
+
+      viralCards.forEach((card, index) => {
+        card.addEventListener("mouseenter", () => setActiveStory(index));
+        card.addEventListener("focus", () => setActiveStory(index));
+      });
+
+      setInterval(() => setActiveStory(activeStory + 1), 4200);
+    </script>
   </body>
 </html>
