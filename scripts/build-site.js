@@ -172,8 +172,7 @@ ${headTags({ title: post.metaTitle, description: post.metaDescription, url: post
       </section>
 
       <article class="article-body">
-        <aside class="toc" aria-label="Table of contents">
-          <p class="toc-title">Table of Contents</p>
+        <aside class="toc" aria-label="Article sections">
           ${toc.map((item) => `<a href="#${esc(item.id)}">${esc(item.heading)}</a>`).join("")}
         </aside>
         ${post.sections.map((section) => `
@@ -205,9 +204,6 @@ ${headTags({ title: post.metaTitle, description: post.metaDescription, url: post
         </div>
       </section>
     </main>
-    <footer class="site-footer">
-      <p>Updated June 3, 2026. SEO metadata, related posts, category pages, tags and sitemap are generated automatically.</p>
-    </footer>
   </body>
 </html>`;
 }
