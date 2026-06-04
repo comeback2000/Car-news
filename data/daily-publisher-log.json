@@ -1,4 +1,4 @@
-﻿{
+{
     "cursors":  {
                     "car":  6,
                     "bike":  2,
@@ -37,9 +37,78 @@
                              "https://images.pexels.com/photos/1092644/pexels-photo-1092644.jpeg"
                          ],
     "facebookUrls":  [
-
+                         "https://comeback2000.github.io/Car-news/posts/new-ev-launch-india.html",
+                         "https://comeback2000.github.io/Car-news/posts/electric-suv-india.html",
+                         "https://comeback2000.github.io/Car-news/posts/bikes-new-launch.html",
+                         "https://comeback2000.github.io/Car-news/posts/best-bikes-in-ev.html",
+                         "https://comeback2000.github.io/Car-news/posts/mobile-news-launch.html",
+                         "https://comeback2000.github.io/Car-news/posts/mobile-new-tech.html"
                      ],
     "runs":  [
+                 {
+                     "ranAt":  "2026-06-04T18:51:57.7656561+05:30",
+                     "commit":  null,
+                     "articles":  [
+
+                                  ],
+                     "facebook":  [
+                                      {
+                                          "slug":  "new-ev-launch-india",
+                                          "title":  "New EV Launch India: Latest India Update, Buyer Signals and What Changes Next",
+                                          "result":  {
+                                                         "status":  "published",
+                                                         "postId":  "176747645744060_872362549227254"
+                                                     },
+                                          "postedAt":  "2026-06-04T18:51:09.4602094+05:30"
+                                      },
+                                      {
+                                          "slug":  "electric-suv-india",
+                                          "title":  "Electric SUV India: Latest India Update, Buyer Signals and What Changes Next",
+                                          "result":  {
+                                                         "status":  "published",
+                                                         "postId":  "176747645744060_872362682560574"
+                                                     },
+                                          "postedAt":  "2026-06-04T18:51:24.1545758+05:30"
+                                      },
+                                      {
+                                          "slug":  "bikes-new-launch",
+                                          "title":  "bikes new launch: What Indian Riders Should Know Before Buying",
+                                          "result":  {
+                                                         "status":  "published",
+                                                         "postId":  "176747645744060_872362875893888"
+                                                     },
+                                          "postedAt":  "2026-06-04T18:51:36.9284348+05:30"
+                                      },
+                                      {
+                                          "slug":  "best-bikes-in-ev",
+                                          "title":  "best Bikes in EV: What Indian Riders Should Know Before Buying",
+                                          "result":  {
+                                                         "status":  "published",
+                                                         "postId":  "176747645744060_872363022560540"
+                                                     },
+                                          "postedAt":  "2026-06-04T18:51:43.6364203+05:30"
+                                      },
+                                      {
+                                          "slug":  "mobile-news-launch",
+                                          "title":  "mobile news launch: The Latest Tech Update Indian Buyers Should Watch",
+                                          "result":  {
+                                                         "status":  "published",
+                                                         "postId":  "176747645744060_872363129227196"
+                                                     },
+                                          "postedAt":  "2026-06-04T18:51:51.2035444+05:30"
+                                      },
+                                      {
+                                          "slug":  "mobile-new-tech",
+                                          "title":  "mobile new tech: The Latest Tech Update Indian Buyers Should Watch",
+                                          "result":  {
+                                                         "status":  "published",
+                                                         "postId":  "176747645744060_872363205893855"
+                                                     },
+                                          "postedAt":  "2026-06-04T18:51:57.7656561+05:30"
+                                      }
+                                  ],
+                     "retryOf":  "2026-06-04T18:45:35.5485961+05:30"
+                 },
                  {
                      "ranAt":  "2026-06-04T18:45:35.5485961+05:30",
                      "commit":  "463b1e6",
