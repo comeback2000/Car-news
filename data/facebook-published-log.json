@@ -1,1 +1,52 @@
-[]
+[
+  {
+    "title": "EV Battery Life India: What Buyers Should Know Before Choosing an Electric Car",
+    "url": "https://comeback2000.github.io/Car-news/posts/ev-battery-life-india.html",
+    "facebookPostId": null,
+    "publishDate": "2026-06-04T05:30:43.794Z",
+    "status": "failed",
+    "message": "Error validating access token: Session has expired on Wednesday, 03-Jun-26 09:00:00 PDT. The current time is Wednesday, 03-Jun-26 22:30:43 PDT. (code 190)"
+  },
+  {
+    "title": "Cheap Electric Cars India: Best Value EV Choices Buyers Are Watching Now",
+    "url": "https://comeback2000.github.io/Car-news/posts/cheap-electric-cars-india-2026.html",
+    "facebookPostId": null,
+    "publishDate": "2026-06-04T05:30:43.274Z",
+    "status": "failed",
+    "message": "Error validating access token: Session has expired on Wednesday, 03-Jun-26 09:00:00 PDT. The current time is Wednesday, 03-Jun-26 22:30:42 PDT. (code 190)"
+  },
+  {
+    "title": "Tata Curvv EV vs Creta EV: Which Electric SUV Makes More Sense?",
+    "url": "https://comeback2000.github.io/Car-news/posts/tata-curvv-ev-vs-creta-ev.html",
+    "facebookPostId": null,
+    "publishDate": "2026-06-04T05:30:42.852Z",
+    "status": "failed",
+    "message": "Error validating access token: Session has expired on Wednesday, 03-Jun-26 09:00:00 PDT. The current time is Wednesday, 03-Jun-26 22:30:42 PDT. (code 190)"
+  },
+  {
+    "title": "Harrier EV vs XEV 9e: The Premium Electric SUV Fight Buyers Must Watch",
+    "url": "https://comeback2000.github.io/Car-news/posts/harrier-ev-vs-xev-9e.html",
+    "facebookPostId": null,
+    "publishDate": "2026-06-04T05:30:42.407Z",
+    "status": "failed",
+    "message": "Error validating access token: Session has expired on Wednesday, 03-Jun-26 09:00:00 PDT. The current time is Wednesday, 03-Jun-26 22:30:41 PDT. (code 190)"
+  },
+  {
+    "title": "Upcoming EV Cars India 2026: 7 Launches That Could Shake Up the Market",
+    "url": "https://comeback2000.github.io/Car-news/posts/upcoming-ev-cars-india-2026-watchlist.html",
+    "facebookPostId": "176747645744060_871527002644142",
+    "publishDate": "2026-06-03T14:25:21.598Z",
+    "status": "published",
+    "imageUrl": "https://comeback2000.github.io/Car-news/assets/upcoming-ev-cars-india-thumbnail.jpg",
+    "captionHash": "f5d8e2965a8f2f64fd8fbb598bbfb601ae22174660ad4699ad135bdedc29d91a",
+    "dryRun": false
+  },
+  {
+    "title": "Upcoming EV Cars India 2026: 7 Launches That Could Shake Up the Market",
+    "url": "https://comeback2000.github.io/Car-news/posts/upcoming-ev-cars-india-2026-watchlist.html",
+    "facebookPostId": null,
+    "publishDate": "2026-06-03T14:24:48.906Z",
+    "status": "failed",
+    "message": "(#200) The permission(s) publish_actions are not available. It has been deprecated. If you want to provide a way for your app users to share content to Facebook, we encourage you to use our Sharing products instead. (code 200)"
+  }
+]

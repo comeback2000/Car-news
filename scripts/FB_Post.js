@@ -150,11 +150,27 @@ async function graphPost(pathname, params, config) {
   const body = await response.json().catch(() => ({}));
 
   if (!response.ok) {
-    const message = body.error ? `${body.error.message} (code ${body.error.code || "unknown"})` : response.statusText;
+    const message = body.error ? graphErrorMessage(body.error) : response.statusText;
     throw new Error(message);
   }
 
   return body;
+}
+
+function graphErrorMessage(error) {
+  const code = error.code || "unknown";
+  const message = error.message || "Unknown Facebook Graph API error";
+  const parts = [`${message} (code ${code})`];
+
+  if (code === 190) {
+    parts.push("FB_PAGE_ACCESS_TOKEN is expired or invalid. Generate a fresh long-lived Page Access Token and update .env.");
+  }
+
+  if (code === 200) {
+    parts.push("Use a Page Access Token with pages_manage_posts and pages_read_engagement. Do not use the deprecated publish_actions permission.");
+  }
+
+  return parts.join(" ");
 }
 
 async function publishQueueItem(item, config) {
@@ -217,6 +233,7 @@ async function main() {
 
   const now = new Date();
   let publishedThisRun = 0;
+  let failedThisRun = 0;
   const alreadyPublished = new Set(publishedLog.filter((item) => item.status === "published").map((item) => item.url));
 
   for (const item of queue) {
@@ -273,6 +290,7 @@ async function main() {
       publishedThisRun += 1;
       console.log(`Published to Facebook: ${item.title}`);
     } catch (error) {
+      failedThisRun += 1;
       item.status = "pending";
       item.lastError = error.message;
       item.updatedAt = new Date().toISOString();
@@ -297,7 +315,9 @@ async function main() {
   writeJson(logPath, publishedLog);
   writeJson(statePath, state);
 
-  if (!publishedThisRun) {
+  if (failedThisRun) {
+    console.log("Facebook publish failed. Pending queue was kept unchanged so it can retry after the token/config is fixed.");
+  } else if (!publishedThisRun) {
     const next = pendingQueue[0]?.scheduledAt;
     console.log(next ? `No Facebook posts due yet. Next scheduled post: ${next}` : "No pending Facebook posts.");
   }
