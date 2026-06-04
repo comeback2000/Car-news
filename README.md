@@ -12,7 +12,9 @@ The script publishes 6 articles per run:
 - 2 Bike articles
 - 2 Mobile Tech articles
 
-It reads keywords from `Keywords.txt`, continues from the next unused keyword, creates unique thumbnails, rebuilds the static site, commits and pushes generated files to GitHub, and posts each new article to the configured Facebook Page.
+It reads keywords from `Keywords.txt`, researches each topic with Google News, sends the research packet to the AI article writer, creates unique thumbnails, rebuilds the static site, commits and pushes generated files to GitHub, and posts each new article to the configured Facebook Page.
+
+The publisher does not use a template fallback for article bodies. If AI generation fails or `OPENAI_API_KEY` is missing, the run stops instead of publishing low-quality filler.
 
 ## Manual Run
 
@@ -52,10 +54,14 @@ Create `.env` from `.env.example` and set:
 
 ```env
 GRAPH_API_VERSION=v23.0
+OPENAI_API_KEY=your_openai_api_key
+OPENAI_MODEL=gpt-5.1
 FB_PAGE_ID=176747645744060
 FB_PAGE_ACCESS_TOKEN=your_valid_page_access_token
 FB_DRY_RUN=false
 ```
+
+`OPENAI_API_KEY` is required for article generation. `OPENAI_MODEL` can be changed if your account uses a different available model.
 
 The Facebook token must be a Page token with:
 

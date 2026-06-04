@@ -139,6 +139,12 @@ function Read-DotEnv {
   }
 }
 
+function As-Array($Value) {
+  if ($null -eq $Value) { return @() }
+  if ($Value -is [array]) { return @($Value) }
+  return @($Value)
+}
+
 function Slugify($Value) {
   $slug = $Value.ToLowerInvariant() -replace "&", "and"
   $slug = $slug -replace "[^a-z0-9]+", "-"
@@ -576,13 +582,14 @@ function New-Thumbnail($Post, $Niche, $State, $ExistingImageHashes) {
   $target = Join-Path $Root $Post.image
   $usedSources = @{}
   foreach ($source in @($State.thumbnailSources)) { if ($source) { $usedSources[$source] = $true } }
+  $thumbnailTitle = if ($Post.thumbnailHeadline) { [string]$Post.thumbnailHeadline } else { [string]$Post.title }
 
   foreach ($source in Get-ThumbnailCandidates $Niche $Post.targetKeyword) {
     if ($usedSources.ContainsKey($source)) { continue }
     try {
       Invoke-WebRequest -Uri $source -OutFile $target -UseBasicParsing -TimeoutSec 30
       if ((Get-Item $target).Length -lt 20000) { throw "Downloaded thumbnail too small." }
-      Add-ThumbnailOverlay -Path $target -Title $Post.title -Niche $Niche -Keyword $Post.targetKeyword
+      Add-ThumbnailOverlay -Path $target -Title $thumbnailTitle -Niche $Niche -Keyword $Post.targetKeyword
       $hash = Get-ContentHash $target
       if ($ExistingImageHashes.ContainsKey($hash) -or @($State.thumbnailHashes) -contains $hash) {
         Remove-Item $target -Force
@@ -596,13 +603,213 @@ function New-Thumbnail($Post, $Niche, $State, $ExistingImageHashes) {
     }
   }
 
-  New-FallbackThumbnail -Path $target -Title $Post.title -Niche $Niche
+  New-FallbackThumbnail -Path $target -Title $thumbnailTitle -Niche $Niche
   $hash = Get-ContentHash $target
   if ($ExistingImageHashes.ContainsKey($hash) -or @($State.thumbnailHashes) -contains $hash) {
     throw "Could not create a unique thumbnail for $($Post.slug)."
   }
   $State.thumbnailSources += "generated:$($Post.slug)"
   $State.thumbnailHashes += $hash
+}
+
+function Get-OpenAIOutputText($Response) {
+  if ($Response.output_text) { return [string]$Response.output_text }
+  foreach ($item in As-Array $Response.output) {
+    foreach ($content in As-Array $item.content) {
+      if ($content.type -eq "output_text" -and $content.text) { return [string]$content.text }
+      if ($content.text) { return [string]$content.text }
+    }
+  }
+  throw "OpenAI response did not contain output text."
+}
+
+function Get-ArticleSchema {
+  return [ordered]@{
+    type = "object"
+    additionalProperties = $false
+    required = @("title", "metaTitle", "metaDescription", "excerpt", "tags", "imageAlt", "thumbnailHeadline", "conclusion", "sections")
+    properties = [ordered]@{
+      title = @{ type = "string" }
+      metaTitle = @{ type = "string" }
+      metaDescription = @{ type = "string" }
+      excerpt = @{ type = "string" }
+      tags = @{ type = "array"; minItems = 5; maxItems = 10; items = @{ type = "string" } }
+      imageAlt = @{ type = "string" }
+      thumbnailHeadline = @{ type = "string" }
+      conclusion = @{ type = "string" }
+      sections = @{
+        type = "array"
+        minItems = 4
+        maxItems = 6
+        items = @{
+          type = "object"
+          additionalProperties = $false
+          required = @("heading", "paragraphs", "subsections")
+          properties = @{
+            heading = @{ type = "string" }
+            paragraphs = @{ type = "array"; minItems = 2; maxItems = 4; items = @{ type = "string" } }
+            subsections = @{
+              type = "array"
+              maxItems = 2
+              items = @{
+                type = "object"
+                additionalProperties = $false
+                required = @("heading", "paragraphs")
+                properties = @{
+                  heading = @{ type = "string" }
+                  paragraphs = @{ type = "array"; minItems = 1; maxItems = 2; items = @{ type = "string" } }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+function Get-ArticlePrompt($Keyword, $Niche, $Category, $Research, $Brief, $Attempt) {
+  $researchJson = (@($Research | Select-Object -First 6 | ForEach-Object {
+    [pscustomobject]@{
+      source = $_.source
+      title = Clean-NewsTitle $_.title
+      url = $_.link
+      published = $_.pubDate
+    }
+  }) | ConvertTo-Json -Depth 8)
+  $briefJson = ($Brief | ConvertTo-Json -Depth 8)
+  $retryNote = if ($Attempt -gt 1) { "Previous draft failed quality checks. Be more specific, use different section headings, and remove any template-like wording." } else { "" }
+  return @"
+Write one original publication-ready article for an India-focused automotive, bike, and technology news site.
+
+Seed keyword for research only: $Keyword
+Niche: $Niche
+Category: $Category
+
+Google News research packet:
+$researchJson
+
+Research brief:
+$briefJson
+
+Editorial requirements:
+- Do not use the seed keyword as a repeated SEO phrase. It is only the research starting point.
+- Do not start the title with the seed keyword followed by a colon.
+- Do not use generic repeated headings such as "Why This Story Matters Now", "The Buyer Angle Most Headlines Miss", "How It Compares With the Market", "What Smart Buyers Should Watch Next", "Final View", or "Market signal".
+- Do not mention AI, prompt, template, seed keyword, SEO process, or Google News mechanics inside the article.
+- Do not copy source text. Use the source packet to understand the trend, then write original analysis.
+- Write like a human journalist: concrete, varied, informed, and useful.
+- Include buyer-focused value: ownership cost, comparison points, market impact, practical checks, risk, opportunity, and what to watch.
+- Use natural long-tail phrases only where they fit the sentence.
+- Avoid repeated section structure across articles. Invent section headings that fit this exact story.
+- Keep each paragraph focused and readable, about 45 to 95 words.
+- Make the title and thumbnail headline click-worthy but not fake.
+- Return only JSON matching the schema.
+
+$retryNote
+"@
+}
+
+function Invoke-OpenAIArticleDraft($Keyword, $Niche, $Category, $Research, $Brief) {
+  Read-DotEnv
+  if (!$env:OPENAI_API_KEY) {
+    throw "OPENAI_API_KEY is required. The publisher will not create template articles. Add OPENAI_API_KEY to .env and rerun."
+  }
+  $model = if ($env:OPENAI_MODEL) { $env:OPENAI_MODEL } else { "gpt-5.1" }
+  $headers = @{
+    Authorization = "Bearer $($env:OPENAI_API_KEY)"
+    "Content-Type" = "application/json"
+  }
+  for ($attempt = 1; $attempt -le 2; $attempt++) {
+    $payload = [ordered]@{
+      model = $model
+      instructions = "You are a senior Indian auto, mobility, and consumer technology editor. Produce polished, non-template journalism in structured JSON."
+      input = @(
+        @{
+          role = "user"
+          content = @(
+            @{
+              type = "input_text"
+              text = (Get-ArticlePrompt -Keyword $Keyword -Niche $Niche -Category $Category -Research $Research -Brief $Brief -Attempt $attempt)
+            }
+          )
+        }
+      )
+      text = @{
+        format = @{
+          type = "json_schema"
+          name = "article_post"
+          strict = $false
+          schema = Get-ArticleSchema
+        }
+      }
+      max_output_tokens = 7000
+    }
+    try {
+      $response = Invoke-RestMethod -Method Post -Uri "https://api.openai.com/v1/responses" -Headers $headers -Body ($payload | ConvertTo-Json -Depth 120) -TimeoutSec 180
+      $text = Get-OpenAIOutputText $response
+      $draft = $text | ConvertFrom-Json
+      Test-AIArticleDraft -Draft $draft -Keyword $Keyword
+      return $draft
+    } catch {
+      if ($attempt -ge 2) { throw "AI article generation failed quality checks or API request failed: $($_.Exception.Message)" }
+      Write-Host "AI article draft retry for '$Keyword': $($_.Exception.Message)"
+    }
+  }
+}
+
+function Test-AIArticleDraft($Draft, $Keyword) {
+  foreach ($field in @("title", "metaTitle", "metaDescription", "excerpt", "imageAlt", "thumbnailHeadline", "conclusion")) {
+    if (!$Draft.$field -or ([string]$Draft.$field).Trim().Length -lt 12) { throw "AI draft missing useful $field." }
+  }
+  $keywordPattern = "^\s*$([regex]::Escape($Keyword))\s*:"
+  if ([regex]::IsMatch([string]$Draft.title, $keywordPattern, [System.Text.RegularExpressions.RegexOptions]::IgnoreCase)) {
+    throw "AI draft title starts with the seed keyword."
+  }
+  $sections = @(As-Array $Draft.sections)
+  if ($sections.Count -lt 4) { throw "AI draft needs at least 4 sections." }
+  $banned = @(
+    "Why This Story Matters Now",
+    "The Buyer Angle Most Headlines Miss",
+    "How It Compares With the Market",
+    "What Smart Buyers Should Watch Next",
+    "Final View",
+    "Market signal"
+  )
+  $allText = @($Draft.title, $Draft.excerpt, $Draft.conclusion)
+  foreach ($section in $sections) {
+    if (!$section.heading -or @($banned | Where-Object { $_ -eq [string]$section.heading })) { throw "AI draft used a banned template heading: $($section.heading)" }
+    $paragraphs = @(As-Array $section.paragraphs)
+    if ($paragraphs.Count -lt 2) { throw "AI draft section '$($section.heading)' has too few paragraphs." }
+    $allText += $section.heading
+    $allText += $paragraphs
+    foreach ($sub in As-Array $section.subsections) {
+      $allText += $sub.heading
+      $allText += @(As-Array $sub.paragraphs)
+    }
+  }
+  $joined = ($allText -join " ")
+  if ($joined -match "seed keyword|template|prompt|AI-generated|as an AI|SEO process|Google News results for this topic") {
+    throw "AI draft contains process/template language."
+  }
+  $exactKeywordCount = ([regex]::Matches($joined, [regex]::Escape($Keyword), [System.Text.RegularExpressions.RegexOptions]::IgnoreCase)).Count
+  if ($exactKeywordCount -gt 3) { throw "AI draft repeats the seed keyword too often ($exactKeywordCount times)." }
+}
+
+function Convert-AIDraftToSections($Draft) {
+  @(As-Array $Draft.sections | ForEach-Object {
+    $section = $_
+    [pscustomobject]@{
+      heading = [string]$section.heading
+      paragraphs = @(As-Array $section.paragraphs | ForEach-Object { [string]$_ })
+      subsections = @(As-Array $section.subsections | ForEach-Object {
+        [pscustomobject]@{
+          heading = [string]$_.heading
+          paragraphs = @(As-Array $_.paragraphs | ForEach-Object { [string]$_ })
+        }
+      })
+    }
+  })
 }
 
 function New-Article($Selection, $ExistingSlugs) {
@@ -619,71 +826,30 @@ function New-Article($Selection, $ExistingSlugs) {
 
   $research = @(Get-NewsResearch -Keyword $keyword -Niche $niche)
   $brief = Get-ResearchBrief -Keyword $keyword -Niche $niche -Research $research
-  $title = Get-Title -Niche $niche -Keyword $keyword -Brief $brief
   $category = Get-Category -Niche $niche -Keyword $keyword
   $today = (Get-Date).ToString("yyyy-MM-dd")
-  $primaryLongTail = @($brief.longTailKeywords | Select-Object -First 1)[0]
-  $secondaryLongTail = @($brief.longTailKeywords | Select-Object -Skip 1 -First 1)[0]
-  $lens = $brief.lens
-  $sourcesLabel = $brief.sourceLine
-  $headlinesLabel = $brief.headlineLine
-  $themesLabel = $brief.themeLine
-  $metaBase = "$title, explained with latest India news signals, buyer context, comparisons and practical takeaways."
-  $excerpt = "Fresh reports from $sourcesLabel point to $themesLabel. Here is what buyers should actually take from the noise."
-  $sourceParagraph = "Recent Google News results for this topic point to a more useful story than a simple launch or spec update. Reports tracked from $sourcesLabel highlight $headlinesLabel. Read together, they show why $($lens.audience) are asking sharper questions about $themesLabel."
+  $draft = Invoke-OpenAIArticleDraft -Keyword $keyword -Niche $niche -Category $category -Research $research -Brief $brief
 
   [pscustomobject]@{
     slug = $slug
     aliases = @()
     targetKeyword = $keyword
-    title = $title
-    metaTitle = "$title | Car News"
-    metaDescription = $metaBase.Substring(0, [Math]::Min(155, $metaBase.Length))
-    excerpt = $excerpt.Substring(0, [Math]::Min(190, $excerpt.Length))
+    title = [string]$draft.title
+    metaTitle = [string]$draft.metaTitle
+    metaDescription = ([string]$draft.metaDescription).Substring(0, [Math]::Min(155, ([string]$draft.metaDescription).Length))
+    excerpt = ([string]$draft.excerpt).Substring(0, [Math]::Min(220, ([string]$draft.excerpt).Length))
     category = $category
-    tags = @((Get-Tags -Niche $niche -Keyword $keyword) + @($brief.longTailKeywords) | Select-Object -Unique)
+    tags = @((Get-Tags -Niche $niche -Keyword $keyword) + @(As-Array $draft.tags) + @($brief.longTailKeywords) | ForEach-Object { [string]$_ } | Where-Object { $_.Trim() } | Select-Object -Unique | Select-Object -First 12)
     image = "assets/$slug-thumbnail.jpg"
-    imageAlt = "$title editorial thumbnail based on $keyword research"
+    imageAlt = [string]$draft.imageAlt
     imageCredit = "Real source image with Car News editorial thumbnail overlay."
+    thumbnailHeadline = [string]$draft.thumbnailHeadline
     author = "Car News Desk"
     datePublished = $today
     dateModified = $today
-    conclusion = "$($lens.takeaway) Keep checking official details and independent reviews before turning this news into a booking decision."
+    conclusion = [string]$draft.conclusion
     sources = @($research | ForEach-Object { [pscustomobject]@{ label = "$($_.source): $($_.title)"; url = $_.link } })
-    sections = @(
-      [pscustomobject]@{
-        heading = "Why This Story Matters Now"
-        paragraphs = @(
-          $sourceParagraph,
-          "That matters because the Indian market is no longer reacting only to headline announcements. Buyers are comparing delivery timelines, ownership cost, feature maturity and service confidence before they treat any new update as shortlist-worthy."
-        )
-        subsections = @([pscustomobject]@{ heading = "Reader intent"; paragraphs = @("For buyers, the useful question is closer to ${primaryLongTail}: what changed, why it matters, and whether this update should influence a real buying decision.") })
-      },
-      [pscustomobject]@{
-        heading = "The Buyer Angle Most Headlines Miss"
-        paragraphs = @(
-          "For $($lens.audience), the important part is not whether a story is trending. It is whether the update changes the real buying equation: $($lens.money).",
-          "This is where many quick summaries fall short. A product can look exciting in isolation and still be a weak fit if the waiting period is long, the service network is thin, the warranty wording is vague, or the most useful variant sits far above the advertised entry price."
-        )
-        subsections = @([pscustomobject]@{ heading = "Practical checklist"; paragraphs = @("Before acting, compare on-road price, confirmed availability, warranty terms, service access, early owner feedback, resale confidence and total monthly cost. Those checks matter more than a single viral claim.") })
-      },
-      [pscustomobject]@{
-        heading = "How It Compares With the Market"
-        paragraphs = @(
-          "The competitive frame is just as important as the news itself. Indian buyers are likely to compare this update against $($lens.compare), and that comparison will decide whether the story becomes a real sales driver or just another busy news cycle.",
-          "The strongest options will be the ones that make the trade-off easy to understand. Range or performance alone is not enough; buyers also want clear pricing, predictable service support, sensible variant packaging and confidence that the product will age well."
-        )
-        subsections = @([pscustomobject]@{ heading = "Market signal"; paragraphs = @("A useful long-tail angle here is ${secondaryLongTail}. It keeps the story focused on buyer outcomes, ownership questions and the real comparison shoppers are trying to make.") })
-      },
-      [pscustomobject]@{
-        heading = "What Smart Buyers Should Watch Next"
-        paragraphs = @(
-          "The next signals to watch are official variant details, city-wise availability, early test-drive feedback, real-world efficiency or battery results, and whether dealers can explain the ownership package without ambiguity.",
-          $lens.takeaway
-        )
-        subsections = @([pscustomobject]@{ heading = "Editorial view"; paragraphs = @("Treat this as a shortlist story, not a final verdict. The right decision is the one that still makes sense after the launch buzz, social chatter and first-week excitement fade.") })
-      }
-    )
+    sections = @(Convert-AIDraftToSections $draft)
   }
 }
 
