@@ -99,7 +99,7 @@ async function main() {
 
   console.log("Requesting Page Access Token...");
   const accounts = await graphGet("me/accounts", {
-    fields: "id,name,access_token,perms",
+    fields: "id,name,access_token",
     access_token: longLivedUserToken
   });
 
