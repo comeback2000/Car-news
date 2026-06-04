@@ -1,0 +1,45 @@
+﻿{
+    "cursors":  {
+                    "car":  6,
+                    "bike":  2,
+                    "mobile":  2
+                },
+    "publishedKeywords":  [
+                              "New EV Launch India",
+                              "Electric SUV India",
+                              "bikes new launch",
+                              "best Bikes in EV",
+                              "mobile news launch",
+                              "mobile new tech"
+                          ],
+    "publishedSlugs":  [
+                           "new-ev-launch-india",
+                           "electric-suv-india",
+                           "bikes-new-launch",
+                           "best-bikes-in-ev",
+                           "mobile-news-launch",
+                           "mobile-new-tech"
+                       ],
+    "thumbnailHashes":  [
+                            "9ccc65110c374622188ecbe2838fb11aaec257b150ebc4744c0b57af1221f54f",
+                            "5e38f4402781505ada90c087b4bf4314f13d75aab1b9dd336e5d78aebdfc3b6b",
+                            "de44353d858061f4853f68c6d94f8a3c8b457ded0155e7d5fe24e5d962b4c3f8",
+                            "e91364662cc3ed4e818ec7f145502a8ba28616bea60a4d389ba4690fab44c37a",
+                            "9fb262fd08acb4632c705cb94cf634934259f70df4bb95bda9cea5624dccbe8e",
+                            "fc736ebf3334c271dc795baec52a3a8eeccdf4ca06824a671d3b1fc3ea87cce1"
+                        ],
+    "thumbnailSources":  [
+                             "https://static-assets.tatamotors.com/Production/www-tatamotors-com-NEW/wp-content/uploads/2025/07/th-040725.jpg",
+                             "https://www.tatamotors.com/wp-content/uploads/2024/08/EV-Front-3-4-scaled.jpg",
+                             "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg",
+                             "https://images.pexels.com/photos/163210/motorcycles-race-helmets-pilots-163210.jpeg",
+                             "https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg",
+                             "https://images.pexels.com/photos/1092644/pexels-photo-1092644.jpeg"
+                         ],
+    "facebookUrls":  [
+
+                     ],
+    "runs":  [
+
+             ]
+}
