@@ -34,7 +34,36 @@
         "image": "assets/new-ev-launch-india-thumbnail.jpg"
       }
     ],
-    "facebook": [],
+    "facebook": [
+      {
+        "slug": "ev-range-comparison",
+        "status": "failed",
+        "facebookPostId": null,
+        "postedAt": "2026-06-04T04:34:59.354Z",
+        "message": "Error validating access token: Session has expired on Wednesday, 03-Jun-26 09:00:00 PDT. The current time is Wednesday, 03-Jun-26 21:34:58 PDT. (code 190)"
+      },
+      {
+        "slug": "ev-charging-cost-india",
+        "status": "failed",
+        "facebookPostId": null,
+        "postedAt": "2026-06-04T04:34:58.860Z",
+        "message": "Error validating access token: Session has expired on Wednesday, 03-Jun-26 09:00:00 PDT. The current time is Wednesday, 03-Jun-26 21:34:58 PDT. (code 190)"
+      },
+      {
+        "slug": "electric-suv-india",
+        "status": "failed",
+        "facebookPostId": null,
+        "postedAt": "2026-06-04T04:34:58.411Z",
+        "message": "Error validating access token: Session has expired on Wednesday, 03-Jun-26 09:00:00 PDT. The current time is Wednesday, 03-Jun-26 21:34:57 PDT. (code 190)"
+      },
+      {
+        "slug": "new-ev-launch-india",
+        "status": "failed",
+        "facebookPostId": null,
+        "postedAt": "2026-06-04T04:34:57.830Z",
+        "message": "Error validating access token: Session has expired on Wednesday, 03-Jun-26 09:00:00 PDT. The current time is Wednesday, 03-Jun-26 21:34:56 PDT. (code 190)"
+      }
+    ],
     "resumeNote": "Recovered after desktop interruption/build spawn failure; batch continued without selecting duplicate keywords."
   }
 ]
