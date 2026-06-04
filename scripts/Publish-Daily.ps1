@@ -2,6 +2,7 @@ param(
   [switch]$InstallTask,
   [switch]$UninstallTask,
   [switch]$Run,
+  [switch]$RetryFacebookFailed,
   [switch]$SkipFacebook,
   [switch]$SkipGitPush
 )
@@ -84,7 +85,43 @@ function Read-JsonArray($Path) {
 }
 
 function Write-Json($Path, $Value) {
-  $Value | ConvertTo-Json -Depth 80 | Set-Content -Path $Path -Encoding UTF8
+  $json = $Value | ConvertTo-Json -Depth 80
+  $encoding = New-Object System.Text.UTF8Encoding $false
+  [System.IO.File]::WriteAllText($Path, $json, $encoding)
+}
+
+function Invoke-CheckedCommand($FilePath, [string[]]$Arguments) {
+  & $FilePath @Arguments
+  if ($LASTEXITCODE -ne 0) {
+    throw "$FilePath failed with exit code $LASTEXITCODE."
+  }
+}
+
+function Wait-PublicUrl($Url, $Label) {
+  for ($attempt = 1; $attempt -le 12; $attempt++) {
+    try {
+      $response = Invoke-WebRequest -Uri $Url -Method Head -UseBasicParsing -TimeoutSec 20
+      if ($response.StatusCode -ge 200 -and $response.StatusCode -lt 400) { return $true }
+    } catch {
+      Write-Host "Waiting for $Label to become public ($attempt/12): $($_.Exception.Message)"
+    }
+    Start-Sleep -Seconds 20
+  }
+  return $false
+}
+
+function Get-WebErrorMessage($ErrorRecord) {
+  $message = $ErrorRecord.Exception.Message
+  $response = $ErrorRecord.Exception.Response
+  if ($response -and $response.GetResponseStream()) {
+    try {
+      $reader = New-Object System.IO.StreamReader($response.GetResponseStream())
+      $body = $reader.ReadToEnd()
+      $reader.Dispose()
+      if ($body) { $message = "$message $body" }
+    } catch {}
+  }
+  return $message
 }
 
 function Read-DotEnv {
@@ -416,7 +453,15 @@ function Publish-Facebook($Post, $State) {
   if (!$pageId -or !$token) { return [pscustomobject]@{ status = "failed"; postId = $null; message = "Missing FB_PAGE_ID or FB_PAGE_ACCESS_TOKEN." } }
 
   $url = "$SiteUrl/posts/$($Post.slug).html"
+  $imageUrl = "$SiteUrl/$($Post.image)"
   if (@($State.facebookUrls) -contains $url) { return [pscustomobject]@{ status = "skipped_duplicate"; postId = $null } }
+
+  if (!(Wait-PublicUrl -Url $url -Label "article $($Post.slug)")) {
+    return [pscustomobject]@{ status = "failed"; postId = $null; message = "Article URL is not public yet: $url" }
+  }
+  if (!(Wait-PublicUrl -Url $imageUrl -Label "image $($Post.slug)")) {
+    return [pscustomobject]@{ status = "failed"; postId = $null; message = "Image URL is not public yet: $imageUrl" }
+  }
 
   $caption = @(
     $Post.title,
@@ -430,7 +475,7 @@ function Publish-Facebook($Post, $State) {
 
   try {
     $body = @{
-      url = "$SiteUrl/$($Post.image)"
+      url = $imageUrl
       caption = $caption
       published = "true"
       access_token = $token
@@ -440,13 +485,13 @@ function Publish-Facebook($Post, $State) {
     $State.facebookUrls += $url
     return [pscustomobject]@{ status = "published"; postId = $postId }
   } catch {
-    return [pscustomobject]@{ status = "failed"; postId = $null; message = $_.Exception.Message }
+    return [pscustomobject]@{ status = "failed"; postId = $null; message = (Get-WebErrorMessage $_) }
   }
 }
 
 function Invoke-GitPublish($Slugs) {
-  node (Join-Path $PSScriptRoot "build-site.js")
-  git add data/posts.json data/daily-publisher-log.json posts category tags assets index.html sitemap.xml robots.txt | Out-Null
+  Invoke-CheckedCommand "node" @((Join-Path $PSScriptRoot "build-site.js"))
+  Invoke-CheckedCommand "git" @("add", "data/posts.json", "data/daily-publisher-log.json", "posts", "category", "tags", "assets", "index.html", "sitemap.xml", "robots.txt")
   $staged = git diff --cached --name-only
   if (!$staged) {
     Write-Host "No generated changes to commit."
@@ -454,13 +499,80 @@ function Invoke-GitPublish($Slugs) {
   }
   $message = "Daily publish: $($Slugs -join ', ')"
   if ($message.Length -gt 180) { $message = $message.Substring(0, 180) }
-  git commit -m $message | Out-Host
+  Invoke-CheckedCommand "git" @("commit", "-m", $message)
   $commit = (git rev-parse --short HEAD).Trim()
   if (!$SkipGitPush) {
-    git push origin HEAD:main | Out-Host
-    git push origin HEAD:gh-pages | Out-Host
+    Invoke-CheckedCommand "git" @("push", "origin", "HEAD:main")
+    Invoke-CheckedCommand "git" @("push", "origin", "HEAD:gh-pages")
   }
   return $commit
+}
+
+function Retry-FailedFacebookPosts {
+  Push-Location $Root
+  try {
+    Read-DotEnv
+    $posts = @(Read-JsonArray $PostsPath)
+    $postsBySlug = @{}
+    foreach ($post in $posts) { $postsBySlug[$post.slug] = $post }
+    $state = Read-Json $PublisherLogPath (New-EmptyPublisherLog)
+    if ($null -eq $state.facebookUrls) { $state | Add-Member -MemberType NoteProperty -Name "facebookUrls" -Value @() }
+    if ($null -eq $state.runs) { throw "No run history found in $PublisherLogPath." }
+
+    $latestRun = @($state.runs | Select-Object -First 1)[0]
+    $failed = @($latestRun.facebook | Where-Object { $_.result.status -eq "failed" })
+    if (!$failed) {
+      Write-Host "No failed Facebook posts found in the latest run."
+      return
+    }
+
+    $facebookResults = @()
+    foreach ($item in $failed) {
+      if (!$postsBySlug.ContainsKey($item.slug)) {
+        $facebookResults += [pscustomobject]@{ slug = $item.slug; title = $item.title; result = [pscustomobject]@{ status = "failed"; postId = $null; message = "Post not found in data/posts.json." }; postedAt = (Get-Date).ToString("o") }
+        continue
+      }
+      $post = $postsBySlug[$item.slug]
+      $facebookResults += [pscustomobject]@{
+        slug = $post.slug
+        title = $post.title
+        result = Publish-Facebook -Post $post -State $state
+        postedAt = (Get-Date).ToString("o")
+      }
+    }
+
+    $retryEntry = [pscustomobject]@{
+      ranAt = (Get-Date).ToString("o")
+      commit = $null
+      articles = @()
+      facebook = $facebookResults
+      retryOf = $latestRun.ranAt
+    }
+    $state.runs = @($retryEntry) + @($state.runs)
+    Write-Json $PublisherLogPath $state
+    Invoke-CheckedCommand "git" @("add", "data/daily-publisher-log.json")
+    if (git diff --cached --quiet) {
+      Write-Host "No publisher log changes to commit."
+    } else {
+      Invoke-CheckedCommand "git" @("commit", "-m", "Retry failed Facebook posts")
+      if (!$SkipGitPush) {
+        Invoke-CheckedCommand "git" @("push", "origin", "HEAD:main")
+        Invoke-CheckedCommand "git" @("push", "origin", "HEAD:gh-pages")
+      }
+    }
+
+    foreach ($result in $facebookResults) {
+      Write-Host "Facebook $($result.result.status): $($result.slug) $($result.result.postId)"
+      if ($result.result.message) { Write-Host "Facebook message: $($result.result.message)" }
+    }
+  } finally {
+    Pop-Location -ErrorAction SilentlyContinue
+  }
+}
+
+if ($RetryFacebookFailed) {
+  Retry-FailedFacebookPosts
+  exit 0
 }
 
 try {

@@ -4,7 +4,7 @@ const crypto = require("crypto");
 
 const root = path.join(__dirname, "..");
 const siteUrl = "https://comeback2000.github.io/Car-news";
-const posts = JSON.parse(fs.readFileSync(path.join(root, "data", "posts.json"), "utf8"));
+const posts = JSON.parse(fs.readFileSync(path.join(root, "data", "posts.json"), "utf8").replace(/^\uFEFF/, ""));
 const imageSizeCache = new Map();
 
 const esc = (value) => String(value).replace(/[&<>"']/g, (char) => ({
