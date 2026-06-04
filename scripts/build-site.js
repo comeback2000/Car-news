@@ -170,7 +170,7 @@ ${headTags({ title: post.metaTitle, description: post.metaDescription, url: post
           <p>${esc(post.targetKeyword)} remains a story worth watching because buyer interest, pricing, charging confidence and brand support are moving quickly. For readers comparing options, the smartest next step is to match the headline trend with real-world needs before booking.</p>
         </section>
         <section>
-          <h2>${esc(post.targetKeyword)}: Related Reading</h2>
+          <h2>Related Reading</h2>
           <p>For more context, compare this story with ${related.map((item) => `<a href="${item.slug}.html">${esc(item.title)}</a>`).join(" and ")}.</p>
         </section>
         <section>

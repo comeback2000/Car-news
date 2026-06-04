@@ -274,10 +274,29 @@ function Get-Category($Niche, $Keyword) {
 }
 
 function Get-Title($Niche, $Keyword) {
-  if ($Niche -eq "bike") { return "${Keyword}: What Indian Riders Should Know Before Buying" }
-  if ($Niche -eq "mobile") { return "${Keyword}: The Latest Tech Update Indian Buyers Should Watch" }
-  if ($Keyword.ToLowerInvariant() -match "vs") { return "${Keyword}: Which Option Makes More Sense for Indian Buyers?" }
-  return "${Keyword}: Latest India Update, Buyer Signals and What Changes Next"
+  $lower = $Keyword.ToLowerInvariant()
+  if ($Niche -eq "bike") {
+    if ($lower -match "best|ev") { return "What Indian Riders Should Know Before Buying" }
+    if ($lower -match "launch") { return "New Bike Launches Indian Riders Should Watch Before Booking" }
+    if ($lower -match "ice|vs") { return "EV or ICE Bikes: The Choice Riders Are Rechecking" }
+    if ($lower -match "price") { return "The Real Cost Question Every Rider Should Ask" }
+    if ($lower -match "range") { return "The Range Promise Riders Should Check Before Buying" }
+    return "What Indian Riders Should Know Before Buying"
+  }
+  if ($Niche -eq "mobile") {
+    if ($lower -match "launch") { return "The Phone Launches Indian Buyers Should Watch Before Upgrading" }
+    if ($lower -match "apple|iphone") { return "The Apple Update Buyers Should Watch Before Upgrading" }
+    if ($lower -match "ai") { return "The AI Phone Shift Buyers Should Watch Closely" }
+    if ($lower -match "gpu") { return "The Mobile Performance Upgrade Buyers Should Not Ignore" }
+    return "The Tech Update Indian Buyers Should Watch Before Upgrading"
+  }
+  if ($lower -match "launch") { return "New EV Launches That Could Change Your 2026 Shortlist" }
+  if ($lower -match "electric suv") { return "The Electric SUVs Buyers Should Shortlist Before Prices Move" }
+  if ($lower -match "vs") { return "Which Option Makes More Sense for Indian Buyers?" }
+  if ($lower -match "charging") { return "The Charging Question Buyers Should Ask Before Booking" }
+  if ($lower -match "battery") { return "The Battery Life Question Every EV Buyer Should Ask" }
+  if ($lower -match "cheap|under|affordable") { return "The Affordable EV Picks Buyers Should Check First" }
+  return "What Buyers Should Know Before the Next Auto Update"
 }
 
 function Get-Tags($Niche, $Keyword) {
@@ -404,7 +423,7 @@ function New-Article($Selection, $ExistingSlugs) {
     aliases = @()
     targetKeyword = $keyword
     title = $title
-    metaTitle = "$keyword India Update 2026 | Car News"
+    metaTitle = "$title | Car News"
     metaDescription = "$keyword update with latest India news signals, buyer intent, practical checks and what changes next.".Substring(0, [Math]::Min(155, "$keyword update with latest India news signals, buyer intent, practical checks and what changes next.".Length))
     excerpt = "$keyword is drawing fresh attention as Indian readers compare price, timing, features, ownership value and real-world impact."
     category = $category
@@ -418,7 +437,7 @@ function New-Article($Selection, $ExistingSlugs) {
     sources = @($research | ForEach-Object { [pscustomobject]@{ label = "$($_.source): $($_.title)"; url = $_.link } })
     sections = @(
       [pscustomobject]@{
-      heading = "${keyword}: Why This Topic Is Trending Now"
+        heading = "Why This Topic Is Trending Now"
         paragraphs = @(
           "$keyword has become a useful search because buyers want quick clarity, not just a headline. The latest discussion is about timing, price, features, reliability and whether the update should change a shortlist.",
           "Current Google News signals include $summary. This article uses those signals to explain search intent and buyer impact without copying source articles."
@@ -426,7 +445,7 @@ function New-Article($Selection, $ExistingSlugs) {
         subsections = @([pscustomobject]@{ heading = "Search intent"; paragraphs = @("Readers searching $keyword usually want a clear answer on what changed, why it matters now and what to compare before making a decision.") })
       },
       [pscustomobject]@{
-        heading = "What $keyword Means for Indian Buyers"
+        heading = "What It Means for Indian Buyers"
         paragraphs = @(
           "The practical takeaway is to compare the news with real ownership needs. Availability, warranty, service access, running cost and resale confidence matter more than a single viral claim.",
           "For a sensible decision, compare the full ownership package and avoid judging only by launch hype or social media attention."
@@ -434,7 +453,7 @@ function New-Article($Selection, $ExistingSlugs) {
         subsections = @([pscustomobject]@{ heading = "Buyer checklist"; paragraphs = @("Before acting on $keyword, compare price, availability, warranty language, service support, early owner feedback and total cost of ownership.") })
       },
       [pscustomobject]@{
-      heading = "${keyword}: Final View"
+        heading = "Final View"
         paragraphs = @(
           "$keyword should be treated as a shortlist starting point. The best choice is the one that fits daily use, budget and support expectations after the initial news cycle fades.",
           "Keep watching official updates and trusted reviews before making a final buying decision."
