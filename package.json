@@ -4,6 +4,7 @@
     "publish:drip": "node scripts/drip-publish.js",
     "publish:auto": "node scripts/auto-publish-batch.js",
     "fb:post": "node scripts/FB_Post.js",
+    "fb:refresh-token": "node scripts/refresh-facebook-page-token.js",
     "workflow:test": "node scripts/test-publishing-workflow.js"
   }
 }
