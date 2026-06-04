@@ -70,7 +70,7 @@ function Read-Json($Path, $Fallback) {
   if (!(Test-Path $Path)) { return $Fallback }
   $raw = (Get-Content $Path -Raw).Trim()
   if (!$raw) { return $Fallback }
-  return $raw | ConvertFrom-Json -Depth 80
+  return $raw | ConvertFrom-Json
 }
 
 function Write-Json($Path, $Value) {
