@@ -73,6 +73,16 @@ function Read-Json($Path, $Fallback) {
   return $raw | ConvertFrom-Json
 }
 
+function Read-JsonArray($Path) {
+  $value = Read-Json $Path @()
+  if ($null -eq $value) { return }
+  if ($value -is [array]) {
+    foreach ($item in $value) { $item }
+    return
+  }
+  $value
+}
+
 function Write-Json($Path, $Value) {
   $Value | ConvertTo-Json -Depth 80 | Set-Content -Path $Path -Encoding UTF8
 }
@@ -457,7 +467,7 @@ try {
   Push-Location $Root
   Read-DotEnv
 
-  $posts = @(Read-Json $PostsPath @())
+  $posts = @(Read-JsonArray $PostsPath)
   $state = Read-Json $PublisherLogPath (New-EmptyPublisherLog)
   foreach ($prop in @("publishedKeywords", "publishedSlugs", "thumbnailHashes", "thumbnailSources", "facebookUrls", "runs")) {
     if ($null -eq $state.$prop) { $state | Add-Member -MemberType NoteProperty -Name $prop -Value @() }
