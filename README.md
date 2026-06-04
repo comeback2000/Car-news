@@ -1,269 +1,86 @@
-# Car News
+# Car News Daily Publisher
 
-Static GitHub Pages site for fast automotive news briefs.
-
-Latest update: June 3, 2026
-
-## Publishing workflow
-
-Add or update articles in `data/posts.json`, then run:
-
-```bash
-npm run build
-```
-
-The build generates SEO metadata, Open Graph/Twitter cards, NewsArticle schema, automatic internal links, related posts, category pages, tag pages, redirects for old URLs, `sitemap.xml`, and `robots.txt`.
-
-Featured trend-driven posts:
-
-- Tata's EV Breakout: Nexon, Punch, and Tiago Help Push Sales Past 10,000
-- Mahindra BE 6 and XEV 9e Are Turning India's EV SUV Race Into a Real Fight
-- Maruti e Vitara Just Made EV Charging the Story, Not Just Range
-
-Open `index.html` or publish the repo with GitHub Pages from the `main` branch root.
-
-## Workflow test mode
-
-Use this before enabling or changing automatic scheduling.
-
-Safe dry run:
+This repo uses one main PowerShell entry point for publishing:
 
 ```powershell
-npm run workflow:test
+.\scripts\Publish-Daily.ps1 -Run
 ```
 
-The dry run creates a temporary sample article, copies a sample thumbnail, rebuilds the site, verifies the generated article, homepage card, image metadata, social queue, duplicate status, link integrity and scheduled task registration, then cleans the temporary files and rebuilds back to the normal site.
+The script publishes 6 articles per run:
 
-It does not commit, push, or post to Facebook.
+- 2 Car/EV articles
+- 2 Bike articles
+- 2 Mobile Tech articles
 
-Expected checks:
+It reads keywords from `Keywords.txt`, continues from the next unused keyword, creates unique thumbnails, rebuilds the static site, commits and pushes generated files to GitHub, and posts each new article to the configured Facebook Page.
 
-- New article generated in `posts/`
-- Thumbnail generated in `assets/`
-- H1, featured image, intro paragraph and article sections render in the correct order
-- Homepage card includes the article URL and thumbnail
-- Canonical article URL is generated
-- Open Graph and Twitter image metadata use the thumbnail
-- Facebook caption and queue item can be generated in dry-run mode
-- Article is not already marked as published/duplicate
-- Windows scheduled tasks are detected
-- Link check passes
-
-Publish a real sample article to GitHub:
-Publish a real sample article to GitHub and then post the same article to the configured Facebook Page:
+## Manual Run
 
 ```powershell
-npm run workflow:test -- --publish
+$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\Publish-Daily.ps1 -Run
 ```
 
-This creates a sample workflow-test article, commits it, pushes to `main` and `gh-pages`, waits for the article and thumbnail to become public on GitHub Pages, then runs the Facebook publisher for that exact article slug. It prints the public GitHub Pages URL and Facebook Post ID.
-
-Requirements for the Facebook part:
-
-- `.env` must contain `FB_PAGE_ACCESS_TOKEN`.
-- The token must be a Page Access Token for `FB_PAGE_ID`.
-- `FB_DRY_RUN` must not be set to `true` in `.env`.
-
-Use this only when you really want a visible sample post on the site and Facebook Page.
-
-Keep temporary dry-run files for inspection:
+Or:
 
 ```powershell
-npm run workflow:test -- --keep
+npm run publish:daily
 ```
 
-## Automated drip publishing on Windows
+## Install Schedule
 
-The repo includes a queue publisher for scheduled GitHub Pages releases.
-
-- `data/post-queue.json` stores pending posts.
-- `data/publish-state.json` stores the next release time.
-- `data/published-log.json` records what was released.
-- `scripts/drip-publish.js` publishes one queued post every 120 minutes, rebuilds the site, commits the generated files, and pushes to `main` and `gh-pages`.
-
-This means a 10-post queue is drip-fed one post every 2 hours, which equals 2 posts every 4 hours.
-
-### Fill the queue with Codex
-
-Ask Codex to generate 10 complete article objects and save them in `data/post-queue.json`. Each queued post must use the same JSON shape as `data/posts.json` and must reference a real local image under `assets/`.
-
-Example prompt:
-
-```text
-Generate 10 SEO-optimized India car news posts using the same schema as data/posts.json.
-Use real images already stored in assets/ or download properly credited images into assets/.
-Save them as an array in data/post-queue.json.
-Do not publish them yet.
-```
-
-### Test one check manually
+Install the Windows Task Scheduler job for 9:15 AM local time:
 
 ```powershell
-npm run publish:drip
+$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\Publish-Daily.ps1 -InstallTask
 ```
 
-If the queue is empty, the script exits without publishing. If a queued post is due, it publishes one post, rebuilds the site, commits, and pushes.
-
-### Install the background schedule
-
-Run PowerShell from the repo root:
+Or:
 
 ```powershell
-& "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe" -ExecutionPolicy Bypass -File .\scripts\install-drip-publisher.ps1
+npm run schedule:install
 ```
 
-This installs two Windows scheduled tasks:
-
-- `CarNewsDripPublisher-Startup` checks the queue when you log in.
-- `CarNewsDripPublisher-Check` checks the queue every 30 minutes.
-
-The task checks often, but `data/publish-state.json` enforces the 2-hour release interval, so it does not publish everything at once. After a restart, the next check resumes from the saved queue and next publish time.
-
-Logs are written to `logs/drip-publisher-*.log`.
-
-### Change the interval
-
-The default release interval is 120 minutes. To change it for a manual run:
+Remove the scheduled task:
 
 ```powershell
-$env:PUBLISH_INTERVAL_MINUTES = "240"
-npm run publish:drip
+npm run schedule:uninstall
 ```
 
-To publish more than one due post per run, set `PUBLISH_MAX_PER_RUN`, but keep it at `1` for a clean drip-feed schedule.
+## Required Environment
 
-### Remove the scheduled tasks
-
-```powershell
-& "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe" -ExecutionPolicy Bypass -File .\scripts\uninstall-drip-publisher.ps1
-```
-
-## AutoTech Daily Facebook posting
-
-The repo includes `scripts/FB_Post.js` for publishing blog articles to the AutoTech Daily Facebook Page through the official Meta Graph API.
-
-Default Page:
-
-```env
-FB_PAGE_ID=176747645744060
-```
-
-The script:
-
-- Reads articles from `data/posts.json`.
-- Builds an engaging caption with the article URL and hashtags.
-- Uses the article featured image from GitHub Pages as the Facebook photo URL.
-- Adds new articles to `data/facebook-queue.json`.
-- Publishes due queue items to `/{page-id}/photos`.
-- Prevents duplicate posts by checking `data/facebook-published-log.json`.
-- Records title, URL, Facebook post/photo ID, publish date, image URL, caption hash and status.
-- Saves schedule state in `data/facebook-state.json` so it resumes after restart.
-
-### Required Meta setup
-
-Create or use a Meta app in the Meta Developer platform and request/configure these Page permissions:
-
-```text
-pages_show_list
-pages_read_engagement
-pages_manage_posts
-```
-
-Your Facebook user must have management access to the AutoTech Daily Page. The token must be a Page Access Token for:
-
-```text
-AutoTech Daily
-Page ID: 176747645744060
-```
-
-### Generate a long-lived Page Access Token
-
-1. Open Meta Graph API Explorer.
-2. Select your Meta app.
-3. Generate a User Access Token with:
-
-```text
-pages_show_list
-pages_read_engagement
-pages_manage_posts
-```
-
-4. Exchange the short-lived user token for a long-lived user token:
-
-```text
-GET https://graph.facebook.com/v23.0/oauth/access_token
-  ?grant_type=fb_exchange_token
-  &client_id=META_APP_ID
-  &client_secret=META_APP_SECRET
-  &fb_exchange_token=SHORT_LIVED_USER_TOKEN
-```
-
-5. Use the long-lived user token to get Page tokens:
-
-```text
-GET https://graph.facebook.com/v23.0/me/accounts
-  ?fields=id,name,tasks,access_token
-  &access_token=LONG_LIVED_USER_TOKEN
-```
-
-6. Copy the `access_token` for Page ID `176747645744060`.
-
-For production, prefer a Meta Business system user Page token where available. Tokens can still be invalidated by password changes, permission changes, app changes or Meta policy events, so check token status periodically in Meta's Access Token Debugger and rotate safely.
-
-### Store credentials securely
-
-Copy `.env.example` to `.env`:
-
-```powershell
-Copy-Item .env.example .env
-```
-
-Edit `.env`:
+Create `.env` from `.env.example` and set:
 
 ```env
 GRAPH_API_VERSION=v23.0
 FB_PAGE_ID=176747645744060
-FB_PAGE_ACCESS_TOKEN=your_long_lived_page_access_token
-FB_POST_INTERVAL_MINUTES=240
-FB_MAX_POSTS_PER_RUN=1
+FB_PAGE_ACCESS_TOKEN=your_valid_page_access_token
 FB_DRY_RUN=false
 ```
 
-`.env` is ignored by git. Never commit Page tokens to GitHub.
+The Facebook token must be a Page token with:
 
-### Test manually
+- `pages_manage_posts`
+- `pages_read_engagement`
 
-Dry run without posting:
+## Logs
 
-```powershell
-$env:FB_DRY_RUN = "true"
-npm run fb:post
-Remove-Item Env:\FB_DRY_RUN
+Runtime logs are written to:
+
+```text
+logs/daily-publisher-*.log
 ```
 
-Live publish due queue items:
+Publishing state and duplicate protection are tracked in:
 
-```powershell
-npm run fb:post
+```text
+data/daily-publisher-log.json
 ```
 
-### Install background schedule
+The log tracks published keywords, slugs, thumbnail hashes, thumbnail sources, Facebook URLs, and run history.
 
-```powershell
-& "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe" -ExecutionPolicy Bypass -File .\scripts\install-fb-post.ps1
-```
+## Remaining Scripts
 
-This installs:
+Only these scripts are required:
 
-- `AutoTechDailyFBPost-Startup`
-- `AutoTechDailyFBPost-Check`
-
-The check task runs every 30 minutes. `data/facebook-state.json` and `FB_POST_INTERVAL_MINUTES` control drip timing, so pending posts continue after restart instead of all posting at once.
-
-Logs are written to `logs/fb-post-*.log`.
-
-### Remove Facebook posting tasks
-
-```powershell
-& "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe" -ExecutionPolicy Bypass -File .\scripts\uninstall-fb-post.ps1
-```
+- `scripts/Publish-Daily.ps1` - main publisher, scheduler installer, Facebook poster, GitHub pusher
+- `scripts/build-site.js` - static site renderer

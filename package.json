@@ -1,10 +1,8 @@
 {
   "scripts": {
     "build": "node scripts/build-site.js",
-    "publish:drip": "node scripts/drip-publish.js",
-    "publish:auto": "node scripts/auto-publish-batch.js",
-    "fb:post": "node scripts/FB_Post.js",
-    "fb:refresh-token": "node scripts/refresh-facebook-page-token.js",
-    "workflow:test": "node scripts/test-publishing-workflow.js"
+    "publish:daily": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/Publish-Daily.ps1 -Run",
+    "schedule:install": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/Publish-Daily.ps1 -InstallTask",
+    "schedule:uninstall": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/Publish-Daily.ps1 -UninstallTask"
   }
 }
