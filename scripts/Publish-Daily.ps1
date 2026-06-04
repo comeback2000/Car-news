@@ -261,6 +261,112 @@ function Get-NewsResearch($Keyword, $Niche) {
   }
 }
 
+function Clean-NewsTitle($Title) {
+  $clean = ($Title -as [string]).Trim()
+  if (!$clean) { return "" }
+  $clean = $clean -replace "\s+", " "
+  $parts = $clean -split "\s-\s"
+  if ($parts.Count -gt 1) {
+    return ($parts[0..($parts.Count - 2)] -join " - ").Trim()
+  }
+  return $clean
+}
+
+function Get-SourceNames($Research) {
+  @($Research | ForEach-Object { $_.source } | Where-Object { $_ } | Select-Object -Unique)
+}
+
+function Get-ResearchThemes($Research, $Niche) {
+  $text = (($Research | ForEach-Object { $_.title }) -join " ").ToLowerInvariant()
+  $themes = @()
+  if ($text -match "launch|unveil|introduced|arrived") { $themes += "fresh launches" }
+  if ($text -match "price|pricing|cost|emi|discount") { $themes += "pricing pressure" }
+  if ($text -match "range|battery|charging|charger") { $themes += "range and charging confidence" }
+  if ($text -match "sales|demand|deliveries|bookings") { $themes += "buyer demand" }
+  if ($text -match "hybrid|petrol|diesel|cng|ice|ethanol") { $themes += "powertrain choice" }
+  if ($text -match "ai|chip|gpu|camera|software|update") { $themes += "technology upgrades" }
+  if ($text -match "service|warranty|ownership|reliability") { $themes += "ownership support" }
+  if (!$themes) {
+    if ($Niche -eq "bike") { $themes = @("commuter value", "running cost", "ownership support") }
+    elseif ($Niche -eq "mobile") { $themes = @("upgrade timing", "software features", "value for money") }
+    else { $themes = @("launch timing", "ownership value", "market competition") }
+  }
+  return @($themes | Select-Object -Unique)
+}
+
+function Get-LongTailKeywords($Niche, $Keyword, $Themes) {
+  $base = ($Keyword -as [string]).Trim()
+  if ($Niche -eq "bike") {
+    return @(
+      "electric bike buying guide India",
+      "best commuter bike ownership cost",
+      "two wheeler launch updates India"
+    )
+  }
+  if ($Niche -eq "mobile") {
+    return @(
+      "smartphone upgrade guide India",
+      "mobile launch buying advice",
+      "AI phone features for Indian buyers"
+    )
+  }
+  $tails = @(
+    "EV buying guide India",
+    "electric SUV ownership cost",
+    "new car launch shortlist India"
+  )
+  if (($base + " " + ($Themes -join " ")) -match "charging|range") { $tails += "EV charging network India" }
+  if (($base + " " + ($Themes -join " ")) -match "battery") { $tails += "EV battery warranty India" }
+  return @($tails | Select-Object -Unique)
+}
+
+function Get-DecisionLens($Niche) {
+  if ($Niche -eq "bike") {
+    return [pscustomobject]@{
+      audience = "daily riders and first-time two-wheeler buyers"
+      money = "on-road price, fuel or electricity cost, tyres, battery health if it is an EV, and service reach"
+      compare = "Hero, TVS, Bajaj, Ola, Ather, Honda and Royal Enfield options depending on budget and use case"
+      takeaway = "The smartest choice is usually the bike that keeps monthly running costs predictable while still feeling easy to live with every day."
+    }
+  }
+  if ($Niche -eq "mobile") {
+    return [pscustomobject]@{
+      audience = "Indian smartphone buyers planning an upgrade"
+      money = "launch price, exchange value, software support, repair cost and whether the headline feature will matter after a month"
+      compare = "Apple, Samsung, Xiaomi, OnePlus, Vivo, Oppo and iQOO alternatives in the same price band"
+      takeaway = "The best upgrade is the phone that improves daily use, not the one with the loudest spec sheet."
+    }
+  }
+  return [pscustomobject]@{
+    audience = "Indian car buyers building a serious shortlist"
+    money = "ex-showroom price, real range, charging access, insurance, service support, resale confidence and waiting period"
+    compare = "Tata, Mahindra, Maruti Suzuki, Hyundai, Kia, MG, BYD and Toyota alternatives"
+    takeaway = "A strong launch story only matters if the ownership package still looks good after the first wave of hype."
+  }
+}
+
+function Get-ResearchBrief($Keyword, $Niche, $Research) {
+  $headlines = @($Research | Select-Object -First 5 | ForEach-Object { Clean-NewsTitle $_.title } | Where-Object { $_ })
+  $sources = @(Get-SourceNames $Research)
+  $themes = @(Get-ResearchThemes -Research $Research -Niche $Niche)
+  $longTail = @(Get-LongTailKeywords -Niche $Niche -Keyword $Keyword -Themes $themes)
+  $lens = Get-DecisionLens $Niche
+  $sourceLine = if ($sources.Count) { ($sources | Select-Object -First 4) -join ", " } else { "Google News" }
+  $headlineLine = if ($headlines.Count) { ($headlines | Select-Object -First 3) -join "; " } else { "$Keyword latest update" }
+  $themeLine = if ($themes.Count) { ($themes | Select-Object -First 3) -join ", " } else { "buyer interest" }
+
+  return [pscustomobject]@{
+    headlines = $headlines
+    sources = $sources
+    themes = $themes
+    longTailKeywords = $longTail
+    sourceLine = $sourceLine
+    headlineLine = $headlineLine
+    themeLine = $themeLine
+    lens = $lens
+  }
+}
+
 function Get-Category($Niche, $Keyword) {
   $lower = $Keyword.ToLowerInvariant()
   if ($Niche -eq "bike") { return "Bike News" }
@@ -273,18 +379,18 @@ function Get-Category($Niche, $Keyword) {
   return "EV Buying Guides"
 }
 
-function Get-Title($Niche, $Keyword) {
+function Get-Title($Niche, $Keyword, $Brief = $null) {
   $lower = $Keyword.ToLowerInvariant()
   if ($Niche -eq "bike") {
     if ($lower -match "best|ev") { return "What Indian Riders Should Know Before Buying" }
-    if ($lower -match "launch") { return "New Bike Launches Indian Riders Should Watch Before Booking" }
+    if ($lower -match "launch") { return "The New Bike Launches Worth Waiting For" }
     if ($lower -match "ice|vs") { return "EV or ICE Bikes: The Choice Riders Are Rechecking" }
     if ($lower -match "price") { return "The Real Cost Question Every Rider Should Ask" }
     if ($lower -match "range") { return "The Range Promise Riders Should Check Before Buying" }
     return "What Indian Riders Should Know Before Buying"
   }
   if ($Niche -eq "mobile") {
-    if ($lower -match "launch") { return "The Phone Launches Indian Buyers Should Watch Before Upgrading" }
+    if ($lower -match "launch") { return "The Phone Launches Worth Watching Before You Upgrade" }
     if ($lower -match "apple|iphone") { return "The Apple Update Buyers Should Watch Before Upgrading" }
     if ($lower -match "ai") { return "The AI Phone Shift Buyers Should Watch Closely" }
     if ($lower -match "gpu") { return "The Mobile Performance Upgrade Buyers Should Not Ignore" }
@@ -300,9 +406,9 @@ function Get-Title($Niche, $Keyword) {
 }
 
 function Get-Tags($Niche, $Keyword) {
-  if ($Niche -eq "bike") { return @($Keyword, "Bike News India", "EV Bikes India", "Two Wheeler News") }
-  if ($Niche -eq "mobile") { return @($Keyword, "Mobile Tech India", "Smartphone News", "AI Tech News") }
-  return @($Keyword, "India car news", "Electric SUV India", "EV buying guide")
+  if ($Niche -eq "bike") { return @($Keyword, "Bike News India", "EV Bikes India", "Two Wheeler News", "Bike Buying Guide") }
+  if ($Niche -eq "mobile") { return @($Keyword, "Mobile Tech India", "Smartphone News", "AI Tech News", "Phone Buying Guide") }
+  return @($Keyword, "India car news", "Electric SUV India", "EV buying guide", "Auto market India")
 }
 
 function Get-ThumbnailCandidates($Niche, $Keyword) {
@@ -329,6 +435,104 @@ function Get-ThumbnailCandidates($Niche, $Keyword) {
 function Get-ContentHash($Path) {
   if (!(Test-Path $Path)) { return $null }
   return (Microsoft.PowerShell.Utility\Get-FileHash -Algorithm SHA256 -Path $Path).Hash.ToLowerInvariant()
+}
+
+function Get-ThumbnailBadge($Niche, $Keyword) {
+  $lower = $Keyword.ToLowerInvariant()
+  if ($Niche -eq "bike") {
+    if ($lower -match "ev|electric") { return "EV BIKE WATCH" }
+    if ($lower -match "launch") { return "NEW BIKE ALERT" }
+    return "RIDER GUIDE"
+  }
+  if ($Niche -eq "mobile") {
+    if ($lower -match "ai") { return "AI PHONE WATCH" }
+    if ($lower -match "apple|iphone") { return "APPLE UPDATE" }
+    return "TECH ALERT"
+  }
+  if ($lower -match "charging|range|battery") { return "EV BUYER ALERT" }
+  if ($lower -match "launch") { return "NEW EV WATCH" }
+  return "AUTO TREND"
+}
+
+function Draw-HeadlineText($Graphics, $Text, $Font, $X, $Y, $MaxWidth, $LineHeight, $MaxLines) {
+  $white = New-Object System.Drawing.SolidBrush ([System.Drawing.Color]::White)
+  $shadow = New-Object System.Drawing.SolidBrush ([System.Drawing.Color]::FromArgb(210, 0, 0, 0))
+  $words = $Text.ToUpperInvariant().Split(" ")
+  $lines = @()
+  $line = ""
+  foreach ($word in $words) {
+    $trial = "$line $word".Trim()
+    if ($Graphics.MeasureString($trial, $Font).Width -gt $MaxWidth -and $line) {
+      $lines += $line
+      $line = $word
+    } else {
+      $line = $trial
+    }
+    if ($lines.Count -ge $MaxLines) { break }
+  }
+  if ($line -and $lines.Count -lt $MaxLines) { $lines += $line }
+  for ($i = 0; $i -lt $lines.Count; $i++) {
+    $yy = $Y + ($i * $LineHeight)
+    $Graphics.DrawString($lines[$i], $Font, $shadow, $X + 5, $yy + 5)
+    $Graphics.DrawString($lines[$i], $Font, $white, $X, $yy)
+  }
+  $white.Dispose()
+  $shadow.Dispose()
+}
+
+function Add-ThumbnailOverlay($Path, $Title, $Niche, $Keyword) {
+  Add-Type -AssemblyName System.Drawing
+  $source = [System.Drawing.Image]::FromFile($Path)
+  $bitmap = New-Object System.Drawing.Bitmap 1600, 900
+  $graphics = [System.Drawing.Graphics]::FromImage($bitmap)
+  $graphics.SmoothingMode = "AntiAlias"
+  $graphics.InterpolationMode = [System.Drawing.Drawing2D.InterpolationMode]::HighQualityBicubic
+
+  $scale = [Math]::Max(1600 / $source.Width, 900 / $source.Height)
+  $srcWidth = [Math]::Min($source.Width, 1600 / $scale)
+  $srcHeight = [Math]::Min($source.Height, 900 / $scale)
+  $srcX = [Math]::Max(0, ($source.Width - $srcWidth) / 2)
+  $srcY = [Math]::Max(0, ($source.Height - $srcHeight) / 2)
+  $graphics.DrawImage($source, 0, 0, 1600, 900)
+  $graphics.DrawImage($source, (New-Object System.Drawing.Rectangle 0, 0, 1600, 900), $srcX, $srcY, $srcWidth, $srcHeight, [System.Drawing.GraphicsUnit]::Pixel)
+
+  $rect = New-Object System.Drawing.Rectangle 0, 0, 1600, 900
+  $gradient = New-Object System.Drawing.Drawing2D.LinearGradientBrush $rect, ([System.Drawing.Color]::FromArgb(238, 0, 0, 0)), ([System.Drawing.Color]::FromArgb(65, 0, 0, 0)), 0
+  $graphics.FillRectangle($gradient, $rect)
+  $bottom = New-Object System.Drawing.SolidBrush ([System.Drawing.Color]::FromArgb(210, 0, 0, 0))
+  $graphics.FillRectangle($bottom, 0, 760, 1600, 140)
+
+  $accentColor = if ($Niche -eq "bike") { [System.Drawing.Color]::FromArgb(0, 224, 154) } elseif ($Niche -eq "mobile") { [System.Drawing.Color]::FromArgb(72, 190, 255) } else { [System.Drawing.Color]::FromArgb(255, 199, 44) }
+  $accent = New-Object System.Drawing.SolidBrush $accentColor
+  $black = New-Object System.Drawing.SolidBrush ([System.Drawing.Color]::FromArgb(20, 20, 20))
+  $white = New-Object System.Drawing.SolidBrush ([System.Drawing.Color]::White)
+  $smallFont = New-Object System.Drawing.Font "Arial", 28, ([System.Drawing.FontStyle]::Bold)
+  $tinyFont = New-Object System.Drawing.Font "Arial", 18, ([System.Drawing.FontStyle]::Bold)
+  $headlineFont = New-Object System.Drawing.Font "Arial", 72, ([System.Drawing.FontStyle]::Bold)
+
+  $badge = Get-ThumbnailBadge -Niche $Niche -Keyword $Keyword
+  $graphics.FillRectangle($accent, 70, 62, 430, 56)
+  $graphics.DrawString($badge, $smallFont, $black, 92, 76)
+  Draw-HeadlineText -Graphics $graphics -Text $Title -Font $headlineFont -X 70 -Y 250 -MaxWidth 1000 -LineHeight 86 -MaxLines 5
+
+  $graphics.FillRectangle($accent, 0, 832, 1600, 14)
+  $graphics.DrawString("Fresh India update  |  Buyer guide  |  No hype, practical takeaways", $tinyFont, $white, 72, 802)
+  $graphics.DrawString("Car News original thumbnail | real source image with editorial overlay", $tinyFont, $white, 72, 855)
+
+  $tmp = "$Path.tmp.jpg"
+  $bitmap.Save($tmp, [System.Drawing.Imaging.ImageFormat]::Jpeg)
+  $headlineFont.Dispose()
+  $smallFont.Dispose()
+  $tinyFont.Dispose()
+  $white.Dispose()
+  $black.Dispose()
+  $accent.Dispose()
+  $bottom.Dispose()
+  $gradient.Dispose()
+  $graphics.Dispose()
+  $bitmap.Dispose()
+  $source.Dispose()
+  Move-Item -LiteralPath $tmp -Destination $Path -Force
 }
 
 function New-FallbackThumbnail($Path, $Title, $Niche) {
@@ -378,6 +582,7 @@ function New-Thumbnail($Post, $Niche, $State, $ExistingImageHashes) {
     try {
       Invoke-WebRequest -Uri $source -OutFile $target -UseBasicParsing -TimeoutSec 30
       if ((Get-Item $target).Length -lt 20000) { throw "Downloaded thumbnail too small." }
+      Add-ThumbnailOverlay -Path $target -Title $Post.title -Niche $Niche -Keyword $Post.targetKeyword
       $hash = Get-ContentHash $target
       if ($ExistingImageHashes.ContainsKey($hash) -or @($State.thumbnailHashes) -contains $hash) {
         Remove-Item $target -Force
@@ -413,10 +618,19 @@ function New-Article($Selection, $ExistingSlugs) {
   $ExistingSlugs[$slug] = $true
 
   $research = @(Get-NewsResearch -Keyword $keyword -Niche $niche)
-  $title = Get-Title -Niche $niche -Keyword $keyword
+  $brief = Get-ResearchBrief -Keyword $keyword -Niche $niche -Research $research
+  $title = Get-Title -Niche $niche -Keyword $keyword -Brief $brief
   $category = Get-Category -Niche $niche -Keyword $keyword
   $today = (Get-Date).ToString("yyyy-MM-dd")
-  $summary = ($research | Select-Object -First 3 | ForEach-Object { "$($_.source): $($_.title)" }) -join " | "
+  $primaryLongTail = @($brief.longTailKeywords | Select-Object -First 1)[0]
+  $secondaryLongTail = @($brief.longTailKeywords | Select-Object -Skip 1 -First 1)[0]
+  $lens = $brief.lens
+  $sourcesLabel = $brief.sourceLine
+  $headlinesLabel = $brief.headlineLine
+  $themesLabel = $brief.themeLine
+  $metaBase = "$title, explained with latest India news signals, buyer context, comparisons and practical takeaways."
+  $excerpt = "Fresh reports from $sourcesLabel point to $themesLabel. Here is what buyers should actually take from the noise."
+  $sourceParagraph = "Recent Google News results for this topic point to a more useful story than a simple launch or spec update. Reports tracked from $sourcesLabel highlight $headlinesLabel. Read together, they show why $($lens.audience) are asking sharper questions about $themesLabel."
 
   [pscustomobject]@{
     slug = $slug
@@ -424,41 +638,50 @@ function New-Article($Selection, $ExistingSlugs) {
     targetKeyword = $keyword
     title = $title
     metaTitle = "$title | Car News"
-    metaDescription = "$keyword update with latest India news signals, buyer intent, practical checks and what changes next.".Substring(0, [Math]::Min(155, "$keyword update with latest India news signals, buyer intent, practical checks and what changes next.".Length))
-    excerpt = "$keyword is drawing fresh attention as Indian readers compare price, timing, features, ownership value and real-world impact."
+    metaDescription = $metaBase.Substring(0, [Math]::Min(155, $metaBase.Length))
+    excerpt = $excerpt.Substring(0, [Math]::Min(190, $excerpt.Length))
     category = $category
-    tags = @(Get-Tags -Niche $niche -Keyword $keyword)
+    tags = @((Get-Tags -Niche $niche -Keyword $keyword) + @($brief.longTailKeywords) | Select-Object -Unique)
     image = "assets/$slug-thumbnail.jpg"
-    imageAlt = "$keyword thumbnail for latest India $niche update"
-    imageCredit = "Thumbnail selected or generated uniquely for this article."
+    imageAlt = "$title editorial thumbnail based on $keyword research"
+    imageCredit = "Real source image with Car News editorial thumbnail overlay."
     author = "Car News Desk"
     datePublished = $today
     dateModified = $today
+    conclusion = "$($lens.takeaway) Keep checking official details and independent reviews before turning this news into a booking decision."
     sources = @($research | ForEach-Object { [pscustomobject]@{ label = "$($_.source): $($_.title)"; url = $_.link } })
     sections = @(
       [pscustomobject]@{
-        heading = "Why This Topic Is Trending Now"
+        heading = "Why This Story Matters Now"
         paragraphs = @(
-          "$keyword has become a useful search because buyers want quick clarity, not just a headline. The latest discussion is about timing, price, features, reliability and whether the update should change a shortlist.",
-          "Current Google News signals include $summary. This article uses those signals to explain search intent and buyer impact without copying source articles."
+          $sourceParagraph,
+          "That matters because the Indian market is no longer reacting only to headline announcements. Buyers are comparing delivery timelines, ownership cost, feature maturity and service confidence before they treat any new update as shortlist-worthy."
         )
-        subsections = @([pscustomobject]@{ heading = "Search intent"; paragraphs = @("Readers searching $keyword usually want a clear answer on what changed, why it matters now and what to compare before making a decision.") })
+        subsections = @([pscustomobject]@{ heading = "Reader intent"; paragraphs = @("For buyers, the useful question is closer to ${primaryLongTail}: what changed, why it matters, and whether this update should influence a real buying decision.") })
       },
       [pscustomobject]@{
-        heading = "What It Means for Indian Buyers"
+        heading = "The Buyer Angle Most Headlines Miss"
         paragraphs = @(
-          "The practical takeaway is to compare the news with real ownership needs. Availability, warranty, service access, running cost and resale confidence matter more than a single viral claim.",
-          "For a sensible decision, compare the full ownership package and avoid judging only by launch hype or social media attention."
+          "For $($lens.audience), the important part is not whether a story is trending. It is whether the update changes the real buying equation: $($lens.money).",
+          "This is where many quick summaries fall short. A product can look exciting in isolation and still be a weak fit if the waiting period is long, the service network is thin, the warranty wording is vague, or the most useful variant sits far above the advertised entry price."
         )
-        subsections = @([pscustomobject]@{ heading = "Buyer checklist"; paragraphs = @("Before acting on $keyword, compare price, availability, warranty language, service support, early owner feedback and total cost of ownership.") })
+        subsections = @([pscustomobject]@{ heading = "Practical checklist"; paragraphs = @("Before acting, compare on-road price, confirmed availability, warranty terms, service access, early owner feedback, resale confidence and total monthly cost. Those checks matter more than a single viral claim.") })
       },
       [pscustomobject]@{
-        heading = "Final View"
+        heading = "How It Compares With the Market"
         paragraphs = @(
-          "$keyword should be treated as a shortlist starting point. The best choice is the one that fits daily use, budget and support expectations after the initial news cycle fades.",
-          "Keep watching official updates and trusted reviews before making a final buying decision."
+          "The competitive frame is just as important as the news itself. Indian buyers are likely to compare this update against $($lens.compare), and that comparison will decide whether the story becomes a real sales driver or just another busy news cycle.",
+          "The strongest options will be the ones that make the trade-off easy to understand. Range or performance alone is not enough; buyers also want clear pricing, predictable service support, sensible variant packaging and confidence that the product will age well."
         )
-        subsections = @()
+        subsections = @([pscustomobject]@{ heading = "Market signal"; paragraphs = @("A useful long-tail angle here is ${secondaryLongTail}. It keeps the story focused on buyer outcomes, ownership questions and the real comparison shoppers are trying to make.") })
+      },
+      [pscustomobject]@{
+        heading = "What Smart Buyers Should Watch Next"
+        paragraphs = @(
+          "The next signals to watch are official variant details, city-wise availability, early test-drive feedback, real-world efficiency or battery results, and whether dealers can explain the ownership package without ambiguity.",
+          $lens.takeaway
+        )
+        subsections = @([pscustomobject]@{ heading = "Editorial view"; paragraphs = @("Treat this as a shortlist story, not a final verdict. The right decision is the one that still makes sense after the launch buzz, social chatter and first-week excitement fade.") })
       }
     )
   }
