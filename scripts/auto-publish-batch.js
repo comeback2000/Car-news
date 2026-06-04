@@ -42,28 +42,103 @@ const generatedPaths = [
 
 const imageSources = {
   mahindra: [
+    "assets/mahindra-be6.jpg",
+    "https://www.mahindraelectricsuv.com/on/demandware.static/-/Library-Sites-eSUVSharedLibrary/default/dwe95fdf3d/press-release/26nov/desktop/1.2.jpg",
     "https://www.mahindraelectricsuv.com/on/demandware.static/-/Library-Sites-eSUVSharedLibrary/default/dw6e27f812/press-release/26nov/desktop/1.1.jpg",
-    "https://www.mahindraelectricsuv.com/on/demandware.static/-/Library-Sites-eSUVSharedLibrary/default/dw78666b69/press-release/26nov/desktop/4.1a.jpg"
+    "https://www.mahindraelectricsuv.com/on/demandware.static/-/Library-Sites-eSUVSharedLibrary/default/dw78666b69/press-release/26nov/desktop/4.1a.jpg",
+    "https://www.mahindraelectricsuv.com/on/demandware.static/-/Library-Sites-eSUVSharedLibrary/default/dwe55d768e/press-release/26nov/desktop/4.1b.jpg"
   ],
   tata: [
-    "https://ev.tatamotors.com/content/dam/tml/tata-motors/punch/ev/images/gallery/punch-ev-gallery-1.jpg"
+    "assets/tata-nexon-ev.jpg",
+    "https://static-assets.tatamotors.com/Production/www-tatamotors-com-NEW/wp-content/uploads/2025/07/th-040725.jpg",
+    "https://static-assets.tatamotors.com/Production/www-tatamotors-com-NEW/wp-content/uploads/2025/06/thumb.jpg",
+    "https://static-assets.tatamotors.com/Production/www-tatamotors-com-NEW/wp-content/uploads/2025/02/th-280225.jpg"
   ],
   maruti: [
-    "https://www.marutisuzuki.com/-/media/MSIL-Revamp/News/Press-release/2025/December/e-vitara/eVitara-Image.ashx"
+    "assets/suzuki-e-vitara.jpg"
   ],
   hyundai: [
-    "https://www.hyundai.com/content/dam/hyundai/in/en/data/find-a-car/creta-electric/Highlights/pc/cretaelectric-highlights-kv-pc.jpg"
+    "https://www.hyundai.com/content/dam/hyundai/in/en/data/find-a-car/creta-electric/highlights/cretahyundai-electric-kv-pc.jpg"
   ],
   kia: [
-    "https://www.kia.com/content/dam/kia2/in/en/images/our-vehicles/ev6/ev6-overview/kv-ev6.jpg"
+    "https://www.kia.com/content/dam/kwcms/in/en/images/our-vehicles/carens-clavis-ev/showroom/carens-clavis-ev/kia-carens-clavis-ev-showroom-1920x1080.jpg"
   ],
   mg: [
-    "https://www.mgmotor.co.in/content/dam/mgmotor/in/en/homepage/mg-windsor-ev-banner.jpg"
+    "https://mgmotor.scene7.com/is/image/mgmotor/hd-img-dsc-068?fit=constrain&fmt=jpg&qlt=90&resMode=bisharp&wid=1600"
   ],
   byd: [
-    "https://www.byd.com/content/dam/byd-site/in/product/byd-atto3/banner-pc.jpg"
+    "https://www.byd.com/content/dam/byd-site/in/product/byd-sealion-7/gallery/BYD-SEALION-7-gallery-1.jpg"
   ]
 };
+
+const imageSourceProfiles = [
+  {
+    match: (lower) => lower.includes("harrier") && lower.includes("xev"),
+    brand: "TATA VS MAHINDRA",
+    sourceLabel: "Official Tata Harrier.ev and Mahindra XEV imagery",
+    accentColor: [255, 204, 0],
+    sources: [
+      "https://static-assets.tatamotors.com/Production/www-tatamotors-com-NEW/wp-content/uploads/2025/07/th-040725.jpg",
+      "https://www.mahindraelectricsuv.com/on/demandware.static/-/Library-Sites-eSUVSharedLibrary/default/dw6e27f812/press-release/26nov/desktop/1.1.jpg"
+    ]
+  },
+  {
+    match: (lower) => lower.includes("curvv"),
+    brand: "TATA CURVV.EV",
+    sourceLabel: "Official Tata Curvv.ev vehicle imagery",
+    accentColor: [0, 183, 255],
+    sources: ["https://www.tatamotors.com/wp-content/uploads/2024/08/EV-Front-3-4-scaled.jpg"]
+  },
+  {
+    match: (lower) => lower.includes("cheap") || lower.includes("affordable") || lower.includes("under"),
+    brand: "MG COMET EV",
+    sourceLabel: "Official MG Comet EV vehicle imagery",
+    accentColor: [0, 220, 170],
+    sources: ["https://mgmotor.scene7.com/is/image/mgmotor/hd-img-dsc-068?fit=constrain&fmt=jpg&qlt=90&resMode=bisharp&wid=1600"]
+  },
+  {
+    match: (lower) => lower.includes("battery") || lower.includes("range"),
+    brand: "TATA HARRIER.EV",
+    sourceLabel: "Official Tata Motors Harrier.ev imagery",
+    accentColor: [255, 194, 0],
+    sources: ["https://static-assets.tatamotors.com/Production/www-tatamotors-com-NEW/wp-content/uploads/2025/06/thumb.jpg"]
+  },
+  {
+    match: (lower) => lower.includes("creta") || lower.includes("hyundai"),
+    brand: "HYUNDAI CRETA EV",
+    sourceLabel: "Official Hyundai Creta Electric imagery",
+    accentColor: [0, 160, 255],
+    sources: imageSources.hyundai
+  },
+  {
+    match: (lower) => lower.includes("mg") || lower.includes("comet"),
+    brand: "MG MOTOR",
+    sourceLabel: "Official MG Motor EV imagery",
+    accentColor: [0, 220, 170],
+    sources: imageSources.mg
+  },
+  {
+    match: (lower) => lower.includes("mahindra") || lower.includes("xev") || lower.includes("be 6") || lower.includes("be6"),
+    brand: "MAHINDRA EV",
+    sourceLabel: "Official Mahindra Electric Origin SUV imagery",
+    accentColor: [255, 204, 0],
+    sources: imageSources.mahindra
+  },
+  {
+    match: (lower) => lower.includes("maruti") || lower.includes("vitara") || lower.includes("charging") || lower.includes("launch"),
+    brand: "MARUTI SUZUKI",
+    sourceLabel: "Real Suzuki e Vitara imagery",
+    accentColor: [0, 128, 255],
+    sources: imageSources.maruti
+  },
+  {
+    match: (lower) => lower.includes("tata") || lower.includes("ev") || lower.includes("electric"),
+    brand: "TATA EV",
+    sourceLabel: "Official Tata Motors EV imagery",
+    accentColor: [0, 183, 255],
+    sources: imageSources.tata
+  }
+];
 
 function readJson(file, fallback) {
   if (!fs.existsSync(file)) return fallback;
@@ -232,7 +307,12 @@ function brandFor(keyword) {
   for (const brand of ["mahindra", "tata", "maruti", "hyundai", "kia", "mg", "byd"]) {
     if (lower.includes(brand)) return brand;
   }
-  return lower.includes("ev") || lower.includes("electric") ? "mahindra" : "tata";
+  if (lower.includes("charging")) return "maruti";
+  if (lower.includes("battery") || lower.includes("range")) return "tata";
+  if (lower.includes("cheap") || lower.includes("under")) return "mg";
+  if (lower.includes("launch") || lower.includes("upcoming")) return "maruti";
+  if (lower.includes("suv")) return "hyundai";
+  return lower.includes("ev") || lower.includes("electric") ? "tata" : "tata";
 }
 
 function titleFor(keyword, research) {
@@ -300,7 +380,7 @@ function makeArticle(keyword, research, datePublished, existingSlugs) {
     tags,
     image: `assets/${slug}-thumbnail.jpg`,
     imageAlt: `${keyword} thumbnail for latest India car news update`,
-    imageCredit: `Thumbnail: Car News graphic using ${brandFor(keyword)} official or generated press-style imagery.`,
+    imageCredit: `Thumbnail: Car News uses real ${brandFor(keyword)} vehicle imagery matched to the article topic.`,
     author: "Car News Desk",
     datePublished,
     dateModified: datePublished,
@@ -356,15 +436,36 @@ async function downloadFile(url, file) {
   fs.writeFileSync(file, bytes);
 }
 
-function createThumbnailWithPython(post, keyword, brand, sourceFile, publishedHashes) {
+function imageSourceKey(sources) {
+  return sources.map((source) => path.basename(String(source).split("?")[0]).toLowerCase()).join("+");
+}
+
+function sourceCandidatesFor(keyword, post, posts) {
+  const lower = keyword.toLowerCase();
+  const usedSourceKeys = new Set(posts.map((item) => item.imageSourceKey).filter(Boolean));
+  const profiles = imageSourceProfiles.filter((profile) => profile.match(lower));
+  const fallback = imageSourceProfiles.find((profile) => profile.match("tata ev"));
+  const candidates = [...profiles, fallback].filter(Boolean).map((profile) => ({
+    ...profile,
+    sources: [...new Set(profile.sources.filter(Boolean))]
+  }));
+
+  return candidates.filter((candidate) => candidate.sources.length && !usedSourceKeys.has(imageSourceKey(candidate.sources)));
+}
+
+function createThumbnailWithPython(post, keyword, profile, sourceFiles, publishedHashes) {
   const helper = path.join(root, "scripts", "create-auto-thumbnail.py");
   const payload = {
-    sourceFile,
+    sourceFile: sourceFiles[0],
+    sourceFiles,
     outputFile: path.join(root, post.image),
     keyword,
     headline: keyword.toUpperCase(),
-    deck: brand.toUpperCase(),
+    deck: profile.brand.toUpperCase(),
+    sourceLabel: profile.sourceLabel,
+    accentColor: profile.accentColor,
     slug: post.slug,
+    layoutVariant: [...post.slug].reduce((total, char, index) => total + char.charCodeAt(0) * (index + 1), 0) % 4,
     publishedHashes: [...publishedHashes]
   };
   const payloadFile = path.join(root, "data", ".thumbnail-payload.json");
@@ -377,27 +478,49 @@ function createThumbnailWithPython(post, keyword, brand, sourceFile, publishedHa
 }
 
 async function createThumbnail(post, keyword, posts) {
-  const brand = brandFor(keyword);
-  const urls = imageSources[brand] || [];
-  const temp = path.join(root, "assets", `.${post.slug}-source.jpg`);
   const publishedHashes = new Set(posts
     .map((item) => path.join(root, item.image || ""))
     .filter((file) => fs.existsSync(file))
     .map(hashFile));
 
-  let sourceFile = "";
-  for (const url of urls) {
+  let selectedProfile = null;
+  let sourceFiles = [];
+  const tempFiles = [];
+  for (const candidate of sourceCandidatesFor(keyword, post, posts)) {
+    sourceFiles = [];
+    tempFiles.length = 0;
     try {
-      await downloadFile(url, temp);
-      sourceFile = temp;
-      break;
+      for (const [index, source] of candidate.sources.entries()) {
+        if (/^https?:\/\//i.test(source)) {
+          const temp = path.join(root, "assets", `.${post.slug}-source-${index}.jpg`);
+          await downloadFile(source, temp);
+          tempFiles.push(temp);
+          sourceFiles.push(temp);
+        } else {
+          sourceFiles.push(path.join(root, source));
+        }
+      }
+      if (sourceFiles.every((file) => fs.existsSync(file))) {
+        selectedProfile = candidate;
+        break;
+      }
     } catch {
-      fs.rmSync(temp, { force: true });
+      for (const temp of tempFiles) fs.rmSync(temp, { force: true });
+      sourceFiles = [];
     }
   }
 
-  createThumbnailWithPython(post, keyword, brand, sourceFile, publishedHashes);
-  fs.rmSync(temp, { force: true });
+  if (!selectedProfile || !sourceFiles.length) {
+    throw new Error(`No real manufacturer vehicle image could be resolved for "${keyword}".`);
+  }
+
+  post.imageSourceKey = imageSourceKey(selectedProfile.sources);
+  post.imageSourceLabel = selectedProfile.sourceLabel;
+  post.imageCredit = `Thumbnail: Car News graphic using ${selectedProfile.sourceLabel}.`;
+  post.imageAlt = `${keyword} thumbnail using real vehicle imagery for India car buyers`;
+
+  createThumbnailWithPython(post, keyword, selectedProfile, sourceFiles, publishedHashes);
+  for (const temp of tempFiles) fs.rmSync(temp, { force: true });
 
   const outputFile = path.join(root, post.image);
   const outputHash = hashFile(outputFile);

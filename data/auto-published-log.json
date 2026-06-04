@@ -2,68 +2,39 @@
   {
     "windowKey": "2026-06-04-morning",
     "scheduledAt": "2026-06-04T03:45:00.000Z",
-    "publishedAt": "2026-06-04T04:32:23.738Z",
+    "publishedAt": "2026-06-04T04:50:01.270Z",
     "articleCount": 4,
+    "replacementForRemovedDuplicateThumbnailBatch": true,
     "articles": [
       {
-        "slug": "ev-range-comparison",
-        "title": "EV Range Comparison: What the Latest Auto News Means for Indian Buyers",
-        "targetKeyword": "EV Range Comparison",
-        "url": "https://comeback2000.github.io/Car-news/posts/ev-range-comparison.html",
-        "image": "assets/ev-range-comparison-thumbnail.jpg"
+        "slug": "ev-battery-life-india",
+        "title": "EV Battery Life India: What Buyers Should Know Before Choosing an Electric Car",
+        "targetKeyword": "EV Battery Life India",
+        "url": "https://comeback2000.github.io/Car-news/posts/ev-battery-life-india.html",
+        "image": "assets/ev-battery-life-india-thumbnail.jpg"
       },
       {
-        "slug": "ev-charging-cost-india",
-        "title": "EV Charging Cost India: The Smart Buyer Guide Before You Book",
-        "targetKeyword": "EV Charging Cost India",
-        "url": "https://comeback2000.github.io/Car-news/posts/ev-charging-cost-india.html",
-        "image": "assets/ev-charging-cost-india-thumbnail.jpg"
+        "slug": "cheap-electric-cars-india-2026",
+        "title": "Cheap Electric Cars India: Best Value EV Choices Buyers Are Watching Now",
+        "targetKeyword": "Cheap Electric Cars India",
+        "url": "https://comeback2000.github.io/Car-news/posts/cheap-electric-cars-india-2026.html",
+        "image": "assets/cheap-electric-cars-india-2026-thumbnail.jpg"
       },
       {
-        "slug": "electric-suv-india",
-        "title": "Electric SUV India: What the Latest Auto News Means for Indian Buyers",
-        "targetKeyword": "Electric SUV India",
-        "url": "https://comeback2000.github.io/Car-news/posts/electric-suv-india.html",
-        "image": "assets/electric-suv-india-thumbnail.jpg"
+        "slug": "tata-curvv-ev-vs-creta-ev",
+        "title": "Tata Curvv EV vs Creta EV: Which Electric SUV Makes More Sense?",
+        "targetKeyword": "Tata Curvv EV vs Creta EV",
+        "url": "https://comeback2000.github.io/Car-news/posts/tata-curvv-ev-vs-creta-ev.html",
+        "image": "assets/tata-curvv-ev-vs-creta-ev-thumbnail.jpg"
       },
       {
-        "slug": "new-ev-launch-india",
-        "title": "New EV Launch India: The Fresh India Launch Watch Buyers Should Track Now",
-        "targetKeyword": "New EV Launch India",
-        "url": "https://comeback2000.github.io/Car-news/posts/new-ev-launch-india.html",
-        "image": "assets/new-ev-launch-india-thumbnail.jpg"
+        "slug": "harrier-ev-vs-xev-9e",
+        "title": "Harrier EV vs XEV 9e: The Premium Electric SUV Fight Buyers Must Watch",
+        "targetKeyword": "Harrier EV vs XEV 9e",
+        "url": "https://comeback2000.github.io/Car-news/posts/harrier-ev-vs-xev-9e.html",
+        "image": "assets/harrier-ev-vs-xev-9e-thumbnail.jpg"
       }
     ],
-    "facebook": [
-      {
-        "slug": "ev-range-comparison",
-        "status": "failed",
-        "facebookPostId": null,
-        "postedAt": "2026-06-04T04:34:59.354Z",
-        "message": "Error validating access token: Session has expired on Wednesday, 03-Jun-26 09:00:00 PDT. The current time is Wednesday, 03-Jun-26 21:34:58 PDT. (code 190)"
-      },
-      {
-        "slug": "ev-charging-cost-india",
-        "status": "failed",
-        "facebookPostId": null,
-        "postedAt": "2026-06-04T04:34:58.860Z",
-        "message": "Error validating access token: Session has expired on Wednesday, 03-Jun-26 09:00:00 PDT. The current time is Wednesday, 03-Jun-26 21:34:58 PDT. (code 190)"
-      },
-      {
-        "slug": "electric-suv-india",
-        "status": "failed",
-        "facebookPostId": null,
-        "postedAt": "2026-06-04T04:34:58.411Z",
-        "message": "Error validating access token: Session has expired on Wednesday, 03-Jun-26 09:00:00 PDT. The current time is Wednesday, 03-Jun-26 21:34:57 PDT. (code 190)"
-      },
-      {
-        "slug": "new-ev-launch-india",
-        "status": "failed",
-        "facebookPostId": null,
-        "postedAt": "2026-06-04T04:34:57.830Z",
-        "message": "Error validating access token: Session has expired on Wednesday, 03-Jun-26 09:00:00 PDT. The current time is Wednesday, 03-Jun-26 21:34:56 PDT. (code 190)"
-      }
-    ],
-    "resumeNote": "Recovered after desktop interruption/build spawn failure; batch continued without selecting duplicate keywords."
+    "facebook": []
   }
 ]

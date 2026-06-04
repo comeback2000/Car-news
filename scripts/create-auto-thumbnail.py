@@ -1,5 +1,4 @@
 import json
-import random
 import sys
 from pathlib import Path
 
@@ -18,29 +17,59 @@ def font(name, size):
     return ImageFont.load_default()
 
 
-def cover_image(source, size):
+def cover_crop(image, size, x_bias=0.5, y_bias=0.5):
     width, height = size
-    if source and Path(source).exists():
-        image = Image.open(source).convert("RGB")
-    else:
-        image = Image.new("RGB", size, (12, 16, 24))
-        draw = ImageDraw.Draw(image)
-        for y in range(height):
-            r = int(18 + 45 * y / height)
-            g = int(22 + 22 * y / height)
-            b = int(35 + 55 * y / height)
-            draw.line([(0, y), (width, y)], fill=(r, g, b))
-        for x in range(-200, width, 260):
-            draw.polygon([(x, 0), (x + 120, 0), (x + 520, height), (x + 360, height)], fill=(35, 42, 58))
-
     ratio = max(width / image.width, height / image.height)
     resized = image.resize((int(image.width * ratio), int(image.height * ratio)), Image.LANCZOS)
-    left = (resized.width - width) // 2
-    top = (resized.height - height) // 2
-    return resized.crop((left, top, left + width, top + height)).filter(ImageFilter.UnsharpMask(radius=1.5, percent=110))
+    max_left = max(0, resized.width - width)
+    max_top = max(0, resized.height - height)
+    left = int(max_left * x_bias)
+    top = int(max_top * y_bias)
+    return resized.crop((left, top, left + width, top + height)).filter(
+        ImageFilter.UnsharpMask(radius=1.3, percent=105)
+    )
 
 
-def wrap(draw, text, font_obj, max_width):
+def load_real_source(source_file):
+    source = Path(source_file)
+    if not source.exists():
+        raise FileNotFoundError(f"Real vehicle image source not found: {source}")
+    return Image.open(source).convert("RGB")
+
+
+def build_background(payload, size):
+    source_files = payload.get("sourceFiles") or []
+    if not source_files and payload.get("sourceFile"):
+        source_files = [payload["sourceFile"]]
+    source_files = [item for item in source_files if item]
+    if not source_files:
+        raise ValueError("At least one real manufacturer vehicle image is required.")
+
+    width, height = size
+    if len(source_files) == 1:
+        return cover_crop(load_real_source(source_files[0]), size, 0.52, 0.54).convert("RGBA")
+
+    canvas = Image.new("RGBA", size, (8, 11, 16, 255))
+    split = width // 2
+    left = cover_crop(load_real_source(source_files[0]), (split + 80, height), 0.48, 0.55)
+    right = cover_crop(load_real_source(source_files[1]), (width - split + 80, height), 0.55, 0.55)
+    canvas.paste(left.convert("RGBA"), (0, 0))
+    canvas.paste(right.convert("RGBA"), (split - 80, 0))
+
+    mask = Image.new("L", size, 0)
+    draw = ImageDraw.Draw(mask)
+    draw.polygon([(split - 125, 0), (split + 25, 0), (split - 25, height), (split - 175, height)], fill=210)
+    divider = Image.new("RGBA", size, (255, 255, 255, 0))
+    divider_draw = ImageDraw.Draw(divider)
+    divider_draw.polygon(
+        [(split - 112, 0), (split + 18, 0), (split - 38, height), (split - 168, height)],
+        fill=(5, 9, 16, 145),
+    )
+    canvas = Image.alpha_composite(canvas, divider)
+    return canvas
+
+
+def wrap(draw, text, font_obj, max_width, max_lines=4):
     words = text.split()
     lines = []
     current = ""
@@ -54,7 +83,17 @@ def wrap(draw, text, font_obj, max_width):
             current = word
     if current:
         lines.append(current)
-    return lines[:4]
+    return lines[:max_lines]
+
+
+def draw_bottom_gradient(draw, width, height):
+    for y in range(height):
+        vertical = y / height
+        alpha = int(40 + 210 * max(0, (vertical - 0.24) / 0.76))
+        draw.line([(0, y), (width, y)], fill=(4, 7, 12, alpha))
+    for x in range(width):
+        alpha = int(190 * max(0, 1 - x / 1180))
+        draw.line([(x, 0), (x, height)], fill=(4, 7, 12, alpha))
 
 
 def main():
@@ -63,63 +102,43 @@ def main():
     output.parent.mkdir(parents=True, exist_ok=True)
 
     width, height = 1600, 900
-    seed = int.from_bytes(payload["slug"].encode("utf-8"), "little") % 10_000
-    random.seed(seed)
-
-    base = cover_image(payload.get("sourceFile"), (width, height)).convert("RGBA")
+    base = build_background(payload, (width, height)).convert("RGBA")
     overlay = Image.new("RGBA", (width, height), (0, 0, 0, 0))
     draw = ImageDraw.Draw(overlay)
 
-    palettes = [
-        ((255, 204, 0), (229, 22, 39), (8, 13, 23)),
-        ((0, 216, 173), (255, 74, 36), (10, 17, 28)),
-        ((255, 255, 255), (0, 128, 255), (11, 18, 31)),
-        ((255, 177, 0), (0, 190, 110), (14, 18, 26)),
-    ]
-    accent, hot, dark = palettes[seed % len(palettes)]
+    draw_bottom_gradient(draw, width, height)
 
-    for x in range(width):
-        alpha = int(215 * max(0, 1 - x / 1150))
-        draw.line([(x, 0), (x, height)], fill=(*dark, alpha))
-    draw.polygon([(0, 0), (760, 0), (610, height), (0, height)], fill=(*dark, 185))
-    draw.polygon([(0, 695), (width, 760 + seed % 70), (width, height), (0, height)], fill=(*hot, 190))
-    draw.polygon([(0, 735), (width, 790 + seed % 50), (width, 825), (0, 765)], fill=(*accent, 215))
+    accent = tuple(payload.get("accentColor") or (255, 204, 0))
+    brand = str(payload.get("deck") or "CAR NEWS").upper()[:24]
+    headline = str(payload.get("headline") or payload.get("keyword") or "CAR NEWS").upper()
+    label = str(payload.get("sourceLabel") or "Official manufacturer vehicle image")
 
-    draw.line([(42, 56), (1080, 56)], fill=(*accent, 255), width=7)
-    draw.line([(42, 56), (42, 815)], fill=(*accent, 255), width=7)
+    brand_font = font("arialbd.ttf", 33)
+    headline_font = font("arialbd.ttf", 72)
+    label_font = font("arial.ttf", 28)
+    credit_font = font("arial.ttf", 24)
 
-    cx, cy = 1320 + seed % 120, 150 + seed % 80
-    for radius, line_width in [(88, 8), (58, 6), (31, 5)]:
-        draw.ellipse((cx - radius, cy - radius, cx + radius, cy + radius), outline=(*accent, 235), width=line_width)
-    draw.line([(cx - 115, cy), (cx + 115, cy)], fill=(255, 255, 255, 120), width=3)
-    draw.line([(cx, cy - 115), (cx, cy + 115)], fill=(255, 255, 255, 120), width=3)
+    draw.rectangle((0, 0, width, height), outline=(*accent, 235), width=8)
+    draw.rounded_rectangle((70, 70, 520, 124), radius=9, fill=(*accent, 245))
+    draw.text((92, 83), brand, fill=(7, 10, 16), font=brand_font)
 
-    bold_small = font("arialbd.ttf", 34)
-    headline_font = font("arialbd.ttf", 78)
-    deck_font = font("arialbd.ttf", 31)
-    credit_font = font("arial.ttf", 29)
-
-    draw.rounded_rectangle((62, 92, 500, 143), radius=10, fill=(*accent, 255))
-    draw.text((82, 102), payload.get("deck", "CAR NEWS")[:22], fill=(5, 8, 13), font=bold_small)
-
-    lines = wrap(draw, payload["headline"], headline_font, 670)
-    y = 210
+    lines = wrap(draw, headline, headline_font, 820, max_lines=4)
+    x, y = 72, 520 - (len(lines) - 2) * 44
     for line in lines:
-        draw.text((62, y), line, font=headline_font, fill=(255, 255, 255, 255), stroke_width=4, stroke_fill=(0, 0, 0, 210))
-        y += 86
+        draw.text(
+            (x, y),
+            line,
+            font=headline_font,
+            fill=(255, 255, 255, 255),
+            stroke_width=4,
+            stroke_fill=(0, 0, 0, 215),
+        )
+        y += 82
 
-    draw.rounded_rectangle((62, 540, 660, 604), radius=12, fill=(*hot, 232))
-    draw.text((84, 557), "Fresh India auto update", fill=(255, 255, 255, 255), font=deck_font)
+    draw.rounded_rectangle((72, 760, 900, 815), radius=10, fill=(5, 9, 16, 210), outline=(255, 255, 255, 70), width=1)
+    draw.text((94, 773), label[:62], fill=(255, 255, 255, 232), font=label_font)
+    draw.text((72, 842), "Car News thumbnail using real brand/model imagery", fill=(255, 255, 255, 210), font=credit_font)
 
-    chips = ["SEO ready", "No duplicate", "Daily drop"]
-    x = 62
-    for chip in chips:
-        chip_width = draw.textbbox((0, 0), chip, font=bold_small)[2] + 34
-        draw.rounded_rectangle((x, 632, x + chip_width, 684), radius=10, fill=(255, 255, 255, 238))
-        draw.text((x + 17, 644), chip, fill=(5, 8, 13), font=bold_small)
-        x += chip_width + 18
-
-    draw.text((62, 824), "Car News original thumbnail | generated for this article only", fill=(255, 255, 255, 218), font=credit_font)
     final = Image.alpha_composite(base, overlay).convert("RGB")
     final.save(output, "JPEG", quality=92, optimize=True, progressive=True)
 

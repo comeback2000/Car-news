@@ -19,6 +19,7 @@ const slugify = (value) => value.toLowerCase().replace(/&/g, "and").replace(/[^a
 const postUrl = (post) => `${siteUrl}/posts/${post.slug}.html`;
 const rootHref = (href, depth = 0) => `${"../".repeat(depth)}${href}`;
 const fmtDate = (date) => `${date}T00:00:00+05:30`;
+const latestDate = posts[0]?.datePublished || "2026-06-04";
 
 function imageSize(imagePath) {
   if (imageSizeCache.has(imagePath)) return imageSizeCache.get(imagePath);
@@ -213,6 +214,8 @@ function storyCard(post, options = {}) {
 }
 
 function indexPage() {
+  const heroPosts = posts.slice(0, 4);
+  const featuredImage = imageSize(heroPosts[0].image);
   const schema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -235,46 +238,57 @@ ${headTags({
     ${header(0)}
     <main>
       <section class="hero" id="trends" aria-label="Viral car news headlines">
-        <div class="hero-graphics" aria-hidden="true">
-          <span class="signal signal-one"></span>
-          <span class="signal signal-two"></span>
-          <span class="signal signal-three"></span>
-          <span class="sweep-line"></span>
-        </div>
+        <figure class="hero-media" aria-hidden="true">
+          <img id="viralHeroImage" src="${esc(heroPosts[0].image)}" alt="" width="${featuredImage.width}" height="${featuredImage.height}" fetchpriority="high">
+        </figure>
+        <div class="hero-shine" aria-hidden="true"></div>
         <div class="hero-copy">
-          <p class="eyebrow">Latest viral India auto posts | June 3, 2026</p>
-          <div class="hero-title-wrap">
-            <p class="hero-kicker">Trending now</p>
+          <p class="eyebrow">Latest India auto brief | June 4, 2026</p>
+          <div class="hero-panel">
+            <p class="hero-kicker" id="viralHeroCategory">${esc(heroPosts[0].category)}</p>
             <h1 id="viralHeroTitle">${esc(posts[0].title)}</h1>
+            <p class="hero-summary" id="viralHeroSummary">${esc(heroPosts[0].excerpt)}</p>
+            <a class="hero-cta" id="viralHeroLink" href="posts/${heroPosts[0].slug}.html">Read the latest story</a>
           </div>
         </div>
-        <div class="viral-stack" aria-label="Most viral story links">
-          ${posts.map((post, index) => `<a class="viral-card${index === 0 ? " is-active" : ""}" href="posts/${post.slug}.html" data-title="${esc(post.title)}">
+        <div class="viral-stack" aria-label="Latest featured story links">
+          ${heroPosts.map((post, index) => `<a class="viral-card${index === 0 ? " is-active" : ""}" href="posts/${post.slug}.html" data-title="${esc(post.title)}" data-image="${esc(post.image)}" data-category="${esc(post.category)}" data-excerpt="${esc(post.excerpt)}">
             <span class="rank">${String(index + 1).padStart(2, "0")}</span>
-            <span class="viral-title">${esc(post.title)}</span>
+            <span class="viral-copy">
+              <span class="viral-title">${esc(post.title)}</span>
+              <span class="viral-meta">${esc(post.category)}</span>
+            </span>
           </a>`).join("")}
         </div>
       </section>
 
       <section class="section-heading" id="top-stories">
-        <p class="eyebrow">Top 3 car news posts</p>
+        <p class="eyebrow">Latest car news posts</p>
       </section>
       <section class="story-grid" aria-label="Top car news stories">
         ${posts.map((post) => storyCard(post)).join("")}
       </section>
     </main>
     <footer class="site-footer">
-      <p>Updated June 3, 2026. Trend cues from public X search, Google search, and current India auto reports; sources are linked in each post.</p>
+      <p>Updated June 4, 2026. Trend cues from Google News, public auto-market signals, and current India auto reports; sources are linked in each post.</p>
     </footer>
     <script>
       const viralCards = Array.from(document.querySelectorAll(".viral-card"));
       const heroTitle = document.getElementById("viralHeroTitle");
+      const heroImage = document.getElementById("viralHeroImage");
+      const heroCategory = document.getElementById("viralHeroCategory");
+      const heroSummary = document.getElementById("viralHeroSummary");
+      const heroLink = document.getElementById("viralHeroLink");
       let activeStory = 0;
       function setActiveStory(index) {
         activeStory = index % viralCards.length;
         viralCards.forEach((card, cardIndex) => card.classList.toggle("is-active", cardIndex === activeStory));
         heroTitle.classList.remove("title-pop");
         heroTitle.textContent = viralCards[activeStory].dataset.title;
+        heroImage.src = viralCards[activeStory].dataset.image;
+        heroCategory.textContent = viralCards[activeStory].dataset.category;
+        heroSummary.textContent = viralCards[activeStory].dataset.excerpt;
+        heroLink.href = viralCards[activeStory].href;
         requestAnimationFrame(() => heroTitle.classList.add("title-pop"));
       }
       viralCards.forEach((card, index) => {
@@ -310,16 +324,27 @@ ${headTags({ title, description, url, image })}
 </html>`;
 }
 
+function uniqueLabelsBySlug(labels) {
+  const bySlug = new Map();
+  for (const label of labels) {
+    const key = slugify(label);
+    if (!bySlug.has(key)) bySlug.set(key, label);
+  }
+  return [...bySlug.values()];
+}
+
 function sitemap() {
+  const categories = uniqueLabelsBySlug(posts.map((post) => post.category));
+  const tags = uniqueLabelsBySlug(posts.flatMap((post) => post.tags));
   const urls = [
     `${siteUrl}/`,
     ...posts.map(postUrl),
-    ...[...new Set(posts.map((post) => post.category))].map((category) => `${siteUrl}/category/${slugify(category)}.html`),
-    ...[...new Set(posts.flatMap((post) => post.tags))].map((tag) => `${siteUrl}/tags/${slugify(tag)}.html`)
+    ...categories.map((category) => `${siteUrl}/category/${slugify(category)}.html`),
+    ...tags.map((tag) => `${siteUrl}/tags/${slugify(tag)}.html`)
   ];
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map((url) => `  <url><loc>${esc(url)}</loc><lastmod>2026-06-03</lastmod><changefreq>daily</changefreq><priority>${url.endsWith("/") ? "1.0" : "0.8"}</priority></url>`).join("\n")}
+${urls.map((url) => `  <url><loc>${esc(url)}</loc><lastmod>${latestDate}</lastmod><changefreq>daily</changefreq><priority>${url.endsWith("/") ? "1.0" : "0.8"}</priority></url>`).join("\n")}
 </urlset>`;
 }
 
@@ -409,7 +434,7 @@ for (const post of posts) {
   }
 }
 
-for (const category of [...new Set(posts.map((post) => post.category))]) {
+for (const category of uniqueLabelsBySlug(posts.map((post) => post.category))) {
   const categoryPosts = posts.filter((post) => post.category === category);
   write(`category/${slugify(category)}.html`, listingPage({
     title: `${category} News | Car News`,
@@ -421,8 +446,9 @@ for (const category of [...new Set(posts.map((post) => post.category))]) {
   }));
 }
 
-for (const tag of [...new Set(posts.flatMap((post) => post.tags))]) {
-  const tagPosts = posts.filter((post) => post.tags.includes(tag));
+for (const tag of uniqueLabelsBySlug(posts.flatMap((post) => post.tags))) {
+  const tagSlug = slugify(tag);
+  const tagPosts = posts.filter((post) => post.tags.some((item) => slugify(item) === tagSlug));
   write(`tags/${slugify(tag)}.html`, listingPage({
     title: `${tag} | Car News`,
     description: `Articles tagged ${tag}, including India car news, EV sales and viral auto updates.`,
