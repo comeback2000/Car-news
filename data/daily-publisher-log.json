@@ -40,6 +40,115 @@
 
                      ],
     "runs":  [
-
+                 {
+                     "ranAt":  "2026-06-04T18:45:35.5485961+05:30",
+                     "commit":  "463b1e6",
+                     "articles":  [
+                                      {
+                                          "slug":  "new-ev-launch-india",
+                                          "keyword":  "New EV Launch India",
+                                          "category":  "EV Buying Guides",
+                                          "url":  "https://comeback2000.github.io/Car-news/posts/new-ev-launch-india.html",
+                                          "image":  "assets/new-ev-launch-india-thumbnail.jpg"
+                                      },
+                                      {
+                                          "slug":  "electric-suv-india",
+                                          "keyword":  "Electric SUV India",
+                                          "category":  "EV Buying Guides",
+                                          "url":  "https://comeback2000.github.io/Car-news/posts/electric-suv-india.html",
+                                          "image":  "assets/electric-suv-india-thumbnail.jpg"
+                                      },
+                                      {
+                                          "slug":  "bikes-new-launch",
+                                          "keyword":  "bikes new launch",
+                                          "category":  "Bike News",
+                                          "url":  "https://comeback2000.github.io/Car-news/posts/bikes-new-launch.html",
+                                          "image":  "assets/bikes-new-launch-thumbnail.jpg"
+                                      },
+                                      {
+                                          "slug":  "best-bikes-in-ev",
+                                          "keyword":  "best Bikes in EV",
+                                          "category":  "Bike News",
+                                          "url":  "https://comeback2000.github.io/Car-news/posts/best-bikes-in-ev.html",
+                                          "image":  "assets/best-bikes-in-ev-thumbnail.jpg"
+                                      },
+                                      {
+                                          "slug":  "mobile-news-launch",
+                                          "keyword":  "mobile news launch",
+                                          "category":  "Mobile Tech",
+                                          "url":  "https://comeback2000.github.io/Car-news/posts/mobile-news-launch.html",
+                                          "image":  "assets/mobile-news-launch-thumbnail.jpg"
+                                      },
+                                      {
+                                          "slug":  "mobile-new-tech",
+                                          "keyword":  "mobile new tech",
+                                          "category":  "Mobile Tech",
+                                          "url":  "https://comeback2000.github.io/Car-news/posts/mobile-new-tech.html",
+                                          "image":  "assets/mobile-new-tech-thumbnail.jpg"
+                                      }
+                                  ],
+                     "facebook":  [
+                                      {
+                                          "slug":  "new-ev-launch-india",
+                                          "title":  "New EV Launch India: Latest India Update, Buyer Signals and What Changes Next",
+                                          "result":  {
+                                                         "status":  "failed",
+                                                         "postId":  null,
+                                                         "message":  "The remote server returned an error: (400) Bad Request."
+                                                     },
+                                          "postedAt":  "2026-06-04T18:45:32.3210481+05:30"
+                                      },
+                                      {
+                                          "slug":  "electric-suv-india",
+                                          "title":  "Electric SUV India: Latest India Update, Buyer Signals and What Changes Next",
+                                          "result":  {
+                                                         "status":  "failed",
+                                                         "postId":  null,
+                                                         "message":  "The remote server returned an error: (400) Bad Request."
+                                                     },
+                                          "postedAt":  "2026-06-04T18:45:32.9482438+05:30"
+                                      },
+                                      {
+                                          "slug":  "bikes-new-launch",
+                                          "title":  "bikes new launch: What Indian Riders Should Know Before Buying",
+                                          "result":  {
+                                                         "status":  "failed",
+                                                         "postId":  null,
+                                                         "message":  "The remote server returned an error: (400) Bad Request."
+                                                     },
+                                          "postedAt":  "2026-06-04T18:45:33.5802150+05:30"
+                                      },
+                                      {
+                                          "slug":  "best-bikes-in-ev",
+                                          "title":  "best Bikes in EV: What Indian Riders Should Know Before Buying",
+                                          "result":  {
+                                                         "status":  "failed",
+                                                         "postId":  null,
+                                                         "message":  "The remote server returned an error: (400) Bad Request."
+                                                     },
+                                          "postedAt":  "2026-06-04T18:45:34.3455879+05:30"
+                                      },
+                                      {
+                                          "slug":  "mobile-news-launch",
+                                          "title":  "mobile news launch: The Latest Tech Update Indian Buyers Should Watch",
+                                          "result":  {
+                                                         "status":  "failed",
+                                                         "postId":  null,
+                                                         "message":  "The remote server returned an error: (400) Bad Request."
+                                                     },
+                                          "postedAt":  "2026-06-04T18:45:34.9512343+05:30"
+                                      },
+                                      {
+                                          "slug":  "mobile-new-tech",
+                                          "title":  "mobile new tech: The Latest Tech Update Indian Buyers Should Watch",
+                                          "result":  {
+                                                         "status":  "failed",
+                                                         "postId":  null,
+                                                         "message":  "The remote server returned an error: (400) Bad Request."
+                                                     },
+                                          "postedAt":  "2026-06-04T18:45:35.5476334+05:30"
+                                      }
+                                  ]
+                 }
              ]
 }
