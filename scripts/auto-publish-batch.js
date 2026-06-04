@@ -421,7 +421,7 @@ function dirtyTrackedFilesOutsideManagedPaths() {
 }
 
 function commitAndPush(windowInfo, slugs) {
-  run("npm.cmd", ["run", "build"]);
+  run("node", ["scripts/build-site.js"]);
   run("git", ["add", "-A", ...generatedPaths]);
   const staged = gitOutput(["diff", "--cached", "--name-only"]);
   if (!staged) {

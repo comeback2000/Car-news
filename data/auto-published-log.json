@@ -1,0 +1,40 @@
+[
+  {
+    "windowKey": "2026-06-04-morning",
+    "scheduledAt": "2026-06-04T03:45:00.000Z",
+    "publishedAt": "2026-06-04T04:32:23.738Z",
+    "articleCount": 4,
+    "articles": [
+      {
+        "slug": "ev-range-comparison",
+        "title": "EV Range Comparison: What the Latest Auto News Means for Indian Buyers",
+        "targetKeyword": "EV Range Comparison",
+        "url": "https://comeback2000.github.io/Car-news/posts/ev-range-comparison.html",
+        "image": "assets/ev-range-comparison-thumbnail.jpg"
+      },
+      {
+        "slug": "ev-charging-cost-india",
+        "title": "EV Charging Cost India: The Smart Buyer Guide Before You Book",
+        "targetKeyword": "EV Charging Cost India",
+        "url": "https://comeback2000.github.io/Car-news/posts/ev-charging-cost-india.html",
+        "image": "assets/ev-charging-cost-india-thumbnail.jpg"
+      },
+      {
+        "slug": "electric-suv-india",
+        "title": "Electric SUV India: What the Latest Auto News Means for Indian Buyers",
+        "targetKeyword": "Electric SUV India",
+        "url": "https://comeback2000.github.io/Car-news/posts/electric-suv-india.html",
+        "image": "assets/electric-suv-india-thumbnail.jpg"
+      },
+      {
+        "slug": "new-ev-launch-india",
+        "title": "New EV Launch India: The Fresh India Launch Watch Buyers Should Track Now",
+        "targetKeyword": "New EV Launch India",
+        "url": "https://comeback2000.github.io/Car-news/posts/new-ev-launch-india.html",
+        "image": "assets/new-ev-launch-india-thumbnail.jpg"
+      }
+    ],
+    "facebook": [],
+    "resumeNote": "Recovered after desktop interruption/build spawn failure; batch continued without selecting duplicate keywords."
+  }
+]
