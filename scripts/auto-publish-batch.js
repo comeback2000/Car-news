@@ -411,7 +411,7 @@ function isManagedPath(file) {
 }
 
 function dirtyTrackedFilesOutsideManagedPaths() {
-  const status = gitOutput(["status", "--porcelain", "--untracked-files=no"]);
+  const status = run("git", ["status", "--porcelain", "--untracked-files=no"], { capture: true }).trimEnd();
   if (!status) return [];
   return status
     .split(/\r?\n/)
