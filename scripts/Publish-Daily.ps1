@@ -36,20 +36,18 @@ function Remove-LegacyTasks {
 
 function Install-DailyTask {
   Remove-LegacyTasks
-  $script = Join-Path $PSScriptRoot "Publish-Daily.ps1"
-  $action = New-ScheduledTaskAction `
-    -Execute "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe" `
-    -Argument "-NoProfile -ExecutionPolicy Bypass -File `"$script`" -Run"
-  $trigger = New-ScheduledTaskTrigger -Daily -At "09:15"
-  $settings = New-ScheduledTaskSettingsSet -StartWhenAvailable -MultipleInstances IgnoreNew -ExecutionTimeLimit (New-TimeSpan -Hours 2)
-  Register-ScheduledTask -TaskName $TaskName -Action $action -Trigger $trigger -Settings $settings -Description "Publish 6 daily Car News articles and Facebook posts." -Force | Out-Null
-  Write-Host "Installed scheduled task '$TaskName' for 9:15 AM local time."
+  Unregister-ScheduledTask -TaskName $TaskName -Confirm:$false -ErrorAction SilentlyContinue
+  Write-Host "Removed legacy Windows scheduled tasks."
+  Write-Host "Daily article creation is handled by the Codex Desktop automation:"
+  Write-Host "  codex-car-news-daily-publisher at 9:15 AM IST"
+  Write-Host "This PowerShell script is now a build/push/Facebook helper only; it does not generate article text."
 }
 
 function Uninstall-DailyTask {
   Unregister-ScheduledTask -TaskName $TaskName -Confirm:$false -ErrorAction SilentlyContinue
   Remove-LegacyTasks
-  Write-Host "Removed scheduled task '$TaskName'."
+  Write-Host "Removed legacy Windows scheduled task '$TaskName'."
+  Write-Host "Note: the Codex Desktop automation is managed by Codex, not Windows Task Scheduler."
 }
 
 if ($InstallTask) {
@@ -59,6 +57,12 @@ if ($InstallTask) {
 
 if ($UninstallTask) {
   Uninstall-DailyTask
+  exit 0
+}
+
+if (!$Run -and !$RetryFacebookFailed) {
+  Write-Host "Use -Run to finalize Codex-generated site changes or -RetryFacebookFailed to retry failed Facebook posts."
+  Write-Host "Article research and writing are handled by the Codex Desktop automation 'codex-car-news-daily-publisher'."
   exit 0
 }
 
@@ -612,245 +616,8 @@ function New-Thumbnail($Post, $Niche, $State, $ExistingImageHashes) {
   $State.thumbnailHashes += $hash
 }
 
-function Get-OpenAIOutputText($Response) {
-  if ($Response.output_text) { return [string]$Response.output_text }
-  foreach ($item in As-Array $Response.output) {
-    foreach ($content in As-Array $item.content) {
-      if ($content.type -eq "output_text" -and $content.text) { return [string]$content.text }
-      if ($content.text) { return [string]$content.text }
-    }
-  }
-  throw "OpenAI response did not contain output text."
-}
-
-function Get-ArticleSchema {
-  return [ordered]@{
-    type = "object"
-    additionalProperties = $false
-    required = @("title", "metaTitle", "metaDescription", "excerpt", "tags", "imageAlt", "thumbnailHeadline", "conclusion", "sections")
-    properties = [ordered]@{
-      title = @{ type = "string" }
-      metaTitle = @{ type = "string" }
-      metaDescription = @{ type = "string" }
-      excerpt = @{ type = "string" }
-      tags = @{ type = "array"; minItems = 5; maxItems = 10; items = @{ type = "string" } }
-      imageAlt = @{ type = "string" }
-      thumbnailHeadline = @{ type = "string" }
-      conclusion = @{ type = "string" }
-      sections = @{
-        type = "array"
-        minItems = 4
-        maxItems = 6
-        items = @{
-          type = "object"
-          additionalProperties = $false
-          required = @("heading", "paragraphs", "subsections")
-          properties = @{
-            heading = @{ type = "string" }
-            paragraphs = @{ type = "array"; minItems = 2; maxItems = 4; items = @{ type = "string" } }
-            subsections = @{
-              type = "array"
-              maxItems = 2
-              items = @{
-                type = "object"
-                additionalProperties = $false
-                required = @("heading", "paragraphs")
-                properties = @{
-                  heading = @{ type = "string" }
-                  paragraphs = @{ type = "array"; minItems = 1; maxItems = 2; items = @{ type = "string" } }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-function Get-ArticlePrompt($Keyword, $Niche, $Category, $Research, $Brief, $Attempt) {
-  $researchJson = (@($Research | Select-Object -First 6 | ForEach-Object {
-    [pscustomobject]@{
-      source = $_.source
-      title = Clean-NewsTitle $_.title
-      url = $_.link
-      published = $_.pubDate
-    }
-  }) | ConvertTo-Json -Depth 8)
-  $briefJson = ($Brief | ConvertTo-Json -Depth 8)
-  $retryNote = if ($Attempt -gt 1) { "Previous draft failed quality checks. Be more specific, use different section headings, and remove any template-like wording." } else { "" }
-  return @"
-Write one original publication-ready article for an India-focused automotive, bike, and technology news site.
-
-Seed keyword for research only: $Keyword
-Niche: $Niche
-Category: $Category
-
-Google News research packet:
-$researchJson
-
-Research brief:
-$briefJson
-
-Editorial requirements:
-- Do not use the seed keyword as a repeated SEO phrase. It is only the research starting point.
-- Do not start the title with the seed keyword followed by a colon.
-- Do not use generic repeated headings such as "Why This Story Matters Now", "The Buyer Angle Most Headlines Miss", "How It Compares With the Market", "What Smart Buyers Should Watch Next", "Final View", or "Market signal".
-- Do not mention AI, prompt, template, seed keyword, SEO process, or Google News mechanics inside the article.
-- Do not copy source text. Use the source packet to understand the trend, then write original analysis.
-- Write like a human journalist: concrete, varied, informed, and useful.
-- Include buyer-focused value: ownership cost, comparison points, market impact, practical checks, risk, opportunity, and what to watch.
-- Use natural long-tail phrases only where they fit the sentence.
-- Avoid repeated section structure across articles. Invent section headings that fit this exact story.
-- Keep each paragraph focused and readable, about 45 to 95 words.
-- Make the title and thumbnail headline click-worthy but not fake.
-- Return only JSON matching the schema.
-
-$retryNote
-"@
-}
-
-function Invoke-OpenAIArticleDraft($Keyword, $Niche, $Category, $Research, $Brief) {
-  Read-DotEnv
-  if (!$env:OPENAI_API_KEY) {
-    throw "OPENAI_API_KEY is required. The publisher will not create template articles. Add OPENAI_API_KEY to .env and rerun."
-  }
-  $model = if ($env:OPENAI_MODEL) { $env:OPENAI_MODEL } else { "gpt-5.1" }
-  $headers = @{
-    Authorization = "Bearer $($env:OPENAI_API_KEY)"
-    "Content-Type" = "application/json"
-  }
-  for ($attempt = 1; $attempt -le 2; $attempt++) {
-    $payload = [ordered]@{
-      model = $model
-      instructions = "You are a senior Indian auto, mobility, and consumer technology editor. Produce polished, non-template journalism in structured JSON."
-      input = @(
-        @{
-          role = "user"
-          content = @(
-            @{
-              type = "input_text"
-              text = (Get-ArticlePrompt -Keyword $Keyword -Niche $Niche -Category $Category -Research $Research -Brief $Brief -Attempt $attempt)
-            }
-          )
-        }
-      )
-      text = @{
-        format = @{
-          type = "json_schema"
-          name = "article_post"
-          strict = $false
-          schema = Get-ArticleSchema
-        }
-      }
-      max_output_tokens = 7000
-    }
-    try {
-      $response = Invoke-RestMethod -Method Post -Uri "https://api.openai.com/v1/responses" -Headers $headers -Body ($payload | ConvertTo-Json -Depth 120) -TimeoutSec 180
-      $text = Get-OpenAIOutputText $response
-      $draft = $text | ConvertFrom-Json
-      Test-AIArticleDraft -Draft $draft -Keyword $Keyword
-      return $draft
-    } catch {
-      if ($attempt -ge 2) { throw "AI article generation failed quality checks or API request failed: $($_.Exception.Message)" }
-      Write-Host "AI article draft retry for '$Keyword': $($_.Exception.Message)"
-    }
-  }
-}
-
-function Test-AIArticleDraft($Draft, $Keyword) {
-  foreach ($field in @("title", "metaTitle", "metaDescription", "excerpt", "imageAlt", "thumbnailHeadline", "conclusion")) {
-    if (!$Draft.$field -or ([string]$Draft.$field).Trim().Length -lt 12) { throw "AI draft missing useful $field." }
-  }
-  $keywordPattern = "^\s*$([regex]::Escape($Keyword))\s*:"
-  if ([regex]::IsMatch([string]$Draft.title, $keywordPattern, [System.Text.RegularExpressions.RegexOptions]::IgnoreCase)) {
-    throw "AI draft title starts with the seed keyword."
-  }
-  $sections = @(As-Array $Draft.sections)
-  if ($sections.Count -lt 4) { throw "AI draft needs at least 4 sections." }
-  $banned = @(
-    "Why This Story Matters Now",
-    "The Buyer Angle Most Headlines Miss",
-    "How It Compares With the Market",
-    "What Smart Buyers Should Watch Next",
-    "Final View",
-    "Market signal"
-  )
-  $allText = @($Draft.title, $Draft.excerpt, $Draft.conclusion)
-  foreach ($section in $sections) {
-    if (!$section.heading -or @($banned | Where-Object { $_ -eq [string]$section.heading })) { throw "AI draft used a banned template heading: $($section.heading)" }
-    $paragraphs = @(As-Array $section.paragraphs)
-    if ($paragraphs.Count -lt 2) { throw "AI draft section '$($section.heading)' has too few paragraphs." }
-    $allText += $section.heading
-    $allText += $paragraphs
-    foreach ($sub in As-Array $section.subsections) {
-      $allText += $sub.heading
-      $allText += @(As-Array $sub.paragraphs)
-    }
-  }
-  $joined = ($allText -join " ")
-  if ($joined -match "seed keyword|template|prompt|AI-generated|as an AI|SEO process|Google News results for this topic") {
-    throw "AI draft contains process/template language."
-  }
-  $exactKeywordCount = ([regex]::Matches($joined, [regex]::Escape($Keyword), [System.Text.RegularExpressions.RegexOptions]::IgnoreCase)).Count
-  if ($exactKeywordCount -gt 3) { throw "AI draft repeats the seed keyword too often ($exactKeywordCount times)." }
-}
-
-function Convert-AIDraftToSections($Draft) {
-  @(As-Array $Draft.sections | ForEach-Object {
-    $section = $_
-    [pscustomobject]@{
-      heading = [string]$section.heading
-      paragraphs = @(As-Array $section.paragraphs | ForEach-Object { [string]$_ })
-      subsections = @(As-Array $section.subsections | ForEach-Object {
-        [pscustomobject]@{
-          heading = [string]$_.heading
-          paragraphs = @(As-Array $_.paragraphs | ForEach-Object { [string]$_ })
-        }
-      })
-    }
-  })
-}
-
 function New-Article($Selection, $ExistingSlugs) {
-  $keyword = $Selection.Keyword
-  $niche = $Selection.Niche
-  $slugBase = Slugify $keyword
-  $slug = $slugBase
-  $suffix = 2026
-  while ($ExistingSlugs.ContainsKey($slug)) {
-    $slug = "$slugBase-$suffix"
-    $suffix++
-  }
-  $ExistingSlugs[$slug] = $true
-
-  $research = @(Get-NewsResearch -Keyword $keyword -Niche $niche)
-  $brief = Get-ResearchBrief -Keyword $keyword -Niche $niche -Research $research
-  $category = Get-Category -Niche $niche -Keyword $keyword
-  $today = (Get-Date).ToString("yyyy-MM-dd")
-  $draft = Invoke-OpenAIArticleDraft -Keyword $keyword -Niche $niche -Category $category -Research $research -Brief $brief
-
-  [pscustomobject]@{
-    slug = $slug
-    aliases = @()
-    targetKeyword = $keyword
-    title = [string]$draft.title
-    metaTitle = [string]$draft.metaTitle
-    metaDescription = ([string]$draft.metaDescription).Substring(0, [Math]::Min(155, ([string]$draft.metaDescription).Length))
-    excerpt = ([string]$draft.excerpt).Substring(0, [Math]::Min(220, ([string]$draft.excerpt).Length))
-    category = $category
-    tags = @((Get-Tags -Niche $niche -Keyword $keyword) + @(As-Array $draft.tags) + @($brief.longTailKeywords) | ForEach-Object { [string]$_ } | Where-Object { $_.Trim() } | Select-Object -Unique | Select-Object -First 12)
-    image = "assets/$slug-thumbnail.jpg"
-    imageAlt = [string]$draft.imageAlt
-    imageCredit = "Real source image with Car News editorial thumbnail overlay."
-    thumbnailHeadline = [string]$draft.thumbnailHeadline
-    author = "Car News Desk"
-    datePublished = $today
-    dateModified = $today
-    conclusion = [string]$draft.conclusion
-    sources = @($research | ForEach-Object { [pscustomobject]@{ label = "$($_.source): $($_.title)"; url = $_.link } })
-    sections = @(Convert-AIDraftToSections $draft)
-  }
+  throw "Article generation is handled by the Codex Desktop automation, not this PowerShell helper. This script no longer creates API-written or template-written articles."
 }
 
 function Publish-Facebook($Post, $State) {
@@ -914,6 +681,25 @@ function Invoke-GitPublish($Slugs) {
     Invoke-CheckedCommand "git" @("push", "origin", "HEAD:gh-pages")
   }
   return $commit
+}
+
+function Ensure-PublisherLogShape($State) {
+  foreach ($prop in @("publishedKeywords", "publishedSlugs", "thumbnailHashes", "thumbnailSources", "facebookUrls", "runs")) {
+    if ($null -eq $State.$prop) { $State | Add-Member -MemberType NoteProperty -Name $prop -Value @() }
+  }
+  if ($null -eq $State.cursors) { $State | Add-Member -MemberType NoteProperty -Name "cursors" -Value ([pscustomobject]@{ car = 0; bike = 0; mobile = 0 }) }
+  return $State
+}
+
+function Get-FacebookPendingPosts($Posts, $State, $Limit) {
+  $pending = @()
+  foreach ($post in @($Posts)) {
+    $url = "$SiteUrl/posts/$($post.slug).html"
+    if (@($State.facebookUrls) -contains $url) { continue }
+    $pending += $post
+    if ($pending.Count -ge $Limit) { break }
+  }
+  return $pending
 }
 
 function Retry-FailedFacebookPosts {
@@ -988,40 +774,19 @@ try {
   Read-DotEnv
 
   $posts = @(Read-JsonArray $PostsPath)
-  $state = Read-Json $PublisherLogPath (New-EmptyPublisherLog)
-  foreach ($prop in @("publishedKeywords", "publishedSlugs", "thumbnailHashes", "thumbnailSources", "facebookUrls", "runs")) {
-    if ($null -eq $state.$prop) { $state | Add-Member -MemberType NoteProperty -Name $prop -Value @() }
-  }
-  if ($null -eq $state.cursors) { $state | Add-Member -MemberType NoteProperty -Name "cursors" -Value ([pscustomobject]@{ car = 0; bike = 0; mobile = 0 }) }
+  $state = Ensure-PublisherLogShape (Read-Json $PublisherLogPath (New-EmptyPublisherLog))
 
-  $pool = Read-KeywordPool
-  $selections = @(Select-NextKeywords -Pool $pool -State $state -ExistingPosts $posts)
-  $existingSlugs = @{}
-  foreach ($post in $posts) { $existingSlugs[$post.slug] = $true }
-  $existingImageHashes = @{}
-  foreach ($post in $posts) {
-    $imagePath = Join-Path $Root $post.image
-    $hash = Get-ContentHash $imagePath
-    if ($hash) { $existingImageHashes[$hash] = $true }
-  }
+  $changedSlugs = @($posts | Where-Object {
+    $slug = [string]$_.slug
+    (git status --short -- "posts/$slug.html" "assets/$slug-thumbnail.jpg" 2>$null)
+  } | ForEach-Object { $_.slug })
+  if (!$changedSlugs) { $changedSlugs = @("codex-generated") }
 
-  $newPosts = @()
-  foreach ($selection in $selections) {
-    $post = New-Article -Selection $selection -ExistingSlugs $existingSlugs
-    New-Thumbnail -Post $post -Niche $selection.Niche -State $state -ExistingImageHashes $existingImageHashes
-    $newPosts += $post
-    $state.publishedKeywords += $post.targetKeyword
-    $state.publishedSlugs += $post.slug
-  }
-
-  $posts = @($newPosts) + @($posts)
-  Write-Json $PostsPath $posts
-  Write-Json $PublisherLogPath $state
-
-  $commit = Invoke-GitPublish -Slugs @($newPosts | ForEach-Object { $_.slug })
+  $commit = Invoke-GitPublish -Slugs $changedSlugs
 
   $facebookResults = @()
-  foreach ($post in $newPosts) {
+  $facebookPosts = @(Get-FacebookPendingPosts -Posts $posts -State $state -Limit 6)
+  foreach ($post in $facebookPosts) {
     $facebookResults += [pscustomobject]@{
       slug = $post.slug
       title = $post.title
@@ -1033,7 +798,8 @@ try {
   $runEntry = [pscustomobject]@{
     ranAt = (Get-Date).ToString("o")
     commit = $commit
-    articles = @($newPosts | ForEach-Object { [pscustomobject]@{ slug = $_.slug; keyword = $_.targetKeyword; category = $_.category; url = "$SiteUrl/posts/$($_.slug).html"; image = $_.image } })
+    mode = "codex-finalize"
+    articles = @($facebookPosts | ForEach-Object { [pscustomobject]@{ slug = $_.slug; keyword = $_.targetKeyword; category = $_.category; url = "$SiteUrl/posts/$($_.slug).html"; image = $_.image } })
     facebook = $facebookResults
   }
   $state.runs = @($runEntry) + @($state.runs)
@@ -1048,7 +814,8 @@ try {
     }
   }
 
-  Write-Host "Published $($newPosts.Count) articles."
+  Write-Host "Finalized Codex-generated site changes."
+  Write-Host "Facebook queue checked: $($facebookPosts.Count) pending article(s)."
   foreach ($result in $facebookResults) {
     Write-Host "Facebook $($result.result.status): $($result.slug) $($result.result.postId)"
   }

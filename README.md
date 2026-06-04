@@ -1,22 +1,25 @@
-# Car News Daily Publisher
+# Car News Codex Publisher
 
-This repo uses one main PowerShell entry point for publishing:
+This repo uses a Codex Desktop automation as the article-writing agent and one PowerShell helper for local publishing tasks.
 
-```powershell
-.\scripts\Publish-Daily.ps1 -Run
-```
+The active Codex automation is:
 
-The script publishes 6 articles per run:
+- `codex-car-news-daily-publisher`
+- Runs daily at `9:15 AM IST`
+- Creates 6 production articles per run:
+  - 2 Car/EV articles
+  - 2 Bike articles
+  - 2 Mobile Tech articles
 
-- 2 Car/EV articles
-- 2 Bike articles
-- 2 Mobile Tech articles
+Codex reads keywords from `Keywords.txt`, researches current news and official sources, builds long-tail angles from the seed keyword, writes the article naturally, creates a unique real-image thumbnail, updates site data, prevents duplicates, and publishes to GitHub/Facebook when credentials are available.
 
-It reads keywords from `Keywords.txt`, researches each topic with Google News, sends the research packet to the AI article writer, creates unique thumbnails, rebuilds the static site, commits and pushes generated files to GitHub, and posts each new article to the configured Facebook Page.
-
-The publisher does not use a template fallback for article bodies. If AI generation fails or `OPENAI_API_KEY` is missing, the run stops instead of publishing low-quality filler.
+The PowerShell script does not generate article bodies and does not call an article-generation API. It rebuilds the site, commits/pushes Codex-generated files, retries Facebook posting, and removes old Windows scheduled tasks that could publish low-quality template content.
 
 ## Manual Run
+
+For immediate article creation, start a Codex run in this repo and ask it to execute the Codex publishing workflow. That keeps research, writing, source review, thumbnail decisions, and duplicate checks inside the Codex agent instead of a template script.
+
+After Codex has generated or edited articles in the repo, run:
 
 ```powershell
 $env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\Publish-Daily.ps1 -Run
@@ -28,9 +31,13 @@ Or:
 npm run publish:daily
 ```
 
-## Install Schedule
+This finalizes real Codex-generated changes by rebuilding the static site, committing/pushing generated files, and posting up to 6 article URLs that are not yet in the Facebook posting history.
 
-Install the Windows Task Scheduler job for 9:15 AM local time:
+## Schedule
+
+The daily schedule is managed by Codex Desktop, not by a Windows Task Scheduler article generator.
+
+To clean old Windows scheduled tasks that may still exist from previous versions:
 
 ```powershell
 $env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\Publish-Daily.ps1 -InstallTask
@@ -42,7 +49,7 @@ Or:
 npm run schedule:install
 ```
 
-Remove the scheduled task:
+Remove old Windows scheduled tasks:
 
 ```powershell
 npm run schedule:uninstall
@@ -54,14 +61,10 @@ Create `.env` from `.env.example` and set:
 
 ```env
 GRAPH_API_VERSION=v23.0
-OPENAI_API_KEY=your_openai_api_key
-OPENAI_MODEL=gpt-5.1
 FB_PAGE_ID=176747645744060
 FB_PAGE_ACCESS_TOKEN=your_valid_page_access_token
 FB_DRY_RUN=false
 ```
-
-`OPENAI_API_KEY` is required for article generation. `OPENAI_MODEL` can be changed if your account uses a different available model.
 
 The Facebook token must be a Page token with:
 
@@ -88,5 +91,5 @@ The log tracks published keywords, slugs, thumbnail hashes, thumbnail sources, F
 
 Only these scripts are required:
 
-- `scripts/Publish-Daily.ps1` - main publisher, scheduler installer, Facebook poster, GitHub pusher
+- `scripts/Publish-Daily.ps1` - build/push helper, old scheduler cleanup, Facebook poster/retry tool
 - `scripts/build-site.js` - static site renderer
