@@ -70,6 +70,121 @@
   ],
   "runs": [
     {
+      "ranAt": "2026-06-05T04:12:23.440Z",
+      "commit": "539bf79",
+      "mode": "codex-finalize-push-blocked",
+      "articles": [
+        {
+          "slug": "ev-charging-cost-india-2026-home-vs-fast",
+          "keyword": "EV Charging Cost India",
+          "category": "EV Buying Guides",
+          "url": "https://comeback2000.github.io/Car-news/posts/ev-charging-cost-india-2026-home-vs-fast.html",
+          "image": "assets/ev-charging-cost-india-2026-thumbnail.jpg"
+        },
+        {
+          "slug": "ev-range-comparison-india-2026-real-world-shortlist",
+          "keyword": "EV Range Comparison",
+          "category": "EV Comparisons",
+          "url": "https://comeback2000.github.io/Car-news/posts/ev-range-comparison-india-2026-real-world-shortlist.html",
+          "image": "assets/ev-range-comparison-india-2026-thumbnail.jpg"
+        },
+        {
+          "slug": "ev-vs-ice-bikes-india-2026-ownership-cost",
+          "keyword": "EV vs ICE Bikes",
+          "category": "Bike News",
+          "url": "https://comeback2000.github.io/Car-news/posts/ev-vs-ice-bikes-india-2026-ownership-cost.html",
+          "image": "assets/ev-vs-ice-bikes-india-2026-thumbnail.jpg"
+        },
+        {
+          "slug": "electric-bike-prices-india-2026-shortlist",
+          "keyword": "price of All EV bikes India",
+          "category": "Bike News",
+          "url": "https://comeback2000.github.io/Car-news/posts/electric-bike-prices-india-2026-shortlist.html",
+          "image": "assets/electric-bike-prices-india-2026-thumbnail.jpg"
+        },
+        {
+          "slug": "mobile-news-apple-india-2026-upgrade-guide",
+          "keyword": "mobile news apple",
+          "category": "Mobile Tech",
+          "url": "https://comeback2000.github.io/Car-news/posts/mobile-news-apple-india-2026-upgrade-guide.html",
+          "image": "assets/mobile-news-apple-india-2026-thumbnail.jpg"
+        },
+        {
+          "slug": "apple-ai-phone-features-india-2026-buyer-guide",
+          "keyword": "mobile news apple in Ai",
+          "category": "Mobile Tech",
+          "url": "https://comeback2000.github.io/Car-news/posts/apple-ai-phone-features-india-2026-buyer-guide.html",
+          "image": "assets/apple-ai-phone-features-india-2026-thumbnail.jpg"
+        }
+      ],
+      "facebook": [
+        {
+          "slug": "ev-charging-cost-india-2026-home-vs-fast",
+          "title": "EV Charging Cost India: Home, Highway and Fast-Charger Bills Buyers Must Compare",
+          "result": {
+            "status": "skipped_push_failed",
+            "postId": null,
+            "message": "GitHub push failed before public URLs were updated: schannel SEC_E_NO_CREDENTIALS. Facebook publishing requires the pushed article and image URLs."
+          },
+          "postedAt": "2026-06-05T04:12:23.441Z"
+        },
+        {
+          "slug": "ev-range-comparison-india-2026-real-world-shortlist",
+          "title": "EV Range Comparison: Why Indian Buyers Should Read Beyond the ARAI Number",
+          "result": {
+            "status": "skipped_push_failed",
+            "postId": null,
+            "message": "GitHub push failed before public URLs were updated: schannel SEC_E_NO_CREDENTIALS. Facebook publishing requires the pushed article and image URLs."
+          },
+          "postedAt": "2026-06-05T04:12:23.441Z"
+        },
+        {
+          "slug": "ev-vs-ice-bikes-india-2026-ownership-cost",
+          "title": "EV vs ICE Bikes: The Ownership Cost Fight Indian Riders Should Recheck in 2026",
+          "result": {
+            "status": "skipped_push_failed",
+            "postId": null,
+            "message": "GitHub push failed before public URLs were updated: schannel SEC_E_NO_CREDENTIALS. Facebook publishing requires the pushed article and image URLs."
+          },
+          "postedAt": "2026-06-05T04:12:23.441Z"
+        },
+        {
+          "slug": "electric-bike-prices-india-2026-shortlist",
+          "title": "Electric Bike Prices India: What Riders Should Check Before Chasing the Lowest Tag",
+          "result": {
+            "status": "skipped_push_failed",
+            "postId": null,
+            "message": "GitHub push failed before public URLs were updated: schannel SEC_E_NO_CREDENTIALS. Facebook publishing requires the pushed article and image URLs."
+          },
+          "postedAt": "2026-06-05T04:12:23.441Z"
+        },
+        {
+          "slug": "mobile-news-apple-india-2026-upgrade-guide",
+          "title": "Apple Mobile News India: The iPhone Upgrade Questions Buyers Should Ask in 2026",
+          "result": {
+            "status": "skipped_push_failed",
+            "postId": null,
+            "message": "GitHub push failed before public URLs were updated: schannel SEC_E_NO_CREDENTIALS. Facebook publishing requires the pushed article and image URLs."
+          },
+          "postedAt": "2026-06-05T04:12:23.441Z"
+        },
+        {
+          "slug": "apple-ai-phone-features-india-2026-buyer-guide",
+          "title": "Apple AI in India: Which iPhone Buyers Actually Benefit from Apple Intelligence?",
+          "result": {
+            "status": "skipped_push_failed",
+            "postId": null,
+            "message": "GitHub push failed before public URLs were updated: schannel SEC_E_NO_CREDENTIALS. Facebook publishing requires the pushed article and image URLs."
+          },
+          "postedAt": "2026-06-05T04:12:23.441Z"
+        }
+      ],
+      "push": {
+        "status": "failed",
+        "message": "Unable to access GitHub HTTPS remote: schannel AcquireCredentialsHandle failed, SEC_E_NO_CREDENTIALS. Local commit is ahead of origin/main."
+      }
+    },
+    {
       "ranAt": "2026-06-04T18:51:57.7656561+05:30",
       "commit": null,
       "articles": [],
