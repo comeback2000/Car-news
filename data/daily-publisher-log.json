@@ -44,7 +44,13 @@
                             "3ee06abf28f25fd4bad2462617718dff98cfad94be7444c7d77043be29216ccd",
                             "20fa29fc17ccacca979e13086d44c63fd51aaa55f2d51215079359e0205246e4",
                             "19cc9d3025646a458569d47f997b73214832ba135f0a12b532536b17d46abe3d",
-                            "191982ee8d837eb42591aa4fa5223798e8c5538c716a12e397db5227c90c1484"
+                            "191982ee8d837eb42591aa4fa5223798e8c5538c716a12e397db5227c90c1484",
+                            "91b81ac538a9ebe9d6ac03991f945408c108800bf2449c1d52c0be9786d6e79a",
+                            "2458ee4dbafef63514e76999d56b0fd8bbd6523edaed00971ed1847c0a6af144",
+                            "510af8b50f0e49b8e7512373bb57fbee61352b1197f50f4ca94082fcc3d8afdf",
+                            "df619a46c84ba047ba1e370d6eefea6910661df075ad48773b088f65604aded7",
+                            "14e4b9cb61121753f56be9fe5cea2cad2161eb8866b49862d67b7ee62341d6ca",
+                            "413b8eeb71c36cb25f5915385f4c8a5c078dc4bcb39add52ca2de0be95443f1a"
                         ],
     "thumbnailSources":  [
                              "https://static-assets.tatamotors.com/Production/www-tatamotors-com-NEW/wp-content/uploads/2025/07/th-040725.jpg",
@@ -58,7 +64,13 @@
                              "local-real-image:assets/ev-vs-ice-bikes-india-2026-thumbnail.jpg",
                              "local-real-image:assets/electric-bike-prices-india-2026-thumbnail.jpg",
                              "local-real-image:assets/mobile-news-apple-india-2026-thumbnail.jpg",
-                             "local-real-image:assets/apple-ai-phone-features-india-2026-thumbnail.jpg"
+                             "local-real-image:assets/apple-ai-phone-features-india-2026-thumbnail.jpg",
+                             "official:Tata Motors Nexon.ev:https://static-assets.tatamotors.com/Production/www-tatamotors-com-NEW/wp-content/uploads/2025/09/th-100925.jpg:charging-cost-crop",
+                             "official:Hyundai Creta Electric:https://www.hyundai.com/content/dam/hyundai/in/en/data/find-a-car/creta-electric/exterior/creta-electric-front-1.jpg:range-comparison-front-crop",
+                             "official:Royal Enfield Hunter 350:https://www.royalenfield.com/content/dam/royal-enfield/motorcycles/hunter/colors/london-red/london-red1.png:ev-vs-ice-cost-crop",
+                             "official:Ola Roadster:https://cdn.olaelectric.com/sites/evdp/pages/bike/roadster/motorcycle_roadster_web_banner_v5.webp:electric-bike-price-crop",
+                             "official:Apple iPhone:https://www.apple.com/in/iphone/home/images/meta/iphone__bh930eyjnj0i_og.png:mobile-upgrade-crop",
+                             "official:Apple Intelligence:https://www.apple.com/newsroom/images/2024/09/apple-intelligence-comes-to-iphone-ipad-and-mac-starting-next-month/article/Apple-Intelligence-starting-next-month_big.jpg.large.jpg:ai-features-crop"
                          ],
     "facebookUrls":  [
                          "https://comeback2000.github.io/Car-news/posts/new-ev-launch-india.html",
@@ -474,5 +486,13 @@
                                       }
                                   ]
                  }
-             ]
+             ],
+    "thumbnailSourceIdentities":  [
+                                      "official:Tata Motors Nexon.ev:https://static-assets.tatamotors.com/Production/www-tatamotors-com-NEW/wp-content/uploads/2025/09/th-100925.jpg:charging-cost-crop",
+                                      "official:Hyundai Creta Electric:https://www.hyundai.com/content/dam/hyundai/in/en/data/find-a-car/creta-electric/exterior/creta-electric-front-1.jpg:range-comparison-front-crop",
+                                      "official:Royal Enfield Hunter 350:https://www.royalenfield.com/content/dam/royal-enfield/motorcycles/hunter/colors/london-red/london-red1.png:ev-vs-ice-cost-crop",
+                                      "official:Ola Roadster:https://cdn.olaelectric.com/sites/evdp/pages/bike/roadster/motorcycle_roadster_web_banner_v5.webp:electric-bike-price-crop",
+                                      "official:Apple iPhone:https://www.apple.com/in/iphone/home/images/meta/iphone__bh930eyjnj0i_og.png:mobile-upgrade-crop",
+                                      "official:Apple Intelligence:https://www.apple.com/newsroom/images/2024/09/apple-intelligence-comes-to-iphone-ipad-and-mac-starting-next-month/article/Apple-Intelligence-starting-next-month_big.jpg.large.jpg:ai-features-crop"
+                                  ]
 }

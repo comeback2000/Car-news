@@ -29,9 +29,12 @@ This workflow treats the seed keyword as a research input, not as article filler
 
 ## Thumbnail
 
-- Use a real source image whenever possible.
+- Use a real official manufacturer, brand, or company image whenever possible. If an official source is blocked or unavailable, use a clearly attributable public-domain/Commons source and record that choice.
+- Match the source image to the exact article angle: Tata article means Tata vehicle, Hyundai article means Hyundai vehicle, Ola article means Ola vehicle, Apple article means Apple product imagery.
+- Do not reuse the same base vehicle, product, source URL, crop, or near-identical visual style across different new posts, even if the final file hash is different.
 - Add a strong editorial overlay: badge, bold headline, dark contrast, and a CTR-focused strapline.
-- Do not reuse the same image source or identical thumbnail hash for new posts.
+- Before publishing, create a contact sheet of the new thumbnails and review it visually. Reject the batch if two cards look like the same photo/design with different text.
+- Track both exact thumbnail hashes and human-readable source identities such as brand, model, source URL, and crop notes.
 
 ## Publishing
 
