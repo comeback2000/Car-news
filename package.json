@@ -3,6 +3,8 @@
     "build": "node scripts/build-site.js",
     "publish:daily": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/Publish-Daily.ps1 -Run",
     "publish:facebook:retry": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/Publish-Daily.ps1 -RetryFacebookFailed",
+    "google:sitemap": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/Submit-GoogleSitemap.ps1",
+    "google:urls": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/Submit-GoogleSitemap.ps1 -ListUrlsOnly",
     "schedule:install": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/Publish-Daily.ps1 -InstallTask",
     "schedule:uninstall": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/Publish-Daily.ps1 -UninstallTask"
   }

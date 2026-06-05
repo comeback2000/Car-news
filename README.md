@@ -64,12 +64,43 @@ GRAPH_API_VERSION=v23.0
 FB_PAGE_ID=176747645744060
 FB_PAGE_ACCESS_TOKEN=your_valid_page_access_token
 FB_DRY_RUN=false
+GOOGLE_SEARCH_CONSOLE_SITE_URL=https://comeback2000.github.io/Car-news/
+GOOGLE_SITEMAP_URL=https://comeback2000.github.io/Car-news/sitemap.xml
+GOOGLE_SERVICE_ACCOUNT_JSON=F:\opencalw\Mass-Time\Car-news\secrets\google-search-console-service-account.json
 ```
 
 The Facebook token must be a Page token with:
 
 - `pages_manage_posts`
 - `pages_read_engagement`
+
+## Google Indexing Discovery
+
+Google does not support bulk URL indexing requests for normal blog/news articles through the Indexing API. The supported scriptable route is to submit the sitemap through the Search Console API.
+
+Setup:
+
+1. Add and verify this URL-prefix property in Google Search Console:
+   `https://comeback2000.github.io/Car-news/`
+2. Create a Google Cloud service account and download its JSON key.
+3. In Search Console, add the service account `client_email` as a user for the verified property.
+4. Save the JSON key outside Git, for example:
+   `secrets/google-search-console-service-account.json`
+5. Set `GOOGLE_SERVICE_ACCOUNT_JSON` in `.env`.
+
+Preview all URLs currently in the sitemap:
+
+```powershell
+npm run google:urls
+```
+
+Submit the sitemap to Google Search Console:
+
+```powershell
+npm run google:sitemap
+```
+
+This tells Google where the sitemap is and helps it discover all listed URLs. It does not guarantee immediate indexing.
 
 ## Logs
 
@@ -92,4 +123,5 @@ The log tracks published keywords, slugs, thumbnail hashes, thumbnail sources, F
 Only these scripts are required:
 
 - `scripts/Publish-Daily.ps1` - build/push helper, old scheduler cleanup, Facebook poster/retry tool
+- `scripts/Submit-GoogleSitemap.ps1` - submits the sitemap to Google Search Console
 - `scripts/build-site.js` - static site renderer
