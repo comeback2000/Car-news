@@ -1,360 +1,478 @@
 {
-  "cursors": {
-    "car": 8,
-    "bike": 4,
-    "mobile": 4
-  },
-  "publishedKeywords": [
-    "New EV Launch India",
-    "Electric SUV India",
-    "bikes new launch",
-    "best Bikes in EV",
-    "mobile news launch",
-    "mobile new tech",
-    "EV Charging Cost India",
-    "EV Range Comparison",
-    "EV vs ICE Bikes",
-    "price of All EV bikes India",
-    "mobile news apple",
-    "mobile news apple in Ai"
-  ],
-  "publishedSlugs": [
-    "new-ev-launch-india",
-    "electric-suv-india",
-    "bikes-new-launch",
-    "best-bikes-in-ev",
-    "mobile-news-launch",
-    "mobile-new-tech",
-    "ev-charging-cost-india-2026-home-vs-fast",
-    "ev-range-comparison-india-2026-real-world-shortlist",
-    "ev-vs-ice-bikes-india-2026-ownership-cost",
-    "electric-bike-prices-india-2026-shortlist",
-    "mobile-news-apple-india-2026-upgrade-guide",
-    "apple-ai-phone-features-india-2026-buyer-guide"
-  ],
-  "thumbnailHashes": [
-    "9ccc65110c374622188ecbe2838fb11aaec257b150ebc4744c0b57af1221f54f",
-    "5e38f4402781505ada90c087b4bf4314f13d75aab1b9dd336e5d78aebdfc3b6b",
-    "de44353d858061f4853f68c6d94f8a3c8b457ded0155e7d5fe24e5d962b4c3f8",
-    "e91364662cc3ed4e818ec7f145502a8ba28616bea60a4d389ba4690fab44c37a",
-    "9fb262fd08acb4632c705cb94cf634934259f70df4bb95bda9cea5624dccbe8e",
-    "fc736ebf3334c271dc795baec52a3a8eeccdf4ca06824a671d3b1fc3ea87cce1",
-    "4be2f6a4771ffd72c05ca4f261415ae121f6036442403ca779279b23705c64f2",
-    "abcc6c5ac31995fcc19d112518547d80be77289f261459b4721c6c9a93889061",
-    "3ee06abf28f25fd4bad2462617718dff98cfad94be7444c7d77043be29216ccd",
-    "20fa29fc17ccacca979e13086d44c63fd51aaa55f2d51215079359e0205246e4",
-    "19cc9d3025646a458569d47f997b73214832ba135f0a12b532536b17d46abe3d",
-    "191982ee8d837eb42591aa4fa5223798e8c5538c716a12e397db5227c90c1484"
-  ],
-  "thumbnailSources": [
-    "https://static-assets.tatamotors.com/Production/www-tatamotors-com-NEW/wp-content/uploads/2025/07/th-040725.jpg",
-    "https://www.tatamotors.com/wp-content/uploads/2024/08/EV-Front-3-4-scaled.jpg",
-    "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg",
-    "https://images.pexels.com/photos/163210/motorcycles-race-helmets-pilots-163210.jpeg",
-    "https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg",
-    "https://images.pexels.com/photos/1092644/pexels-photo-1092644.jpeg",
-    "local-real-image:assets/ev-charging-cost-india-2026-thumbnail.jpg",
-    "local-real-image:assets/ev-range-comparison-india-2026-thumbnail.jpg",
-    "local-real-image:assets/ev-vs-ice-bikes-india-2026-thumbnail.jpg",
-    "local-real-image:assets/electric-bike-prices-india-2026-thumbnail.jpg",
-    "local-real-image:assets/mobile-news-apple-india-2026-thumbnail.jpg",
-    "local-real-image:assets/apple-ai-phone-features-india-2026-thumbnail.jpg"
-  ],
-  "facebookUrls": [
-    "https://comeback2000.github.io/Car-news/posts/new-ev-launch-india.html",
-    "https://comeback2000.github.io/Car-news/posts/electric-suv-india.html",
-    "https://comeback2000.github.io/Car-news/posts/bikes-new-launch.html",
-    "https://comeback2000.github.io/Car-news/posts/best-bikes-in-ev.html",
-    "https://comeback2000.github.io/Car-news/posts/mobile-news-launch.html",
-    "https://comeback2000.github.io/Car-news/posts/mobile-new-tech.html"
-  ],
-  "runs": [
-    {
-      "ranAt": "2026-06-05T04:12:23.440Z",
-      "commit": "539bf79",
-      "mode": "codex-finalize-push-blocked",
-      "articles": [
-        {
-          "slug": "ev-charging-cost-india-2026-home-vs-fast",
-          "keyword": "EV Charging Cost India",
-          "category": "EV Buying Guides",
-          "url": "https://comeback2000.github.io/Car-news/posts/ev-charging-cost-india-2026-home-vs-fast.html",
-          "image": "assets/ev-charging-cost-india-2026-thumbnail.jpg"
-        },
-        {
-          "slug": "ev-range-comparison-india-2026-real-world-shortlist",
-          "keyword": "EV Range Comparison",
-          "category": "EV Comparisons",
-          "url": "https://comeback2000.github.io/Car-news/posts/ev-range-comparison-india-2026-real-world-shortlist.html",
-          "image": "assets/ev-range-comparison-india-2026-thumbnail.jpg"
-        },
-        {
-          "slug": "ev-vs-ice-bikes-india-2026-ownership-cost",
-          "keyword": "EV vs ICE Bikes",
-          "category": "Bike News",
-          "url": "https://comeback2000.github.io/Car-news/posts/ev-vs-ice-bikes-india-2026-ownership-cost.html",
-          "image": "assets/ev-vs-ice-bikes-india-2026-thumbnail.jpg"
-        },
-        {
-          "slug": "electric-bike-prices-india-2026-shortlist",
-          "keyword": "price of All EV bikes India",
-          "category": "Bike News",
-          "url": "https://comeback2000.github.io/Car-news/posts/electric-bike-prices-india-2026-shortlist.html",
-          "image": "assets/electric-bike-prices-india-2026-thumbnail.jpg"
-        },
-        {
-          "slug": "mobile-news-apple-india-2026-upgrade-guide",
-          "keyword": "mobile news apple",
-          "category": "Mobile Tech",
-          "url": "https://comeback2000.github.io/Car-news/posts/mobile-news-apple-india-2026-upgrade-guide.html",
-          "image": "assets/mobile-news-apple-india-2026-thumbnail.jpg"
-        },
-        {
-          "slug": "apple-ai-phone-features-india-2026-buyer-guide",
-          "keyword": "mobile news apple in Ai",
-          "category": "Mobile Tech",
-          "url": "https://comeback2000.github.io/Car-news/posts/apple-ai-phone-features-india-2026-buyer-guide.html",
-          "image": "assets/apple-ai-phone-features-india-2026-thumbnail.jpg"
-        }
-      ],
-      "facebook": [
-        {
-          "slug": "ev-charging-cost-india-2026-home-vs-fast",
-          "title": "EV Charging Cost India: Home, Highway and Fast-Charger Bills Buyers Must Compare",
-          "result": {
-            "status": "skipped_push_failed",
-            "postId": null,
-            "message": "GitHub push failed before public URLs were updated: schannel SEC_E_NO_CREDENTIALS. Facebook publishing requires the pushed article and image URLs."
-          },
-          "postedAt": "2026-06-05T04:12:23.441Z"
-        },
-        {
-          "slug": "ev-range-comparison-india-2026-real-world-shortlist",
-          "title": "EV Range Comparison: Why Indian Buyers Should Read Beyond the ARAI Number",
-          "result": {
-            "status": "skipped_push_failed",
-            "postId": null,
-            "message": "GitHub push failed before public URLs were updated: schannel SEC_E_NO_CREDENTIALS. Facebook publishing requires the pushed article and image URLs."
-          },
-          "postedAt": "2026-06-05T04:12:23.441Z"
-        },
-        {
-          "slug": "ev-vs-ice-bikes-india-2026-ownership-cost",
-          "title": "EV vs ICE Bikes: The Ownership Cost Fight Indian Riders Should Recheck in 2026",
-          "result": {
-            "status": "skipped_push_failed",
-            "postId": null,
-            "message": "GitHub push failed before public URLs were updated: schannel SEC_E_NO_CREDENTIALS. Facebook publishing requires the pushed article and image URLs."
-          },
-          "postedAt": "2026-06-05T04:12:23.441Z"
-        },
-        {
-          "slug": "electric-bike-prices-india-2026-shortlist",
-          "title": "Electric Bike Prices India: What Riders Should Check Before Chasing the Lowest Tag",
-          "result": {
-            "status": "skipped_push_failed",
-            "postId": null,
-            "message": "GitHub push failed before public URLs were updated: schannel SEC_E_NO_CREDENTIALS. Facebook publishing requires the pushed article and image URLs."
-          },
-          "postedAt": "2026-06-05T04:12:23.441Z"
-        },
-        {
-          "slug": "mobile-news-apple-india-2026-upgrade-guide",
-          "title": "Apple Mobile News India: The iPhone Upgrade Questions Buyers Should Ask in 2026",
-          "result": {
-            "status": "skipped_push_failed",
-            "postId": null,
-            "message": "GitHub push failed before public URLs were updated: schannel SEC_E_NO_CREDENTIALS. Facebook publishing requires the pushed article and image URLs."
-          },
-          "postedAt": "2026-06-05T04:12:23.441Z"
-        },
-        {
-          "slug": "apple-ai-phone-features-india-2026-buyer-guide",
-          "title": "Apple AI in India: Which iPhone Buyers Actually Benefit from Apple Intelligence?",
-          "result": {
-            "status": "skipped_push_failed",
-            "postId": null,
-            "message": "GitHub push failed before public URLs were updated: schannel SEC_E_NO_CREDENTIALS. Facebook publishing requires the pushed article and image URLs."
-          },
-          "postedAt": "2026-06-05T04:12:23.441Z"
-        }
-      ],
-      "push": {
-        "status": "failed",
-        "message": "Unable to access GitHub HTTPS remote: schannel AcquireCredentialsHandle failed, SEC_E_NO_CREDENTIALS. Local commit is ahead of origin/main."
-      }
-    },
-    {
-      "ranAt": "2026-06-04T18:51:57.7656561+05:30",
-      "commit": null,
-      "articles": [],
-      "facebook": [
-        {
-          "slug": "new-ev-launch-india",
-          "title": "New EV Launch India: Latest India Update, Buyer Signals and What Changes Next",
-          "result": {
-            "status": "published",
-            "postId": "176747645744060_872362549227254"
-          },
-          "postedAt": "2026-06-04T18:51:09.4602094+05:30"
-        },
-        {
-          "slug": "electric-suv-india",
-          "title": "Electric SUV India: Latest India Update, Buyer Signals and What Changes Next",
-          "result": {
-            "status": "published",
-            "postId": "176747645744060_872362682560574"
-          },
-          "postedAt": "2026-06-04T18:51:24.1545758+05:30"
-        },
-        {
-          "slug": "bikes-new-launch",
-          "title": "bikes new launch: What Indian Riders Should Know Before Buying",
-          "result": {
-            "status": "published",
-            "postId": "176747645744060_872362875893888"
-          },
-          "postedAt": "2026-06-04T18:51:36.9284348+05:30"
-        },
-        {
-          "slug": "best-bikes-in-ev",
-          "title": "best Bikes in EV: What Indian Riders Should Know Before Buying",
-          "result": {
-            "status": "published",
-            "postId": "176747645744060_872363022560540"
-          },
-          "postedAt": "2026-06-04T18:51:43.6364203+05:30"
-        },
-        {
-          "slug": "mobile-news-launch",
-          "title": "mobile news launch: The Latest Tech Update Indian Buyers Should Watch",
-          "result": {
-            "status": "published",
-            "postId": "176747645744060_872363129227196"
-          },
-          "postedAt": "2026-06-04T18:51:51.2035444+05:30"
-        },
-        {
-          "slug": "mobile-new-tech",
-          "title": "mobile new tech: The Latest Tech Update Indian Buyers Should Watch",
-          "result": {
-            "status": "published",
-            "postId": "176747645744060_872363205893855"
-          },
-          "postedAt": "2026-06-04T18:51:57.7656561+05:30"
-        }
-      ],
-      "retryOf": "2026-06-04T18:45:35.5485961+05:30"
-    },
-    {
-      "ranAt": "2026-06-04T18:45:35.5485961+05:30",
-      "commit": "463b1e6",
-      "articles": [
-        {
-          "slug": "new-ev-launch-india",
-          "keyword": "New EV Launch India",
-          "category": "EV Buying Guides",
-          "url": "https://comeback2000.github.io/Car-news/posts/new-ev-launch-india.html",
-          "image": "assets/new-ev-launch-india-thumbnail.jpg"
-        },
-        {
-          "slug": "electric-suv-india",
-          "keyword": "Electric SUV India",
-          "category": "EV Buying Guides",
-          "url": "https://comeback2000.github.io/Car-news/posts/electric-suv-india.html",
-          "image": "assets/electric-suv-india-thumbnail.jpg"
-        },
-        {
-          "slug": "bikes-new-launch",
-          "keyword": "bikes new launch",
-          "category": "Bike News",
-          "url": "https://comeback2000.github.io/Car-news/posts/bikes-new-launch.html",
-          "image": "assets/bikes-new-launch-thumbnail.jpg"
-        },
-        {
-          "slug": "best-bikes-in-ev",
-          "keyword": "best Bikes in EV",
-          "category": "Bike News",
-          "url": "https://comeback2000.github.io/Car-news/posts/best-bikes-in-ev.html",
-          "image": "assets/best-bikes-in-ev-thumbnail.jpg"
-        },
-        {
-          "slug": "mobile-news-launch",
-          "keyword": "mobile news launch",
-          "category": "Mobile Tech",
-          "url": "https://comeback2000.github.io/Car-news/posts/mobile-news-launch.html",
-          "image": "assets/mobile-news-launch-thumbnail.jpg"
-        },
-        {
-          "slug": "mobile-new-tech",
-          "keyword": "mobile new tech",
-          "category": "Mobile Tech",
-          "url": "https://comeback2000.github.io/Car-news/posts/mobile-new-tech.html",
-          "image": "assets/mobile-new-tech-thumbnail.jpg"
-        }
-      ],
-      "facebook": [
-        {
-          "slug": "new-ev-launch-india",
-          "title": "New EV Launch India: Latest India Update, Buyer Signals and What Changes Next",
-          "result": {
-            "status": "failed",
-            "postId": null,
-            "message": "The remote server returned an error: (400) Bad Request."
-          },
-          "postedAt": "2026-06-04T18:45:32.3210481+05:30"
-        },
-        {
-          "slug": "electric-suv-india",
-          "title": "Electric SUV India: Latest India Update, Buyer Signals and What Changes Next",
-          "result": {
-            "status": "failed",
-            "postId": null,
-            "message": "The remote server returned an error: (400) Bad Request."
-          },
-          "postedAt": "2026-06-04T18:45:32.9482438+05:30"
-        },
-        {
-          "slug": "bikes-new-launch",
-          "title": "bikes new launch: What Indian Riders Should Know Before Buying",
-          "result": {
-            "status": "failed",
-            "postId": null,
-            "message": "The remote server returned an error: (400) Bad Request."
-          },
-          "postedAt": "2026-06-04T18:45:33.5802150+05:30"
-        },
-        {
-          "slug": "best-bikes-in-ev",
-          "title": "best Bikes in EV: What Indian Riders Should Know Before Buying",
-          "result": {
-            "status": "failed",
-            "postId": null,
-            "message": "The remote server returned an error: (400) Bad Request."
-          },
-          "postedAt": "2026-06-04T18:45:34.3455879+05:30"
-        },
-        {
-          "slug": "mobile-news-launch",
-          "title": "mobile news launch: The Latest Tech Update Indian Buyers Should Watch",
-          "result": {
-            "status": "failed",
-            "postId": null,
-            "message": "The remote server returned an error: (400) Bad Request."
-          },
-          "postedAt": "2026-06-04T18:45:34.9512343+05:30"
-        },
-        {
-          "slug": "mobile-new-tech",
-          "title": "mobile new tech: The Latest Tech Update Indian Buyers Should Watch",
-          "result": {
-            "status": "failed",
-            "postId": null,
-            "message": "The remote server returned an error: (400) Bad Request."
-          },
-          "postedAt": "2026-06-04T18:45:35.5476334+05:30"
-        }
-      ]
-    }
-  ]
+    "cursors":  {
+                    "car":  8,
+                    "bike":  4,
+                    "mobile":  4
+                },
+    "publishedKeywords":  [
+                              "New EV Launch India",
+                              "Electric SUV India",
+                              "bikes new launch",
+                              "best Bikes in EV",
+                              "mobile news launch",
+                              "mobile new tech",
+                              "EV Charging Cost India",
+                              "EV Range Comparison",
+                              "EV vs ICE Bikes",
+                              "price of All EV bikes India",
+                              "mobile news apple",
+                              "mobile news apple in Ai"
+                          ],
+    "publishedSlugs":  [
+                           "new-ev-launch-india",
+                           "electric-suv-india",
+                           "bikes-new-launch",
+                           "best-bikes-in-ev",
+                           "mobile-news-launch",
+                           "mobile-new-tech",
+                           "ev-charging-cost-india-2026-home-vs-fast",
+                           "ev-range-comparison-india-2026-real-world-shortlist",
+                           "ev-vs-ice-bikes-india-2026-ownership-cost",
+                           "electric-bike-prices-india-2026-shortlist",
+                           "mobile-news-apple-india-2026-upgrade-guide",
+                           "apple-ai-phone-features-india-2026-buyer-guide"
+                       ],
+    "thumbnailHashes":  [
+                            "9ccc65110c374622188ecbe2838fb11aaec257b150ebc4744c0b57af1221f54f",
+                            "5e38f4402781505ada90c087b4bf4314f13d75aab1b9dd336e5d78aebdfc3b6b",
+                            "de44353d858061f4853f68c6d94f8a3c8b457ded0155e7d5fe24e5d962b4c3f8",
+                            "e91364662cc3ed4e818ec7f145502a8ba28616bea60a4d389ba4690fab44c37a",
+                            "9fb262fd08acb4632c705cb94cf634934259f70df4bb95bda9cea5624dccbe8e",
+                            "fc736ebf3334c271dc795baec52a3a8eeccdf4ca06824a671d3b1fc3ea87cce1",
+                            "4be2f6a4771ffd72c05ca4f261415ae121f6036442403ca779279b23705c64f2",
+                            "abcc6c5ac31995fcc19d112518547d80be77289f261459b4721c6c9a93889061",
+                            "3ee06abf28f25fd4bad2462617718dff98cfad94be7444c7d77043be29216ccd",
+                            "20fa29fc17ccacca979e13086d44c63fd51aaa55f2d51215079359e0205246e4",
+                            "19cc9d3025646a458569d47f997b73214832ba135f0a12b532536b17d46abe3d",
+                            "191982ee8d837eb42591aa4fa5223798e8c5538c716a12e397db5227c90c1484"
+                        ],
+    "thumbnailSources":  [
+                             "https://static-assets.tatamotors.com/Production/www-tatamotors-com-NEW/wp-content/uploads/2025/07/th-040725.jpg",
+                             "https://www.tatamotors.com/wp-content/uploads/2024/08/EV-Front-3-4-scaled.jpg",
+                             "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg",
+                             "https://images.pexels.com/photos/163210/motorcycles-race-helmets-pilots-163210.jpeg",
+                             "https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg",
+                             "https://images.pexels.com/photos/1092644/pexels-photo-1092644.jpeg",
+                             "local-real-image:assets/ev-charging-cost-india-2026-thumbnail.jpg",
+                             "local-real-image:assets/ev-range-comparison-india-2026-thumbnail.jpg",
+                             "local-real-image:assets/ev-vs-ice-bikes-india-2026-thumbnail.jpg",
+                             "local-real-image:assets/electric-bike-prices-india-2026-thumbnail.jpg",
+                             "local-real-image:assets/mobile-news-apple-india-2026-thumbnail.jpg",
+                             "local-real-image:assets/apple-ai-phone-features-india-2026-thumbnail.jpg"
+                         ],
+    "facebookUrls":  [
+                         "https://comeback2000.github.io/Car-news/posts/new-ev-launch-india.html",
+                         "https://comeback2000.github.io/Car-news/posts/electric-suv-india.html",
+                         "https://comeback2000.github.io/Car-news/posts/bikes-new-launch.html",
+                         "https://comeback2000.github.io/Car-news/posts/best-bikes-in-ev.html",
+                         "https://comeback2000.github.io/Car-news/posts/mobile-news-launch.html",
+                         "https://comeback2000.github.io/Car-news/posts/mobile-new-tech.html",
+                         "https://comeback2000.github.io/Car-news/posts/ev-charging-cost-india-2026-home-vs-fast.html",
+                         "https://comeback2000.github.io/Car-news/posts/ev-range-comparison-india-2026-real-world-shortlist.html",
+                         "https://comeback2000.github.io/Car-news/posts/ev-vs-ice-bikes-india-2026-ownership-cost.html",
+                         "https://comeback2000.github.io/Car-news/posts/electric-bike-prices-india-2026-shortlist.html",
+                         "https://comeback2000.github.io/Car-news/posts/mobile-news-apple-india-2026-upgrade-guide.html",
+                         "https://comeback2000.github.io/Car-news/posts/apple-ai-phone-features-india-2026-buyer-guide.html"
+                     ],
+    "runs":  [
+                 {
+                     "ranAt":  "2026-06-05T09:43:53.5489430+05:30",
+                     "commit":  [
+                                    "Built 23 posts, category pages, tag pages and sitemap.xml",
+                                    "[main b178ebf] Daily publish: codex-generated",
+                                    " 1 file changed, 115 insertions(+)",
+                                    "b178ebf"
+                                ],
+                     "mode":  "codex-finalize",
+                     "articles":  [
+                                      {
+                                          "slug":  "ev-charging-cost-india-2026-home-vs-fast",
+                                          "keyword":  "EV Charging Cost India",
+                                          "category":  "EV Buying Guides",
+                                          "url":  "https://comeback2000.github.io/Car-news/posts/ev-charging-cost-india-2026-home-vs-fast.html",
+                                          "image":  "assets/ev-charging-cost-india-2026-thumbnail.jpg"
+                                      },
+                                      {
+                                          "slug":  "ev-range-comparison-india-2026-real-world-shortlist",
+                                          "keyword":  "EV Range Comparison",
+                                          "category":  "EV Comparisons",
+                                          "url":  "https://comeback2000.github.io/Car-news/posts/ev-range-comparison-india-2026-real-world-shortlist.html",
+                                          "image":  "assets/ev-range-comparison-india-2026-thumbnail.jpg"
+                                      },
+                                      {
+                                          "slug":  "ev-vs-ice-bikes-india-2026-ownership-cost",
+                                          "keyword":  "EV vs ICE Bikes",
+                                          "category":  "Bike News",
+                                          "url":  "https://comeback2000.github.io/Car-news/posts/ev-vs-ice-bikes-india-2026-ownership-cost.html",
+                                          "image":  "assets/ev-vs-ice-bikes-india-2026-thumbnail.jpg"
+                                      },
+                                      {
+                                          "slug":  "electric-bike-prices-india-2026-shortlist",
+                                          "keyword":  "price of All EV bikes India",
+                                          "category":  "Bike News",
+                                          "url":  "https://comeback2000.github.io/Car-news/posts/electric-bike-prices-india-2026-shortlist.html",
+                                          "image":  "assets/electric-bike-prices-india-2026-thumbnail.jpg"
+                                      },
+                                      {
+                                          "slug":  "mobile-news-apple-india-2026-upgrade-guide",
+                                          "keyword":  "mobile news apple",
+                                          "category":  "Mobile Tech",
+                                          "url":  "https://comeback2000.github.io/Car-news/posts/mobile-news-apple-india-2026-upgrade-guide.html",
+                                          "image":  "assets/mobile-news-apple-india-2026-thumbnail.jpg"
+                                      },
+                                      {
+                                          "slug":  "apple-ai-phone-features-india-2026-buyer-guide",
+                                          "keyword":  "mobile news apple in Ai",
+                                          "category":  "Mobile Tech",
+                                          "url":  "https://comeback2000.github.io/Car-news/posts/apple-ai-phone-features-india-2026-buyer-guide.html",
+                                          "image":  "assets/apple-ai-phone-features-india-2026-thumbnail.jpg"
+                                      }
+                                  ],
+                     "facebook":  [
+                                      {
+                                          "slug":  "ev-charging-cost-india-2026-home-vs-fast",
+                                          "title":  "EV Charging Cost India: Home, Highway and Fast-Charger Bills Buyers Must Compare",
+                                          "result":  {
+                                                         "status":  "published",
+                                                         "postId":  "176747645744060_872893922507450"
+                                                     },
+                                          "postedAt":  "2026-06-05T09:43:19.6767978+05:30"
+                                      },
+                                      {
+                                          "slug":  "ev-range-comparison-india-2026-real-world-shortlist",
+                                          "title":  "EV Range Comparison: Why Indian Buyers Should Read Beyond the ARAI Number",
+                                          "result":  {
+                                                         "status":  "published",
+                                                         "postId":  "176747645744060_872894022507440"
+                                                     },
+                                          "postedAt":  "2026-06-05T09:43:27.2498375+05:30"
+                                      },
+                                      {
+                                          "slug":  "ev-vs-ice-bikes-india-2026-ownership-cost",
+                                          "title":  "EV vs ICE Bikes: The Ownership Cost Fight Indian Riders Should Recheck in 2026",
+                                          "result":  {
+                                                         "status":  "published",
+                                                         "postId":  "176747645744060_872894119174097"
+                                                     },
+                                          "postedAt":  "2026-06-05T09:43:35.1404135+05:30"
+                                      },
+                                      {
+                                          "slug":  "electric-bike-prices-india-2026-shortlist",
+                                          "title":  "Electric Bike Prices India: What Riders Should Check Before Chasing the Lowest Tag",
+                                          "result":  {
+                                                         "status":  "published",
+                                                         "postId":  "176747645744060_872894275840748"
+                                                     },
+                                          "postedAt":  "2026-06-05T09:43:43.3988068+05:30"
+                                      },
+                                      {
+                                          "slug":  "mobile-news-apple-india-2026-upgrade-guide",
+                                          "title":  "Apple Mobile News India: The iPhone Upgrade Questions Buyers Should Ask in 2026",
+                                          "result":  {
+                                                         "status":  "published",
+                                                         "postId":  "176747645744060_872894395840736"
+                                                     },
+                                          "postedAt":  "2026-06-05T09:43:48.4316530+05:30"
+                                      },
+                                      {
+                                          "slug":  "apple-ai-phone-features-india-2026-buyer-guide",
+                                          "title":  "Apple AI in India: Which iPhone Buyers Actually Benefit from Apple Intelligence?",
+                                          "result":  {
+                                                         "status":  "published",
+                                                         "postId":  "176747645744060_872894645840711"
+                                                     },
+                                          "postedAt":  "2026-06-05T09:43:53.5489430+05:30"
+                                      }
+                                  ]
+                 },
+                 {
+                     "ranAt":  "2026-06-05T04:12:23.440Z",
+                     "commit":  "539bf79",
+                     "mode":  "codex-finalize-push-blocked",
+                     "articles":  [
+                                      {
+                                          "slug":  "ev-charging-cost-india-2026-home-vs-fast",
+                                          "keyword":  "EV Charging Cost India",
+                                          "category":  "EV Buying Guides",
+                                          "url":  "https://comeback2000.github.io/Car-news/posts/ev-charging-cost-india-2026-home-vs-fast.html",
+                                          "image":  "assets/ev-charging-cost-india-2026-thumbnail.jpg"
+                                      },
+                                      {
+                                          "slug":  "ev-range-comparison-india-2026-real-world-shortlist",
+                                          "keyword":  "EV Range Comparison",
+                                          "category":  "EV Comparisons",
+                                          "url":  "https://comeback2000.github.io/Car-news/posts/ev-range-comparison-india-2026-real-world-shortlist.html",
+                                          "image":  "assets/ev-range-comparison-india-2026-thumbnail.jpg"
+                                      },
+                                      {
+                                          "slug":  "ev-vs-ice-bikes-india-2026-ownership-cost",
+                                          "keyword":  "EV vs ICE Bikes",
+                                          "category":  "Bike News",
+                                          "url":  "https://comeback2000.github.io/Car-news/posts/ev-vs-ice-bikes-india-2026-ownership-cost.html",
+                                          "image":  "assets/ev-vs-ice-bikes-india-2026-thumbnail.jpg"
+                                      },
+                                      {
+                                          "slug":  "electric-bike-prices-india-2026-shortlist",
+                                          "keyword":  "price of All EV bikes India",
+                                          "category":  "Bike News",
+                                          "url":  "https://comeback2000.github.io/Car-news/posts/electric-bike-prices-india-2026-shortlist.html",
+                                          "image":  "assets/electric-bike-prices-india-2026-thumbnail.jpg"
+                                      },
+                                      {
+                                          "slug":  "mobile-news-apple-india-2026-upgrade-guide",
+                                          "keyword":  "mobile news apple",
+                                          "category":  "Mobile Tech",
+                                          "url":  "https://comeback2000.github.io/Car-news/posts/mobile-news-apple-india-2026-upgrade-guide.html",
+                                          "image":  "assets/mobile-news-apple-india-2026-thumbnail.jpg"
+                                      },
+                                      {
+                                          "slug":  "apple-ai-phone-features-india-2026-buyer-guide",
+                                          "keyword":  "mobile news apple in Ai",
+                                          "category":  "Mobile Tech",
+                                          "url":  "https://comeback2000.github.io/Car-news/posts/apple-ai-phone-features-india-2026-buyer-guide.html",
+                                          "image":  "assets/apple-ai-phone-features-india-2026-thumbnail.jpg"
+                                      }
+                                  ],
+                     "facebook":  [
+                                      {
+                                          "slug":  "ev-charging-cost-india-2026-home-vs-fast",
+                                          "title":  "EV Charging Cost India: Home, Highway and Fast-Charger Bills Buyers Must Compare",
+                                          "result":  {
+                                                         "status":  "skipped_push_failed",
+                                                         "postId":  null,
+                                                         "message":  "GitHub push failed before public URLs were updated: schannel SEC_E_NO_CREDENTIALS. Facebook publishing requires the pushed article and image URLs."
+                                                     },
+                                          "postedAt":  "2026-06-05T04:12:23.441Z"
+                                      },
+                                      {
+                                          "slug":  "ev-range-comparison-india-2026-real-world-shortlist",
+                                          "title":  "EV Range Comparison: Why Indian Buyers Should Read Beyond the ARAI Number",
+                                          "result":  {
+                                                         "status":  "skipped_push_failed",
+                                                         "postId":  null,
+                                                         "message":  "GitHub push failed before public URLs were updated: schannel SEC_E_NO_CREDENTIALS. Facebook publishing requires the pushed article and image URLs."
+                                                     },
+                                          "postedAt":  "2026-06-05T04:12:23.441Z"
+                                      },
+                                      {
+                                          "slug":  "ev-vs-ice-bikes-india-2026-ownership-cost",
+                                          "title":  "EV vs ICE Bikes: The Ownership Cost Fight Indian Riders Should Recheck in 2026",
+                                          "result":  {
+                                                         "status":  "skipped_push_failed",
+                                                         "postId":  null,
+                                                         "message":  "GitHub push failed before public URLs were updated: schannel SEC_E_NO_CREDENTIALS. Facebook publishing requires the pushed article and image URLs."
+                                                     },
+                                          "postedAt":  "2026-06-05T04:12:23.441Z"
+                                      },
+                                      {
+                                          "slug":  "electric-bike-prices-india-2026-shortlist",
+                                          "title":  "Electric Bike Prices India: What Riders Should Check Before Chasing the Lowest Tag",
+                                          "result":  {
+                                                         "status":  "skipped_push_failed",
+                                                         "postId":  null,
+                                                         "message":  "GitHub push failed before public URLs were updated: schannel SEC_E_NO_CREDENTIALS. Facebook publishing requires the pushed article and image URLs."
+                                                     },
+                                          "postedAt":  "2026-06-05T04:12:23.441Z"
+                                      },
+                                      {
+                                          "slug":  "mobile-news-apple-india-2026-upgrade-guide",
+                                          "title":  "Apple Mobile News India: The iPhone Upgrade Questions Buyers Should Ask in 2026",
+                                          "result":  {
+                                                         "status":  "skipped_push_failed",
+                                                         "postId":  null,
+                                                         "message":  "GitHub push failed before public URLs were updated: schannel SEC_E_NO_CREDENTIALS. Facebook publishing requires the pushed article and image URLs."
+                                                     },
+                                          "postedAt":  "2026-06-05T04:12:23.441Z"
+                                      },
+                                      {
+                                          "slug":  "apple-ai-phone-features-india-2026-buyer-guide",
+                                          "title":  "Apple AI in India: Which iPhone Buyers Actually Benefit from Apple Intelligence?",
+                                          "result":  {
+                                                         "status":  "skipped_push_failed",
+                                                         "postId":  null,
+                                                         "message":  "GitHub push failed before public URLs were updated: schannel SEC_E_NO_CREDENTIALS. Facebook publishing requires the pushed article and image URLs."
+                                                     },
+                                          "postedAt":  "2026-06-05T04:12:23.441Z"
+                                      }
+                                  ],
+                     "push":  {
+                                  "status":  "failed",
+                                  "message":  "Unable to access GitHub HTTPS remote: schannel AcquireCredentialsHandle failed, SEC_E_NO_CREDENTIALS. Local commit is ahead of origin/main."
+                              }
+                 },
+                 {
+                     "ranAt":  "2026-06-04T18:51:57.7656561+05:30",
+                     "commit":  null,
+                     "articles":  [
+
+                                  ],
+                     "facebook":  [
+                                      {
+                                          "slug":  "new-ev-launch-india",
+                                          "title":  "New EV Launch India: Latest India Update, Buyer Signals and What Changes Next",
+                                          "result":  {
+                                                         "status":  "published",
+                                                         "postId":  "176747645744060_872362549227254"
+                                                     },
+                                          "postedAt":  "2026-06-04T18:51:09.4602094+05:30"
+                                      },
+                                      {
+                                          "slug":  "electric-suv-india",
+                                          "title":  "Electric SUV India: Latest India Update, Buyer Signals and What Changes Next",
+                                          "result":  {
+                                                         "status":  "published",
+                                                         "postId":  "176747645744060_872362682560574"
+                                                     },
+                                          "postedAt":  "2026-06-04T18:51:24.1545758+05:30"
+                                      },
+                                      {
+                                          "slug":  "bikes-new-launch",
+                                          "title":  "bikes new launch: What Indian Riders Should Know Before Buying",
+                                          "result":  {
+                                                         "status":  "published",
+                                                         "postId":  "176747645744060_872362875893888"
+                                                     },
+                                          "postedAt":  "2026-06-04T18:51:36.9284348+05:30"
+                                      },
+                                      {
+                                          "slug":  "best-bikes-in-ev",
+                                          "title":  "best Bikes in EV: What Indian Riders Should Know Before Buying",
+                                          "result":  {
+                                                         "status":  "published",
+                                                         "postId":  "176747645744060_872363022560540"
+                                                     },
+                                          "postedAt":  "2026-06-04T18:51:43.6364203+05:30"
+                                      },
+                                      {
+                                          "slug":  "mobile-news-launch",
+                                          "title":  "mobile news launch: The Latest Tech Update Indian Buyers Should Watch",
+                                          "result":  {
+                                                         "status":  "published",
+                                                         "postId":  "176747645744060_872363129227196"
+                                                     },
+                                          "postedAt":  "2026-06-04T18:51:51.2035444+05:30"
+                                      },
+                                      {
+                                          "slug":  "mobile-new-tech",
+                                          "title":  "mobile new tech: The Latest Tech Update Indian Buyers Should Watch",
+                                          "result":  {
+                                                         "status":  "published",
+                                                         "postId":  "176747645744060_872363205893855"
+                                                     },
+                                          "postedAt":  "2026-06-04T18:51:57.7656561+05:30"
+                                      }
+                                  ],
+                     "retryOf":  "2026-06-04T18:45:35.5485961+05:30"
+                 },
+                 {
+                     "ranAt":  "2026-06-04T18:45:35.5485961+05:30",
+                     "commit":  "463b1e6",
+                     "articles":  [
+                                      {
+                                          "slug":  "new-ev-launch-india",
+                                          "keyword":  "New EV Launch India",
+                                          "category":  "EV Buying Guides",
+                                          "url":  "https://comeback2000.github.io/Car-news/posts/new-ev-launch-india.html",
+                                          "image":  "assets/new-ev-launch-india-thumbnail.jpg"
+                                      },
+                                      {
+                                          "slug":  "electric-suv-india",
+                                          "keyword":  "Electric SUV India",
+                                          "category":  "EV Buying Guides",
+                                          "url":  "https://comeback2000.github.io/Car-news/posts/electric-suv-india.html",
+                                          "image":  "assets/electric-suv-india-thumbnail.jpg"
+                                      },
+                                      {
+                                          "slug":  "bikes-new-launch",
+                                          "keyword":  "bikes new launch",
+                                          "category":  "Bike News",
+                                          "url":  "https://comeback2000.github.io/Car-news/posts/bikes-new-launch.html",
+                                          "image":  "assets/bikes-new-launch-thumbnail.jpg"
+                                      },
+                                      {
+                                          "slug":  "best-bikes-in-ev",
+                                          "keyword":  "best Bikes in EV",
+                                          "category":  "Bike News",
+                                          "url":  "https://comeback2000.github.io/Car-news/posts/best-bikes-in-ev.html",
+                                          "image":  "assets/best-bikes-in-ev-thumbnail.jpg"
+                                      },
+                                      {
+                                          "slug":  "mobile-news-launch",
+                                          "keyword":  "mobile news launch",
+                                          "category":  "Mobile Tech",
+                                          "url":  "https://comeback2000.github.io/Car-news/posts/mobile-news-launch.html",
+                                          "image":  "assets/mobile-news-launch-thumbnail.jpg"
+                                      },
+                                      {
+                                          "slug":  "mobile-new-tech",
+                                          "keyword":  "mobile new tech",
+                                          "category":  "Mobile Tech",
+                                          "url":  "https://comeback2000.github.io/Car-news/posts/mobile-new-tech.html",
+                                          "image":  "assets/mobile-new-tech-thumbnail.jpg"
+                                      }
+                                  ],
+                     "facebook":  [
+                                      {
+                                          "slug":  "new-ev-launch-india",
+                                          "title":  "New EV Launch India: Latest India Update, Buyer Signals and What Changes Next",
+                                          "result":  {
+                                                         "status":  "failed",
+                                                         "postId":  null,
+                                                         "message":  "The remote server returned an error: (400) Bad Request."
+                                                     },
+                                          "postedAt":  "2026-06-04T18:45:32.3210481+05:30"
+                                      },
+                                      {
+                                          "slug":  "electric-suv-india",
+                                          "title":  "Electric SUV India: Latest India Update, Buyer Signals and What Changes Next",
+                                          "result":  {
+                                                         "status":  "failed",
+                                                         "postId":  null,
+                                                         "message":  "The remote server returned an error: (400) Bad Request."
+                                                     },
+                                          "postedAt":  "2026-06-04T18:45:32.9482438+05:30"
+                                      },
+                                      {
+                                          "slug":  "bikes-new-launch",
+                                          "title":  "bikes new launch: What Indian Riders Should Know Before Buying",
+                                          "result":  {
+                                                         "status":  "failed",
+                                                         "postId":  null,
+                                                         "message":  "The remote server returned an error: (400) Bad Request."
+                                                     },
+                                          "postedAt":  "2026-06-04T18:45:33.5802150+05:30"
+                                      },
+                                      {
+                                          "slug":  "best-bikes-in-ev",
+                                          "title":  "best Bikes in EV: What Indian Riders Should Know Before Buying",
+                                          "result":  {
+                                                         "status":  "failed",
+                                                         "postId":  null,
+                                                         "message":  "The remote server returned an error: (400) Bad Request."
+                                                     },
+                                          "postedAt":  "2026-06-04T18:45:34.3455879+05:30"
+                                      },
+                                      {
+                                          "slug":  "mobile-news-launch",
+                                          "title":  "mobile news launch: The Latest Tech Update Indian Buyers Should Watch",
+                                          "result":  {
+                                                         "status":  "failed",
+                                                         "postId":  null,
+                                                         "message":  "The remote server returned an error: (400) Bad Request."
+                                                     },
+                                          "postedAt":  "2026-06-04T18:45:34.9512343+05:30"
+                                      },
+                                      {
+                                          "slug":  "mobile-new-tech",
+                                          "title":  "mobile new tech: The Latest Tech Update Indian Buyers Should Watch",
+                                          "result":  {
+                                                         "status":  "failed",
+                                                         "postId":  null,
+                                                         "message":  "The remote server returned an error: (400) Bad Request."
+                                                     },
+                                          "postedAt":  "2026-06-04T18:45:35.5476334+05:30"
+                                      }
+                                  ]
+                 }
+             ]
 }
