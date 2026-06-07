@@ -138,8 +138,8 @@
   "runs": [
     {
       "ranAt": "2026-06-07T03:51:50.769Z",
-      "commit": null,
-      "mode": "codex-generate-2026-06-07",
+      "commit": "c173f3d",
+      "mode": "codex-finalize-push-blocked",
       "selectedKeywords": [
         {
           "niche": "car",
@@ -220,63 +220,67 @@
           "slug": "best-suv-under-15-lakhs-india-2026-shortlist",
           "title": "Best SUVs Under Rs 15 Lakh: The 2026 Shortlist Buyers Should Build Carefully",
           "result": {
-            "status": "pending_publish_helper",
+            "status": "skipped_push_failed",
             "postId": null,
-            "message": "Awaiting build, git push and Facebook helper."
+            "message": "GitHub push failed before public URLs were updated: schannel SEC_E_NO_CREDENTIALS on main/gh-pages pushes. Facebook publishing requires the pushed article and image URLs."
           },
-          "postedAt": "2026-06-07T03:51:50.770Z"
+          "postedAt": "2026-06-07T03:53:35.077Z"
         },
         {
           "slug": "electric-car-vs-petrol-car-india-2026-real-cost",
           "title": "Electric Car vs Petrol Car: The 2026 Cost Fight Is Closer Than Buyers Think",
           "result": {
-            "status": "pending_publish_helper",
+            "status": "skipped_push_failed",
             "postId": null,
-            "message": "Awaiting build, git push and Facebook helper."
+            "message": "GitHub push failed before public URLs were updated: schannel SEC_E_NO_CREDENTIALS on main/gh-pages pushes. Facebook publishing requires the pushed article and image URLs."
           },
-          "postedAt": "2026-06-07T03:51:50.770Z"
+          "postedAt": "2026-06-07T03:53:35.077Z"
         },
         {
           "slug": "hero-vida-vx2-electric-scooter-baas-india-2026",
           "title": "Hero VIDA VX2 and BaaS: Why Electric Scooter Buyers Must Read the Monthly Cost",
           "result": {
-            "status": "pending_publish_helper",
+            "status": "skipped_push_failed",
             "postId": null,
-            "message": "Awaiting build, git push and Facebook helper."
+            "message": "GitHub push failed before public URLs were updated: schannel SEC_E_NO_CREDENTIALS on main/gh-pages pushes. Facebook publishing requires the pushed article and image URLs."
           },
-          "postedAt": "2026-06-07T03:51:50.770Z"
+          "postedAt": "2026-06-07T03:53:35.077Z"
         },
         {
           "slug": "royal-enfield-hunter-350-2026-update-india-buying-guide",
           "title": "Royal Enfield Hunter 350 2026 Update: Small Changes, Big Buying Questions",
           "result": {
-            "status": "pending_publish_helper",
+            "status": "skipped_push_failed",
             "postId": null,
-            "message": "Awaiting build, git push and Facebook helper."
+            "message": "GitHub push failed before public URLs were updated: schannel SEC_E_NO_CREDENTIALS on main/gh-pages pushes. Facebook publishing requires the pushed article and image URLs."
           },
-          "postedAt": "2026-06-07T03:51:50.770Z"
+          "postedAt": "2026-06-07T03:53:35.077Z"
         },
         {
           "slug": "apple-wwdc-2026-ai-iphone-india-upgrade-watch",
           "title": "Apple WWDC 2026 and iPhone AI: What Indian Buyers Should Watch Before Upgrading",
           "result": {
-            "status": "pending_publish_helper",
+            "status": "skipped_push_failed",
             "postId": null,
-            "message": "Awaiting build, git push and Facebook helper."
+            "message": "GitHub push failed before public URLs were updated: schannel SEC_E_NO_CREDENTIALS on main/gh-pages pushes. Facebook publishing requires the pushed article and image URLs."
           },
-          "postedAt": "2026-06-07T03:51:50.770Z"
+          "postedAt": "2026-06-07T03:53:35.077Z"
         },
         {
           "slug": "samsung-galaxy-watch-ai-health-features-india-2026",
           "title": "Samsung's New Galaxy Watch AI Health Push: Useful Upgrade or Another Spec Sheet?",
           "result": {
-            "status": "pending_publish_helper",
+            "status": "skipped_push_failed",
             "postId": null,
-            "message": "Awaiting build, git push and Facebook helper."
+            "message": "GitHub push failed before public URLs were updated: schannel SEC_E_NO_CREDENTIALS on main/gh-pages pushes. Facebook publishing requires the pushed article and image URLs."
           },
-          "postedAt": "2026-06-07T03:51:50.770Z"
+          "postedAt": "2026-06-07T03:53:35.077Z"
         }
-      ]
+      ],
+      "push": {
+        "status": "failed",
+        "message": "Unable to access GitHub HTTPS remote for both HEAD:main and HEAD:gh-pages: schannel AcquireCredentialsHandle failed, SEC_E_NO_CREDENTIALS. Facebook publishing skipped because public article/image URLs were not updated."
+      }
     },
     {
       "ranAt": "2026-06-06T04:12:45.235Z",
