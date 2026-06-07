@@ -104,6 +104,32 @@ function relatedPosts(currentPost) {
     .map((item) => item.post);
 }
 
+function sanitizeArticleHtml(value) {
+  return String(value || "")
+    .replace(/<script[\s\S]*?<\/script>/gi, "")
+    .replace(/<style[\s\S]*?<\/style>/gi, "")
+    .replace(/<\/?h1[^>]*>/gi, "")
+    .replace(/\son\w+="[^"]*"/gi, "")
+    .replace(/\son\w+='[^']*'/gi, "")
+    .replace(/javascript:/gi, "")
+    .trim();
+}
+
+function sectionHtml(post) {
+  if (post.contentHtml) {
+    return `<div class="article-content">${sanitizeArticleHtml(post.contentHtml)}</div>`;
+  }
+
+  return post.sections.map((section) => `
+        <section id="${esc(slugify(section.heading))}">
+          <h2>${esc(section.heading)}</h2>
+          ${section.paragraphs.map((paragraph) => `<p>${autoLink(paragraph, post)}</p>`).join("")}
+          ${(section.subsections || []).map((subsection) => `
+          <h3>${esc(subsection.heading)}</h3>
+          ${subsection.paragraphs.map((paragraph) => `<p>${autoLink(paragraph, post)}</p>`).join("")}`).join("")}
+        </section>`).join("");
+}
+
 function breadcrumb(items) {
   return `<nav class="breadcrumb" aria-label="Breadcrumb">
       ${items.map((item, index) => item.href
@@ -113,7 +139,7 @@ function breadcrumb(items) {
 }
 
 function articlePage(post) {
-  const related = relatedPosts(post);
+  const related = relatedPosts(post).slice(0, 4);
   const featuredImage = imageSize(post.image);
   const schema = {
     "@context": "https://schema.org",
@@ -157,28 +183,21 @@ ${headTags({ title: post.metaTitle, description: post.metaDescription, url: post
           ${post.imageCredit ? `<figcaption>${esc(post.imageCredit)}</figcaption>` : ""}
         </figure>
         <p class="lede article-lede">${autoLink(post.excerpt, post)}</p>
-        ${post.sections.map((section) => `
-        <section id="${esc(slugify(section.heading))}">
-          <h2>${esc(section.heading)}</h2>
-          ${section.paragraphs.map((paragraph) => `<p>${autoLink(paragraph, post)}</p>`).join("")}
-          ${(section.subsections || []).map((subsection) => `
-          <h3>${esc(subsection.heading)}</h3>
-          ${subsection.paragraphs.map((paragraph) => `<p>${autoLink(paragraph, post)}</p>`).join("")}`).join("")}
-        </section>`).join("")}
-        <section>
+        ${sectionHtml(post)}
+        ${post.contentHtml ? "" : `<section>
           <h2>Conclusion</h2>
           <p>${esc(post.conclusion || "The smartest next step is to match the headline trend with real-world needs before booking or upgrading. Price, availability, service support, warranty terms and long-term usability should matter more than the first wave of hype.")}</p>
-        </section>
+        </section>`}
         <section>
           <h2>Related Reading</h2>
           <p>For more context, compare this story with ${related.map((item) => `<a href="${item.slug}.html">${esc(item.title)}</a>`).join(" and ")}.</p>
         </section>
-        <section>
+        ${post.contentHtml ? "" : `<section>
           <h2>Sources</h2>
           <ul>
             ${post.sources.map((source) => `<li><a href="${esc(source.url)}">${esc(source.label)}</a></li>`).join("")}
           </ul>
-        </section>
+        </section>`}
         <section class="tag-list" aria-label="Article tags">
           ${post.tags.map((tag) => `<a href="../tags/${slugify(tag)}.html">${esc(tag)}</a>`).join("")}
         </section>
