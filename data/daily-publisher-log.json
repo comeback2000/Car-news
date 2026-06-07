@@ -165,8 +165,8 @@
   "runs": [
     {
       "ranAt": "2026-06-07T14:39:17.437Z",
-      "commit": null,
-      "mode": "codex-generate-2026-06-07-run2",
+      "commit": "889b508",
+      "mode": "codex-finalize-push-blocked",
       "selectedKeywords": [
         {
           "niche": "car",
@@ -247,66 +247,66 @@
           "slug": "which-ev-should-i-buy-india-2026-harrier-be6-creta",
           "title": "Which EV Should I Buy in India? The 2026 Shortlist Needs More Than Range",
           "result": {
-            "status": "pending_publish_helper",
+            "status": "skipped_push_failed",
             "postId": null,
-            "message": "Awaiting build, push and Facebook publish step."
+            "message": "GitHub push failed before public URLs were updated: schannel SEC_E_NO_CREDENTIALS on main/gh-pages pushes. Facebook publishing requires the pushed article and image URLs."
           },
-          "postedAt": "2026-06-07T14:39:17.437Z"
+          "postedAt": "2026-06-07T14:41:50.812Z"
         },
         {
           "slug": "best-family-car-under-10-lakhs-india-2026-practical-list",
           "title": "Best Family Car Under Rs 10 Lakhs: The Practical 2026 India Checklist",
           "result": {
-            "status": "pending_publish_helper",
+            "status": "skipped_push_failed",
             "postId": null,
-            "message": "Awaiting build, push and Facebook publish step."
+            "message": "GitHub push failed before public URLs were updated: schannel SEC_E_NO_CREDENTIALS on main/gh-pages pushes. Facebook publishing requires the pushed article and image URLs."
           },
-          "postedAt": "2026-06-07T14:39:17.437Z"
+          "postedAt": "2026-06-07T14:41:50.812Z"
         },
         {
           "slug": "oben-rorr-evo-bookings-june-2026-electric-motorcycle-guide",
           "title": "Oben Rorr Evo Bookings: What 25,000 Orders Really Tell Electric Bike Buyers",
           "result": {
-            "status": "pending_publish_helper",
+            "status": "skipped_push_failed",
             "postId": null,
-            "message": "Awaiting build, push and Facebook publish step."
+            "message": "GitHub push failed before public URLs were updated: schannel SEC_E_NO_CREDENTIALS on main/gh-pages pushes. Facebook publishing requires the pushed article and image URLs."
           },
-          "postedAt": "2026-06-07T14:39:17.437Z"
+          "postedAt": "2026-06-07T14:41:50.812Z"
         },
         {
           "slug": "flying-flea-c6-electric-motorcycle-india-city-rollout",
           "title": "Flying Flea C6: Why Royal Enfield's Electric Motorcycle Rollout Should Stay Slow",
           "result": {
-            "status": "pending_publish_helper",
+            "status": "skipped_push_failed",
             "postId": null,
-            "message": "Awaiting build, push and Facebook publish step."
+            "message": "GitHub push failed before public URLs were updated: schannel SEC_E_NO_CREDENTIALS on main/gh-pages pushes. Facebook publishing requires the pushed article and image URLs."
           },
-          "postedAt": "2026-06-07T14:39:17.437Z"
+          "postedAt": "2026-06-07T14:41:50.812Z"
         },
         {
           "slug": "xiaomi-17t-india-launch-june-2026-buyer-guide",
           "title": "Xiaomi 17T India Launch: Why Camera Hype Needs a Battery and Update Check",
           "result": {
-            "status": "pending_publish_helper",
+            "status": "skipped_push_failed",
             "postId": null,
-            "message": "Awaiting build, push and Facebook publish step."
+            "message": "GitHub push failed before public URLs were updated: schannel SEC_E_NO_CREDENTIALS on main/gh-pages pushes. Facebook publishing requires the pushed article and image URLs."
           },
-          "postedAt": "2026-06-07T14:39:17.437Z"
+          "postedAt": "2026-06-07T14:41:50.812Z"
         },
         {
           "slug": "motorola-edge-70-pro-plus-india-buyer-guide-2026",
           "title": "Motorola Edge 70 Pro Plus: The Big-Battery Flagship Alternative Has One Test",
           "result": {
-            "status": "pending_publish_helper",
+            "status": "skipped_push_failed",
             "postId": null,
-            "message": "Awaiting build, push and Facebook publish step."
+            "message": "GitHub push failed before public URLs were updated: schannel SEC_E_NO_CREDENTIALS on main/gh-pages pushes. Facebook publishing requires the pushed article and image URLs."
           },
-          "postedAt": "2026-06-07T14:39:17.437Z"
+          "postedAt": "2026-06-07T14:41:50.812Z"
         }
       ],
       "push": {
-        "status": "pending",
-        "message": "Awaiting git commit and push."
+        "status": "failed",
+        "message": "Unable to access GitHub HTTPS remote for both HEAD:main and HEAD:gh-pages: schannel AcquireCredentialsHandle failed, SEC_E_NO_CREDENTIALS. Facebook publishing skipped because public article/image URLs were not updated."
       }
     },
     {
