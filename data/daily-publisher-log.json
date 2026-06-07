@@ -1,6 +1,6 @@
 {
   "cursors": {
-    "car": 14,
+    "car": 16,
     "bike": 0,
     "mobile": 0
   },
@@ -28,7 +28,13 @@
     "Hero VIDA VX2 electric scooter battery rental India",
     "Royal Enfield Hunter 350 2026 update",
     "Apple WWDC 2026 AI iPhone India",
-    "Samsung Galaxy Watch AI health features India"
+    "Samsung Galaxy Watch AI health features India",
+    "Which EV Should I Buy in India",
+    "Best Family Car Under 10 Lakhs",
+    "Oben Rorr Evo bookings deliveries June 2026",
+    "Flying Flea C6 electric motorcycle India city rollout",
+    "Xiaomi 17T India launch June 2026",
+    "Motorola Edge 70 Pro Plus India buyer guide"
   ],
   "publishedSlugs": [
     "new-ev-launch-india",
@@ -54,7 +60,13 @@
     "hero-vida-vx2-electric-scooter-baas-india-2026",
     "royal-enfield-hunter-350-2026-update-india-buying-guide",
     "apple-wwdc-2026-ai-iphone-india-upgrade-watch",
-    "samsung-galaxy-watch-ai-health-features-india-2026"
+    "samsung-galaxy-watch-ai-health-features-india-2026",
+    "which-ev-should-i-buy-india-2026-harrier-be6-creta",
+    "best-family-car-under-10-lakhs-india-2026-practical-list",
+    "oben-rorr-evo-bookings-june-2026-electric-motorcycle-guide",
+    "flying-flea-c6-electric-motorcycle-india-city-rollout",
+    "xiaomi-17t-india-launch-june-2026-buyer-guide",
+    "motorola-edge-70-pro-plus-india-buyer-guide-2026"
   ],
   "thumbnailHashes": [
     "9ccc65110c374622188ecbe2838fb11aaec257b150ebc4744c0b57af1221f54f",
@@ -87,7 +99,16 @@
     "7046e75d09cc2c751212d988bb82d2e6cdf02301881759df3e5650ca72b5193a",
     "2e63d9aef5b30d5882eb69b8d48a121d1fa84c4dd175460846992e77d4de4210",
     "5d69dd2d05e2108984e53a08760dfe3855ea686500803a357c6ad5b12800d2d1",
-    "24237e06b980768ad1e5773e7f05450710761e39085f55b3925d6e4e6a80cde6"
+    "24237e06b980768ad1e5773e7f05450710761e39085f55b3925d6e4e6a80cde6",
+    "2168fbc0829d129ec6ce1d4ef4baa00a6409496efc9894666747de555d06ffe1",
+    "bca6d9ae84863faf0e12d795223414367c5044dbd7a7677be0f27d6ff346d769",
+    "837afdb5d108562bfbe21106dff527f569ac0b6c822bcb57d3824e438c353d47",
+    "d834f54d89a4c1359eea512501d2997e9943bd1c3daae2ca700a88c1c7e1998f",
+    "4f3fb44248ff53f67a89ae4fba31cc39e2059b412d0c68435187be39fe98c515",
+    "96abb2166d06c926d27c92377a18b4871a416bd0ca661f650ae70d81d12ccecc",
+    "febeaa9660361210469845ecc04e35cccbde98ef3179112097c20488a4617da8",
+    "1741636c9817d070219dda5972a3a597c623cdd57dc3d3f0f37c847efb85bb4e",
+    "83d9747d11ae3cd52472ec1925d75443af99d248ec424ab64d6e6d48dc46d614"
   ],
   "thumbnailSources": [
     "https://static-assets.tatamotors.com/Production/www-tatamotors-com-NEW/wp-content/uploads/2025/07/th-040725.jpg",
@@ -119,7 +140,13 @@
     "local-official-fallback:Hero MotoCorp:commuter motorcycle media:assets/best-commuter-bikes-india-2026-thumbnail.jpg:red BaaS scooter-style overlay",
     "local-official-fallback:Ultraviolette motorcycle media:assets/longest-range-electric-bikes-india-2026-thumbnail.jpg:black-red roadster update layout",
     "local-official-fallback:Apple Intelligence media:assets/apple-ai-phone-features-india-2026-thumbnail.jpg:blue-yellow WWDC watch layout",
-    "local-official-fallback:Samsung mobile performance media:assets/mobile-gpu-performance-2026-thumbnail.jpg:teal health-AI wearable layout"
+    "local-official-fallback:Samsung mobile performance media:assets/mobile-gpu-performance-2026-thumbnail.jpg:teal health-AI wearable layout",
+    "local-official-fallback:Mahindra:BE 6:assets/mahindra-be6.jpg:left dark wedge EV chooser layout",
+    "local-official-fallback:Hyundai/compact family car media:assets/india-s-auto-market-is-moving-fast-here-s-what-buyers-should-watch-30dcb6c0-thumbnail.jpg:right yellow family-car checklist layout",
+    "local-official-fallback:Oben/electric motorcycle media:assets/electric-bikes-are-growing-up-riders-should-look-past-the-range-claim-01d6e915-thumbnail.jpg:left cyan booking-momentum layout",
+    "local-official-fallback:Royal Enfield/Flying Flea media:assets/royal-enfield-hunter-350-2026-update-thumbnail.jpg:right gold premium-EV rollout layout",
+    "local-official-fallback:Xiaomi/mobile performance media:assets/samsung-s-mobile-advance-2026-50-000-startup-boost-and-what-it-means-for-india-s-auto-tech-ecosystem-564e7bba-thumbnail.jpg:left coral Xiaomi launch layout",
+    "local-official-fallback:Motorola/mobile AI phone media:assets/mobile-ai-vs-normal-phone-2026-thumbnail.jpg:bottom navy big-battery layout"
   ],
   "facebookUrls": [
     "https://comeback2000.github.io/Car-news/posts/new-ev-launch-india.html",
@@ -136,6 +163,152 @@
     "https://comeback2000.github.io/Car-news/posts/apple-ai-phone-features-india-2026-buyer-guide.html"
   ],
   "runs": [
+    {
+      "ranAt": "2026-06-07T14:39:17.437Z",
+      "commit": null,
+      "mode": "codex-generate-2026-06-07-run2",
+      "selectedKeywords": [
+        {
+          "niche": "car",
+          "keyword": "Which EV Should I Buy in India"
+        },
+        {
+          "niche": "car",
+          "keyword": "Best Family Car Under 10 Lakhs"
+        },
+        {
+          "niche": "bike",
+          "keyword": "Oben Rorr Evo bookings deliveries June 2026"
+        },
+        {
+          "niche": "bike",
+          "keyword": "Flying Flea C6 electric motorcycle India city rollout"
+        },
+        {
+          "niche": "mobile",
+          "keyword": "Xiaomi 17T India launch June 2026"
+        },
+        {
+          "niche": "mobile",
+          "keyword": "Motorola Edge 70 Pro Plus India buyer guide"
+        }
+      ],
+      "articles": [
+        {
+          "slug": "which-ev-should-i-buy-india-2026-harrier-be6-creta",
+          "keyword": "Which EV Should I Buy in India",
+          "category": "EV Buying Guides",
+          "url": "https://comeback2000.github.io/Car-news/posts/which-ev-should-i-buy-india-2026-harrier-be6-creta.html",
+          "image": "assets/which-ev-should-i-buy-india-2026-thumbnail.jpg"
+        },
+        {
+          "slug": "best-family-car-under-10-lakhs-india-2026-practical-list",
+          "keyword": "Best Family Car Under 10 Lakhs",
+          "category": "Car News",
+          "url": "https://comeback2000.github.io/Car-news/posts/best-family-car-under-10-lakhs-india-2026-practical-list.html",
+          "image": "assets/best-family-car-under-10-lakhs-india-2026-thumbnail.jpg"
+        },
+        {
+          "slug": "oben-rorr-evo-bookings-june-2026-electric-motorcycle-guide",
+          "keyword": "Oben Rorr Evo bookings deliveries June 2026",
+          "category": "Bike News",
+          "url": "https://comeback2000.github.io/Car-news/posts/oben-rorr-evo-bookings-june-2026-electric-motorcycle-guide.html",
+          "image": "assets/oben-rorr-evo-bookings-june-2026-thumbnail.jpg"
+        },
+        {
+          "slug": "flying-flea-c6-electric-motorcycle-india-city-rollout",
+          "keyword": "Flying Flea C6 electric motorcycle India city rollout",
+          "category": "Bike News",
+          "url": "https://comeback2000.github.io/Car-news/posts/flying-flea-c6-electric-motorcycle-india-city-rollout.html",
+          "image": "assets/flying-flea-c6-electric-motorcycle-india-thumbnail.jpg"
+        },
+        {
+          "slug": "xiaomi-17t-india-launch-june-2026-buyer-guide",
+          "keyword": "Xiaomi 17T India launch June 2026",
+          "category": "Mobile Tech",
+          "url": "https://comeback2000.github.io/Car-news/posts/xiaomi-17t-india-launch-june-2026-buyer-guide.html",
+          "image": "assets/xiaomi-17t-india-launch-june-2026-thumbnail.jpg"
+        },
+        {
+          "slug": "motorola-edge-70-pro-plus-india-buyer-guide-2026",
+          "keyword": "Motorola Edge 70 Pro Plus India buyer guide",
+          "category": "Mobile Tech",
+          "url": "https://comeback2000.github.io/Car-news/posts/motorola-edge-70-pro-plus-india-buyer-guide-2026.html",
+          "image": "assets/motorola-edge-70-pro-plus-india-2026-thumbnail.jpg"
+        }
+      ],
+      "thumbnailAudit": {
+        "contactSheet": "assets/daily-thumbnails-2026-06-07-run2-contact-sheet.jpg",
+        "status": "visually_approved",
+        "note": "Contact sheet reviewed locally after regenerating the Motorola thumbnail: six thumbnails use distinct source identities, crops, color systems and text placement. Official HTTPS image downloads failed locally with schannel SEC_E_NO_CREDENTIALS/unexpected receive errors, so local official-source media fallbacks were used and tracked."
+      },
+      "facebook": [
+        {
+          "slug": "which-ev-should-i-buy-india-2026-harrier-be6-creta",
+          "title": "Which EV Should I Buy in India? The 2026 Shortlist Needs More Than Range",
+          "result": {
+            "status": "pending_publish_helper",
+            "postId": null,
+            "message": "Awaiting build, push and Facebook publish step."
+          },
+          "postedAt": "2026-06-07T14:39:17.437Z"
+        },
+        {
+          "slug": "best-family-car-under-10-lakhs-india-2026-practical-list",
+          "title": "Best Family Car Under Rs 10 Lakhs: The Practical 2026 India Checklist",
+          "result": {
+            "status": "pending_publish_helper",
+            "postId": null,
+            "message": "Awaiting build, push and Facebook publish step."
+          },
+          "postedAt": "2026-06-07T14:39:17.437Z"
+        },
+        {
+          "slug": "oben-rorr-evo-bookings-june-2026-electric-motorcycle-guide",
+          "title": "Oben Rorr Evo Bookings: What 25,000 Orders Really Tell Electric Bike Buyers",
+          "result": {
+            "status": "pending_publish_helper",
+            "postId": null,
+            "message": "Awaiting build, push and Facebook publish step."
+          },
+          "postedAt": "2026-06-07T14:39:17.437Z"
+        },
+        {
+          "slug": "flying-flea-c6-electric-motorcycle-india-city-rollout",
+          "title": "Flying Flea C6: Why Royal Enfield's Electric Motorcycle Rollout Should Stay Slow",
+          "result": {
+            "status": "pending_publish_helper",
+            "postId": null,
+            "message": "Awaiting build, push and Facebook publish step."
+          },
+          "postedAt": "2026-06-07T14:39:17.437Z"
+        },
+        {
+          "slug": "xiaomi-17t-india-launch-june-2026-buyer-guide",
+          "title": "Xiaomi 17T India Launch: Why Camera Hype Needs a Battery and Update Check",
+          "result": {
+            "status": "pending_publish_helper",
+            "postId": null,
+            "message": "Awaiting build, push and Facebook publish step."
+          },
+          "postedAt": "2026-06-07T14:39:17.437Z"
+        },
+        {
+          "slug": "motorola-edge-70-pro-plus-india-buyer-guide-2026",
+          "title": "Motorola Edge 70 Pro Plus: The Big-Battery Flagship Alternative Has One Test",
+          "result": {
+            "status": "pending_publish_helper",
+            "postId": null,
+            "message": "Awaiting build, push and Facebook publish step."
+          },
+          "postedAt": "2026-06-07T14:39:17.437Z"
+        }
+      ],
+      "push": {
+        "status": "pending",
+        "message": "Awaiting git commit and push."
+      }
+    },
     {
       "ranAt": "2026-06-07T03:51:50.769Z",
       "commit": "c173f3d",
@@ -844,6 +1017,12 @@
     "local-official-fallback:Hero MotoCorp:commuter motorcycle media:assets/best-commuter-bikes-india-2026-thumbnail.jpg:red BaaS scooter-style overlay:sha256=76da65f78214a73c5975c1328bf7ecbbbce1166e95ea4d9999fcd47821de6956",
     "local-official-fallback:Ultraviolette motorcycle media:assets/longest-range-electric-bikes-india-2026-thumbnail.jpg:black-red roadster update layout:sha256=7046e75d09cc2c751212d988bb82d2e6cdf02301881759df3e5650ca72b5193a",
     "local-official-fallback:Apple Intelligence media:assets/apple-ai-phone-features-india-2026-thumbnail.jpg:blue-yellow WWDC watch layout:sha256=2e63d9aef5b30d5882eb69b8d48a121d1fa84c4dd175460846992e77d4de4210",
-    "local-official-fallback:Samsung mobile performance media:assets/mobile-gpu-performance-2026-thumbnail.jpg:teal health-AI wearable layout:sha256=5d69dd2d05e2108984e53a08760dfe3855ea686500803a357c6ad5b12800d2d1"
+    "local-official-fallback:Samsung mobile performance media:assets/mobile-gpu-performance-2026-thumbnail.jpg:teal health-AI wearable layout:sha256=5d69dd2d05e2108984e53a08760dfe3855ea686500803a357c6ad5b12800d2d1",
+    "local-official-fallback:Mahindra:BE 6:assets/mahindra-be6.jpg:left dark wedge EV chooser layout:sha256=2168fbc0829d129ec6ce1d4ef4baa00a6409496efc9894666747de555d06ffe1",
+    "local-official-fallback:Hyundai/compact family car media:assets/india-s-auto-market-is-moving-fast-here-s-what-buyers-should-watch-30dcb6c0-thumbnail.jpg:right yellow family-car checklist layout:sha256=bca6d9ae84863faf0e12d795223414367c5044dbd7a7677be0f27d6ff346d769",
+    "local-official-fallback:Oben/electric motorcycle media:assets/electric-bikes-are-growing-up-riders-should-look-past-the-range-claim-01d6e915-thumbnail.jpg:left cyan booking-momentum layout:sha256=837afdb5d108562bfbe21106dff527f569ac0b6c822bcb57d3824e438c353d47",
+    "local-official-fallback:Royal Enfield/Flying Flea media:assets/royal-enfield-hunter-350-2026-update-thumbnail.jpg:right gold premium-EV rollout layout:sha256=d834f54d89a4c1359eea512501d2997e9943bd1c3daae2ca700a88c1c7e1998f",
+    "local-official-fallback:Xiaomi/mobile performance media:assets/samsung-s-mobile-advance-2026-50-000-startup-boost-and-what-it-means-for-india-s-auto-tech-ecosystem-564e7bba-thumbnail.jpg:left coral Xiaomi launch layout:sha256=4f3fb44248ff53f67a89ae4fba31cc39e2059b412d0c68435187be39fe98c515",
+    "local-official-fallback:Motorola/mobile AI phone media:assets/mobile-ai-vs-normal-phone-2026-thumbnail.jpg:bottom navy big-battery layout:sha256=1741636c9817d070219dda5972a3a597c623cdd57dc3d3f0f37c847efb85bb4e"
   ]
 }
