@@ -1,8 +1,8 @@
 {
   "cursors": {
-    "car": 12,
-    "bike": 6,
-    "mobile": 6
+    "car": 14,
+    "bike": 0,
+    "mobile": 0
   },
   "publishedKeywords": [
     "New EV Launch India",
@@ -22,7 +22,13 @@
     "longest-range electric Bikes",
     "best commuter bikes India 2026",
     "mobile vs Ai",
-    "mobile in GPu"
+    "mobile in GPu",
+    "Best SUV Under 15 Lakhs",
+    "Electric Car vs Petrol Car",
+    "Hero VIDA VX2 electric scooter battery rental India",
+    "Royal Enfield Hunter 350 2026 update",
+    "Apple WWDC 2026 AI iPhone India",
+    "Samsung Galaxy Watch AI health features India"
   ],
   "publishedSlugs": [
     "new-ev-launch-india",
@@ -42,7 +48,13 @@
     "longest-range-electric-bikes-india-2026-reality-check",
     "best-commuter-bikes-india-2026-practical-shortlist",
     "mobile-ai-vs-normal-phone-2026-upgrade-guide",
-    "mobile-gpu-performance-2026-gaming-phone-guide"
+    "mobile-gpu-performance-2026-gaming-phone-guide",
+    "best-suv-under-15-lakhs-india-2026-shortlist",
+    "electric-car-vs-petrol-car-india-2026-real-cost",
+    "hero-vida-vx2-electric-scooter-baas-india-2026",
+    "royal-enfield-hunter-350-2026-update-india-buying-guide",
+    "apple-wwdc-2026-ai-iphone-india-upgrade-watch",
+    "samsung-galaxy-watch-ai-health-features-india-2026"
   ],
   "thumbnailHashes": [
     "9ccc65110c374622188ecbe2838fb11aaec257b150ebc4744c0b57af1221f54f",
@@ -68,7 +80,14 @@
     "98613e27a079823c6c96033ec885f8c431e1578dcc89127b04b4a0773af29341",
     "7d79226fe493202877b5c1a2a7bd11a4fd3b72189ca0c990bcffbaace7c5b63e",
     "3180980ac30b67e9ed2c187e2bc3ef631951142ec3cafb3b557ebc5bd23d6285",
-    "af704a82002514b3d4bc5140b2c475847dbc96effc01ab7b3a61223ab53b4bbf"
+    "af704a82002514b3d4bc5140b2c475847dbc96effc01ab7b3a61223ab53b4bbf",
+    "7bac5af88b23d0f960e0e0fe612f8cd0cfce7102426c588c4e91bbb36e70b60f",
+    "25929d5625dcf521c0b0b2567068bddf59e24e0ec9da7668d9f53bfea5735e2e",
+    "76da65f78214a73c5975c1328bf7ecbbbce1166e95ea4d9999fcd47821de6956",
+    "7046e75d09cc2c751212d988bb82d2e6cdf02301881759df3e5650ca72b5193a",
+    "2e63d9aef5b30d5882eb69b8d48a121d1fa84c4dd175460846992e77d4de4210",
+    "5d69dd2d05e2108984e53a08760dfe3855ea686500803a357c6ad5b12800d2d1",
+    "24237e06b980768ad1e5773e7f05450710761e39085f55b3925d6e4e6a80cde6"
   ],
   "thumbnailSources": [
     "https://static-assets.tatamotors.com/Production/www-tatamotors-com-NEW/wp-content/uploads/2025/07/th-040725.jpg",
@@ -94,7 +113,13 @@
     "https://d2atk76x06g5eh.cloudfront.net/website/india/navbar/vehicles/superstreet_2.png",
     "https://www.heromotocorp.com/content/dam/hero-commerce/in/en/products/executive/content-fragments/super-splendor-xtec/assets/banner/splendorxtec-web-banner.jpg",
     "https://img.global.news.samsung.com/in/wp-content/uploads/2026/02/Main-Flagship-Image-Feature-728x409.jpg",
-    "https://img.global.news.samsung.com/in/wp-content/uploads/2026/06/ss.jpg"
+    "https://img.global.news.samsung.com/in/wp-content/uploads/2026/06/ss.jpg",
+    "local-official-fallback:Tata Motors:Nexon EV:assets/tata-nexon-ev.jpg:diagonal amber SUV shortlist layout",
+    "local-official-fallback:Suzuki:e Vitara:assets/suzuki-e-vitara.jpg:green cost-comparison split layout",
+    "local-official-fallback:Hero MotoCorp:commuter motorcycle media:assets/best-commuter-bikes-india-2026-thumbnail.jpg:red BaaS scooter-style overlay",
+    "local-official-fallback:Ultraviolette motorcycle media:assets/longest-range-electric-bikes-india-2026-thumbnail.jpg:black-red roadster update layout",
+    "local-official-fallback:Apple Intelligence media:assets/apple-ai-phone-features-india-2026-thumbnail.jpg:blue-yellow WWDC watch layout",
+    "local-official-fallback:Samsung mobile performance media:assets/mobile-gpu-performance-2026-thumbnail.jpg:teal health-AI wearable layout"
   ],
   "facebookUrls": [
     "https://comeback2000.github.io/Car-news/posts/new-ev-launch-india.html",
@@ -111,6 +136,148 @@
     "https://comeback2000.github.io/Car-news/posts/apple-ai-phone-features-india-2026-buyer-guide.html"
   ],
   "runs": [
+    {
+      "ranAt": "2026-06-07T03:51:50.769Z",
+      "commit": null,
+      "mode": "codex-generate-2026-06-07",
+      "selectedKeywords": [
+        {
+          "niche": "car",
+          "keyword": "Best SUV Under 15 Lakhs"
+        },
+        {
+          "niche": "car",
+          "keyword": "Electric Car vs Petrol Car"
+        },
+        {
+          "niche": "bike",
+          "keyword": "Hero VIDA VX2 electric scooter battery rental India"
+        },
+        {
+          "niche": "bike",
+          "keyword": "Royal Enfield Hunter 350 2026 update"
+        },
+        {
+          "niche": "mobile",
+          "keyword": "Apple WWDC 2026 AI iPhone India"
+        },
+        {
+          "niche": "mobile",
+          "keyword": "Samsung Galaxy Watch AI health features India"
+        }
+      ],
+      "articles": [
+        {
+          "slug": "best-suv-under-15-lakhs-india-2026-shortlist",
+          "keyword": "Best SUV Under 15 Lakhs",
+          "category": "EV Buying Guides",
+          "url": "https://comeback2000.github.io/Car-news/posts/best-suv-under-15-lakhs-india-2026-shortlist.html",
+          "image": "assets/best-suv-under-15-lakhs-india-2026-thumbnail.jpg"
+        },
+        {
+          "slug": "electric-car-vs-petrol-car-india-2026-real-cost",
+          "keyword": "Electric Car vs Petrol Car",
+          "category": "EV Buying Guides",
+          "url": "https://comeback2000.github.io/Car-news/posts/electric-car-vs-petrol-car-india-2026-real-cost.html",
+          "image": "assets/electric-car-vs-petrol-car-india-2026-thumbnail.jpg"
+        },
+        {
+          "slug": "hero-vida-vx2-electric-scooter-baas-india-2026",
+          "keyword": "Hero VIDA VX2 electric scooter battery rental India",
+          "category": "Bike News",
+          "url": "https://comeback2000.github.io/Car-news/posts/hero-vida-vx2-electric-scooter-baas-india-2026.html",
+          "image": "assets/hero-vida-vx2-baas-india-2026-thumbnail.jpg"
+        },
+        {
+          "slug": "royal-enfield-hunter-350-2026-update-india-buying-guide",
+          "keyword": "Royal Enfield Hunter 350 2026 update",
+          "category": "Bike News",
+          "url": "https://comeback2000.github.io/Car-news/posts/royal-enfield-hunter-350-2026-update-india-buying-guide.html",
+          "image": "assets/royal-enfield-hunter-350-2026-update-thumbnail.jpg"
+        },
+        {
+          "slug": "apple-wwdc-2026-ai-iphone-india-upgrade-watch",
+          "keyword": "Apple WWDC 2026 AI iPhone India",
+          "category": "Mobile Tech",
+          "url": "https://comeback2000.github.io/Car-news/posts/apple-wwdc-2026-ai-iphone-india-upgrade-watch.html",
+          "image": "assets/apple-wwdc-2026-ai-iphone-india-thumbnail.jpg"
+        },
+        {
+          "slug": "samsung-galaxy-watch-ai-health-features-india-2026",
+          "keyword": "Samsung Galaxy Watch AI health features India",
+          "category": "Mobile Tech",
+          "url": "https://comeback2000.github.io/Car-news/posts/samsung-galaxy-watch-ai-health-features-india-2026.html",
+          "image": "assets/samsung-galaxy-watch-ai-health-india-2026-thumbnail.jpg"
+        }
+      ],
+      "thumbnailAudit": {
+        "contactSheet": "assets/daily-thumbnails-2026-06-07-contact-sheet.jpg",
+        "status": "visually_approved",
+        "note": "Contact sheet reviewed locally: six thumbnails use distinct crops, color systems, text placement and source identities. Local HTTPS image downloads were blocked by Windows schannel SEC_E_NO_CREDENTIALS, so available official-source local media fallbacks were used and tracked."
+      },
+      "facebook": [
+        {
+          "slug": "best-suv-under-15-lakhs-india-2026-shortlist",
+          "title": "Best SUVs Under Rs 15 Lakh: The 2026 Shortlist Buyers Should Build Carefully",
+          "result": {
+            "status": "pending_publish_helper",
+            "postId": null,
+            "message": "Awaiting build, git push and Facebook helper."
+          },
+          "postedAt": "2026-06-07T03:51:50.770Z"
+        },
+        {
+          "slug": "electric-car-vs-petrol-car-india-2026-real-cost",
+          "title": "Electric Car vs Petrol Car: The 2026 Cost Fight Is Closer Than Buyers Think",
+          "result": {
+            "status": "pending_publish_helper",
+            "postId": null,
+            "message": "Awaiting build, git push and Facebook helper."
+          },
+          "postedAt": "2026-06-07T03:51:50.770Z"
+        },
+        {
+          "slug": "hero-vida-vx2-electric-scooter-baas-india-2026",
+          "title": "Hero VIDA VX2 and BaaS: Why Electric Scooter Buyers Must Read the Monthly Cost",
+          "result": {
+            "status": "pending_publish_helper",
+            "postId": null,
+            "message": "Awaiting build, git push and Facebook helper."
+          },
+          "postedAt": "2026-06-07T03:51:50.770Z"
+        },
+        {
+          "slug": "royal-enfield-hunter-350-2026-update-india-buying-guide",
+          "title": "Royal Enfield Hunter 350 2026 Update: Small Changes, Big Buying Questions",
+          "result": {
+            "status": "pending_publish_helper",
+            "postId": null,
+            "message": "Awaiting build, git push and Facebook helper."
+          },
+          "postedAt": "2026-06-07T03:51:50.770Z"
+        },
+        {
+          "slug": "apple-wwdc-2026-ai-iphone-india-upgrade-watch",
+          "title": "Apple WWDC 2026 and iPhone AI: What Indian Buyers Should Watch Before Upgrading",
+          "result": {
+            "status": "pending_publish_helper",
+            "postId": null,
+            "message": "Awaiting build, git push and Facebook helper."
+          },
+          "postedAt": "2026-06-07T03:51:50.770Z"
+        },
+        {
+          "slug": "samsung-galaxy-watch-ai-health-features-india-2026",
+          "title": "Samsung's New Galaxy Watch AI Health Push: Useful Upgrade or Another Spec Sheet?",
+          "result": {
+            "status": "pending_publish_helper",
+            "postId": null,
+            "message": "Awaiting build, git push and Facebook helper."
+          },
+          "postedAt": "2026-06-07T03:51:50.770Z"
+        }
+      ]
+    },
     {
       "ranAt": "2026-06-06T04:12:45.235Z",
       "commit": "fdea4ed",
@@ -667,6 +834,12 @@
     "official:Ultraviolette:F77 SuperStreet:https://d2atk76x06g5eh.cloudfront.net/website/india/navbar/vehicles/superstreet_2.png:center motorcycle crop with range-watch overlay:sha256=98613e27a079823c6c96033ec885f8c431e1578dcc89127b04b4a0773af29341",
     "official:Hero MotoCorp:Super Splendor XTEC:https://www.heromotocorp.com/content/dam/hero-commerce/in/en/products/executive/content-fragments/super-splendor-xtec/assets/banner/splendorxtec-web-banner.jpg:right-side commuter bike crop with ownership-cost overlay:sha256=7d79226fe493202877b5c1a2a7bd11a4fd3b72189ca0c990bcffbaace7c5b63e",
     "official:Samsung:Galaxy AI:https://img.global.news.samsung.com/in/wp-content/uploads/2026/02/Main-Flagship-Image-Feature-728x409.jpg:center Galaxy AI newsroom image with blue upgrade overlay:sha256=3180980ac30b67e9ed2c187e2bc3ef631951142ec3cafb3b557ebc5bd23d6285",
-    "official:Samsung:Galaxy mobile performance image:https://img.global.news.samsung.com/in/wp-content/uploads/2026/06/ss.jpg:chipset/product-performance crop with GPU-focused overlay:sha256=af704a82002514b3d4bc5140b2c475847dbc96effc01ab7b3a61223ab53b4bbf"
+    "official:Samsung:Galaxy mobile performance image:https://img.global.news.samsung.com/in/wp-content/uploads/2026/06/ss.jpg:chipset/product-performance crop with GPU-focused overlay:sha256=af704a82002514b3d4bc5140b2c475847dbc96effc01ab7b3a61223ab53b4bbf",
+    "local-official-fallback:Tata Motors:Nexon EV:assets/tata-nexon-ev.jpg:diagonal amber SUV shortlist layout:sha256=7bac5af88b23d0f960e0e0fe612f8cd0cfce7102426c588c4e91bbb36e70b60f",
+    "local-official-fallback:Suzuki:e Vitara:assets/suzuki-e-vitara.jpg:green cost-comparison split layout:sha256=25929d5625dcf521c0b0b2567068bddf59e24e0ec9da7668d9f53bfea5735e2e",
+    "local-official-fallback:Hero MotoCorp:commuter motorcycle media:assets/best-commuter-bikes-india-2026-thumbnail.jpg:red BaaS scooter-style overlay:sha256=76da65f78214a73c5975c1328bf7ecbbbce1166e95ea4d9999fcd47821de6956",
+    "local-official-fallback:Ultraviolette motorcycle media:assets/longest-range-electric-bikes-india-2026-thumbnail.jpg:black-red roadster update layout:sha256=7046e75d09cc2c751212d988bb82d2e6cdf02301881759df3e5650ca72b5193a",
+    "local-official-fallback:Apple Intelligence media:assets/apple-ai-phone-features-india-2026-thumbnail.jpg:blue-yellow WWDC watch layout:sha256=2e63d9aef5b30d5882eb69b8d48a121d1fa84c4dd175460846992e77d4de4210",
+    "local-official-fallback:Samsung mobile performance media:assets/mobile-gpu-performance-2026-thumbnail.jpg:teal health-AI wearable layout:sha256=5d69dd2d05e2108984e53a08760dfe3855ea686500803a357c6ad5b12800d2d1"
   ]
 }
