@@ -1,6 +1,6 @@
 {
   "cursors": {
-    "car": 16,
+    "car": 20,
     "bike": 0,
     "mobile": 0
   },
@@ -34,7 +34,13 @@
     "Oben Rorr Evo bookings deliveries June 2026",
     "Flying Flea C6 electric motorcycle India city rollout",
     "Xiaomi 17T India launch June 2026",
-    "Motorola Edge 70 Pro Plus India buyer guide"
+    "Motorola Edge 70 Pro Plus India buyer guide",
+    "Best SUV for Long Drive India",
+    "Most Reliable Car in India",
+    "Hero Splendor HF Deluxe flex fuel motorcycles India June 2026",
+    "Bajaj Avenger 220 Street India 2026 relaunch",
+    "OnePlus 15 India Snapdragon 8 Elite Gen 5 gaming phone",
+    "iQOO Z11x India 7200mAh battery phone buyer guide"
   ],
   "publishedSlugs": [
     "new-ev-launch-india",
@@ -66,7 +72,13 @@
     "oben-rorr-evo-bookings-june-2026-electric-motorcycle-guide",
     "flying-flea-c6-electric-motorcycle-india-city-rollout",
     "xiaomi-17t-india-launch-june-2026-buyer-guide",
-    "motorola-edge-70-pro-plus-india-buyer-guide-2026"
+    "motorola-edge-70-pro-plus-india-buyer-guide-2026",
+    "best-suv-for-long-drive-india-2026-comfort-range-guide",
+    "most-reliable-car-in-india-2026-service-resale-guide",
+    "hero-splendor-hf-deluxe-flex-fuel-june-2026-buyer-guide",
+    "bajaj-avenger-220-street-2026-relaunch-city-cruiser-guide",
+    "oneplus-15-india-gaming-phone-snapdragon-8-elite-gen-5-guide",
+    "iqoo-z11x-india-7200mah-battery-phone-buyer-guide"
   ],
   "thumbnailHashes": [
     "9ccc65110c374622188ecbe2838fb11aaec257b150ebc4744c0b57af1221f54f",
@@ -108,7 +120,17 @@
     "96abb2166d06c926d27c92377a18b4871a416bd0ca661f650ae70d81d12ccecc",
     "febeaa9660361210469845ecc04e35cccbde98ef3179112097c20488a4617da8",
     "1741636c9817d070219dda5972a3a597c623cdd57dc3d3f0f37c847efb85bb4e",
-    "83d9747d11ae3cd52472ec1925d75443af99d248ec424ab64d6e6d48dc46d614"
+    "83d9747d11ae3cd52472ec1925d75443af99d248ec424ab64d6e6d48dc46d614",
+    "c3de7b0088bb2f30f5949199503b60028e8e03e4c584449a512699c513e30ff5",
+    "dc20a04baf530a29748685e3d0e74a091244a3db3504775d8c59f879f4e0ec3e",
+    "0be81e5be4ecf7898077f8a8f610ad60925c98e80c9d697f162ffdb0a0b8c30e",
+    "80e82e8d674a2b63faeb35e96ef447270e6753f5355693444dbde184ad37f748",
+    "52704ad273e3faf8885d9bbb4ed65a4b77e0dee85fd4fe349d4565be915c22e2",
+    "2f9fbc1ba90582c0ee842288945abb13d0cb705fb2ac39cbbe49e404f9e5c85d",
+    "3066c6338d829a9bde5ef616f32ad056785d4380a44608d33db4e98c4c7f952a",
+    "c7444bad463b5422d650021bbf7c3e5f3d84acf47ba38dc7d60c8b668a19b3e5",
+    "eacfad3b4967748708ac5ed0ac30ce8dde2c07244b71af1ad6e82c8f0348bdd8",
+    "86656463df9ff0d1d28731964bd4f673aae3322fb03803f353b555797f35f996"
   ],
   "thumbnailSources": [
     "https://static-assets.tatamotors.com/Production/www-tatamotors-com-NEW/wp-content/uploads/2025/07/th-040725.jpg",
@@ -146,7 +168,13 @@
     "local-official-fallback:Oben/electric motorcycle media:assets/electric-bikes-are-growing-up-riders-should-look-past-the-range-claim-01d6e915-thumbnail.jpg:left cyan booking-momentum layout",
     "local-official-fallback:Royal Enfield/Flying Flea media:assets/royal-enfield-hunter-350-2026-update-thumbnail.jpg:right gold premium-EV rollout layout",
     "local-official-fallback:Xiaomi/mobile performance media:assets/samsung-s-mobile-advance-2026-50-000-startup-boost-and-what-it-means-for-india-s-auto-tech-ecosystem-564e7bba-thumbnail.jpg:left coral Xiaomi launch layout",
-    "local-official-fallback:Motorola/mobile AI phone media:assets/mobile-ai-vs-normal-phone-2026-thumbnail.jpg:bottom navy big-battery layout"
+    "local-official-fallback:Motorola/mobile AI phone media:assets/mobile-ai-vs-normal-phone-2026-thumbnail.jpg:bottom navy big-battery layout",
+    "local-official-fallback:Tata Motors:Nexon EV:assets/tata-nexon-ev.jpg:left amber highway-SUV layout",
+    "local-official-fallback:Toyota:Innova Crysta media:assets/2026-toyota-innova-crysta-launched-at-rs-19-72-lakh-what-s-new-for-buyers-abd371ce-thumbnail.jpg:right ice reliability layout",
+    "local-official-fallback:Hero MotoCorp:commuter motorcycle media:assets/best-commuter-bikes-india-2026-thumbnail.jpg:left lime flex-fuel layout",
+    "local-motorcycle-fallback:Bajaj Avenger context:assets/ducati-to-launch-10-new-bikes-in-india-in-2026-full-lineup-and-what-it-means-for-riders-0450badd-thumbnail.jpg:right red cruiser-return layout",
+    "local-official-fallback:Mobile performance media:assets/mobile-gpu-performance-2026-thumbnail.jpg:left blue OnePlus gaming layout",
+    "local-official-fallback:Smartphone battery media:assets/motorola-edge-70-pro-plus-india-2026-thumbnail.jpg:right gold iQOO battery layout"
   ],
   "facebookUrls": [
     "https://comeback2000.github.io/Car-news/posts/new-ev-launch-india.html",
@@ -163,6 +191,152 @@
     "https://comeback2000.github.io/Car-news/posts/apple-ai-phone-features-india-2026-buyer-guide.html"
   ],
   "runs": [
+    {
+      "ranAt": "2026-06-08T09:21:27.681Z",
+      "commit": "local-head-push-blocked",
+      "mode": "codex-generate-2026-06-08",
+      "selectedKeywords": [
+        {
+          "niche": "car",
+          "keyword": "Best SUV for Long Drive India"
+        },
+        {
+          "niche": "car",
+          "keyword": "Most Reliable Car in India"
+        },
+        {
+          "niche": "bike",
+          "keyword": "Hero Splendor HF Deluxe flex fuel motorcycles India June 2026"
+        },
+        {
+          "niche": "bike",
+          "keyword": "Bajaj Avenger 220 Street India 2026 relaunch"
+        },
+        {
+          "niche": "mobile",
+          "keyword": "OnePlus 15 India Snapdragon 8 Elite Gen 5 gaming phone"
+        },
+        {
+          "niche": "mobile",
+          "keyword": "iQOO Z11x India 7200mAh battery phone buyer guide"
+        }
+      ],
+      "articles": [
+        {
+          "slug": "best-suv-for-long-drive-india-2026-comfort-range-guide",
+          "keyword": "Best SUV for Long Drive India",
+          "category": "Car News",
+          "url": "https://comeback2000.github.io/Car-news/posts/best-suv-for-long-drive-india-2026-comfort-range-guide.html",
+          "image": "assets/best-suv-for-long-drive-india-2026-thumbnail.jpg"
+        },
+        {
+          "slug": "most-reliable-car-in-india-2026-service-resale-guide",
+          "keyword": "Most Reliable Car in India",
+          "category": "Car News",
+          "url": "https://comeback2000.github.io/Car-news/posts/most-reliable-car-in-india-2026-service-resale-guide.html",
+          "image": "assets/most-reliable-car-in-india-2026-thumbnail.jpg"
+        },
+        {
+          "slug": "hero-splendor-hf-deluxe-flex-fuel-june-2026-buyer-guide",
+          "keyword": "Hero Splendor HF Deluxe flex fuel motorcycles India June 2026",
+          "category": "Bike News",
+          "url": "https://comeback2000.github.io/Car-news/posts/hero-splendor-hf-deluxe-flex-fuel-june-2026-buyer-guide.html",
+          "image": "assets/hero-splendor-hf-deluxe-flex-fuel-2026-thumbnail.jpg"
+        },
+        {
+          "slug": "bajaj-avenger-220-street-2026-relaunch-city-cruiser-guide",
+          "keyword": "Bajaj Avenger 220 Street India 2026 relaunch",
+          "category": "Bike News",
+          "url": "https://comeback2000.github.io/Car-news/posts/bajaj-avenger-220-street-2026-relaunch-city-cruiser-guide.html",
+          "image": "assets/bajaj-avenger-220-street-2026-thumbnail.jpg"
+        },
+        {
+          "slug": "oneplus-15-india-gaming-phone-snapdragon-8-elite-gen-5-guide",
+          "keyword": "OnePlus 15 India Snapdragon 8 Elite Gen 5 gaming phone",
+          "category": "Mobile Tech",
+          "url": "https://comeback2000.github.io/Car-news/posts/oneplus-15-india-gaming-phone-snapdragon-8-elite-gen-5-guide.html",
+          "image": "assets/oneplus-15-india-gaming-phone-2026-thumbnail.jpg"
+        },
+        {
+          "slug": "iqoo-z11x-india-7200mah-battery-phone-buyer-guide",
+          "keyword": "iQOO Z11x India 7200mAh battery phone buyer guide",
+          "category": "Mobile Tech",
+          "url": "https://comeback2000.github.io/Car-news/posts/iqoo-z11x-india-7200mah-battery-phone-buyer-guide.html",
+          "image": "assets/iqoo-z11x-india-7200mah-battery-phone-thumbnail.jpg"
+        }
+      ],
+      "thumbnailAudit": {
+        "contactSheet": "assets/daily-thumbnails-2026-06-08-contact-sheet.jpg",
+        "status": "visually_approved",
+        "note": "Contact sheet reviewed locally: six thumbnails use distinct source identities, crops, side weighting, color systems and headline positions. Direct official HTTPS media downloads failed with schannel receive errors, so tracked local official-source or launch-context fallbacks were used."
+      },
+      "facebook": [
+        {
+          "slug": "best-suv-for-long-drive-india-2026-comfort-range-guide",
+          "title": "Best SUV for Long Drive India: Comfort, Range and Highway Calm Matter Most",
+          "result": {
+            "status": "skipped_push_failed",
+            "postId": null,
+            "message": "GitHub push failed before public URLs were updated: schannel SEC_E_NO_CREDENTIALS on HTTPS remote. Facebook publishing requires pushed article and image URLs."
+          },
+          "postedAt": "2026-06-08T09:23:52.985Z"
+        },
+        {
+          "slug": "most-reliable-car-in-india-2026-service-resale-guide",
+          "title": "Most Reliable Car in India: Why the Safest Bet Is Usually Boring on Paper",
+          "result": {
+            "status": "skipped_push_failed",
+            "postId": null,
+            "message": "GitHub push failed before public URLs were updated: schannel SEC_E_NO_CREDENTIALS on HTTPS remote. Facebook publishing requires pushed article and image URLs."
+          },
+          "postedAt": "2026-06-08T09:23:52.986Z"
+        },
+        {
+          "slug": "hero-splendor-hf-deluxe-flex-fuel-june-2026-buyer-guide",
+          "title": "Hero Flex-Fuel Splendor and HF Deluxe: The Big Question Is Fuel Access",
+          "result": {
+            "status": "skipped_push_failed",
+            "postId": null,
+            "message": "GitHub push failed before public URLs were updated: schannel SEC_E_NO_CREDENTIALS on HTTPS remote. Facebook publishing requires pushed article and image URLs."
+          },
+          "postedAt": "2026-06-08T09:23:52.986Z"
+        },
+        {
+          "slug": "bajaj-avenger-220-street-2026-relaunch-city-cruiser-guide",
+          "title": "Bajaj Avenger 220 Street Returns: A Simple Cruiser Still Has a Job",
+          "result": {
+            "status": "skipped_push_failed",
+            "postId": null,
+            "message": "GitHub push failed before public URLs were updated: schannel SEC_E_NO_CREDENTIALS on HTTPS remote. Facebook publishing requires pushed article and image URLs."
+          },
+          "postedAt": "2026-06-08T09:23:52.986Z"
+        },
+        {
+          "slug": "oneplus-15-india-gaming-phone-snapdragon-8-elite-gen-5-guide",
+          "title": "OnePlus 15 India: The Gaming Phone Pitch Now Needs Heat and Battery Proof",
+          "result": {
+            "status": "skipped_push_failed",
+            "postId": null,
+            "message": "GitHub push failed before public URLs were updated: schannel SEC_E_NO_CREDENTIALS on HTTPS remote. Facebook publishing requires pushed article and image URLs."
+          },
+          "postedAt": "2026-06-08T09:23:52.986Z"
+        },
+        {
+          "slug": "iqoo-z11x-india-7200mah-battery-phone-buyer-guide",
+          "title": "iQOO Z11x India: The 7,200mAh Battery Phone Makes One Demand",
+          "result": {
+            "status": "skipped_push_failed",
+            "postId": null,
+            "message": "GitHub push failed before public URLs were updated: schannel SEC_E_NO_CREDENTIALS on HTTPS remote. Facebook publishing requires pushed article and image URLs."
+          },
+          "postedAt": "2026-06-08T09:23:52.986Z"
+        }
+      ],
+      "push": {
+        "status": "failed",
+        "message": "Local commit is ahead of origin/main, but GitHub HTTPS push to main and gh-pages is blocked by schannel AcquireCredentialsHandle SEC_E_NO_CREDENTIALS. Facebook publishing skipped because public article/image URLs were not updated."
+      }
+    },
     {
       "ranAt": "2026-06-07T14:39:17.437Z",
       "commit": "889b508",
@@ -1023,6 +1197,12 @@
     "local-official-fallback:Oben/electric motorcycle media:assets/electric-bikes-are-growing-up-riders-should-look-past-the-range-claim-01d6e915-thumbnail.jpg:left cyan booking-momentum layout:sha256=837afdb5d108562bfbe21106dff527f569ac0b6c822bcb57d3824e438c353d47",
     "local-official-fallback:Royal Enfield/Flying Flea media:assets/royal-enfield-hunter-350-2026-update-thumbnail.jpg:right gold premium-EV rollout layout:sha256=d834f54d89a4c1359eea512501d2997e9943bd1c3daae2ca700a88c1c7e1998f",
     "local-official-fallback:Xiaomi/mobile performance media:assets/samsung-s-mobile-advance-2026-50-000-startup-boost-and-what-it-means-for-india-s-auto-tech-ecosystem-564e7bba-thumbnail.jpg:left coral Xiaomi launch layout:sha256=4f3fb44248ff53f67a89ae4fba31cc39e2059b412d0c68435187be39fe98c515",
-    "local-official-fallback:Motorola/mobile AI phone media:assets/mobile-ai-vs-normal-phone-2026-thumbnail.jpg:bottom navy big-battery layout:sha256=1741636c9817d070219dda5972a3a597c623cdd57dc3d3f0f37c847efb85bb4e"
+    "local-official-fallback:Motorola/mobile AI phone media:assets/mobile-ai-vs-normal-phone-2026-thumbnail.jpg:bottom navy big-battery layout:sha256=1741636c9817d070219dda5972a3a597c623cdd57dc3d3f0f37c847efb85bb4e",
+    "local-official-fallback:Tata Motors:Nexon EV:assets/tata-nexon-ev.jpg:left amber highway-SUV layout:sha256=c3de7b0088bb2f30f5949199503b60028e8e03e4c584449a512699c513e30ff5",
+    "local-official-fallback:Toyota:Innova Crysta media:assets/2026-toyota-innova-crysta-launched-at-rs-19-72-lakh-what-s-new-for-buyers-abd371ce-thumbnail.jpg:right ice reliability layout:sha256=dc20a04baf530a29748685e3d0e74a091244a3db3504775d8c59f879f4e0ec3e",
+    "local-official-fallback:Hero MotoCorp:commuter motorcycle media:assets/best-commuter-bikes-india-2026-thumbnail.jpg:left lime flex-fuel layout:sha256=0be81e5be4ecf7898077f8a8f610ad60925c98e80c9d697f162ffdb0a0b8c30e",
+    "local-motorcycle-fallback:Bajaj Avenger context:assets/ducati-to-launch-10-new-bikes-in-india-in-2026-full-lineup-and-what-it-means-for-riders-0450badd-thumbnail.jpg:right red cruiser-return layout:sha256=80e82e8d674a2b63faeb35e96ef447270e6753f5355693444dbde184ad37f748",
+    "local-official-fallback:Mobile performance media:assets/mobile-gpu-performance-2026-thumbnail.jpg:left blue OnePlus gaming layout:sha256=52704ad273e3faf8885d9bbb4ed65a4b77e0dee85fd4fe349d4565be915c22e2",
+    "local-official-fallback:Smartphone battery media:assets/motorola-edge-70-pro-plus-india-2026-thumbnail.jpg:right gold iQOO battery layout:sha256=2f9fbc1ba90582c0ee842288945abb13d0cb705fb2ac39cbbe49e404f9e5c85d"
   ]
 }
