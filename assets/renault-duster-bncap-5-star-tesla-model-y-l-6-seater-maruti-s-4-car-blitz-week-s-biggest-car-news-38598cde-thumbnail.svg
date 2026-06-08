@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#f8fafc"/>
+  <rect x="70" y="70" width="1460" height="760" rx="22" fill="#ffffff" stroke="#d8e0ec" stroke-width="2"/>
+  <text x="120" y="155" fill="#0f172a" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="900">CAR NEWS TODAY INDIA WATCH</text>
+  <foreignObject x="120" y="250" width="1120" height="310">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="font-family:Arial,Helvetica,sans-serif;color:#0f172a;font-size:72px;font-weight:900;line-height:1.05">
+      Renault Duster BNCAP 5-Star, Tesla Model Y L 6-Seater, Maruti&#39;s 4-Car Blitz: Week&#39;s Biggest Car News
+    </div>
+  </foreignObject>
+  <text x="120" y="750" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="700">Official media unavailable. Editorial placeholder used.</text>
+</svg>
