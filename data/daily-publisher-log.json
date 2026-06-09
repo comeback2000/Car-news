@@ -224,7 +224,7 @@
   "runs": [
     {
       "ranAt": "2026-06-09T09:28:25.010Z",
-      "commit": "pending",
+      "commit": "dcfad9b",
       "mode": "codex-generate-2026-06-09",
       "selectedKeywords": [
         {
@@ -306,65 +306,70 @@
           "slug": "low-maintenance-cars-india-2026-service-resale-guide",
           "title": "Low Maintenance Cars India: The Real Saving Is in Service, Parts and Resale",
           "result": {
-            "status": "pending_after_push",
+            "status": "skipped_push_failed",
             "postId": null,
-            "message": "Facebook publishing attempted after git push/finalization if public URLs are available."
+            "message": "Facebook credentials are present, but publishing was skipped because GitHub push failed before public article and image URLs were updated."
           },
-          "postedAt": null
+          "postedAt": "2026-06-09T09:30:40.737Z"
         },
         {
           "slug": "cars-with-highest-mileage-india-2026-cng-hybrid-buyer-guide",
           "title": "Cars With Highest Mileage: Why CNG and Hybrids Need Different Buyer Logic",
           "result": {
-            "status": "pending_after_push",
+            "status": "skipped_push_failed",
             "postId": null,
-            "message": "Facebook publishing attempted after git push/finalization if public URLs are available."
+            "message": "Facebook credentials are present, but publishing was skipped because GitHub push failed before public article and image URLs were updated."
           },
-          "postedAt": null
+          "postedAt": "2026-06-09T09:30:40.737Z"
         },
         {
           "slug": "royal-enfield-bullet-650-india-launch-2026-buyer-guide",
           "title": "Royal Enfield Bullet 650: The Most Powerful Bullet Is Still Selling Familiarity",
           "result": {
-            "status": "pending_after_push",
+            "status": "skipped_push_failed",
             "postId": null,
-            "message": "Facebook publishing attempted after git push/finalization if public URLs are available."
+            "message": "Facebook credentials are present, but publishing was skipped because GitHub push failed before public article and image URLs were updated."
           },
-          "postedAt": null
+          "postedAt": "2026-06-09T09:30:40.737Z"
         },
         {
           "slug": "honda-nx500-e-clutch-india-2026-touring-bike-guide",
           "title": "Honda NX500 E-Clutch: Useful Touring Tech or an Expensive Convenience?",
           "result": {
-            "status": "pending_after_push",
+            "status": "skipped_push_failed",
             "postId": null,
-            "message": "Facebook publishing attempted after git push/finalization if public URLs are available."
+            "message": "Facebook credentials are present, but publishing was skipped because GitHub push failed before public article and image URLs were updated."
           },
-          "postedAt": null
+          "postedAt": "2026-06-09T09:30:40.737Z"
         },
         {
           "slug": "lava-bold-n2-5g-india-sale-june-2026-budget-phone-guide",
           "title": "Lava Bold N2 5G: The Budget Phone Question Is Trust, Not Just Battery",
           "result": {
-            "status": "pending_after_push",
+            "status": "skipped_push_failed",
             "postId": null,
-            "message": "Facebook publishing attempted after git push/finalization if public URLs are available."
+            "message": "Facebook credentials are present, but publishing was skipped because GitHub push failed before public article and image URLs were updated."
           },
-          "postedAt": null
+          "postedAt": "2026-06-09T09:30:40.737Z"
         },
         {
           "slug": "june-android-drop-gemini-intelligence-india-phone-upgrade-guide",
           "title": "June Android Drop: AI Features Are Becoming the Phone Upgrade Argument",
           "result": {
-            "status": "pending_after_push",
+            "status": "skipped_push_failed",
             "postId": null,
-            "message": "Facebook publishing attempted after git push/finalization if public URLs are available."
+            "message": "Facebook credentials are present, but publishing was skipped because GitHub push failed before public article and image URLs were updated."
           },
-          "postedAt": null
+          "postedAt": "2026-06-09T09:30:40.737Z"
         }
       ],
       "push": {
-        "status": "pending"
+        "status": "failed",
+        "branches": [
+          "main",
+          "gh-pages"
+        ],
+        "message": "GitHub HTTPS push failed for both main and gh-pages: schannel AcquireCredentialsHandle failed, SEC_E_NO_CREDENTIALS. Local commits are ahead of origin."
       }
     },
     {
