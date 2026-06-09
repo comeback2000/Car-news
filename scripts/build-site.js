@@ -42,7 +42,7 @@ function imageSize(imagePath) {
   return size;
 }
 
-function headTags({ title, description, url, image, type = "website", schema }) {
+function headTags({ title, description, url, image, type = "website", schema, imageWidth = 1200, imageHeight = 675 }) {
   return `
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -54,6 +54,10 @@ function headTags({ title, description, url, image, type = "website", schema }) 
     <meta property="og:description" content="${esc(description)}">
     <meta property="og:url" content="${esc(url)}">
     <meta property="og:image" content="${esc(image)}">
+    <meta property="og:image:secure_url" content="${esc(image)}">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="${esc(imageWidth)}">
+    <meta property="og:image:height" content="${esc(imageHeight)}">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="${esc(title)}">
     <meta name="twitter:description" content="${esc(description)}">
@@ -171,7 +175,7 @@ function articlePage(post) {
   return `<!doctype html>
 <html lang="en">
   <head>
-${headTags({ title: post.metaTitle, description: post.metaDescription, url: postUrl(post), image: `${siteUrl}/${post.image}`, type: "article", schema: [schema, breadcrumbSchema] })}
+${headTags({ title: post.metaTitle, description: post.metaDescription, url: postUrl(post), image: `${siteUrl}/${post.image}`, type: "article", schema: [schema, breadcrumbSchema], imageWidth: featuredImage.width, imageHeight: featuredImage.height })}
   </head>
   <body>
     ${header(1)}

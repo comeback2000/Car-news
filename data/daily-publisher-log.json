@@ -1,6 +1,6 @@
 {
   "cursors": {
-    "car": 20,
+    "car": 22,
     "bike": 0,
     "mobile": 0
   },
@@ -40,7 +40,13 @@
     "Hero Splendor HF Deluxe flex fuel motorcycles India June 2026",
     "Bajaj Avenger 220 Street India 2026 relaunch",
     "OnePlus 15 India Snapdragon 8 Elite Gen 5 gaming phone",
-    "iQOO Z11x India 7200mAh battery phone buyer guide"
+    "iQOO Z11x India 7200mAh battery phone buyer guide",
+    "Low Maintenance Cars India",
+    "Cars With Highest Mileage",
+    "Royal Enfield Bullet 650 India launch buyer guide June 2026",
+    "Honda NX500 E-Clutch India 2026 touring bike buyer guide",
+    "Lava Bold N2 5G India sale June 2026 budget phone guide",
+    "June Android Drop Gemini Intelligence India phone upgrade guide"
   ],
   "publishedSlugs": [
     "new-ev-launch-india",
@@ -78,7 +84,13 @@
     "hero-splendor-hf-deluxe-flex-fuel-june-2026-buyer-guide",
     "bajaj-avenger-220-street-2026-relaunch-city-cruiser-guide",
     "oneplus-15-india-gaming-phone-snapdragon-8-elite-gen-5-guide",
-    "iqoo-z11x-india-7200mah-battery-phone-buyer-guide"
+    "iqoo-z11x-india-7200mah-battery-phone-buyer-guide",
+    "low-maintenance-cars-india-2026-service-resale-guide",
+    "cars-with-highest-mileage-india-2026-cng-hybrid-buyer-guide",
+    "royal-enfield-bullet-650-india-launch-2026-buyer-guide",
+    "honda-nx500-e-clutch-india-2026-touring-bike-guide",
+    "lava-bold-n2-5g-india-sale-june-2026-budget-phone-guide",
+    "june-android-drop-gemini-intelligence-india-phone-upgrade-guide"
   ],
   "thumbnailHashes": [
     "9ccc65110c374622188ecbe2838fb11aaec257b150ebc4744c0b57af1221f54f",
@@ -130,7 +142,14 @@
     "3066c6338d829a9bde5ef616f32ad056785d4380a44608d33db4e98c4c7f952a",
     "c7444bad463b5422d650021bbf7c3e5f3d84acf47ba38dc7d60c8b668a19b3e5",
     "eacfad3b4967748708ac5ed0ac30ce8dde2c07244b71af1ad6e82c8f0348bdd8",
-    "86656463df9ff0d1d28731964bd4f673aae3322fb03803f353b555797f35f996"
+    "86656463df9ff0d1d28731964bd4f673aae3322fb03803f353b555797f35f996",
+    "d399b4c86bfad5b414e1535e7d564bf359ba60c5bc579a1c00a29e67413ed497",
+    "73ee10eb98062c6961b7874a4ca5af07f05498c73f283997aa3c99144b9b9b41",
+    "a32b542e9c5e542535fd41ca0f80135beaa6ff2a6f6f2d0ec1479b68e6f94f2a",
+    "2588ccceebfe3f2bbd8fe3c3264d7873acb18b9a0454e3ec00d76c19b2da6f31",
+    "57792ef4420e169dc991d760dcd980669010141197b179586782d110d7151581",
+    "059c9ea39976e951b2ccb5dabec112b261e52c922bd71a90e5859a74d738863b",
+    "a1dcd2f48ea8165f8469abb70a0268c6cceb7b2b10ef3cbe5295242910d2810b"
   ],
   "thumbnailSources": [
     "https://static-assets.tatamotors.com/Production/www-tatamotors-com-NEW/wp-content/uploads/2025/07/th-040725.jpg",
@@ -174,7 +193,13 @@
     "local-official-fallback:Hero MotoCorp:commuter motorcycle media:assets/best-commuter-bikes-india-2026-thumbnail.jpg:left lime flex-fuel layout",
     "local-motorcycle-fallback:Bajaj Avenger context:assets/ducati-to-launch-10-new-bikes-in-india-in-2026-full-lineup-and-what-it-means-for-riders-0450badd-thumbnail.jpg:right red cruiser-return layout",
     "local-official-fallback:Mobile performance media:assets/mobile-gpu-performance-2026-thumbnail.jpg:left blue OnePlus gaming layout",
-    "local-official-fallback:Smartphone battery media:assets/motorola-edge-70-pro-plus-india-2026-thumbnail.jpg:right gold iQOO battery layout"
+    "local-official-fallback:Smartphone battery media:assets/motorola-edge-70-pro-plus-india-2026-thumbnail.jpg:right gold iQOO battery layout",
+    "Toyota Bharat:Innova Crysta:https://static3.toyotabharat.com/images/showroom/innova-mmc/20-years-ruling-1600x850.webp:left ownership-cost crop with green-gold wedge layout",
+    "Maruti Suzuki:Dzire:https://www.marutisuzuki.com/corporate/media/press-releases/2026/march/-/media/64335B86F5D94B00B56CDFF72F96E6AA:right mileage-stat crop with orange slab layout",
+    "Royal Enfield:Bullet 650:https://www.royalenfield.com/content/dam/royal-enfield/motorcycles/bullet-650/banners/bullet-650-new.webp:wide official launch banner crop with black-gold left title",
+    "Honda:NX500:https://powersports.honda.com/-/media/products/family/nx500/trims/trim-main/nx500/2026/2026-nx500-pearl_white-1505x923.png:isolated white NX500 crop with blue touring-tech layout",
+    "Lava:Bold N2 5G:https://i.gadgets360cdn.com/large/lava_bold_n2_5g_1780472453496.jpg:phone render crop with maroon-orange budget 5G layout",
+    "Google:June Android Drop:https://storage.googleapis.com/gweb-uniblog-publish-prod/images/1920_x_1080.width-1300.png:official Android Drop artwork crop with teal AI-feature layout"
   ],
   "facebookUrls": [
     "https://comeback2000.github.io/Car-news/posts/new-ev-launch-india.html",
@@ -188,9 +213,160 @@
     "https://comeback2000.github.io/Car-news/posts/ev-vs-ice-bikes-india-2026-ownership-cost.html",
     "https://comeback2000.github.io/Car-news/posts/electric-bike-prices-india-2026-shortlist.html",
     "https://comeback2000.github.io/Car-news/posts/mobile-news-apple-india-2026-upgrade-guide.html",
-    "https://comeback2000.github.io/Car-news/posts/apple-ai-phone-features-india-2026-buyer-guide.html"
+    "https://comeback2000.github.io/Car-news/posts/apple-ai-phone-features-india-2026-buyer-guide.html",
+    "https://comeback2000.github.io/Car-news/posts/low-maintenance-cars-india-2026-service-resale-guide.html",
+    "https://comeback2000.github.io/Car-news/posts/cars-with-highest-mileage-india-2026-cng-hybrid-buyer-guide.html",
+    "https://comeback2000.github.io/Car-news/posts/royal-enfield-bullet-650-india-launch-2026-buyer-guide.html",
+    "https://comeback2000.github.io/Car-news/posts/honda-nx500-e-clutch-india-2026-touring-bike-guide.html",
+    "https://comeback2000.github.io/Car-news/posts/lava-bold-n2-5g-india-sale-june-2026-budget-phone-guide.html",
+    "https://comeback2000.github.io/Car-news/posts/june-android-drop-gemini-intelligence-india-phone-upgrade-guide.html"
   ],
   "runs": [
+    {
+      "ranAt": "2026-06-09T09:28:25.010Z",
+      "commit": "pending",
+      "mode": "codex-generate-2026-06-09",
+      "selectedKeywords": [
+        {
+          "niche": "car",
+          "keyword": "Low Maintenance Cars India"
+        },
+        {
+          "niche": "car",
+          "keyword": "Cars With Highest Mileage"
+        },
+        {
+          "niche": "bike",
+          "keyword": "Royal Enfield Bullet 650 India launch buyer guide June 2026"
+        },
+        {
+          "niche": "bike",
+          "keyword": "Honda NX500 E-Clutch India 2026 touring bike buyer guide"
+        },
+        {
+          "niche": "mobile",
+          "keyword": "Lava Bold N2 5G India sale June 2026 budget phone guide"
+        },
+        {
+          "niche": "mobile",
+          "keyword": "June Android Drop Gemini Intelligence India phone upgrade guide"
+        }
+      ],
+      "articles": [
+        {
+          "slug": "low-maintenance-cars-india-2026-service-resale-guide",
+          "keyword": "Low Maintenance Cars India",
+          "category": "Car News",
+          "url": "https://comeback2000.github.io/Car-news/posts/low-maintenance-cars-india-2026-service-resale-guide.html",
+          "image": "assets/low-maintenance-cars-india-2026-thumbnail.jpg"
+        },
+        {
+          "slug": "cars-with-highest-mileage-india-2026-cng-hybrid-buyer-guide",
+          "keyword": "Cars With Highest Mileage",
+          "category": "Car News",
+          "url": "https://comeback2000.github.io/Car-news/posts/cars-with-highest-mileage-india-2026-cng-hybrid-buyer-guide.html",
+          "image": "assets/cars-with-highest-mileage-india-2026-thumbnail.jpg"
+        },
+        {
+          "slug": "royal-enfield-bullet-650-india-launch-2026-buyer-guide",
+          "keyword": "Royal Enfield Bullet 650 India launch buyer guide June 2026",
+          "category": "Bike News",
+          "url": "https://comeback2000.github.io/Car-news/posts/royal-enfield-bullet-650-india-launch-2026-buyer-guide.html",
+          "image": "assets/royal-enfield-bullet-650-india-2026-thumbnail.jpg"
+        },
+        {
+          "slug": "honda-nx500-e-clutch-india-2026-touring-bike-guide",
+          "keyword": "Honda NX500 E-Clutch India 2026 touring bike buyer guide",
+          "category": "Bike News",
+          "url": "https://comeback2000.github.io/Car-news/posts/honda-nx500-e-clutch-india-2026-touring-bike-guide.html",
+          "image": "assets/honda-nx500-e-clutch-india-2026-thumbnail.jpg"
+        },
+        {
+          "slug": "lava-bold-n2-5g-india-sale-june-2026-budget-phone-guide",
+          "keyword": "Lava Bold N2 5G India sale June 2026 budget phone guide",
+          "category": "Mobile Tech",
+          "url": "https://comeback2000.github.io/Car-news/posts/lava-bold-n2-5g-india-sale-june-2026-budget-phone-guide.html",
+          "image": "assets/lava-bold-n2-5g-india-2026-thumbnail.jpg"
+        },
+        {
+          "slug": "june-android-drop-gemini-intelligence-india-phone-upgrade-guide",
+          "keyword": "June Android Drop Gemini Intelligence India phone upgrade guide",
+          "category": "Mobile Tech",
+          "url": "https://comeback2000.github.io/Car-news/posts/june-android-drop-gemini-intelligence-india-phone-upgrade-guide.html",
+          "image": "assets/june-android-drop-gemini-intelligence-2026-thumbnail.jpg"
+        }
+      ],
+      "thumbnailAudit": {
+        "contactSheet": "assets/daily-thumbnails-2026-06-09-contact-sheet.jpg",
+        "status": "visually_approved_after_contact_sheet_review",
+        "note": "Six thumbnails use distinct source identities, products, crops, color systems, title positions and base imagery. The contact sheet was reviewed locally before final build."
+      },
+      "facebook": [
+        {
+          "slug": "low-maintenance-cars-india-2026-service-resale-guide",
+          "title": "Low Maintenance Cars India: The Real Saving Is in Service, Parts and Resale",
+          "result": {
+            "status": "pending_after_push",
+            "postId": null,
+            "message": "Facebook publishing attempted after git push/finalization if public URLs are available."
+          },
+          "postedAt": null
+        },
+        {
+          "slug": "cars-with-highest-mileage-india-2026-cng-hybrid-buyer-guide",
+          "title": "Cars With Highest Mileage: Why CNG and Hybrids Need Different Buyer Logic",
+          "result": {
+            "status": "pending_after_push",
+            "postId": null,
+            "message": "Facebook publishing attempted after git push/finalization if public URLs are available."
+          },
+          "postedAt": null
+        },
+        {
+          "slug": "royal-enfield-bullet-650-india-launch-2026-buyer-guide",
+          "title": "Royal Enfield Bullet 650: The Most Powerful Bullet Is Still Selling Familiarity",
+          "result": {
+            "status": "pending_after_push",
+            "postId": null,
+            "message": "Facebook publishing attempted after git push/finalization if public URLs are available."
+          },
+          "postedAt": null
+        },
+        {
+          "slug": "honda-nx500-e-clutch-india-2026-touring-bike-guide",
+          "title": "Honda NX500 E-Clutch: Useful Touring Tech or an Expensive Convenience?",
+          "result": {
+            "status": "pending_after_push",
+            "postId": null,
+            "message": "Facebook publishing attempted after git push/finalization if public URLs are available."
+          },
+          "postedAt": null
+        },
+        {
+          "slug": "lava-bold-n2-5g-india-sale-june-2026-budget-phone-guide",
+          "title": "Lava Bold N2 5G: The Budget Phone Question Is Trust, Not Just Battery",
+          "result": {
+            "status": "pending_after_push",
+            "postId": null,
+            "message": "Facebook publishing attempted after git push/finalization if public URLs are available."
+          },
+          "postedAt": null
+        },
+        {
+          "slug": "june-android-drop-gemini-intelligence-india-phone-upgrade-guide",
+          "title": "June Android Drop: AI Features Are Becoming the Phone Upgrade Argument",
+          "result": {
+            "status": "pending_after_push",
+            "postId": null,
+            "message": "Facebook publishing attempted after git push/finalization if public URLs are available."
+          },
+          "postedAt": null
+        }
+      ],
+      "push": {
+        "status": "pending"
+      }
+    },
     {
       "ranAt": "2026-06-08T09:21:27.681Z",
       "commit": "local-head-push-blocked",
@@ -1203,6 +1379,12 @@
     "local-official-fallback:Hero MotoCorp:commuter motorcycle media:assets/best-commuter-bikes-india-2026-thumbnail.jpg:left lime flex-fuel layout:sha256=0be81e5be4ecf7898077f8a8f610ad60925c98e80c9d697f162ffdb0a0b8c30e",
     "local-motorcycle-fallback:Bajaj Avenger context:assets/ducati-to-launch-10-new-bikes-in-india-in-2026-full-lineup-and-what-it-means-for-riders-0450badd-thumbnail.jpg:right red cruiser-return layout:sha256=80e82e8d674a2b63faeb35e96ef447270e6753f5355693444dbde184ad37f748",
     "local-official-fallback:Mobile performance media:assets/mobile-gpu-performance-2026-thumbnail.jpg:left blue OnePlus gaming layout:sha256=52704ad273e3faf8885d9bbb4ed65a4b77e0dee85fd4fe349d4565be915c22e2",
-    "local-official-fallback:Smartphone battery media:assets/motorola-edge-70-pro-plus-india-2026-thumbnail.jpg:right gold iQOO battery layout:sha256=2f9fbc1ba90582c0ee842288945abb13d0cb705fb2ac39cbbe49e404f9e5c85d"
+    "local-official-fallback:Smartphone battery media:assets/motorola-edge-70-pro-plus-india-2026-thumbnail.jpg:right gold iQOO battery layout:sha256=2f9fbc1ba90582c0ee842288945abb13d0cb705fb2ac39cbbe49e404f9e5c85d",
+    "official:Toyota Bharat:Innova Crysta:https://static3.toyotabharat.com/images/showroom/innova-mmc/20-years-ruling-1600x850.webp:left ownership-cost crop with green-gold wedge layout:sha256=d399b4c86bfad5b414e1535e7d564bf359ba60c5bc579a1c00a29e67413ed497",
+    "official:Maruti Suzuki:Dzire:https://www.marutisuzuki.com/corporate/media/press-releases/2026/march/-/media/64335B86F5D94B00B56CDFF72F96E6AA:right mileage-stat crop with orange slab layout:sha256=73ee10eb98062c6961b7874a4ca5af07f05498c73f283997aa3c99144b9b9b41",
+    "official:Royal Enfield:Bullet 650:https://www.royalenfield.com/content/dam/royal-enfield/motorcycles/bullet-650/banners/bullet-650-new.webp:wide official launch banner crop with black-gold left title:sha256=a32b542e9c5e542535fd41ca0f80135beaa6ff2a6f6f2d0ec1479b68e6f94f2a",
+    "official:Honda:NX500:https://powersports.honda.com/-/media/products/family/nx500/trims/trim-main/nx500/2026/2026-nx500-pearl_white-1505x923.png:isolated white NX500 crop with blue touring-tech layout:sha256=2588ccceebfe3f2bbd8fe3c3264d7873acb18b9a0454e3ec00d76c19b2da6f31",
+    "official:Lava:Bold N2 5G:https://i.gadgets360cdn.com/large/lava_bold_n2_5g_1780472453496.jpg:phone render crop with maroon-orange budget 5G layout:sha256=57792ef4420e169dc991d760dcd980669010141197b179586782d110d7151581",
+    "official:Google:June Android Drop:https://storage.googleapis.com/gweb-uniblog-publish-prod/images/1920_x_1080.width-1300.png:official Android Drop artwork crop with teal AI-feature layout:sha256=059c9ea39976e951b2ccb5dabec112b261e52c922bd71a90e5859a74d738863b"
   ]
 }

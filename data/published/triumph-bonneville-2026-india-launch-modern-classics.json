@@ -1,0 +1,111 @@
+{
+  "headline": "Triumph's 2026 Bonneville Launch Makes Modern Classics More Tech-Ready in India",
+  "summary": "Triumph has launched its 2026 Bonneville T120, Bonneville Bobber and Speedmaster in India, bringing a familiar 1200cc modern-classic formula with meaningful updates in electronics, comfort and touring usability. Prices start at Rs 12.17 lakh for the T120 and around Rs 13.52 lakh for the Bobber and Speedmaster.",
+  "seo_title": "2026 Triumph Bonneville T120, Bobber, Speedmaster India Launch | Bike News",
+  "meta_description": "Triumph has launched the 2026 Bonneville T120, Bobber and Speedmaster in India with IMU-based rider aids, cruise control and comfort upgrades.",
+  "url_slug": "triumph-bonneville-2026-india-launch-modern-classics",
+  "category": "Bike News",
+  "tags": [
+    "Triumph",
+    "Bonneville T120",
+    "Bonneville Bobber",
+    "Speedmaster",
+    "Modern Classics",
+    "Bike News",
+    "Motorcycle News"
+  ],
+  "publish_date": "2026-06-09T12:41:06+0530",
+  "featured_image": "thumbnail.jpg",
+  "facebook_post": "Triumph's 2026 Bonneville range has landed in India, and the biggest update is not just the price. The T120, Bobber and Speedmaster now lean harder into rider aids, cruise control and real-world comfort.\n\nWould these upgrades make you choose a premium modern classic over a cheaper middleweight bike?\n\nRead more for full details on our blog.\n\n#Triumph #Bonneville #BikeNews #MotorcycleNews #ModernClassics",
+  "faq_schema": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the price of the 2026 Triumph Bonneville T120 in India?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The 2026 Triumph Bonneville T120 has been launched from Rs 12.17 lakh ex-showroom, with dual-tone colour options costing extra."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the prices of the 2026 Bonneville Bobber and Speedmaster?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Bonneville Bobber and Speedmaster are reported at around Rs 13.52 lakh ex-showroom in India."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is new on the 2026 Bonneville range?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Key updates include IMU-based lean-sensitive ABS and traction control, cruise control, USB-C charging, lighting upgrades and comfort improvements. The Bobber and Speedmaster also get a larger 14-litre fuel tank."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does the 2026 Bonneville T120 get a new engine?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No major engine change has been reported. The T120 continues with Triumph's 1200cc liquid-cooled parallel-twin engine paired with a six-speed gearbox."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Who should consider the 2026 Bonneville T120?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It suits riders who want a premium modern-classic motorcycle with strong heritage styling, relaxed performance and improved safety and convenience features."
+        }
+      }
+    ]
+  },
+  "sources_used": [
+    {
+      "source": "Autocar India",
+      "url": "https://www.autocarindia.com/bike-news-amp/2026-triumph-bonneville-t120-bobber-and-speedmaster-launched-in-india-439791"
+    },
+    {
+      "source": "Team-BHP",
+      "url": "https://www.team-bhp.com/news/2026-triumph-bonneville-t120-launched-rs-1217-lakh"
+    },
+    {
+      "source": "BikeWale",
+      "url": "https://www.bikewale.com/news/2026-triumph-bonneville-bobber-and-speedmaster-launched/"
+    },
+    {
+      "source": "HT Auto",
+      "url": "https://auto.hindustantimes.com/auto/two-wheelers/2026-triumph-bonneville-t120-bobber-speedmaster-launched-in-india/amp-41779788917682.html"
+    },
+    {
+      "source": "NDTV Auto",
+      "url": "https://www.ndtv.com/auto/triumph-launches-2026-bonneville-t120-bobber-and-speedmaster-in-india-11532501/amp/1"
+    }
+  ],
+  "research_notes": {
+    "strongest_angle": "Premium modern-classic bikes are becoming more technology-led without abandoning retro appeal.",
+    "key_facts": [
+      "2026 Bonneville T120 launched at Rs 12.17 lakh ex-showroom.",
+      "Bobber and Speedmaster priced around Rs 13.52 lakh ex-showroom.",
+      "T120 adds LED DRL, cruise control, USB-C and IMU-enabled rider aids.",
+      "Bobber and Speedmaster get larger 14-litre fuel tanks and comfort updates.",
+      "1200cc parallel-twin engine continues with no major mechanical reinvention."
+    ]
+  },
+  "thumbnail_generation": {
+    "method": "chatgpt_web_browser_image_generation",
+    "fallback_allowed": false,
+    "style": "realistic_editorial_news_feature_image_no_text_overlay",
+    "thumbnail_prompt_file": "F:\\opencalw\\Auto-Blog-ChatGPT\\output\\01-triumph-bonneville-2026-india-launch-modern-classics\\thumbnail_prompt.txt",
+    "thumbnail_file": "F:\\opencalw\\Auto-Blog-ChatGPT\\output\\01-triumph-bonneville-2026-india-launch-modern-classics\\thumbnail.jpg"
+  },
+  "slug": "triumph-bonneville-2026-india-launch-modern-classics",
+  "niche": "automotive",
+  "published_at": "2026-06-09T12:49:39+0530",
+  "template_engine": "scripts/build-site.js",
+  "github_article_path": "posts/triumph-bonneville-2026-india-launch-modern-classics.html",
+  "github_thumbnail_path": "assets/triumph-bonneville-2026-india-launch-modern-classics-thumbnail.jpg"
+}
