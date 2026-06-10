@@ -1,6 +1,6 @@
 {
   "cursors": {
-    "car": 22,
+    "car": 24,
     "bike": 0,
     "mobile": 0
   },
@@ -37,7 +37,6 @@
     "Motorola Edge 70 Pro Plus India buyer guide",
     "Best SUV for Long Drive India",
     "Most Reliable Car in India",
-    "Hero Splendor HF Deluxe flex fuel motorcycles India June 2026",
     "Bajaj Avenger 220 Street India 2026 relaunch",
     "OnePlus 15 India Snapdragon 8 Elite Gen 5 gaming phone",
     "iQOO Z11x India 7200mAh battery phone buyer guide",
@@ -46,7 +45,13 @@
     "Royal Enfield Bullet 650 India launch buyer guide June 2026",
     "Honda NX500 E-Clutch India 2026 touring bike buyer guide",
     "Lava Bold N2 5G India sale June 2026 budget phone guide",
-    "June Android Drop Gemini Intelligence India phone upgrade guide"
+    "June Android Drop Gemini Intelligence India phone upgrade guide",
+    "Tata Motors News",
+    "BYD India News",
+    "Ultraviolette F77 Isle of Man TT",
+    "Redmi Turbo 5 battery",
+    "Samsung Galaxy A Series AI trust India 2026",
+    "India-made Kawasaki W175 USA launch June 2026"
   ],
   "publishedSlugs": [
     "new-ev-launch-india",
@@ -90,7 +95,13 @@
     "royal-enfield-bullet-650-india-launch-2026-buyer-guide",
     "honda-nx500-e-clutch-india-2026-touring-bike-guide",
     "lava-bold-n2-5g-india-sale-june-2026-budget-phone-guide",
-    "june-android-drop-gemini-intelligence-india-phone-upgrade-guide"
+    "june-android-drop-gemini-intelligence-india-phone-upgrade-guide",
+    "tata-motors-may-2026-sales-59790-units-analysis",
+    "byd-seal-u-hybrid-india-threat-maruti-toyota",
+    "ultraviolette-f77-isle-of-man-tt-history",
+    "redmi-turbo-5-battery-expectations",
+    "samsung-galaxy-a-series-ai-trust-india-2026-upgrade-guide",
+    "india-made-kawasaki-w175-usa-launch-export-signal-2026"
   ],
   "thumbnailHashes": [
     "9ccc65110c374622188ecbe2838fb11aaec257b150ebc4744c0b57af1221f54f",
@@ -149,7 +160,16 @@
     "2588ccceebfe3f2bbd8fe3c3264d7873acb18b9a0454e3ec00d76c19b2da6f31",
     "57792ef4420e169dc991d760dcd980669010141197b179586782d110d7151581",
     "059c9ea39976e951b2ccb5dabec112b261e52c922bd71a90e5859a74d738863b",
-    "a1dcd2f48ea8165f8469abb70a0268c6cceb7b2b10ef3cbe5295242910d2810b"
+    "a1dcd2f48ea8165f8469abb70a0268c6cceb7b2b10ef3cbe5295242910d2810b",
+    "5d1cb47fc06fc4cfc8f01631e5fadcba88eb697dd9a2b60ee2cc562cc11559b4",
+    "dd4ac444f42076d3dcc832500471f64ddfe4e9cf1268de7655443e44f6ab07b9",
+    "9ea2325a41a01e2ee468a153fb760c508343c20b591afe902fa580804be75aa8",
+    "16808a203b62b4931cccfd55e752fbb253576b917cdee493b9b13aa4c1be50a2",
+    "edb21fa3f098a919379a909f190d322922603b47a7879093512a102d05c45947",
+    "d6f598c4ee0e0ca954d04d97bbe55c63e7aa8d236c90bff5cd461b2e02d0bfb9",
+    "1c3831db7f97dfe3b7bedf910e84e57fb67c79bac9a8dab14d1821b5aee554a9",
+    "f50ebb6433497e08370f11defde3c6290809ef45fb5e9b6f48de0ad2bb0a1906",
+    "6116783aecb6750eec1df5b906ca2d744be5c70834b584b1884531f7f122392d"
   ],
   "thumbnailSources": [
     "https://static-assets.tatamotors.com/Production/www-tatamotors-com-NEW/wp-content/uploads/2025/07/th-040725.jpg",
@@ -199,7 +219,14 @@
     "Royal Enfield:Bullet 650:https://www.royalenfield.com/content/dam/royal-enfield/motorcycles/bullet-650/banners/bullet-650-new.webp:wide official launch banner crop with black-gold left title",
     "Honda:NX500:https://powersports.honda.com/-/media/products/family/nx500/trims/trim-main/nx500/2026/2026-nx500-pearl_white-1505x923.png:isolated white NX500 crop with blue touring-tech layout",
     "Lava:Bold N2 5G:https://i.gadgets360cdn.com/large/lava_bold_n2_5g_1780472453496.jpg:phone render crop with maroon-orange budget 5G layout",
-    "Google:June Android Drop:https://storage.googleapis.com/gweb-uniblog-publish-prod/images/1920_x_1080.width-1300.png:official Android Drop artwork crop with teal AI-feature layout"
+    "Google:June Android Drop:https://storage.googleapis.com/gweb-uniblog-publish-prod/images/1920_x_1080.width-1300.png:official Android Drop artwork crop with teal AI-feature layout",
+    "Tata Motors:May 2026 sales:https://cars.tatamotors.com/article/press-release/tmpv-sales-release-may-2026.html:sales-number vehicle overlay",
+    "BYD:Seal U DM-i:https://www.byd.com/in:hybrid SUV market-impact overlay",
+    "Ultraviolette:F77 MACH 2:https://www.ultraviolette.com/isleofman:TT history electric motorcycle overlay",
+    "Hero MotoCorp:Splendor+ / HF Deluxe Flex Fuel:https://www.heromotocorp.com/en-in/motorcycles/splendor-plus.html:left green E85 commuter panel from product media fallback",
+    "Xiaomi Redmi:Redmi Turbo 5:https://new.c.mi.com/global/post/2004030:battery-expectation phone overlay",
+    "Samsung:Galaxy A Series:https://www.samsung.com/in/smartphones/galaxy-a/galaxy-a56-5g-awesome-olive-256gb-sm-a566ezghins/:right blue trust panel from mobile chip/product media fallback",
+    "Kawasaki:W175:https://www.kawasaki.com/en-us/motorcycle:left green export-signal retro motorcycle fallback layout"
   ],
   "facebookUrls": [
     "https://comeback2000.github.io/Car-news/posts/new-ev-launch-india.html",
@@ -219,9 +246,165 @@
     "https://comeback2000.github.io/Car-news/posts/royal-enfield-bullet-650-india-launch-2026-buyer-guide.html",
     "https://comeback2000.github.io/Car-news/posts/honda-nx500-e-clutch-india-2026-touring-bike-guide.html",
     "https://comeback2000.github.io/Car-news/posts/lava-bold-n2-5g-india-sale-june-2026-budget-phone-guide.html",
-    "https://comeback2000.github.io/Car-news/posts/june-android-drop-gemini-intelligence-india-phone-upgrade-guide.html"
+    "https://comeback2000.github.io/Car-news/posts/june-android-drop-gemini-intelligence-india-phone-upgrade-guide.html",
+    "https://comeback2000.github.io/Car-news/posts/tata-motors-may-2026-sales-59790-units-analysis.html",
+    "https://comeback2000.github.io/Car-news/posts/byd-seal-u-hybrid-india-threat-maruti-toyota.html",
+    "https://comeback2000.github.io/Car-news/posts/ultraviolette-f77-isle-of-man-tt-history.html",
+    "https://comeback2000.github.io/Car-news/posts/redmi-turbo-5-battery-expectations.html",
+    "https://comeback2000.github.io/Car-news/posts/samsung-galaxy-a-series-ai-trust-india-2026-upgrade-guide.html",
+    "https://comeback2000.github.io/Car-news/posts/india-made-kawasaki-w175-usa-launch-export-signal-2026.html"
   ],
   "runs": [
+    {
+      "ranAt": "2026-06-10T09:25:34.523Z",
+      "commit": "48ab65e",
+      "mode": "codex-generate-2026-06-10",
+      "selectedKeywords": [
+        {
+          "niche": "car",
+          "keyword": "Tata Motors News"
+        },
+        {
+          "niche": "car",
+          "keyword": "BYD India News"
+        },
+        {
+          "niche": "bike",
+          "keyword": "Ultraviolette F77 Isle of Man TT"
+        },
+        {
+          "niche": "bike",
+          "keyword": "India-made Kawasaki W175 USA launch June 2026"
+        },
+        {
+          "niche": "mobile",
+          "keyword": "Redmi Turbo 5 battery"
+        },
+        {
+          "niche": "mobile",
+          "keyword": "Samsung Galaxy A Series AI trust India 2026"
+        }
+      ],
+      "articles": [
+        {
+          "slug": "tata-motors-may-2026-sales-59790-units-analysis",
+          "keyword": "59,790 Cars in a Month: Tata's Latest Numbers Are Turning Heads",
+          "category": "Automotive News",
+          "url": "https://comeback2000.github.io/Car-news/posts/tata-motors-may-2026-sales-59790-units-analysis.html",
+          "image": "assets/tata-motors-may-2026-sales-59790-units-analysis-thumbnail.jpg"
+        },
+        {
+          "slug": "byd-seal-u-hybrid-india-threat-maruti-toyota",
+          "keyword": "BYD's First Hybrid for India Could Be Bad News for Maruti and Toyota",
+          "category": "Automotive News",
+          "url": "https://comeback2000.github.io/Car-news/posts/byd-seal-u-hybrid-india-threat-maruti-toyota.html",
+          "image": "assets/byd-seal-u-hybrid-india-threat-maruti-toyota-thumbnail.jpg"
+        },
+        {
+          "slug": "ultraviolette-f77-isle-of-man-tt-history",
+          "keyword": "Ultraviolette F77 Isle of Man TT",
+          "category": "Bike News",
+          "url": "https://comeback2000.github.io/Car-news/posts/ultraviolette-f77-isle-of-man-tt-history.html",
+          "image": "assets/ultraviolette-f77-isle-of-man-tt-history-thumbnail.jpg"
+        },
+        {
+          "slug": "india-made-kawasaki-w175-usa-launch-export-signal-2026",
+          "keyword": "India-made Kawasaki W175 USA launch June 2026",
+          "category": "Bike News",
+          "url": "https://comeback2000.github.io/Car-news/posts/india-made-kawasaki-w175-usa-launch-export-signal-2026.html",
+          "image": "assets/india-made-kawasaki-w175-usa-launch-export-signal-2026-thumbnail.jpg"
+        },
+        {
+          "slug": "redmi-turbo-5-battery-expectations",
+          "keyword": "Redmi Turbo 5 battery",
+          "category": "Mobile Tech",
+          "url": "https://comeback2000.github.io/Car-news/posts/redmi-turbo-5-battery-expectations.html",
+          "image": "assets/redmi-turbo-5-battery-expectations-thumbnail.jpg"
+        },
+        {
+          "slug": "samsung-galaxy-a-series-ai-trust-india-2026-upgrade-guide",
+          "keyword": "Samsung Galaxy A Series AI trust India 2026",
+          "category": "Mobile Tech",
+          "url": "https://comeback2000.github.io/Car-news/posts/samsung-galaxy-a-series-ai-trust-india-2026-upgrade-guide.html",
+          "image": "assets/samsung-galaxy-a-series-ai-trust-india-2026-thumbnail.jpg"
+        }
+      ],
+      "thumbnailAudit": {
+        "contactSheet": "assets/daily-thumbnails-2026-06-10-contact-sheet.jpg",
+        "status": "visually_approved_after_contact_sheet_review",
+        "note": "Six thumbnails were reviewed as a contact sheet; the batch uses distinct source identities, subjects, crops, panel positions and color systems."
+      },
+      "facebook": [
+        {
+          "slug": "tata-motors-may-2026-sales-59790-units-analysis",
+          "title": "59,790 Cars in a Month: Tata's Latest Numbers Are Turning Heads",
+          "result": {
+            "status": "skipped_push_failed",
+            "postId": null,
+            "message": "Facebook credentials may be present, but publishing was skipped because GitHub push failed before public article and image URLs were updated."
+          },
+          "postedAt": "2026-06-10T09:27:39.101Z"
+        },
+        {
+          "slug": "byd-seal-u-hybrid-india-threat-maruti-toyota",
+          "title": "BYD's First Hybrid for India Could Be Bad News for Maruti and Toyota",
+          "result": {
+            "status": "skipped_push_failed",
+            "postId": null,
+            "message": "Facebook credentials may be present, but publishing was skipped because GitHub push failed before public article and image URLs were updated."
+          },
+          "postedAt": "2026-06-10T09:27:39.101Z"
+        },
+        {
+          "slug": "ultraviolette-f77-isle-of-man-tt-history",
+          "title": "Ultraviolette F77 Achieves What No Indian Motorcycle Has Done Before",
+          "result": {
+            "status": "skipped_push_failed",
+            "postId": null,
+            "message": "Facebook credentials may be present, but publishing was skipped because GitHub push failed before public article and image URLs were updated."
+          },
+          "postedAt": "2026-06-10T09:27:39.101Z"
+        },
+        {
+          "slug": "india-made-kawasaki-w175-usa-launch-export-signal-2026",
+          "title": "India-Made Kawasaki W175 Goes to America: Why a Small Retro Bike Matters",
+          "result": {
+            "status": "skipped_push_failed",
+            "postId": null,
+            "message": "Facebook credentials may be present, but publishing was skipped because GitHub push failed before public article and image URLs were updated."
+          },
+          "postedAt": "2026-06-10T09:27:39.101Z"
+        },
+        {
+          "slug": "redmi-turbo-5-battery-expectations",
+          "title": "Redmi Turbo 5 Could Rewrite Battery Expectations",
+          "result": {
+            "status": "skipped_push_failed",
+            "postId": null,
+            "message": "Facebook credentials may be present, but publishing was skipped because GitHub push failed before public article and image URLs were updated."
+          },
+          "postedAt": "2026-06-10T09:27:39.101Z"
+        },
+        {
+          "slug": "samsung-galaxy-a-series-ai-trust-india-2026-upgrade-guide",
+          "title": "Samsung Galaxy A Series: Why Trust Is Becoming the Mid-Range Phone Spec",
+          "result": {
+            "status": "skipped_push_failed",
+            "postId": null,
+            "message": "Facebook credentials may be present, but publishing was skipped because GitHub push failed before public article and image URLs were updated."
+          },
+          "postedAt": "2026-06-10T09:27:39.101Z"
+        }
+      ],
+      "push": {
+        "status": "failed",
+        "branches": [
+          "main",
+          "gh-pages"
+        ],
+        "message": "GitHub HTTPS push failed: schannel AcquireCredentialsHandle failed, SEC_E_NO_CREDENTIALS. Local commit is ahead of origin; Facebook publishing skipped because public article/image URLs were not updated."
+      }
+    },
     {
       "ranAt": "2026-06-09T09:28:25.010Z",
       "commit": "dcfad9b",
@@ -1390,6 +1573,13 @@
     "official:Royal Enfield:Bullet 650:https://www.royalenfield.com/content/dam/royal-enfield/motorcycles/bullet-650/banners/bullet-650-new.webp:wide official launch banner crop with black-gold left title:sha256=a32b542e9c5e542535fd41ca0f80135beaa6ff2a6f6f2d0ec1479b68e6f94f2a",
     "official:Honda:NX500:https://powersports.honda.com/-/media/products/family/nx500/trims/trim-main/nx500/2026/2026-nx500-pearl_white-1505x923.png:isolated white NX500 crop with blue touring-tech layout:sha256=2588ccceebfe3f2bbd8fe3c3264d7873acb18b9a0454e3ec00d76c19b2da6f31",
     "official:Lava:Bold N2 5G:https://i.gadgets360cdn.com/large/lava_bold_n2_5g_1780472453496.jpg:phone render crop with maroon-orange budget 5G layout:sha256=57792ef4420e169dc991d760dcd980669010141197b179586782d110d7151581",
-    "official:Google:June Android Drop:https://storage.googleapis.com/gweb-uniblog-publish-prod/images/1920_x_1080.width-1300.png:official Android Drop artwork crop with teal AI-feature layout:sha256=059c9ea39976e951b2ccb5dabec112b261e52c922bd71a90e5859a74d738863b"
+    "official:Google:June Android Drop:https://storage.googleapis.com/gweb-uniblog-publish-prod/images/1920_x_1080.width-1300.png:official Android Drop artwork crop with teal AI-feature layout:sha256=059c9ea39976e951b2ccb5dabec112b261e52c922bd71a90e5859a74d738863b",
+    "official:Tata Motors:May 2026 sales:https://cars.tatamotors.com/article/press-release/tmpv-sales-release-may-2026.html:sales-number vehicle overlay:sha256=5d1cb47fc06fc4cfc8f01631e5fadcba88eb697dd9a2b60ee2cc562cc11559b4",
+    "local-official-fallback:BYD:Seal U DM-i:https://www.byd.com/in:hybrid SUV market-impact overlay:sha256=dd4ac444f42076d3dcc832500471f64ddfe4e9cf1268de7655443e44f6ab07b9",
+    "official:Ultraviolette:F77 MACH 2:https://www.ultraviolette.com/isleofman:TT history electric motorcycle overlay:sha256=9ea2325a41a01e2ee468a153fb760c508343c20b591afe902fa580804be75aa8",
+    "local-official-fallback:Hero MotoCorp:Splendor+ / HF Deluxe Flex Fuel:https://www.heromotocorp.com/en-in/motorcycles/splendor-plus.html:left green E85 commuter panel from product media fallback:sha256=16808a203b62b4931cccfd55e752fbb253576b917cdee493b9b13aa4c1be50a2",
+    "local-official-fallback:Xiaomi Redmi:Redmi Turbo 5:https://new.c.mi.com/global/post/2004030:battery-expectation phone overlay:sha256=edb21fa3f098a919379a909f190d322922603b47a7879093512a102d05c45947",
+    "local-official-fallback:Samsung:Galaxy A Series:https://www.samsung.com/in/smartphones/galaxy-a/galaxy-a56-5g-awesome-olive-256gb-sm-a566ezghins/:right blue trust panel from mobile chip/product media fallback:sha256=d6f598c4ee0e0ca954d04d97bbe55c63e7aa8d236c90bff5cd461b2e02d0bfb9",
+    "local-official-fallback:Kawasaki:W175:https://www.kawasaki.com/en-us/motorcycle:left green export-signal retro motorcycle fallback layout:sha256=f50ebb6433497e08370f11defde3c6290809ef45fb5e9b6f48de0ad2bb0a1906"
   ]
 }
