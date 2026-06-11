@@ -4,7 +4,8 @@ const crypto = require("crypto");
 
 const root = path.join(__dirname, "..");
 const siteUrl = "https://comeback2000.github.io/Car-news";
-const posts = JSON.parse(fs.readFileSync(path.join(root, "data", "posts.json"), "utf8").replace(/^\uFEFF/, ""));
+const allPosts = JSON.parse(fs.readFileSync(path.join(root, "data", "posts.json"), "utf8").replace(/^\uFEFF/, ""));
+const posts = allPosts.filter((post) => post.status !== "unpublished" && post.unpublished !== true && post.published !== false);
 const imageSizeCache = new Map();
 
 const esc = (value) => String(value).replace(/[&<>"']/g, (char) => ({
@@ -62,7 +63,7 @@ function headTags({ title, description, url, image, type = "website", schema, im
     <meta name="twitter:title" content="${esc(title)}">
     <meta name="twitter:description" content="${esc(description)}">
     <meta name="twitter:image" content="${esc(image)}">
-    <link rel="stylesheet" href="${url.includes("/posts/") || url.includes("/category/") || url.includes("/tags/") ? "../styles.css" : "styles.css"}">
+    <link rel="stylesheet" href="${url.includes("/posts/") || url.includes("/category/") || url.includes("/tags/") || url.includes("/admin/") ? "../styles.css" : "styles.css"}">
     ${schema ? `<script type="application/ld+json">${JSON.stringify(schema)}</script>` : ""}`;
 }
 
@@ -73,6 +74,7 @@ function header(depth = 0) {
         <a href="${rootHref("index.html#top-stories", depth)}">Top Stories</a>
         <a href="${rootHref("tags/india-ev-sales.html", depth)}">India EV News</a>
         <a href="${rootHref("sitemap.xml", depth)}">Sitemap</a>
+        <a href="${rootHref("admin/index.html", depth)}">Admin</a>
       </nav>
     </header>`;
 }
@@ -89,8 +91,11 @@ function autoLink(text, currentPost) {
     if (linkedSlugs.has(post.slug)) continue;
     const escapedKeyword = esc(keyword).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     const pattern = new RegExp(`\\b(${escapedKeyword})\\b`, "i");
-    if (pattern.test(linked)) {
-      linked = linked.replace(pattern, `<a href="${post.slug}.html">$1</a>`);
+    const parts = linked.split(/(<a\b[^>]*>[\s\S]*?<\/a>)/gi);
+    const index = parts.findIndex((part) => !/^<a\b/i.test(part) && pattern.test(part));
+    if (index !== -1) {
+      parts[index] = parts[index].replace(pattern, `<a href="${post.slug}.html">$1</a>`);
+      linked = parts.join("");
       linkedSlugs.add(post.slug);
     }
   }
@@ -116,6 +121,8 @@ function sanitizeArticleHtml(value) {
     .replace(/\son\w+="[^"]*"/gi, "")
     .replace(/\son\w+='[^']*'/gi, "")
     .replace(/javascript:/gi, "")
+    .replace(/href=["']\/electric-vehicle-news["']/gi, 'href="../tags/electric-vehicles.html"')
+    .replace(/href=["']\/automotive-industry["']/gi, 'href="../category/automotive-news.html"')
     .trim();
 }
 
@@ -361,6 +368,7 @@ function sitemap() {
   const tags = uniqueLabelsBySlug(posts.flatMap((post) => post.tags));
   const urls = [
     `${siteUrl}/`,
+    `${siteUrl}/admin/`,
     ...posts.map(postUrl),
     ...categories.map((category) => `${siteUrl}/category/${slugify(category)}.html`),
     ...tags.map((tag) => `${siteUrl}/tags/${slugify(tag)}.html`)
@@ -369,6 +377,373 @@ function sitemap() {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.map((url) => `  <url><loc>${esc(url)}</loc><lastmod>${latestDate}</lastmod><changefreq>daily</changefreq><priority>${url.endsWith("/") ? "1.0" : "0.8"}</priority></url>`).join("\n")}
 </urlset>`;
+}
+
+function adminPage() {
+  const published = {};
+  const publishedDir = path.join(root, "data", "published");
+  if (fs.existsSync(publishedDir)) {
+    for (const file of fs.readdirSync(publishedDir).filter((item) => item.endsWith(".json"))) {
+      try {
+        const item = JSON.parse(fs.readFileSync(path.join(publishedDir, file), "utf8"));
+        published[item.slug || file.replace(/\.json$/, "")] = {
+          articleUrl: item.github_article_url || item.article_url || "",
+          thumbnailUrl: item.github_thumbnail_url || item.thumbnail_url || "",
+          publishedAt: item.published_at || item.publish_date || "",
+          localThumbnail: item.local_files?.thumbnail || "",
+          thumbnailGeneration: item.thumbnail_generation || {}
+        };
+      } catch {
+        published[file.replace(/\.json$/, "")] = { error: "Could not parse metadata" };
+      }
+    }
+  }
+  const adminPosts = posts.map((post) => {
+    const articlePath = path.join(root, "posts", `${post.slug}.html`);
+    const imagePath = path.join(root, post.image || "");
+    return {
+      ...post,
+      tags: post.tags || [],
+      admin: {
+        articleUrl: postUrl(post),
+        expectedPath: `posts/${post.slug}.html`,
+        imageUrl: post.image ? `${siteUrl}/${post.image}` : "",
+        localArticleExists: Boolean(post.slug) || fs.existsSync(articlePath),
+        localImageExists: Boolean(post.image && fs.existsSync(imagePath)),
+        published: published[post.slug] || null
+      }
+    };
+  });
+  const adminData = {
+    generatedAt: new Date().toISOString(),
+    posts: adminPosts,
+    published,
+    siteUrl
+  };
+  return `<!doctype html>
+<html lang="en">
+  <head>
+${headTags({
+  title: "Admin | Car News",
+  description: "Local publishing admin panel for Car News articles, thumbnails, metadata and audit status.",
+  url: `${siteUrl}/admin/`,
+  image: `${siteUrl}/${posts[0]?.image || "assets/tata-nexon-ev.jpg"}`,
+  type: "website"
+})}
+    <meta name="robots" content="noindex, nofollow">
+  </head>
+  <body class="admin-body">
+    ${header(1)}
+    <main class="admin-shell">
+      <section class="admin-login" id="loginPanel">
+        <p class="eyebrow">Publishing control</p>
+        <h1>Admin Login</h1>
+        <p>This is a static GitHub Pages admin panel. It edits data in-browser and exports files for the local publisher to apply.</p>
+        <label>
+          Access key
+          <input id="adminPassword" type="password" autocomplete="current-password" placeholder="Enter local admin key">
+        </label>
+        <button id="adminLogin" type="button">Open Admin</button>
+        <p class="admin-hint">Default local key: <code>autotech-admin</code>. Change it in <code>scripts/build-site.js</code> before public use.</p>
+      </section>
+
+      <section class="admin-app" id="adminApp" hidden>
+        <div class="admin-topbar">
+          <div>
+            <p class="eyebrow">Car News Admin</p>
+            <h1>Published Articles</h1>
+          </div>
+          <div class="admin-actions">
+            <button id="validateAll" type="button">Check live URLs</button>
+            <button id="downloadBrokenReport" type="button">Export 404 report</button>
+            <button id="downloadPosts" type="button">Export posts.json</button>
+            <button id="downloadReport" type="button">Export status report</button>
+          </div>
+        </div>
+
+        <div class="admin-metrics" id="adminMetrics"></div>
+        <div class="admin-grid">
+          <aside class="admin-list">
+            <input id="adminSearch" type="search" placeholder="Search posts, tags, slugs">
+            <select id="statusFilter" aria-label="Filter by status">
+              <option value="all">All posts</option>
+              <option value="broken">Broken or missing</option>
+              <option value="ok">Live OK</option>
+              <option value="unchecked">Unchecked</option>
+              <option value="queued">Rebuild queued</option>
+            </select>
+            <div id="postList"></div>
+          </aside>
+          <section class="admin-editor">
+            <div id="editorEmpty">
+              <h2>Select a post</h2>
+              <p>Review article status, edit metadata, change thumbnails, delete posts, then export updated data.</p>
+            </div>
+            <form id="postEditor" hidden>
+              <label>Title<input name="title"></label>
+              <label>Slug<input name="slug"></label>
+              <label>Category<input name="category"></label>
+              <label>Target keyword<input name="targetKeyword"></label>
+              <label>Meta title<input name="metaTitle"></label>
+              <label>Meta description<textarea name="metaDescription" rows="3"></textarea></label>
+              <label>Excerpt<textarea name="excerpt" rows="4"></textarea></label>
+              <label>Image path<input name="image"></label>
+              <label>Image alt<input name="imageAlt"></label>
+              <label>Tags, comma separated<input name="tags"></label>
+              <label>Publish date<input name="datePublished"></label>
+              <div class="admin-preview">
+                <img id="thumbnailPreview" alt="">
+                <div>
+                  <p id="liveStatusDetails"></p>
+                  <p id="statusDetails"></p>
+                  <p id="publishDetails"></p>
+                </div>
+              </div>
+              <div class="admin-actions">
+                <a id="openArticle" class="button-link" target="_blank" rel="noopener">Open article</a>
+                <button id="checkPost" type="button">Check URL</button>
+                <button id="unpublishPost" type="button">Unpublish</button>
+                <button id="queueRebuild" type="button">Queue rebuild</button>
+                <button id="fixUrlMapping" type="button">Fix URL mapping</button>
+                <button id="savePost" type="button">Save edits</button>
+                <button id="deletePost" type="button" class="danger">Delete post</button>
+              </div>
+            </form>
+          </section>
+        </div>
+      </section>
+    </main>
+    <script id="adminData" type="application/json">${JSON.stringify(adminData).replace(/</g, "\\u003c")}</script>
+    <script>
+      const ADMIN_KEY = "autotech-admin";
+      const state = JSON.parse(document.getElementById("adminData").textContent);
+      let postsData = state.posts.map((post) => ({ ...post, tags: [...(post.tags || [])] }));
+      let selectedSlug = "";
+      const liveStatus = new Map(postsData.map((post) => [post.slug, {
+        articleStatus: "unchecked",
+        imageStatus: post.admin?.localImageExists ? "unchecked" : "missing-local",
+        checkedAt: "",
+        checking: false
+      }]));
+      const rebuildQueue = new Set();
+      const loginPanel = document.getElementById("loginPanel");
+      const adminApp = document.getElementById("adminApp");
+      const postList = document.getElementById("postList");
+      const postEditor = document.getElementById("postEditor");
+      const editorEmpty = document.getElementById("editorEmpty");
+      const search = document.getElementById("adminSearch");
+      const statusFilter = document.getElementById("statusFilter");
+      const fields = ["title", "slug", "category", "targetKeyword", "metaTitle", "metaDescription", "excerpt", "image", "imageAlt", "tags", "datePublished"];
+
+      function slugify(value) {
+        return String(value || "").toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+      }
+      function articleUrl(post) {
+        return \`\${state.siteUrl}/posts/\${post.slug}.html\`;
+      }
+      function imageUrl(post) {
+        return post.image ? \`\${state.siteUrl}/\${post.image}\` : "";
+      }
+      function postStatus(post) {
+        const status = liveStatus.get(post.slug) || {};
+        if (rebuildQueue.has(post.slug) || post.rebuildRequested) return "queued";
+        if (status.checking) return "checking";
+        if ([404, 0, "missing-local"].includes(status.articleStatus) || [404, 0, "missing-local"].includes(status.imageStatus)) return "broken";
+        if (status.articleStatus === 200 && status.imageStatus === 200) return "ok";
+        return "unchecked";
+      }
+      function statusLabel(post) {
+        const status = liveStatus.get(post.slug) || {};
+        const stateName = postStatus(post);
+        if (stateName === "ok") return "Live OK";
+        if (stateName === "broken") return \`Broken: article \${status.articleStatus || "?"}, image \${status.imageStatus || "?"}\`;
+        if (stateName === "queued") return "Rebuild queued";
+        if (stateName === "checking") return "Checking...";
+        return "Unchecked";
+      }
+      function renderMetrics() {
+        const missingImages = postsData.filter((post) => !post.image).length;
+        const metadataCount = Object.keys(state.published || {}).length;
+        const brokenCount = postsData.filter((post) => postStatus(post) === "broken").length;
+        const okCount = postsData.filter((post) => postStatus(post) === "ok").length;
+        document.getElementById("adminMetrics").innerHTML = [
+          ["Posts", postsData.length],
+          ["Live OK", okCount],
+          ["Broken/missing", brokenCount],
+          ["Rebuild queued", rebuildQueue.size],
+          ["Published metadata", metadataCount],
+          ["Missing image paths", missingImages],
+          ["Generated", state.generatedAt]
+        ].map(([label, value]) => \`<div><span>\${label}</span><strong>\${value}</strong></div>\`).join("");
+      }
+      function renderList() {
+        const query = search.value.trim().toLowerCase();
+        const filter = statusFilter.value;
+        const items = postsData.filter((post) => {
+          const matchesQuery = !query || JSON.stringify(post).toLowerCase().includes(query);
+          const matchesStatus = filter === "all" || postStatus(post) === filter;
+          return matchesQuery && matchesStatus;
+        });
+        postList.innerHTML = items.map((post) => \`
+          <button type="button" class="admin-post is-\${postStatus(post)} \${post.slug === selectedSlug ? "is-active" : ""}" data-slug="\${post.slug}">
+            <strong>\${post.title}</strong>
+            <span>\${post.category} · \${post.slug}</span>
+            <em>\${statusLabel(post)}</em>
+          </button>
+        \`).join("");
+        postList.querySelectorAll("button").forEach((button) => button.addEventListener("click", () => selectPost(button.dataset.slug)));
+        renderMetrics();
+      }
+      function selectPost(slug) {
+        selectedSlug = slug;
+        const post = postsData.find((item) => item.slug === slug);
+        if (!post) return;
+        editorEmpty.hidden = true;
+        postEditor.hidden = false;
+        for (const name of fields) {
+          postEditor.elements[name].value = Array.isArray(post[name]) ? post[name].join(", ") : (post[name] || "");
+        }
+        document.getElementById("thumbnailPreview").src = "../" + post.image;
+        document.getElementById("thumbnailPreview").alt = post.imageAlt || "";
+        document.getElementById("openArticle").href = "../posts/" + post.slug + ".html";
+        const published = state.published[post.slug] || {};
+        document.getElementById("liveStatusDetails").textContent = \`\${statusLabel(post)} · Article: \${articleUrl(post)} · Image: \${imageUrl(post) || "missing"}\`;
+        document.getElementById("statusDetails").textContent = \`Local article: \${post.admin?.localArticleExists ? "exists" : "missing"} · Local image: \${post.admin?.localImageExists ? "exists" : "missing"} · Image path: \${post.image || "missing"}\`;
+        document.getElementById("publishDetails").textContent = published.articleUrl ? \`Published metadata: \${published.articleUrl}\` : "No published metadata found.";
+        renderList();
+      }
+      function saveSelected() {
+        const index = postsData.findIndex((post) => post.slug === selectedSlug);
+        if (index < 0) return;
+        const updated = { ...postsData[index] };
+        for (const name of fields) {
+          const value = postEditor.elements[name].value.trim();
+          updated[name] = name === "tags" ? value.split(",").map((item) => item.trim()).filter(Boolean) : value;
+        }
+        if (!updated.slug) updated.slug = slugify(updated.title);
+        postsData[index] = updated;
+        selectedSlug = updated.slug;
+        if (!liveStatus.has(updated.slug)) {
+          liveStatus.set(updated.slug, { articleStatus: "unchecked", imageStatus: "unchecked", checkedAt: "" });
+        }
+        selectPost(updated.slug);
+      }
+      async function checkUrl(url) {
+        if (!url) return 0;
+        try {
+          let response = await fetch(url, { method: "HEAD", cache: "no-store", redirect: "follow" });
+          if (response.status === 405) response = await fetch(url, { method: "GET", cache: "no-store", redirect: "follow" });
+          return response.status;
+        } catch {
+          return 0;
+        }
+      }
+      async function validatePost(post) {
+        liveStatus.set(post.slug, { ...(liveStatus.get(post.slug) || {}), checking: true });
+        renderList();
+        const [articleStatus, imageStatus] = await Promise.all([checkUrl(articleUrl(post)), checkUrl(imageUrl(post))]);
+        liveStatus.set(post.slug, { articleStatus, imageStatus, checkedAt: new Date().toISOString(), checking: false });
+        if (selectedSlug === post.slug) selectPost(post.slug);
+        renderList();
+      }
+      async function validateAll() {
+        for (const post of postsData) {
+          await validatePost(post);
+        }
+      }
+      function unpublishSelected() {
+        const post = postsData.find((item) => item.slug === selectedSlug);
+        if (!post || !confirm(\`Unpublish "\${post.title}" from future builds?\`)) return;
+        post.status = "unpublished";
+        post.unpublished = true;
+        selectPost(post.slug);
+      }
+      function queueSelectedRebuild() {
+        const post = postsData.find((item) => item.slug === selectedSlug);
+        if (!post) return;
+        post.rebuildRequested = true;
+        rebuildQueue.add(post.slug);
+        selectPost(post.slug);
+      }
+      function fixSelectedUrlMapping() {
+        const post = postsData.find((item) => item.slug === selectedSlug);
+        if (!post) return;
+        const nextSlug = prompt("Enter the correct URL slug. The article URL will be /posts/<slug>.html", post.slug);
+        if (!nextSlug) return;
+        post.slug = slugify(nextSlug.replace(/\\.html$/i, "").replace(/^.*\\/posts\\//i, ""));
+        selectedSlug = post.slug;
+        saveSelected();
+      }
+      function deleteSelected() {
+        if (!selectedSlug) return;
+        const post = postsData.find((item) => item.slug === selectedSlug);
+        if (!post || !confirm(\`Delete "\${post.title}" from exported posts.json?\`)) return;
+        postsData = postsData.filter((item) => item.slug !== selectedSlug);
+        selectedSlug = "";
+        postEditor.hidden = true;
+        editorEmpty.hidden = false;
+        renderList();
+      }
+      function downloadJson(filename, value) {
+        const blob = new Blob([JSON.stringify(value, null, 2) + "\\n"], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = filename;
+        link.click();
+        URL.revokeObjectURL(url);
+      }
+      function statusReport() {
+        return {
+          generatedAt: new Date().toISOString(),
+          posts: postsData.map((post) => ({
+            slug: post.slug,
+            title: post.title,
+            category: post.category,
+            datePublished: post.datePublished || "",
+            articleUrl: articleUrl(post),
+            image: post.image,
+            imageUrl: imageUrl(post),
+            status: postStatus(post),
+            live: liveStatus.get(post.slug) || null,
+            rebuildRequested: Boolean(post.rebuildRequested || rebuildQueue.has(post.slug)),
+            metadata: state.published[post.slug] || null
+          }))
+        };
+      }
+      function brokenReport() {
+        return {
+          generatedAt: new Date().toISOString(),
+          brokenPosts: statusReport().posts.filter((post) => post.status === "broken")
+        };
+      }
+      document.getElementById("adminLogin").addEventListener("click", () => {
+        if (document.getElementById("adminPassword").value !== ADMIN_KEY) {
+          alert("Invalid admin key");
+          return;
+        }
+        loginPanel.hidden = true;
+        adminApp.hidden = false;
+        renderList();
+      });
+      search.addEventListener("input", renderList);
+      statusFilter.addEventListener("change", renderList);
+      document.getElementById("savePost").addEventListener("click", saveSelected);
+      document.getElementById("deletePost").addEventListener("click", deleteSelected);
+      document.getElementById("unpublishPost").addEventListener("click", unpublishSelected);
+      document.getElementById("queueRebuild").addEventListener("click", queueSelectedRebuild);
+      document.getElementById("fixUrlMapping").addEventListener("click", fixSelectedUrlMapping);
+      document.getElementById("checkPost").addEventListener("click", () => {
+        const post = postsData.find((item) => item.slug === selectedSlug);
+        if (post) validatePost(post);
+      });
+      document.getElementById("validateAll").addEventListener("click", validateAll);
+      document.getElementById("downloadPosts").addEventListener("click", () => downloadJson("posts.json", postsData));
+      document.getElementById("downloadReport").addEventListener("click", () => downloadJson("admin-status-report.json", statusReport()));
+      document.getElementById("downloadBrokenReport").addEventListener("click", () => downloadJson("broken-posts-404-report.json", brokenReport()));
+    </script>
+  </body>
+</html>`;
 }
 
 function redirectPage(targetPost) {
@@ -387,6 +762,21 @@ function redirectPage(targetPost) {
 </html>`;
 }
 
+function genericRedirectPage({ title, target, robots = "noindex, follow" }) {
+  return `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>${esc(title)}</title>
+    <meta name="robots" content="${esc(robots)}">
+    <meta http-equiv="refresh" content="0; url=${esc(target)}">
+  </head>
+  <body>
+    <p>Continue to <a href="${esc(target)}">${esc(title)}</a>.</p>
+  </body>
+</html>`;
+}
+
 function ensureDir(dir) {
   fs.mkdirSync(path.join(root, dir), { recursive: true });
 }
@@ -398,6 +788,32 @@ function write(file, content) {
 function cleanHtmlDir(dir) {
   for (const stale of fs.readdirSync(path.join(root, dir)).filter((file) => file.endsWith(".html"))) {
     fs.unlinkSync(path.join(root, dir, stale));
+  }
+}
+
+function writeUtilityRedirects() {
+  const redirects = [
+    ["guides/car-buying-guide", "../category/automotive-news.html", "Car Buying Guide"],
+    ["guides/ev-buying-guide", "../tags/ev-buying-guide.html", "EV Buying Guide"],
+    ["guides/two-wheeler-buying-guide", "../tags/bikes.html", "Two-Wheeler Buying Guide"],
+    ["topics/latest-launch-coverage", "../tags/new-car-launches.html", "Latest Launch Coverage"],
+    ["topics/ev-buying-guide", "../tags/ev-buying-guide.html", "EV Buying Guide"],
+    ["electric-vehicle-news", "tags/electric-vehicles.html", "Electric Vehicle News"],
+    ["automotive-industry", "category/automotive-news.html", "Automotive Industry"]
+  ];
+  for (const [file, target, title] of redirects) {
+    ensureDir(path.dirname(file));
+    write(file, genericRedirectPage({ title, target }));
+  }
+}
+
+function cleanUtilityRedirects() {
+  for (const dir of ["guides", "topics"]) {
+    const full = path.join(root, dir);
+    if (!fs.existsSync(full)) continue;
+    for (const stale of fs.readdirSync(full)) {
+      fs.unlinkSync(path.join(full, stale));
+    }
   }
 }
 
@@ -444,12 +860,16 @@ validatePosts();
 ensureDir("posts");
 ensureDir("category");
 ensureDir("tags");
+ensureDir("admin");
 
 cleanHtmlDir("posts");
 cleanHtmlDir("category");
 cleanHtmlDir("tags");
+cleanUtilityRedirects();
 
 write("index.html", indexPage());
+write("admin/index.html", adminPage());
+writeUtilityRedirects();
 for (const post of posts) {
   write(`posts/${post.slug}.html`, articlePage(post));
   for (const alias of post.aliases || []) {

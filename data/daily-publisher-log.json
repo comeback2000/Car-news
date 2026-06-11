@@ -1,8 +1,8 @@
 {
   "cursors": {
-    "car": 24,
-    "bike": 0,
-    "mobile": 0
+    "car": 26,
+    "bike": 8,
+    "mobile": 8
   },
   "publishedKeywords": [
     "New EV Launch India",
@@ -51,7 +51,13 @@
     "Ultraviolette F77 Isle of Man TT",
     "Redmi Turbo 5 battery",
     "Samsung Galaxy A Series AI trust India 2026",
-    "India-made Kawasaki W175 USA launch June 2026"
+    "India-made Kawasaki W175 USA launch June 2026",
+    "Mahindra Auto News",
+    "Maruti Suzuki News",
+    "Bajaj Avenger Street 220 2026 launch India",
+    "Royal Enfield Himalayan 450 capacity expansion 2026",
+    "Apple WWDC 2026 Siri AI iPhone India",
+    "Nothing RCB smartphone India special edition buzz"
   ],
   "publishedSlugs": [
     "new-ev-launch-india",
@@ -101,7 +107,13 @@
     "ultraviolette-f77-isle-of-man-tt-history",
     "redmi-turbo-5-battery-expectations",
     "samsung-galaxy-a-series-ai-trust-india-2026-upgrade-guide",
-    "india-made-kawasaki-w175-usa-launch-export-signal-2026"
+    "india-made-kawasaki-w175-usa-launch-export-signal-2026",
+    "mahindra-suv-production-crunch-june-2026-buyer-impact",
+    "maruti-dzire-hatchback-revival-2026-mass-market-signal",
+    "bajaj-avenger-220-street-2026-city-cruiser-buying-guide",
+    "royal-enfield-himalayan-450-capacity-expansion-2026-rider-impact",
+    "apple-wwdc-2026-siri-ai-iphone-upgrade-india-guide",
+    "nothing-rcb-phone-buzz-india-special-edition-buyer-watch"
   ],
   "thumbnailHashes": [
     "9ccc65110c374622188ecbe2838fb11aaec257b150ebc4744c0b57af1221f54f",
@@ -169,7 +181,14 @@
     "d6f598c4ee0e0ca954d04d97bbe55c63e7aa8d236c90bff5cd461b2e02d0bfb9",
     "1c3831db7f97dfe3b7bedf910e84e57fb67c79bac9a8dab14d1821b5aee554a9",
     "f50ebb6433497e08370f11defde3c6290809ef45fb5e9b6f48de0ad2bb0a1906",
-    "6116783aecb6750eec1df5b906ca2d744be5c70834b584b1884531f7f122392d"
+    "6116783aecb6750eec1df5b906ca2d744be5c70834b584b1884531f7f122392d",
+    "a5c2afaa36ca47a11ae6cb9def9c3e9cf0d0cec127017288afc1b85facf165d1",
+    "3c849c759eac76328ab9d0537170b852ebf326aaa0f0006e6e10ae0c013deb20",
+    "dc13ff4f77c6e5023abb16c2d1ffa58147bbf8421aa3a8033b8862a058eb52c1",
+    "9df7c5aff75a6acb7583857d49f304060bfb804415b49ec61c3d355e40284797",
+    "e4d906ffea8dceb00e1fa31d179a7e392055c5f053a90275fe3cba5473c33c5c",
+    "3340ceacf17e1798b45cdda5d3203168ec35765cac1e46291b47591eb325eaab",
+    "957811be9dcccc1ec7e286d7900bca4f0e0f16c0eed582ca3ea681922878f862"
   ],
   "thumbnailSources": [
     "https://static-assets.tatamotors.com/Production/www-tatamotors-com-NEW/wp-content/uploads/2025/07/th-040725.jpg",
@@ -226,7 +245,13 @@
     "Hero MotoCorp:Splendor+ / HF Deluxe Flex Fuel:https://www.heromotocorp.com/en-in/motorcycles/splendor-plus.html:left green E85 commuter panel from product media fallback",
     "Xiaomi Redmi:Redmi Turbo 5:https://new.c.mi.com/global/post/2004030:battery-expectation phone overlay",
     "Samsung:Galaxy A Series:https://www.samsung.com/in/smartphones/galaxy-a/galaxy-a56-5g-awesome-olive-256gb-sm-a566ezghins/:right blue trust panel from mobile chip/product media fallback",
-    "Kawasaki:W175:https://www.kawasaki.com/en-us/motorcycle:left green export-signal retro motorcycle fallback layout"
+    "Kawasaki:W175:https://www.kawasaki.com/en-us/motorcycle:left green export-signal retro motorcycle fallback layout",
+    "Mahindra:XUV 7XO supply context:https://auto.mahindra.com/suv/xuv-7xo.html:left dark supply-watch SUV panel using local Mahindra media fallback",
+    "Maruti Suzuki:Dzire:https://www.marutisuzuki.com/arena/dzire:right warm mass-market sedan panel with official Dzire context image",
+    "Bajaj:Avenger Street 220:https://www.bajajauto.com/bikes/avenger:left violet affordable-cruiser crop from Bajaj Avenger context",
+    "Royal Enfield:Himalayan 450:https://www.royalenfield.com/in/en/motorcycles/new-himalayan/:right blue adventure-capacity layout from Royal Enfield context media",
+    "Apple:Siri AI / Apple Intelligence:https://www.apple.com/apple-intelligence/:left green-blue iPhone AI upgrade layout",
+    "Nothing:RCB special edition phone buzz:https://in.nothing.tech/:right magenta fan-edition phone layout"
   ],
   "facebookUrls": [
     "https://comeback2000.github.io/Car-news/posts/new-ev-launch-india.html",
@@ -252,9 +277,161 @@
     "https://comeback2000.github.io/Car-news/posts/ultraviolette-f77-isle-of-man-tt-history.html",
     "https://comeback2000.github.io/Car-news/posts/redmi-turbo-5-battery-expectations.html",
     "https://comeback2000.github.io/Car-news/posts/samsung-galaxy-a-series-ai-trust-india-2026-upgrade-guide.html",
-    "https://comeback2000.github.io/Car-news/posts/india-made-kawasaki-w175-usa-launch-export-signal-2026.html"
+    "https://comeback2000.github.io/Car-news/posts/india-made-kawasaki-w175-usa-launch-export-signal-2026.html",
+    "https://comeback2000.github.io/Car-news/posts/mahindra-suv-production-crunch-june-2026-buyer-impact.html",
+    "https://comeback2000.github.io/Car-news/posts/maruti-dzire-hatchback-revival-2026-mass-market-signal.html",
+    "https://comeback2000.github.io/Car-news/posts/bajaj-avenger-220-street-2026-city-cruiser-buying-guide.html",
+    "https://comeback2000.github.io/Car-news/posts/royal-enfield-himalayan-450-capacity-expansion-2026-rider-impact.html",
+    "https://comeback2000.github.io/Car-news/posts/apple-wwdc-2026-siri-ai-iphone-upgrade-india-guide.html",
+    "https://comeback2000.github.io/Car-news/posts/nothing-rcb-phone-buzz-india-special-edition-buyer-watch.html"
   ],
   "runs": [
+    {
+      "ranAt": "2026-06-11T09:24:00.266Z",
+      "commit": "909d4c2",
+      "mode": "codex-generate-2026-06-11",
+      "selectedKeywords": [
+        {
+          "niche": "car",
+          "keyword": "Mahindra Auto News"
+        },
+        {
+          "niche": "car",
+          "keyword": "Maruti Suzuki News"
+        },
+        {
+          "niche": "bike",
+          "keyword": "Bajaj Avenger Street 220 2026 launch India"
+        },
+        {
+          "niche": "bike",
+          "keyword": "Royal Enfield Himalayan 450 capacity expansion 2026"
+        },
+        {
+          "niche": "mobile",
+          "keyword": "Apple WWDC 2026 Siri AI iPhone India"
+        },
+        {
+          "niche": "mobile",
+          "keyword": "Nothing RCB smartphone India special edition buzz"
+        }
+      ],
+      "articles": [
+        {
+          "slug": "mahindra-suv-production-crunch-june-2026-buyer-impact",
+          "keyword": "Mahindra Auto News",
+          "category": "Automotive News",
+          "url": "https://comeback2000.github.io/Car-news/posts/mahindra-suv-production-crunch-june-2026-buyer-impact.html",
+          "image": "assets/mahindra-suv-production-crunch-june-2026-thumbnail.jpg"
+        },
+        {
+          "slug": "maruti-dzire-hatchback-revival-2026-mass-market-signal",
+          "keyword": "Maruti Suzuki News",
+          "category": "Car News",
+          "url": "https://comeback2000.github.io/Car-news/posts/maruti-dzire-hatchback-revival-2026-mass-market-signal.html",
+          "image": "assets/maruti-dzire-hatchback-revival-2026-thumbnail.jpg"
+        },
+        {
+          "slug": "bajaj-avenger-220-street-2026-city-cruiser-buying-guide",
+          "keyword": "Bajaj Avenger Street 220 2026 launch India",
+          "category": "Bike News",
+          "url": "https://comeback2000.github.io/Car-news/posts/bajaj-avenger-220-street-2026-city-cruiser-buying-guide.html",
+          "image": "assets/bajaj-avenger-220-street-2026-city-cruiser-guide-thumbnail.jpg"
+        },
+        {
+          "slug": "royal-enfield-himalayan-450-capacity-expansion-2026-rider-impact",
+          "keyword": "Royal Enfield Himalayan 450 capacity expansion 2026",
+          "category": "Bike News",
+          "url": "https://comeback2000.github.io/Car-news/posts/royal-enfield-himalayan-450-capacity-expansion-2026-rider-impact.html",
+          "image": "assets/royal-enfield-himalayan-450-capacity-expansion-2026-thumbnail.jpg"
+        },
+        {
+          "slug": "apple-wwdc-2026-siri-ai-iphone-upgrade-india-guide",
+          "keyword": "Apple WWDC 2026 Siri AI iPhone India",
+          "category": "Mobile Tech",
+          "url": "https://comeback2000.github.io/Car-news/posts/apple-wwdc-2026-siri-ai-iphone-upgrade-india-guide.html",
+          "image": "assets/apple-wwdc-2026-siri-ai-iphone-india-thumbnail.jpg"
+        },
+        {
+          "slug": "nothing-rcb-phone-buzz-india-special-edition-buyer-watch",
+          "keyword": "Nothing RCB smartphone India special edition buzz",
+          "category": "Mobile Tech",
+          "url": "https://comeback2000.github.io/Car-news/posts/nothing-rcb-phone-buzz-india-special-edition-buyer-watch.html",
+          "image": "assets/nothing-rcb-phone-buzz-india-special-edition-thumbnail.jpg"
+        }
+      ],
+      "thumbnailAudit": {
+        "contactSheet": "assets/daily-thumbnails-2026-06-11-contact-sheet.jpg",
+        "status": "visually_approved_after_contact_sheet_review",
+        "note": "Contact sheet reviewed in Codex: six thumbnails have distinct source subjects, crop balance, panel side, colors and headline treatment; no near-identical pair rejected."
+      },
+      "facebook": [
+        {
+          "slug": "mahindra-suv-production-crunch-june-2026-buyer-impact",
+          "title": "Mahindra SUV Output Crunch: What XUV 7XO and Thar Buyers Should Watch Now",
+          "result": {
+            "status": "skipped_push_failed",
+            "postId": null,
+            "message": "GitHub push failed before public URLs were updated: schannel SEC_E_NO_CREDENTIALS. Facebook publishing requires the pushed article and image URLs."
+          },
+          "postedAt": "2026-06-11T09:25:24.997Z"
+        },
+        {
+          "slug": "maruti-dzire-hatchback-revival-2026-mass-market-signal",
+          "title": "Maruti Dzire and the Small-Car Comeback: Why Value Buyers Are Back in Focus",
+          "result": {
+            "status": "skipped_push_failed",
+            "postId": null,
+            "message": "GitHub push failed before public URLs were updated: schannel SEC_E_NO_CREDENTIALS. Facebook publishing requires the pushed article and image URLs."
+          },
+          "postedAt": "2026-06-11T09:25:24.998Z"
+        },
+        {
+          "slug": "bajaj-avenger-220-street-2026-city-cruiser-buying-guide",
+          "title": "Bajaj Avenger Street 220 Returns: Is the Affordable Cruiser Still Relevant?",
+          "result": {
+            "status": "skipped_push_failed",
+            "postId": null,
+            "message": "GitHub push failed before public URLs were updated: schannel SEC_E_NO_CREDENTIALS. Facebook publishing requires the pushed article and image URLs."
+          },
+          "postedAt": "2026-06-11T09:25:24.998Z"
+        },
+        {
+          "slug": "royal-enfield-himalayan-450-capacity-expansion-2026-rider-impact",
+          "title": "Royal Enfield?s Capacity Push: What Himalayan 450 Buyers Should Read Between the Lines",
+          "result": {
+            "status": "skipped_push_failed",
+            "postId": null,
+            "message": "GitHub push failed before public URLs were updated: schannel SEC_E_NO_CREDENTIALS. Facebook publishing requires the pushed article and image URLs."
+          },
+          "postedAt": "2026-06-11T09:25:24.998Z"
+        },
+        {
+          "slug": "apple-wwdc-2026-siri-ai-iphone-upgrade-india-guide",
+          "title": "Apple?s Siri AI Moment: Should Indian iPhone Buyers Upgrade or Wait?",
+          "result": {
+            "status": "skipped_push_failed",
+            "postId": null,
+            "message": "GitHub push failed before public URLs were updated: schannel SEC_E_NO_CREDENTIALS. Facebook publishing requires the pushed article and image URLs."
+          },
+          "postedAt": "2026-06-11T09:25:24.998Z"
+        },
+        {
+          "slug": "nothing-rcb-phone-buzz-india-special-edition-buyer-watch",
+          "title": "Nothing and RCB Phone Buzz: Smart Marketing or a Real Buyer Opportunity?",
+          "result": {
+            "status": "skipped_push_failed",
+            "postId": null,
+            "message": "GitHub push failed before public URLs were updated: schannel SEC_E_NO_CREDENTIALS. Facebook publishing requires the pushed article and image URLs."
+          },
+          "postedAt": "2026-06-11T09:25:24.998Z"
+        }
+      ],
+      "push": {
+        "status": "failed",
+        "message": "Unable to access GitHub HTTPS remote: schannel AcquireCredentialsHandle failed, SEC_E_NO_CREDENTIALS. Local commit is ahead of origin/main; gh-pages push was not attempted because authentication for the same remote is unavailable."
+      }
+    },
     {
       "ranAt": "2026-06-10T09:25:34.523Z",
       "commit": "850b29c",
@@ -1580,6 +1757,12 @@
     "local-official-fallback:Hero MotoCorp:Splendor+ / HF Deluxe Flex Fuel:https://www.heromotocorp.com/en-in/motorcycles/splendor-plus.html:left green E85 commuter panel from product media fallback:sha256=16808a203b62b4931cccfd55e752fbb253576b917cdee493b9b13aa4c1be50a2",
     "local-official-fallback:Xiaomi Redmi:Redmi Turbo 5:https://new.c.mi.com/global/post/2004030:battery-expectation phone overlay:sha256=edb21fa3f098a919379a909f190d322922603b47a7879093512a102d05c45947",
     "local-official-fallback:Samsung:Galaxy A Series:https://www.samsung.com/in/smartphones/galaxy-a/galaxy-a56-5g-awesome-olive-256gb-sm-a566ezghins/:right blue trust panel from mobile chip/product media fallback:sha256=d6f598c4ee0e0ca954d04d97bbe55c63e7aa8d236c90bff5cd461b2e02d0bfb9",
-    "local-official-fallback:Kawasaki:W175:https://www.kawasaki.com/en-us/motorcycle:left green export-signal retro motorcycle fallback layout:sha256=f50ebb6433497e08370f11defde3c6290809ef45fb5e9b6f48de0ad2bb0a1906"
+    "local-official-fallback:Kawasaki:W175:https://www.kawasaki.com/en-us/motorcycle:left green export-signal retro motorcycle fallback layout:sha256=f50ebb6433497e08370f11defde3c6290809ef45fb5e9b6f48de0ad2bb0a1906",
+    "local-official-fallback:Mahindra:XUV 7XO supply context:https://auto.mahindra.com/suv/xuv-7xo.html:left dark supply-watch SUV panel using local Mahindra media fallback:sha256=a5c2afaa36ca47a11ae6cb9def9c3e9cf0d0cec127017288afc1b85facf165d1",
+    "official:Maruti Suzuki:Dzire:https://www.marutisuzuki.com/arena/dzire:right warm mass-market sedan panel with official Dzire context image:sha256=3c849c759eac76328ab9d0537170b852ebf326aaa0f0006e6e10ae0c013deb20",
+    "local-official-fallback:Bajaj:Avenger Street 220:https://www.bajajauto.com/bikes/avenger:left violet affordable-cruiser crop from Bajaj Avenger context:sha256=dc13ff4f77c6e5023abb16c2d1ffa58147bbf8421aa3a8033b8862a058eb52c1",
+    "local-official-fallback:Royal Enfield:Himalayan 450:https://www.royalenfield.com/in/en/motorcycles/new-himalayan/:right blue adventure-capacity layout from Royal Enfield context media:sha256=9df7c5aff75a6acb7583857d49f304060bfb804415b49ec61c3d355e40284797",
+    "local-official-fallback:Apple:Siri AI / Apple Intelligence:https://www.apple.com/apple-intelligence/:left green-blue iPhone AI upgrade layout:sha256=e4d906ffea8dceb00e1fa31d179a7e392055c5f053a90275fe3cba5473c33c5c",
+    "local-official-fallback:Nothing:RCB special edition phone buzz:https://in.nothing.tech/:right magenta fan-edition phone layout:sha256=3340ceacf17e1798b45cdda5d3203168ec35765cac1e46291b47591eb325eaab"
   ]
 }

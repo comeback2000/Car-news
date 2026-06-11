@@ -1,0 +1,104 @@
+{
+  "headline": "Ultraviolette F77 Achieves What No Indian Motorcycle Has Done Before",
+  "summary": "The Ultraviolette F77 Mach 2 has become the first Indian production motorcycle to complete a lap of the Isle of Man TT Mountain Course. The milestone gives India's performance EV industry a global proof point and pushes Ultraviolette beyond the usual commuter-EV conversation.",
+  "seo_title": "Ultraviolette F77 Makes Isle of Man TT History",
+  "meta_description": "Ultraviolette F77 Mach 2 becomes the first Indian production motorcycle to complete a lap of the Isle of Man TT Mountain Course.",
+  "url_slug": "ultraviolette-f77-isle-of-man-tt-history",
+  "category": "Bike News",
+  "tags": [
+    "Ultraviolette",
+    "F77",
+    "Isle of Man TT",
+    "Electric Motorcycles",
+    "Indian EV"
+  ],
+  "publish_date": "2026-06-10T10:10:00+05:30",
+  "target_keyword": "Ultraviolette F77 Isle of Man TT",
+  "image_alt": "Ultraviolette F77 Isle of Man TT India history thumbnail",
+  "image_credit": "Featured image prepared for Car News editorial use.",
+  "facebook_post": "Big Auto Story Just Dropped!\n\nThe Ultraviolette F77 Mach 2 has done something no Indian production motorcycle had managed before: complete a lap of the legendary Isle of Man TT Mountain Course.\n\nThis is a huge moment for Indian electric motorcycle engineering, performance EVs and global ambition.\n\nWould this make you take electric motorcycles more seriously?\n\nCheck the full story on our blog.",
+  "facebook_hashtags": [
+    "#Ultraviolette",
+    "#F77",
+    "#IsleOfManTT",
+    "#ElectricMotorcycle",
+    "#IndianEV"
+  ],
+  "thumbnail": {
+    "overlay_text": "India Makes History",
+    "sub_text": "Ultraviolette F77 at Isle of Man TT",
+    "base_image_url": "",
+    "design_direction": "High-CTR editorial motorcycle news thumbnail showing Indian pride and the Isle of Man TT achievement."
+  },
+  "thumbnail_generation": {
+    "method": "precreated_user_image",
+    "fallback_allowed": false,
+    "style": "high_ctr_editorial_motorcycle_news_thumbnail",
+    "raw_image_file": "F:\\opencalw\\Auto-Blog-ChatGPT\\output\\Ultraviolette F77 Achieves What No Indian Motorcycle Has Done Before\\thumbnail-chatgpt-raw.png",
+    "expected_brand": "Ultraviolette",
+    "source_image_brand_compatible": true
+  },
+  "sources_used": [
+    {
+      "source": "ET Auto",
+      "url": "https://auto.economictimes.indiatimes.com/amp/news/two-wheelers/ultraviolette-f77-first-indian-motorcycle-to-conquer-isle-of-man-tt-mountain-circuit/131612429",
+      "used_for": "Record claim, date, riders, course length and recognition details"
+    },
+    {
+      "source": "BikeWale",
+      "url": "https://www.bikewale.com/news/ultraviolette-f77-mach-2-motorcycles-ridden-at-isle-of-man-tt-mountain-course/",
+      "used_for": "F77 Mach 2 course completion details and record context"
+    },
+    {
+      "source": "India Today",
+      "url": "https://www.indiatoday.in/auto/bikes/story/ultraviolette-f77-mach-2-becomes-the-first-indian-motorcycle-to-complete-isle-of-man-tt-mountain-course-2924091-2026-06-09",
+      "used_for": "Independent confirmation of first Indian production motorcycle milestone"
+    },
+    {
+      "source": "Isle of Man TT",
+      "url": "https://www.iomtt.com/",
+      "used_for": "Context on the TT Mountain Course and event reputation"
+    },
+    {
+      "source": "Ultraviolette",
+      "url": "https://www.ultraviolette.com/isleofman",
+      "used_for": "Official campaign context for Ultraviolette at Isle of Man TT"
+    }
+  ],
+  "faq_schema": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What did the Ultraviolette F77 achieve?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Ultraviolette F77 Mach 2 became the first Indian production motorcycle to complete a lap of the Isle of Man TT Mountain Course."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long is the Isle of Man TT Mountain Course?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The course is about 37.72 miles, or roughly 60.72 km."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is this important for India?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It gives Indian electric motorcycle engineering a rare global performance milestone and strengthens the credibility of India's premium EV ambitions."
+        }
+      }
+    ]
+  },
+  "slug": "ultraviolette-f77-isle-of-man-tt-history",
+  "niche": "automotive",
+  "published_at": "2026-06-10T10:10:57+0530",
+  "template_engine": "scripts/build-site.js",
+  "github_article_path": "posts/ultraviolette-f77-isle-of-man-tt-history.html",
+  "github_thumbnail_path": "assets/ultraviolette-f77-isle-of-man-tt-history-thumbnail.jpg"
+}

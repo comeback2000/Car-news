@@ -1,0 +1,110 @@
+{
+  "headline": "Tata Nexon vs XUV 3XO: One SUV Cools Much Faster in 42°C Heat",
+  "seo_title": "Tata Nexon vs XUV 3XO AC Cooling Test: Which SUV Cools Faster in 42°C Heat?",
+  "meta_description": "Detailed Tata Nexon vs Mahindra XUV 3XO comparison with AC cooling verdict, price, specs, mileage, features, safety, pros and cons, and buying recommendation.",
+  "summary": "The Mahindra XUV 3XO has the AC cooling and cabin-comfort edge in 42°C heat, while the Tata Nexon counters with better claimed diesel mileage, bigger boot space, higher ground clearance and balanced ownership value.",
+  "url_slug": "tata-nexon-vs-xuv-3xo-ac-cooling-42c-heat-comparison",
+  "target_keyword": "Tata Nexon vs XUV 3XO AC cooling comparison",
+  "category": "Automotive Comparison",
+  "tags": [
+    "Tata Nexon",
+    "Mahindra XUV 3XO",
+    "Car Comparison",
+    "SUV Comparison",
+    "Compact SUV",
+    "Automotive",
+    "AC Cooling Test",
+    "Cars Under 15 Lakh"
+  ],
+  "author": "Car News Desk",
+  "publish_date": "2026-06-11",
+  "image_alt": "Tata Nexon vs Mahindra XUV 3XO AC cooling comparison in 42 degree heat",
+  "image_credit": "Car News original comparison graphic prepared from supplied editorial thumbnail assets.",
+  "content_type": "comparison",
+  "comparison": {
+    "detected": true,
+    "products": [
+      "Tata Nexon",
+      "Mahindra XUV 3XO"
+    ],
+    "winner_summary": "Mahindra XUV 3XO wins on AC cooling, performance and features; Tata Nexon wins on claimed diesel mileage, boot space, ground clearance and entry price.",
+    "category_winners": {
+      "Best AC Cooling": "Mahindra XUV 3XO",
+      "Best Performance": "Mahindra XUV 3XO",
+      "Best Mileage": "Tata Nexon",
+      "Best Features": "Mahindra XUV 3XO",
+      "Best Value for Money": "Split decision",
+      "Best Design": "Buyer preference",
+      "Best for Daily Use": "Mahindra XUV 3XO"
+    }
+  },
+  "thumbnail": {
+    "overlay_text": "Nexon vs XUV 3XO AC Test",
+    "style": "thumbnail-blog.jpg automotive comparison news style",
+    "usage": "blog featured image"
+  },
+  "thumbnail_generation": {
+    "mode": "user_supplied_thumbnail_assets",
+    "expected_brand": "Tata and Mahindra",
+    "blog_thumbnail_style_reference": "thumbnail-blog.jpg",
+    "social_thumbnail_style_reference": "thumbnail-insta.png",
+    "blog_image_file": "thumbnail.jpg",
+    "instagram_image_file": "thumbnail-insta.jpg",
+    "prompt_only_required_for_future_generations": true,
+    "source_image_dependency": false
+  },
+  "local_files": {
+    "article_html": "article.html",
+    "thumbnail": "thumbnail.jpg",
+    "social_thumbnail": "thumbnail-insta.jpg",
+    "facebook_post": "facebook_post.txt"
+  },
+  "platform_assets": {
+    "blog": "thumbnail.jpg",
+    "instagram": "thumbnail-insta.jpg",
+    "pinterest": "thumbnail-insta.jpg",
+    "x": "thumbnail-insta.jpg"
+  },
+  "interlinks": [
+    "https://comeback2000.github.io/Car-news/posts/best-suv-under-15-lakhs-india-2026-shortlist.html",
+    "https://comeback2000.github.io/Car-news/posts/best-suv-for-long-drive-india-2026-comfort-range-guide.html",
+    "https://comeback2000.github.io/Car-news/posts/low-maintenance-cars-india-2026-service-resale-guide.html",
+    "https://comeback2000.github.io/Car-news/posts/punch-ev-vs-nexon-ev-2026-buyer-choice.html",
+    "https://comeback2000.github.io/Car-news/posts/tata-ev-sales-india-nexon-punch.html"
+  ],
+  "sources_used": [
+    {
+      "source": "Tata Motors Nexon official specifications",
+      "url": "https://cars.tatamotors.com/nexon/ice/specifications.html"
+    },
+    {
+      "source": "Mahindra XUV 3XO official brochure",
+      "url": "https://auto.mahindra.com/on/demandware.static/-/Sites-amc-Library/default/dw48c7c87f/brochures/X3XO/X3XO_brochure.pdf"
+    },
+    {
+      "source": "CarDekho XUV 3XO vs Nexon comparison",
+      "url": "https://www.cardekho.com/compare/mahindra-xuv-3xo-and-tata-nexon.htm"
+    },
+    {
+      "source": "Autocar India Tata Nexon specifications and FAQ",
+      "url": "https://www.autocarindia.com/cars/tata/nexon"
+    },
+    {
+      "source": "Autocar India Mahindra XUV 3XO specifications and FAQ",
+      "url": "https://www.autocarindia.com/cars/mahindra/xuv-3xo"
+    }
+  ],
+  "social": {
+    "facebook": "Tata Nexon vs Mahindra XUV 3XO in peak summer heat: one SUV cools the cabin faster at 42°C, but the other fights back with mileage, boot space and value. Full comparison is live.",
+    "instagram": "Nexon vs XUV 3XO AC test in 42°C heat. Faster cooling, better comfort, mileage, features and value compared.",
+    "pinterest": "Tata Nexon vs Mahindra XUV 3XO AC Cooling Comparison",
+    "x": "Tata Nexon vs XUV 3XO: one SUV cools much faster in 42°C heat. Full buyer-focused comparison is live."
+  },
+  "slug": "tata-nexon-vs-xuv-3xo-ac-cooling-42c-heat-comparison",
+  "niche": "automotive",
+  "published_at": "2026-06-11T09:44:06+0530",
+  "template_engine": "scripts/build-site.js",
+  "github_article_path": "posts/tata-nexon-vs-xuv-3xo-ac-cooling-42c-heat-comparison.html",
+  "github_thumbnail_path": "assets/tata-nexon-vs-xuv-3xo-ac-cooling-42c-heat-comparison-thumbnail.jpg",
+  "github_social_image_path": "assets/tata-nexon-vs-xuv-3xo-ac-cooling-42c-heat-comparison-social.jpg"
+}

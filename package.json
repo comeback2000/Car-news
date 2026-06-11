@@ -1,6 +1,8 @@
 {
   "scripts": {
     "build": "node scripts/build-site.js",
+    "audit": "node scripts/audit-site.js",
+    "audit:remote": "node scripts/audit-site.js --remote",
     "publish:daily": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/Publish-Daily.ps1 -Run",
     "publish:facebook:retry": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/Publish-Daily.ps1 -RetryFacebookFailed",
     "google:sitemap": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/Submit-GoogleSitemap.ps1",
