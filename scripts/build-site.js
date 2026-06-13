@@ -113,8 +113,32 @@ function relatedPosts(currentPost) {
     .map((item) => item.post);
 }
 
-function sanitizeArticleHtml(value) {
-  return String(value || "")
+function autoLinkContentHtml(html, currentPost) {
+  // Apply auto-linking within contentHtml - link keyword occurrences
+  let linked = html;
+  const targets = posts
+    .filter((post) => post.slug !== currentPost.slug)
+    .flatMap((post) => [post.targetKeyword, ...post.tags.slice(0, 2)].map((keyword) => ({ keyword, post })))
+    .sort((a, b) => b.keyword.length - a.keyword.length);
+
+  const linkedSlugs = new Set();
+  for (const { keyword, post } of targets) {
+    if (linkedSlugs.has(post.slug)) continue;
+    const escapedKeyword = esc(keyword).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const pattern = new RegExp(`\\b(${escapedKeyword})\\b`, "i");
+    const parts = linked.split(/(<a\b[^>]*>[\s\S]*?<\/a>)/gi);
+    const index = parts.findIndex((part) => !/^<a\b/i.test(part) && pattern.test(part));
+    if (index !== -1) {
+      parts[index] = parts[index].replace(pattern, `<a href="${post.slug}.html">$1</a>`);
+      linked = parts.join("");
+      linkedSlugs.add(post.slug);
+    }
+  }
+  return linked;
+}
+
+function sanitizeArticleHtml(value, currentPost) {
+  let clean = String(value || "")
     .replace(/<script[\s\S]*?<\/script>/gi, "")
     .replace(/<style[\s\S]*?<\/style>/gi, "")
     .replace(/<\/?h1[^>]*>/gi, "")
@@ -124,11 +148,16 @@ function sanitizeArticleHtml(value) {
     .replace(/href=["']\/electric-vehicle-news["']/gi, 'href="../tags/electric-vehicles.html"')
     .replace(/href=["']\/automotive-industry["']/gi, 'href="../category/automotive-news.html"')
     .trim();
+  // Apply auto-linking within contentHTML
+  if (currentPost) {
+    clean = autoLinkContentHtml(clean, currentPost);
+  }
+  return clean;
 }
 
 function sectionHtml(post) {
   if (post.contentHtml) {
-    return `<div class="article-content">${sanitizeArticleHtml(post.contentHtml)}</div>`;
+    return `<div class="article-content">${sanitizeArticleHtml(post.contentHtml, post)}</div>`;
   }
 
   return post.sections.map((section) => `
@@ -149,7 +178,23 @@ function breadcrumb(items) {
     </nav>`;
 }
 
+function extractHeadingsFromHtml(html) {
+  const headings = [];
+  const pattern = /<h([234])[^>]*>(.*?)<\/h\1>/gi;
+  let match;
+  while ((match = pattern.exec(html)) !== null) {
+    const level = parseInt(match[1]);
+    const text = match[2].replace(/<[^>]+>/g, "").trim();
+    const id = slugify(text);
+    headings.push({ level, text, id });
+  }
+  return headings;
+}
+
 function articlePage(post) {
+  const index = posts.findIndex((p) => p.slug === post.slug);
+  const prevPost = index > 0 ? posts[index - 1] : null;
+  const nextPost = index < posts.length - 1 ? posts[index + 1] : null;
   const related = relatedPosts(post).slice(0, 4);
   const featuredImage = imageSize(post.image);
   const schema = {
@@ -179,6 +224,20 @@ function articlePage(post) {
     ]
   };
 
+  // Process contentHtml to add IDs to headings for TOC anchor links
+  let contentHtml = '';
+  let headings = [];
+  if (post.contentHtml) {
+    const raw = sanitizeArticleHtml(post.contentHtml, post);
+    // Add id attributes to h2/h3 headings for anchor linking
+    contentHtml = raw.replace(/<h([234])([^>]*)>(.*?)<\/h\1>/gi, (match, level, attrs, text) => {
+      const cleanText = text.replace(/<[^>]+>/g, "").trim();
+      const id = slugify(cleanText);
+      return `<h${level} id="${id}"${attrs}>${text}</h${level}>`;
+    });
+    headings = extractHeadingsFromHtml(raw);
+  }
+
   return `<!doctype html>
 <html lang="en">
   <head>
@@ -188,38 +247,62 @@ ${headTags({ title: post.metaTitle, description: post.metaDescription, url: post
     ${header(1)}
     <main>
       <article class="article-body">
+        ${breadcrumb([
+          { label: "Home", href: "../index.html" },
+          { label: post.category, href: `../category/${slugify(post.category)}.html` },
+          { label: post.title }
+        ])}
         <h1>${esc(post.title)}</h1>
         <figure class="article-featured-image">
           <img src="../${esc(post.image)}" alt="${esc(post.imageAlt)}" width="${featuredImage.width}" height="${featuredImage.height}" fetchpriority="high">
           ${post.imageCredit ? `<figcaption>${esc(post.imageCredit)}</figcaption>` : ""}
         </figure>
         <p class="lede article-lede">${autoLink(post.excerpt, post)}</p>
-        ${sectionHtml(post)}
+
+        ${headings.length > 0 ? `<nav class="toc" aria-label="Table of contents">
+          <p class="toc-title">In this article</p>
+          ${headings.map((h) => `<a href="#${h.id}" style="padding-left:${(h.level - 2) * 12}px">${esc(h.text)}</a>`).join("")}
+        </nav>` : ""}
+
+        ${post.contentHtml ? `<div class="article-content">${contentHtml}</div>` : sectionHtml(post)}
         ${post.contentHtml ? "" : `<section>
           <h2>Conclusion</h2>
           <p>${esc(post.conclusion || "The smartest next step is to match the headline trend with real-world needs before booking or upgrading. Price, availability, service support, warranty terms and long-term usability should matter more than the first wave of hype.")}</p>
         </section>`}
-        <section>
-          <h2>Related Reading</h2>
-          <p>For more context, compare this story with ${related.map((item) => `<a href="${item.slug}.html">${esc(item.title)}</a>`).join(" and ")}.</p>
-        </section>
-        ${post.contentHtml ? "" : `<section>
-          <h2>Sources</h2>
-          <ul>
-            ${post.sources.map((source) => `<li><a href="${esc(source.url)}">${esc(source.label)}</a></li>`).join("")}
+
+        ${post.sources && post.sources.length > 0 ? `<section>
+          <h2>Sources & References</h2>
+          <ul class="source-list">
+            ${post.sources.map((source) => `<li><a href="${esc(source.url)}" rel="nofollow" target="_blank">${esc(source.label)}</a></li>`).join("")}
           </ul>
-        </section>`}
+        </section>` : ""}
+
         <section class="tag-list" aria-label="Article tags">
           ${post.tags.map((tag) => `<a href="../tags/${slugify(tag)}.html">${esc(tag)}</a>`).join("")}
         </section>
       </article>
-      <section class="related-section">
+
+      ${prevPost || nextPost ? `<nav class="prev-next-nav" aria-label="Previous and next articles">
+        ${prevPost ? `<a href="${prevPost.slug}.html" class="prev-next-link prev-link">
+          <span class="prev-next-direction">Previous</span>
+          <span class="prev-next-title">${esc(prevPost.title)}</span>
+        </a>` : `<span class="prev-next-link prev-link disabled"></span>`}
+        ${nextPost ? `<a href="${nextPost.slug}.html" class="prev-next-link next-link">
+          <span class="prev-next-direction">Next</span>
+          <span class="prev-next-title">${esc(nextPost.title)}</span>
+        </a>` : `<span class="prev-next-link next-link disabled"></span>`}
+      </nav>` : ""}
+
+      ${related.length > 0 ? `<section class="related-section">
         <p class="eyebrow">Related articles</p>
         <div class="story-grid related-grid">
-          ${related.map((post) => storyCard(post, { depth: 1, context: "post" })).join("")}
+          ${related.map((p) => storyCard(p, { depth: 1, context: "post" })).join("")}
         </div>
-      </section>
+      </section>` : ""}
     </main>
+    <footer class="site-footer">
+      <p>Car News — India automotive news, EV trends and analysis</p>
+    </footer>
   </body>
 </html>`;
 }

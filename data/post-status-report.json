@@ -1,14 +1,280 @@
 {
-  "generatedAt": "2026-06-11T09:24:52.935Z",
+  "generatedAt": "2026-06-13T16:13:32.883Z",
   "siteUrl": "https://comeback2000.github.io/Car-news",
   "totals": {
-    "posts": 94,
-    "htmlFiles": 378,
+    "posts": 108,
+    "htmlFiles": 429,
     "localBrokenLinks": 0,
     "postIssues": 0,
     "remoteBroken": 0
   },
   "posts": [
+    {
+      "slug": "india-opens-door-self-driving-safety-tech",
+      "title": "India Opens the Door to Self-Driving Safety Tech: What It Means for Car Buyers and the Future of Mobility",
+      "category": "Automotive News",
+      "url": "https://comeback2000.github.io/Car-news/posts/india-opens-door-self-driving-safety-tech.html",
+      "imageUrl": "https://comeback2000.github.io/Car-news/assets/india-opens-door-self-driving-safety-tech-thumbnail.jpg",
+      "publishDate": "2026-06-13",
+      "localArticleExists": true,
+      "localImageExists": true,
+      "articleStatus": null,
+      "imageStatus": null,
+      "status": "local-ok",
+      "actions": [
+        "delete",
+        "unpublish",
+        "rebuild",
+        "fix_url_mapping"
+      ]
+    },
+    {
+      "slug": "xiaomi-motorola-oneplus-a-massive-smartphone-launch-wave-is-coming",
+      "title": "Xiaomi, Motorola, OnePlus: A Massive Smartphone Launch Wave Is Coming",
+      "category": "Mobile Tech",
+      "url": "https://comeback2000.github.io/Car-news/posts/xiaomi-motorola-oneplus-a-massive-smartphone-launch-wave-is-coming.html",
+      "imageUrl": "https://comeback2000.github.io/Car-news/assets/xiaomi-motorola-oneplus-a-massive-smartphone-launch-wave-is-coming-thumbnail.jpg",
+      "publishDate": "2026-06-12",
+      "localArticleExists": true,
+      "localImageExists": true,
+      "articleStatus": null,
+      "imageStatus": null,
+      "status": "local-ok",
+      "actions": [
+        "delete",
+        "unpublish",
+        "rebuild",
+        "fix_url_mapping"
+      ]
+    },
+    {
+      "slug": "tata-sierra-ev-could-be-a-game-changer",
+      "title": "Tata Sierra EV Could Be the SUV That Reshapes India's Electric Market",
+      "category": "Automotive News",
+      "url": "https://comeback2000.github.io/Car-news/posts/tata-sierra-ev-could-be-a-game-changer.html",
+      "imageUrl": "https://comeback2000.github.io/Car-news/assets/tata-sierra-ev-could-be-a-game-changer-thumbnail.jpg",
+      "publishDate": "2026-06-11",
+      "localArticleExists": true,
+      "localImageExists": true,
+      "articleStatus": null,
+      "imageStatus": null,
+      "status": "local-ok",
+      "actions": [
+        "delete",
+        "unpublish",
+        "rebuild",
+        "fix_url_mapping"
+      ]
+    },
+    {
+      "slug": "bmw-and-mercedes-benz-face-a-new-luxury-rival",
+      "title": "BMW and Mercedes-Benz Face a New Luxury Rival",
+      "category": "Automotive News",
+      "url": "https://comeback2000.github.io/Car-news/posts/bmw-and-mercedes-benz-face-a-new-luxury-rival.html",
+      "imageUrl": "https://comeback2000.github.io/Car-news/assets/bmw-and-mercedes-benz-face-a-new-luxury-rival-thumbnail.jpg",
+      "publishDate": "2026-06-11",
+      "localArticleExists": true,
+      "localImageExists": true,
+      "articleStatus": null,
+      "imageStatus": null,
+      "status": "local-ok",
+      "actions": [
+        "delete",
+        "unpublish",
+        "rebuild",
+        "fix_url_mapping"
+      ]
+    },
+    {
+      "slug": "vinfast-india-push-getting-harder-to-ignore",
+      "title": "VinFast's India Push Is Getting Harder to Ignore",
+      "category": "Automotive News",
+      "url": "https://comeback2000.github.io/Car-news/posts/vinfast-india-push-getting-harder-to-ignore.html",
+      "imageUrl": "https://comeback2000.github.io/Car-news/assets/vinfast-india-push-getting-harder-to-ignore-thumbnail.jpg",
+      "publishDate": "2026-06-11",
+      "localArticleExists": true,
+      "localImageExists": true,
+      "articleStatus": null,
+      "imageStatus": null,
+      "status": "local-ok",
+      "actions": [
+        "delete",
+        "unpublish",
+        "rebuild",
+        "fix_url_mapping"
+      ]
+    },
+    {
+      "slug": "skodas-latest-plan-could-win-back-indian-buyers",
+      "title": "Skoda's Latest Plan Could Win Back Indian Buyers",
+      "category": "Automotive News",
+      "url": "https://comeback2000.github.io/Car-news/posts/skodas-latest-plan-could-win-back-indian-buyers.html",
+      "imageUrl": "https://comeback2000.github.io/Car-news/assets/skodas-latest-plan-could-win-back-indian-buyers-thumbnail.jpg",
+      "publishDate": "2026-06-11",
+      "localArticleExists": true,
+      "localImageExists": true,
+      "articleStatus": null,
+      "imageStatus": null,
+      "status": "local-ok",
+      "actions": [
+        "delete",
+        "unpublish",
+        "rebuild",
+        "fix_url_mapping"
+      ]
+    },
+    {
+      "slug": "volkswagen-is-betting-big-on-india-again-here-s-why",
+      "title": "Volkswagen Is Betting Big on India Again—Here's Why",
+      "category": "Automotive News",
+      "url": "https://comeback2000.github.io/Car-news/posts/volkswagen-is-betting-big-on-india-again-here-s-why.html",
+      "imageUrl": "https://comeback2000.github.io/Car-news/assets/volkswagen-is-betting-big-on-india-again-here-s-why-thumbnail.jpg",
+      "publishDate": "2026-06-11",
+      "localArticleExists": true,
+      "localImageExists": true,
+      "articleStatus": null,
+      "imageStatus": null,
+      "status": "local-ok",
+      "actions": [
+        "delete",
+        "unpublish",
+        "rebuild",
+        "fix_url_mapping"
+      ]
+    },
+    {
+      "slug": "kia-next-suv-could-shake-up-the-segment",
+      "title": "Kia's Next SUV Could Shake Up the Segment",
+      "category": "Automotive News",
+      "url": "https://comeback2000.github.io/Car-news/posts/kia-next-suv-could-shake-up-the-segment.html",
+      "imageUrl": "https://comeback2000.github.io/Car-news/assets/kia-next-suv-could-shake-up-the-segment-thumbnail.jpg",
+      "publishDate": "2026-06-11",
+      "localArticleExists": true,
+      "localImageExists": true,
+      "articleStatus": null,
+      "imageStatus": null,
+      "status": "local-ok",
+      "actions": [
+        "delete",
+        "unpublish",
+        "rebuild",
+        "fix_url_mapping"
+      ]
+    },
+    {
+      "slug": "mg-motor-is-building-an-advantage-that-competitors-cant-ignore",
+      "title": "MG Motor Is Building an Advantage That Competitors Can't Ignore",
+      "category": "Automotive News",
+      "url": "https://comeback2000.github.io/Car-news/posts/mg-motor-is-building-an-advantage-that-competitors-cant-ignore.html",
+      "imageUrl": "https://comeback2000.github.io/Car-news/assets/mg-motor-is-building-an-advantage-that-competitors-cant-ignore-thumbnail.jpg",
+      "publishDate": "2026-06-11",
+      "localArticleExists": true,
+      "localImageExists": true,
+      "articleStatus": null,
+      "imageStatus": null,
+      "status": "local-ok",
+      "actions": [
+        "delete",
+        "unpublish",
+        "rebuild",
+        "fix_url_mapping"
+      ]
+    },
+    {
+      "slug": "maruti-suzukis-latest-strategy-could-reshape-indias-car-market",
+      "title": "Maruti Suzuki's Latest Strategy Could Reshape India's Car Market",
+      "category": "Automotive News",
+      "url": "https://comeback2000.github.io/Car-news/posts/maruti-suzukis-latest-strategy-could-reshape-indias-car-market.html",
+      "imageUrl": "https://comeback2000.github.io/Car-news/assets/maruti-suzukis-latest-strategy-could-reshape-indias-car-market-thumbnail.jpg",
+      "publishDate": "2026-06-11",
+      "localArticleExists": true,
+      "localImageExists": true,
+      "articleStatus": null,
+      "imageStatus": null,
+      "status": "local-ok",
+      "actions": [
+        "delete",
+        "unpublish",
+        "rebuild",
+        "fix_url_mapping"
+      ]
+    },
+    {
+      "slug": "mahindras-next-launch-could-be-bad-news-for-tata-and-hyundai",
+      "title": "Mahindra's Next Launch Could Be Bad News for Tata and Hyundai",
+      "category": "Automotive News",
+      "url": "https://comeback2000.github.io/Car-news/posts/mahindras-next-launch-could-be-bad-news-for-tata-and-hyundai.html",
+      "imageUrl": "https://comeback2000.github.io/Car-news/assets/mahindras-next-launch-could-be-bad-news-for-tata-and-hyundai-thumbnail.jpg",
+      "publishDate": "2026-06-11",
+      "localArticleExists": true,
+      "localImageExists": true,
+      "articleStatus": null,
+      "imageStatus": null,
+      "status": "local-ok",
+      "actions": [
+        "delete",
+        "unpublish",
+        "rebuild",
+        "fix_url_mapping"
+      ]
+    },
+    {
+      "slug": "ktm-s-latest-bike-could-be-bad-news-for-every-rival",
+      "title": "KTM's Latest Bike Could Be Bad News for Every Rival",
+      "category": "Bike News",
+      "url": "https://comeback2000.github.io/Car-news/posts/ktm-s-latest-bike-could-be-bad-news-for-every-rival.html",
+      "imageUrl": "https://comeback2000.github.io/Car-news/assets/ktm-s-latest-bike-could-be-bad-news-for-every-rival-thumbnail.jpg",
+      "publishDate": "2026-06-11",
+      "localArticleExists": true,
+      "localImageExists": true,
+      "articleStatus": null,
+      "imageStatus": null,
+      "status": "local-ok",
+      "actions": [
+        "delete",
+        "unpublish",
+        "rebuild",
+        "fix_url_mapping"
+      ]
+    },
+    {
+      "slug": "why-bollywood-stars-are-falling-for-the-audi-q7-again",
+      "title": "Why Bollywood Stars Are Falling for the Audi Q7 Again",
+      "category": "Automotive News",
+      "url": "https://comeback2000.github.io/Car-news/posts/why-bollywood-stars-are-falling-for-the-audi-q7-again.html",
+      "imageUrl": "https://comeback2000.github.io/Car-news/assets/why-bollywood-stars-are-falling-for-the-audi-q7-again-thumbnail.jpg",
+      "publishDate": "2026-06-11",
+      "localArticleExists": true,
+      "localImageExists": true,
+      "articleStatus": null,
+      "imageStatus": null,
+      "status": "local-ok",
+      "actions": [
+        "delete",
+        "unpublish",
+        "rebuild",
+        "fix_url_mapping"
+      ]
+    },
+    {
+      "slug": "premium-powerful-and-expensive-norton-atlas-prices-are-out",
+      "title": "Premium, Powerful and Expensive? Norton Atlas Prices Are Out",
+      "category": "Bike News",
+      "url": "https://comeback2000.github.io/Car-news/posts/premium-powerful-and-expensive-norton-atlas-prices-are-out.html",
+      "imageUrl": "https://comeback2000.github.io/Car-news/assets/premium-powerful-and-expensive-norton-atlas-prices-are-out-thumbnail.jpg",
+      "publishDate": "2026-06-11",
+      "localArticleExists": true,
+      "localImageExists": true,
+      "articleStatus": null,
+      "imageStatus": null,
+      "status": "local-ok",
+      "actions": [
+        "delete",
+        "unpublish",
+        "rebuild",
+        "fix_url_mapping"
+      ]
+    },
     {
       "slug": "apple-samsung-and-xiaomi-face-a-new-threat-nobody-expected",
       "title": "Apple, Samsung, and Xiaomi Face a New Threat Nobody Expected: Why the Smartphone Industry Is Entering a New Era",
