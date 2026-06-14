@@ -16,6 +16,75 @@ const esc = (value) => String(value).replace(/[&<>"']/g, (char) => ({
   "'": "&#39;"
 }[char]));
 
+// ─── Content-Type Detection ─────────────────────────────
+function detectContentType(post) {
+  const html = (post.contentHtml || "").toLowerCase();
+  if (html.includes("[content_type: comparison]")) return "COMPARISON";
+  if (html.includes("[content_type: ev_launch]")) return "EV_LAUNCH";
+  if (html.includes("[content_type: vehicle_launch]")) return "VEHICLE_LAUNCH";
+  if (html.includes("[content_type: bike_launch]")) return "BIKE_LAUNCH";
+  if (html.includes("[content_type: pricing]")) return "PRICING";
+  if (html.includes("[content_type: buyer_guide]")) return "BUYER_GUIDE";
+  if (html.includes("[content_type: spec_feature]")) return "SPEC_FEATURE";
+  if (html.includes("[content_type: automotive_news]")) return "AUTOMOTIVE_NEWS";
+  // Fallback detection from title
+  const t = (post.title || "").toLowerCase();
+  if (t.includes(" vs ") || t.includes("versus") || t.includes("compare") || t.includes(" best ")) return "COMPARISON";
+  if (t.includes("ev") || t.includes("electric") || t.includes("battery") || t.includes("range") || t.includes("charging")) return "EV_LAUNCH";
+  if (t.includes("price") || t.includes("cost") || t.includes("budget")) return "PRICING";
+  if (t.includes("buy") || t.includes("guide") || t.includes("worth") || t.includes("review")) return "BUYER_GUIDE";
+  if (t.includes("bike") || t.includes("motorcycle") || t.includes("scooter")) return "BIKE_LAUNCH";
+  if (t.includes("launch") || t.includes("coming") || t.includes("new ")) return "VEHICLE_LAUNCH";
+  return "AUTOMOTIVE_NEWS";
+}
+
+function stripContentTypeMarkers(html) {
+  return html.replace(/\[CONTENT_TYPE:\s*\w+\]/gi, "").trim();
+}
+
+// ─── Content-Type Specific Hero ─────────────────────────
+function contentTypeHero(post, type, featuredImage) {
+  const eyebrowColors = {
+    "EV_LAUNCH": "#0e8f68",
+    "COMPARISON": "#1554ff",
+    "VEHICLE_LAUNCH": "#d71920",
+    "BIKE_LAUNCH": "#ff6b00",
+    "PRICING": "#8b5cf6",
+    "BUYER_GUIDE": "#f59e0b",
+    "SPEC_FEATURE": "#06b6d4",
+    "AUTOMOTIVE_NEWS": "#d4a843"
+  };
+  const color = eyebrowColors[type] || "#d4a843";
+  const typeLabels = {
+    "EV_LAUNCH": "EV Launch",
+    "COMPARISON": "Comparison",
+    "VEHICLE_LAUNCH": "New Launch",
+    "BIKE_LAUNCH": "Bike Launch",
+    "PRICING": "Pricing Analysis",
+    "BUYER_GUIDE": "Buyer's Guide",
+    "SPEC_FEATURE": "Tech Feature",
+    "AUTOMOTIVE_NEWS": "Automotive News"
+  };
+  const label = typeLabels[type] || "Automotive News";
+
+  return `<div class="hero-premium" style="--hero-accent:${color}">
+    <div class="hero-premium-bg">
+      <img src="../${esc(post.image)}" alt="" fetchpriority="high">
+      <div class="hero-premium-overlay"></div>
+    </div>
+    <div class="hero-premium-content">
+      <span class="hero-premium-kicker" style="border-color:${color};color:${color}">${label}</span>
+      <h1>${esc(post.title)}</h1>
+      <p class="hero-premium-summary">${esc(post.excerpt || post.metaDescription)}</p>
+      <div class="hero-premium-meta">
+        <span>By ${esc(post.author || "Car News Desk")}</span>
+        <span>${post.datePublished}</span>
+        <span>${Math.ceil((post.contentHtml || "").length / 3000) + 3} min read</span>
+      </div>
+    </div>
+  </div>`;
+}
+
 const slugify = (value) => value.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const postUrl = (post) => `${siteUrl}/posts/${post.slug}.html`;
 const rootHref = (href, depth = 0) => `${"../".repeat(depth)}${href}`;
@@ -195,8 +264,9 @@ function articlePage(post) {
   const index = posts.findIndex((p) => p.slug === post.slug);
   const prevPost = index > 0 ? posts[index - 1] : null;
   const nextPost = index < posts.length - 1 ? posts[index + 1] : null;
-  const related = relatedPosts(post).slice(0, 4);
+  const related = relatedPosts(post).slice(0, 6);
   const featuredImage = imageSize(post.image);
+  const contentType = detectContentType(post);
   const schema = {
     "@context": "https://schema.org",
     "@type": "NewsArticle",
@@ -224,19 +294,29 @@ function articlePage(post) {
     ]
   };
 
-  // Process contentHtml to add IDs to headings for TOC anchor links
+  // Process contentHtml — strip markers, add heading IDs, strip h1
   let contentHtml = '';
-  let headings = [];
   if (post.contentHtml) {
     const raw = sanitizeArticleHtml(post.contentHtml, post);
-    // Add id attributes to h2/h3 headings for anchor linking
-    contentHtml = raw.replace(/<h([234])([^>]*)>(.*?)<\/h\1>/gi, (match, level, attrs, text) => {
+    const markerFree = stripContentTypeMarkers(raw);
+    contentHtml = markerFree.replace(/<h([234])([^>]*)>(.*?)<\/h\1>/gi, (match, level, attrs, text) => {
       const cleanText = text.replace(/<[^>]+>/g, "").trim();
       const id = slugify(cleanText);
       return `<h${level} id="${id}"${attrs}>${text}</h${level}>`;
     });
-    headings = extractHeadingsFromHtml(raw);
   }
+
+  // Contextual internal links: insert [[internal:...]] anchors into a few random posts from related list
+  function contextualRelatedLinks() {
+    if (related.length === 0) return "";
+    // Pick 4 different related posts
+    const pick = related.slice(0, 4);
+    return pick.map((p) =>
+      `<a href="${p.slug}.html" class="contextual-link">${esc(p.title)}</a>`
+    ).join("");
+  }
+
+  const relatedLinksHtml = contextualRelatedLinks();
 
   return `<!doctype html>
 <html lang="en">
@@ -245,29 +325,19 @@ ${headTags({ title: post.metaTitle, description: post.metaDescription, url: post
   </head>
   <body>
     ${header(1)}
+    ${contentTypeHero(post, contentType, featuredImage)}
     <main>
-      <article class="article-body">
+      <article class="article-body ${contentType.toLowerCase()}-article">
         ${breadcrumb([
           { label: "Home", href: "../index.html" },
           { label: post.category, href: `../category/${slugify(post.category)}.html` },
           { label: post.title }
         ])}
-        <h1>${esc(post.title)}</h1>
-        <figure class="article-featured-image">
-          <img src="../${esc(post.image)}" alt="${esc(post.imageAlt)}" width="${featuredImage.width}" height="${featuredImage.height}" fetchpriority="high">
-          ${post.imageCredit ? `<figcaption>${esc(post.imageCredit)}</figcaption>` : ""}
-        </figure>
-        <p class="lede article-lede">${autoLink(post.excerpt, post)}</p>
-
-        ${headings.length > 0 ? `<nav class="toc" aria-label="Table of contents">
-          <p class="toc-title">In this article</p>
-          ${headings.map((h) => `<a href="#${h.id}" style="padding-left:${(h.level - 2) * 12}px">${esc(h.text)}</a>`).join("")}
-        </nav>` : ""}
 
         ${post.contentHtml ? `<div class="article-content">${contentHtml}</div>` : sectionHtml(post)}
         ${post.contentHtml ? "" : `<section>
           <h2>Conclusion</h2>
-          <p>${esc(post.conclusion || "The smartest next step is to match the headline trend with real-world needs before booking or upgrading. Price, availability, service support, warranty terms and long-term usability should matter more than the first wave of hype.")}</p>
+          <p>${esc(post.conclusion || "The smartest next step is to match the headline trend with real-world needs before booking or upgrading.")}</p>
         </section>`}
 
         ${post.sources && post.sources.length > 0 ? `<section>
@@ -294,9 +364,12 @@ ${headTags({ title: post.metaTitle, description: post.metaDescription, url: post
       </nav>` : ""}
 
       ${related.length > 0 ? `<section class="related-section">
-        <p class="eyebrow">Related articles</p>
+        <p class="eyebrow">More from Car News</p>
         <div class="story-grid related-grid">
           ${related.map((p) => storyCard(p, { depth: 1, context: "post" })).join("")}
+        </div>
+        <div class="contextual-links-block">
+          <p><strong>Also read:</strong> ${contextualRelatedLinks()}</p>
         </div>
       </section>` : ""}
     </main>
