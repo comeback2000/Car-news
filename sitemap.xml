@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://comeback2000.github.io/Car-news/</loc><lastmod>2026-06-14</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
+  <url><loc>https://comeback2000.github.io/Car-news/privacy-policy.html</loc><lastmod>2026-06-14</lastmod><changefreq>monthly</changefreq><priority>0.3</priority></url>
   <url><loc>https://comeback2000.github.io/Car-news/admin/</loc><lastmod>2026-06-14</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
+  <url><loc>https://comeback2000.github.io/Car-news/posts/iqoo-is-preparing-a-phone-with-a-battery-bigger-than-most-power-banks.html</loc><lastmod>2026-06-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://comeback2000.github.io/Car-news/posts/new-nissan-x-trail-e-power-x-e-4orce.html</loc><lastmod>2026-06-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
   <url><loc>https://comeback2000.github.io/Car-news/posts/byd-s-1-200-km-range-suv-is-coming-to-india.html</loc><lastmod>2026-06-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
   <url><loc>https://comeback2000.github.io/Car-news/posts/india-opens-door-self-driving-safety-tech.html</loc><lastmod>2026-06-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
   <url><loc>https://comeback2000.github.io/Car-news/posts/xiaomi-motorola-oneplus-a-massive-smartphone-launch-wave-is-coming.html</loc><lastmod>2026-06-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
@@ -111,8 +114,8 @@
   <url><loc>https://comeback2000.github.io/Car-news/posts/tata-ev-sales-india-nexon-punch.html</loc><lastmod>2026-06-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
   <url><loc>https://comeback2000.github.io/Car-news/posts/mahindra-be-6-xev-9e-india-ev-suv.html</loc><lastmod>2026-06-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
   <url><loc>https://comeback2000.github.io/Car-news/posts/maruti-e-vitara-charging-network-india.html</loc><lastmod>2026-06-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://comeback2000.github.io/Car-news/category/automotive-news.html</loc><lastmod>2026-06-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
   <url><loc>https://comeback2000.github.io/Car-news/category/mobile-tech.html</loc><lastmod>2026-06-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://comeback2000.github.io/Car-news/category/automotive-news.html</loc><lastmod>2026-06-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
   <url><loc>https://comeback2000.github.io/Car-news/category/bike-news.html</loc><lastmod>2026-06-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
   <url><loc>https://comeback2000.github.io/Car-news/category/car-news.html</loc><lastmod>2026-06-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
   <url><loc>https://comeback2000.github.io/Car-news/category/ev-buying-guides.html</loc><lastmod>2026-06-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
@@ -121,6 +124,16 @@
   <url><loc>https://comeback2000.github.io/Car-news/category/tata-motors.html</loc><lastmod>2026-06-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
   <url><loc>https://comeback2000.github.io/Car-news/category/upcoming-evs.html</loc><lastmod>2026-06-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
   <url><loc>https://comeback2000.github.io/Car-news/category/maruti-suzuki.html</loc><lastmod>2026-06-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://comeback2000.github.io/Car-news/tags/iqoo.html</loc><lastmod>2026-06-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://comeback2000.github.io/Car-news/tags/smartphones.html</loc><lastmod>2026-06-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://comeback2000.github.io/Car-news/tags/android.html</loc><lastmod>2026-06-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://comeback2000.github.io/Car-news/tags/battery-technology.html</loc><lastmod>2026-06-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://comeback2000.github.io/Car-news/tags/mobile-industry.html</loc><lastmod>2026-06-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://comeback2000.github.io/Car-news/tags/nissan-x-trail.html</loc><lastmod>2026-06-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://comeback2000.github.io/Car-news/tags/e-power.html</loc><lastmod>2026-06-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://comeback2000.github.io/Car-news/tags/e-4orce.html</loc><lastmod>2026-06-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://comeback2000.github.io/Car-news/tags/hybrid-suv.html</loc><lastmod>2026-06-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://comeback2000.github.io/Car-news/tags/automotive-industry.html</loc><lastmod>2026-06-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
   <url><loc>https://comeback2000.github.io/Car-news/tags/automotive-news.html</loc><lastmod>2026-06-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
   <url><loc>https://comeback2000.github.io/Car-news/tags/xiaomi.html</loc><lastmod>2026-06-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
   <url><loc>https://comeback2000.github.io/Car-news/tags/motorola.html</loc><lastmod>2026-06-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
@@ -139,7 +152,6 @@
   <url><loc>https://comeback2000.github.io/Car-news/tags/india-auto-market.html</loc><lastmod>2026-06-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
   <url><loc>https://comeback2000.github.io/Car-news/tags/vinfast.html</loc><lastmod>2026-06-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
   <url><loc>https://comeback2000.github.io/Car-news/tags/ev-suvs.html</loc><lastmod>2026-06-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://comeback2000.github.io/Car-news/tags/automotive-industry.html</loc><lastmod>2026-06-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
   <url><loc>https://comeback2000.github.io/Car-news/tags/skoda-india.html</loc><lastmod>2026-06-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
   <url><loc>https://comeback2000.github.io/Car-news/tags/kylaq.html</loc><lastmod>2026-06-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
   <url><loc>https://comeback2000.github.io/Car-news/tags/kushaq.html</loc><lastmod>2026-06-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
@@ -151,7 +163,6 @@
   <url><loc>https://comeback2000.github.io/Car-news/tags/volkswagen-strategy.html</loc><lastmod>2026-06-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
   <url><loc>https://comeback2000.github.io/Car-news/tags/kia.html</loc><lastmod>2026-06-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
   <url><loc>https://comeback2000.github.io/Car-news/tags/kia-sorento.html</loc><lastmod>2026-06-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://comeback2000.github.io/Car-news/tags/hybrid-suv.html</loc><lastmod>2026-06-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
   <url><loc>https://comeback2000.github.io/Car-news/tags/mg-motor.html</loc><lastmod>2026-06-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
   <url><loc>https://comeback2000.github.io/Car-news/tags/mg-windsor-ev.html</loc><lastmod>2026-06-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
   <url><loc>https://comeback2000.github.io/Car-news/tags/maruti-suzuki.html</loc><lastmod>2026-06-14</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>

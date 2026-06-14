@@ -437,7 +437,7 @@ ${headTags({ title: post.metaTitle, description: post.metaDescription, url: post
       </section>` : ""}
     </main>
     <footer class="site-footer">
-      <p>Car News — India automotive news, EV trends and analysis</p>
+      <p><a href="/Car-news/privacy-policy.html">Privacy Policy</a> &middot; Car News — India automotive news, EV trends and analysis</p>
     </footer>
   </body>
 </html>`;
@@ -519,7 +519,7 @@ ${headTags({
       </section>
     </main>
     <footer class="site-footer">
-      <p>Updated June 4, 2026. Trend cues from Google News, public auto-market signals, and current India auto reports; sources are linked in each post.</p>
+      <p><a href="/Car-news/privacy-policy.html">Privacy Policy</a> &middot; Updated June 4, 2026. Trend cues from Google News, public auto-market signals, and current India auto reports; sources are linked in each post.</p>
     </footer>
     <script>
       const viralCards = Array.from(document.querySelectorAll(".viral-card"));
