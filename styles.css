@@ -655,8 +655,9 @@ code {
   display: flex;
   justify-content: space-between;
   gap: 16px;
-  margin-top: 36px;
-  padding-top: 24px;
+  width: min(900px, calc(100% - 48px));
+  margin: 0 auto 36px;
+  padding: 24px 0 0;
   border-top: 1px solid var(--line);
 }
 .prev-next-link {
@@ -675,6 +676,7 @@ code {
 .prev-next-link.disabled {
   opacity: 0.3;
   pointer-events: none;
+  display: none;
 }
 .prev-next-direction {
   font-size: 0.75rem;

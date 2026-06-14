@@ -216,6 +216,9 @@ function sanitizeArticleHtml(value, currentPost) {
     .replace(/javascript:/gi, "")
     .replace(/href=["']\/electric-vehicle-news["']/gi, 'href="../tags/electric-vehicles.html"')
     .replace(/href=["']\/automotive-industry["']/gi, 'href="../category/automotive-news.html"')
+    // Strip empty paragraphs and empty figures
+    .replace(/<p>\s*<\/p>\s*/gi, "")
+    .replace(/<figure[^>]*>\s*<\/figure>\s*/gi, "")
     .trim();
   // Apply auto-linking within contentHTML
   if (currentPost) {
