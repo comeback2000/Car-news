@@ -206,6 +206,63 @@ function autoLinkContentHtml(html, currentPost) {
   return linked;
 }
 
+/**
+ * Convert markdown pipe-table blocks to HTML <table> elements.
+ * Detects consecutive lines containing pipe-delimited cells,
+ * builds proper thead/tbody/tbody HTML.
+ */
+function convertPipeTables(html) {
+  // Find consecutive pipe-table lines: <p>| ... |</p> blocks
+  return html.replace(
+    /((?:<p>\|[^<]*\|<\/p>\s*)+)/gi,
+    (block) => {
+      const lines = [];
+      const pRe = /<p>\|([^<]*)\|<\/p>/gi;
+      let m;
+      while ((m = pRe.exec(block)) !== null) {
+        const cellText = m[1].trim();
+        if (cellText) lines.push(cellText);
+      }
+      if (lines.length < 2) return block;
+
+      // Parse cells
+      const rows = lines.map(l => l.split('|').map(c => c.trim()).filter(c => c));
+      if (rows.some(r => r.length < 2)) return block;  // not a real table
+
+      // Find separator row (|---|)
+      const sepIdx = rows.findIndex(r =>
+        r.every(c => /^[-:\s]+$/.test(c))
+      );
+
+      let thead = '', tbody = '';
+      if (sepIdx > 0) {
+        // Has header row
+        thead = '  <thead><tr>\n' +
+          rows[0].map(c => `    <th>${c}</th>`).join('\n') + '\n  </tr></thead>\n';
+        const dataRows = rows.slice(sepIdx + 1);
+        tbody = dataRows.map(r => {
+          const cells = r.map((c, i) => {
+            const tag = 'td';
+            return `      <${tag}>${c}</${tag}>`;
+          }).join('\n');
+          return '    <tr>\n' + cells + '\n    </tr>';
+        }).join('\n');
+      } else {
+        // No header — all rows are tbody
+        tbody = rows.map(r => {
+          const cells = r.map(c => `      <td>${c}</td>`).join('\n');
+          return '    <tr>\n' + cells + '\n    </tr>';
+        }).join('\n');
+      }
+
+      return '<div class="table-wrapper"><table class="content-table">\n' +
+        thead +
+        (tbody ? '  <tbody>\n' + tbody + '\n  </tbody>\n' : '') +
+        '</table></div>\n';
+    }
+  );
+}
+
 function sanitizeArticleHtml(value, currentPost) {
   let clean = String(value || "")
     .replace(/<script[\s\S]*?<\/script>/gi, "")
@@ -216,10 +273,13 @@ function sanitizeArticleHtml(value, currentPost) {
     .replace(/javascript:/gi, "")
     .replace(/href=["']\/electric-vehicle-news["']/gi, 'href="../tags/electric-vehicles.html"')
     .replace(/href=["']\/automotive-industry["']/gi, 'href="../category/automotive-news.html"')
-    // Strip empty paragraphs and empty figures
-    .replace(/<p>\s*<\/p>\s*/gi, "")
+    // Strip empty paragraphs and empty figures (including p that becomes empty after figure removal)
     .replace(/<figure[^>]*>\s*<\/figure>\s*/gi, "")
+    .replace(/<p>\s*<\/p>\s*/gi, "")
     .trim();
+  // Convert markdown pipe-tables to HTML tables
+  // (must run after empty-p stripping so inline pipe-markdown in bare p gets picked up)
+  clean = convertPipeTables(clean);
   // Apply auto-linking within contentHTML
   if (currentPost) {
     clean = autoLinkContentHtml(clean, currentPost);
